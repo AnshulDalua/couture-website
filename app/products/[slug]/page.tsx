@@ -1,12 +1,12 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, use } from "react"
 import { notFound, useRouter } from "next/navigation"
 
 // Mock product data
 const products = {
-  "stock-logo-tee": {
+  "heavyweight-hoodie": {
     id: 1,
     name: "Heavyweight Hoodie",
     price: 45,
@@ -20,9 +20,9 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "NAVY"],
   },
-  "basic-stussy-hoodie": {
+  "heavyweight-crewneck": {
     id: 2,
-    name: "Heavweight Crewneck",
+    name: "Heavyweight Crewneck",
     price: 120,
     description: "Classic cotton hoodie with embroidered Stüssy logo at chest.",
     details: [
@@ -41,7 +41,7 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "GREY HEATHER", "NAVY"],
   },
-  "work-jacket": {
+  "classic-quarterzip": {
     id: 3,
     name: "Classic Quarterzip",
     price: 180,
@@ -50,60 +50,69 @@ const products = {
       "100% cotton twill",
       "Regular fit",
       "Button front closure",
-      "Two chest pockets",
-      "Two side pockets",
+      "Four front pockets",
       "Embroidered logo at chest",
       "Machine wash cold",
     ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//3.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//9.jpg",
-      "/placeholder.svg?height=800&width=800",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
     ],
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "KHAKI", "OLIVE"],
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["BLACK", "KHAKI", "NAVY"],
   },
-  "8-ball-dot-tee": {
+  "straightcut-sweatpants": {
     id: 4,
     name: "Straightcut Sweatpants",
     price: 50,
-    description: "Cotton tee with printed 8 Ball graphic at chest.",
-    details: ["100% cotton", "Regular fit", "Ribbed crewneck", "Printed graphic at chest", "Machine wash cold"],
-    images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//475848642_645182244597226_8001403319392807816_n.png",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
-    ],
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "NATURAL"],
-  },
-  "stock-water-short": {
-    id: 5,
-    name: "Standard Tshirt",
-    price: 95,
-    description: "Quick-dry nylon shorts with embroidered Stüssy logo.",
+    description: "Comfortable cotton blend sweatpants with embroidered logo.",
     details: [
-      "100% nylon",
+      "80% cotton, 20% polyester",
       "Regular fit",
       "Elastic waistband with drawstring",
       "Side pockets",
-      "Back pocket with velcro closure",
-      "Embroidered logo at leg",
+      "Back pocket",
+      "Embroidered logo",
+      "Machine wash cold",
+    ],
+    images: [
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//6.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg",
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["BLACK", "GREY HEATHER", "NAVY"],
+  },
+  "classic-tshirt": {
+    id: 5,
+    name: "Classic Tshirt",
+    price: 95,
+    description: "Premium cotton t-shirt with printed logo.",
+    details: [
+      "100% cotton",
+      "Regular fit",
+      "Crew neck",
+      "Printed logo",
       "Machine wash cold",
     ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//2.jpg",
-      "/placeholder.svg?height=800&width=800",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//1.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//3.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "NAVY", "ORANGE"],
+    colors: ["BLACK", "WHITE", "GREY"],
   },
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
+type Product = typeof products[keyof typeof products]
+type PageParams = { slug: string }
+
+export default function ProductPage({ params }: { params: Promise<PageParams> }) {
   const router = useRouter()
-  const product = products[params.slug as keyof typeof products]
+  const { slug } = use(params)
+  const product = products[slug as keyof typeof products]
   const imagesContainerRef = useRef<HTMLDivElement>(null)
 
   const [selectedSize, setSelectedSize] = useState("")
@@ -343,4 +352,3 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     </div>
   )
 }
-

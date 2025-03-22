@@ -31,16 +31,20 @@ export default function Header() {
           </Link>
 
           <Link href="/features" className="stussy-nav-item">
-            FEATURES
+            LOOKBOOK
           </Link>
 
           <Link href="/reviews" className="stussy-nav-item">
-            REVIEWS
+            OUR PROCESS
           </Link>
+
+          
+
+          
 
           <div className="stussy-nav-item">
             <button className="flex items-center">
-              SUPPORT <ChevronDown className="ml-1 h-3 w-3" />
+              MORE <ChevronDown className="ml-1 h-3 w-3" />
             </button>
             <div className="stussy-dropdown">
               <Link href="/support/contact">CONTACT</Link>
@@ -49,6 +53,7 @@ export default function Header() {
               <Link href="/support/faq">FAQ</Link>
               <Link href="/support/terms">TERMS</Link>
               <Link href="/support/privacy">PRIVACY</Link>
+              <Link href="/reviews">REVIEWS</Link>
             </div>
           </div>
         </nav>
@@ -74,10 +79,10 @@ export default function Header() {
               SHOP
             </Link>
             <Link href="/features" className="py-2">
-              FEATURES
+              LOOKBOOK
             </Link>
             <Link href="/reviews" className="py-2">
-              REVIEWS
+              PROCESS
             </Link>
             <Link href="/support" className="py-2">
               SUPPORT
