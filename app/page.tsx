@@ -1,54 +1,57 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useEffect } from "react"
 
-export default function Home() {
-  // Images for rotation
-  const images = [
-    "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//19000025.png",
-    "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//IMG_2127.png",
-    "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//87566EB3-8B8E-4238-AF38-3B9641F08E78.png",
-    "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//475848642_645182244597226_8001403319392807816_n.png",
-  ]
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-
-  // Image rotation effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 8000)
-
-    return () => clearInterval(interval)
-  }, [])
-
+export default function HomePage() {
   return (
-    <div>
-      {/* Hero Image with image rotation */}
-      <section className="px-6 py-4 relative">
-        <div className="max-w-5xl mx-auto">
-          <div className="relative h-[calc(100vh-150px)]">
-            {images.map((src, index) => (
+    <div className="h-[calc(100vh-120px)] flex items-center md:items-start justify-center px-2 md:px-2 md:pt-4"> {/* Adjusted vertical alignment for desktop */}
+      {/* Desktop Version - Three images side by side */}
+      <div className="hidden md:block relative w-full max-w-[98%]"> {/* Increased max-width for even less whitespace */}
+        <div className="flex w-full"> {/* Changed to flex with no gap */}
+          {[1, 2, 3].map((index) => (
+            <div key={index} className="relative w-1/3 h-[80vh]"> {/* Increased height from 70vh to 80vh */}
               <Image
-                key={src}
-                src={src || "/placeholder.svg"}
-                alt={`Stüssy hero image ${index + 1}`}
+                src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//19000025.png"
+                alt="IKIGAI Featured Collection"
                 fill
-                style={{
-                  objectFit: "contain",
-                  opacity: index === currentImageIndex ? 1 : 0,
-                  transition: "opacity 1s ease-in-out",
-                }}
-                priority={index === 0}
+                priority
+                style={{ objectFit: "cover" }}
               />
-            ))}
-          </div>
-
-          {/* "NOT NORMAL MERCH" text positioned in bottom right */}
-          
+            </div>
+          ))}
         </div>
-      </section>
+        
+        {/* Overlay text for desktop - single line */}
+        <div className="absolute bottom-16 right-6 z-10">
+          <h1 
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white text-right whitespace-nowrap" 
+            style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
+          >
+            NOT NORMAL MERCH
+          </h1>
+        </div>
+      </div>
+
+      {/* Mobile Version - Single image */}
+      <div className="md:hidden relative w-full h-full">
+        <Image
+          src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//19000025.png"
+          alt="IKIGAI Featured Collection"
+          fill
+          priority
+          style={{ objectFit: "cover" }}
+        />
+        
+        {/* Overlay text for mobile - kept on multiple lines but larger */}
+        <div className="absolute bottom-12 right-6 text-right z-10">
+          <h1 
+            className="text-5xl font-bold text-white" /* Increased from text-4xl to text-5xl */
+            style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
+          >
+            NOT<br />NORMAL<br />MERCH
+          </h1>
+        </div>
+      </div>
     </div>
   )
 }
