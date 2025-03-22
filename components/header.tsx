@@ -30,17 +30,13 @@ export default function Header() {
             SHOP
           </Link>
 
-          <Link href="/features" className="stussy-nav-item">
+          <Link href="/lookbook" className="stussy-nav-item">
             LOOKBOOK
           </Link>
 
-          <Link href="/reviews" className="stussy-nav-item">
+          <Link href="/our-process" className="stussy-nav-item">
             OUR PROCESS
           </Link>
-
-          
-
-          
 
           <div className="stussy-nav-item">
             <button className="flex items-center">
@@ -48,12 +44,10 @@ export default function Header() {
             </button>
             <div className="stussy-dropdown">
               <Link href="/support/contact">CONTACT</Link>
-              <Link href="/support/shipping">SHIPPING</Link>
-              <Link href="/support/returns">RETURNS</Link>
+              <Link href="/support/shipping-returns">SHIPPING + RETURNS</Link>
               <Link href="/support/faq">FAQ</Link>
-              <Link href="/support/terms">TERMS</Link>
-              <Link href="/support/privacy">PRIVACY</Link>
-              <Link href="/reviews">REVIEWS</Link>
+              <Link href="/support/reviews">REVIEWS</Link>
+              <Link href="/support/pricing">PRICING</Link>
             </div>
           </div>
         </nav>
@@ -79,13 +73,25 @@ export default function Header() {
               SHOP
             </Link>
             <Link href="/features" className="py-2">
-              LOOKBOOK
+              FEATURES
             </Link>
-            <Link href="/reviews" className="py-2">
-              PROCESS
+            <Link href="/our-process" className="py-2">
+              OUR PROCESS
             </Link>
-            <Link href="/support" className="py-2">
-              SUPPORT
+            <Link href="/support/contact" className="py-2">
+              CONTACT
+            </Link>
+            <Link href="/support/shipping-returns" className="py-2">
+              SHIPPING + RETURNS
+            </Link>
+            <Link href="/support/faq" className="py-2">
+              FAQ
+            </Link>
+            <Link href="/support/reviews" className="py-2">
+              REVIEWS
+            </Link>
+            <Link href="/support/pricing" className="py-2">
+              PRICING
             </Link>
           </nav>
         </div>

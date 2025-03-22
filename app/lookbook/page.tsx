@@ -45,7 +45,7 @@ export default function FeaturesPage() {
       {/* Feature Grid - Simple, clean layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
         {features.map((feature) => (
-          <Link href={`/features/${feature.id}`} key={feature.id} className="block group">
+          <Link href={`/lookbook/${feature.id}`} key={feature.id} className="block group">
             <div className="relative aspect-[4/3] w-full mb-4 overflow-hidden">
               <Image
                 src={feature.image || "/placeholder.svg"}
@@ -66,7 +66,7 @@ export default function FeaturesPage() {
 
       {/* Archive Link */}
       <div className="mt-16 text-center">
-        <Link href="/features/archive" className="stussy-button inline-block">
+        <Link href="/lookbook/archive" className="stussy-button inline-block">
           VIEW ARCHIVE
         </Link>
       </div>
