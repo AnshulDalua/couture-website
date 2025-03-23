@@ -1,8 +1,29 @@
 "use client"
 
 import Image from "next/image"
+import { useState, useEffect } from "react"
+
+// Array of images to rotate through
+const images = [
+  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000008.JPG",
+  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/339344sin002250-R1-043-20.jpg",
+  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-057-27.jpg",
+  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/sinh001485-R1-027-12.jpg"
+]
 
 export default function HomePage() {
+  // State to store the current image
+  const [currentImage, setCurrentImage] = useState("")
+  
+  // Select a random image on component mount (page load/refresh)
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * images.length)
+    setCurrentImage(images[randomIndex])
+  }, [])
+  
+  // Don't render anything until we have an image (prevents flash of content)
+  if (!currentImage) return null
+  
   return (
     <div className="h-[calc(100vh-120px)] flex items-center md:items-start justify-center px-2 md:px-2 md:pt-4"> {/* Adjusted vertical alignment for desktop */}
       {/* Desktop Version - Three images side by side */}
@@ -11,7 +32,7 @@ export default function HomePage() {
           {[1, 2, 3].map((index) => (
             <div key={index} className="relative w-1/3 h-[80vh]"> {/* Increased height from 70vh to 80vh */}
               <Image
-                src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//19000025.png"
+                src={currentImage}
                 alt="IKIGAI Featured Collection"
                 fill
                 priority
@@ -35,7 +56,7 @@ export default function HomePage() {
       {/* Mobile Version - Single image */}
       <div className="md:hidden relative w-full h-full">
         <Image
-          src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//19000025.png"
+          src={currentImage}
           alt="IKIGAI Featured Collection"
           fill
           priority

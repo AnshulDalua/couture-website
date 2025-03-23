@@ -4,37 +4,37 @@ import Link from "next/link"
 // Feature data
 const features = [
   {
-    id: "spring-24-lookbook",
-    title: "SPRING '24 COLLECTION",
-    date: "MARCH 10, 2024",
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg",
+    id: "2025-lookbook",
+    title: "2025 COLLECTION",
+    date: "MARCH 23, 2025",
+    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000034.JPG",
   },
   {
-    id: "world-tour",
-    title: "WORLD TOUR",
-    date: "FEBRUARY 15, 2024",
+    id: "2025-clients",
+    title: "2025 CLIENTS",
+    date: "MARCH 25, 2022",
     image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//19000025.png",
   },
-  {
-    id: "artist-series",
-    title: "ARTIST SERIES",
-    date: "JANUARY 20, 2024",
-    image:
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//87566EB3-8B8E-4238-AF38-3B9641F08E78.png",
-  },
-  {
-    id: "archive-collection",
-    title: "ARCHIVE COLLECTION",
-    date: "DECEMBER 5, 2023",
-    image:
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//475848642_645182244597226_8001403319392807816_n.png",
-  },
-  {
-    id: "essentials-collection",
-    title: "ESSENTIALS COLLECTION",
-    date: "ONGOING",
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//IMG_2127.png",
-  },
+  // {
+  //   id: "artist-series",
+  //   title: "ARTIST SERIES",
+  //   date: "JANUARY 20, 2024",
+  //   image:
+  //     "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//87566EB3-8B8E-4238-AF38-3B9641F08E78.png",
+  // },
+  // {
+  //   id: "archive-collection",
+  //   title: "ARCHIVE COLLECTION",
+  //   date: "DECEMBER 5, 2023",
+  //   image:
+  //     "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//475848642_645182244597226_8001403319392807816_n.png",
+  // },
+  // {
+  //   id: "essentials-collection",
+  //   title: "ESSENTIALS COLLECTION",
+  //   date: "ONGOING",
+  //   image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//IMG_2127.png",
+  // },
 ]
 
 export default function FeaturesPage() {
