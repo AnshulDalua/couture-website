@@ -13,7 +13,7 @@ export default function IntroAnimation({ onComplete, isVisible }: IntroAnimation
     // Allow animation to complete before triggering callback
     const completionTimer = setTimeout(() => {
       onComplete()
-    }, 1000) // Reduced from 4500ms to 4000ms for faster transition
+    }, 1750) // Reduced from 4500ms to 4000ms for faster transition
     
     return () => clearTimeout(completionTimer)
   }, [onComplete])
