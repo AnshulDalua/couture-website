@@ -4,6 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
+import HamburgerIcon from "@/app/components/HamburgerIcon"
+import MobileMenu from "@/app/components/MobileMenu"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -58,44 +60,21 @@ export default function Header() {
             ORDER
           </Link>
 
-          {/* Mobile Menu Button */}
-          <button className="ml-4 md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? "CLOSE" : "MENU"}
-          </button>
+          {/* ONLY CHANGE: Replace text button with hamburger icon */}
+          <div className="ml-4 md:hidden">
+            <HamburgerIcon 
+              isOpen={mobileMenuOpen} 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+            />
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu - updated to include Reviews */}
-      {mobileMenuOpen && (
-        <div className="md:hidden py-4">
-          <nav className="flex flex-col stussy-nav">
-            <Link href="/collections/all" className="py-2">
-              SHOP
-            </Link>
-            <Link href="/features" className="py-2">
-              FEATURES
-            </Link>
-            <Link href="/our-process" className="py-2">
-              OUR PROCESS
-            </Link>
-            <Link href="/support/contact" className="py-2">
-              CONTACT
-            </Link>
-            <Link href="/support/shipping-returns" className="py-2">
-              SHIPPING + RETURNS
-            </Link>
-            <Link href="/support/faq" className="py-2">
-              FAQ
-            </Link>
-            <Link href="/support/reviews" className="py-2">
-              REVIEWS
-            </Link>
-            <Link href="/support/pricing" className="py-2">
-              PRICING
-            </Link>
-          </nav>
-        </div>
-      )}
+      {/* Replace simple mobile menu with the new component */}
+      <MobileMenu 
+        isOpen={mobileMenuOpen} 
+        onClose={() => setMobileMenuOpen(false)} 
+      />
     </header>
   )
 }
