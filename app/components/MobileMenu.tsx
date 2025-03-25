@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ChevronDown, ChevronUp } from "lucide-react"
 
@@ -33,15 +34,19 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <div className="flex justify-between items-center p-5 border-b border-gray-200">
-            <Link href="/" onClick={onClose} className="w-24">
-              <img 
-                src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//Artboard%201.png" 
-                alt="COUTURE" 
-                className="h-8" 
-              />
-            </Link>
+            <div className="w-[60px] h-[35px] flex items-center">
+              <Link href="/" onClick={onClose}>
+                <Image
+                  src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//Artboard%201.png"
+                  alt="CoutureByIkgai"
+                  width={85}
+                  height={45}
+                  className="w-full"
+                />
+              </Link>
+            </div>
             <button onClick={onClose} className="p-2">
-              <X size={24} />
+              <X size={20} />
             </button>
           </div>
           
