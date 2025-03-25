@@ -17,13 +17,11 @@ export default function OurProcessPage() {
                 Every piece begins in our design studio, where our team of designers draws inspiration from art, culture, and everyday life. We sketch, prototype, and refine until we've created something that embodies our aesthetic while maintaining functionality and comfort.
               </p>
             </div>
-            <div className="relative aspect-square w-full">
-              <Image
+            <div className="relative flex items-center justify-center h-[300px]">
+              <img
                 src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/Screenshot%202025-03-24%20at%207.56.35%20PM.png"
                 alt="Design process"
-                fill
-                style={{ objectFit: "cover" }}
-                className="w-full"
+                className="max-h-full max-w-full object-contain"
               />
             </div>
           </div>
@@ -36,13 +34,11 @@ export default function OurProcessPage() {
                 We source only the highest quality materials, prioritizing sustainability and ethical production. From organic cotton to recycled polyester, we carefully select each fabric based on its environmental impact, durability, and feel.
               </p>
             </div>
-            <div className="relative aspect-square w-full md:order-1">
-              <Image
+            <div className="relative flex items-center justify-center h-[300px] md:order-1">
+              <img
                 src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/PHOTO-2025-02-20-06-13-41-removebg-preview.png"
                 alt="Material selection"
-                fill
-                style={{ objectFit: "cover" }}
-                className="w-full"
+                className="max-h-full max-w-full object-contain"
               />
             </div>
           </div>
@@ -55,13 +51,11 @@ export default function OurProcessPage() {
                 Our garments are crafted in small batches by skilled artisans who take pride in their work. We maintain close relationships with our manufacturing partners to ensure fair labor practices and quality control at every stage of production.
               </p>
             </div>
-            <div className="relative aspect-square w-full">
-              <Image
+            <div className="relative flex items-center justify-center h-[300px]">
+              <img
                 src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-24.jpg"
                 alt="Production process"
-                fill
-                style={{ objectFit: "cover" }}
-                className="w-full"
+                className="max-h-full max-w-full object-contain"
               />
             </div>
           </div>
