@@ -29,10 +29,10 @@ const featuresData = {
       "From Tokyo to New York, Paris to Sydney, our World Tour connects fashion enthusiasts across continents through shared appreciation for quality craftsmanship and timeless style.",
     ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//19000025.png",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//8.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//10.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-22.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-26.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/GEC5PTe8uxKZavqgo3m795moqU0.webp",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/KJRAgt7DZiKyfgWFlAFbqMIopQ.avif",
     ],
   },
   // "artist-series": {
@@ -93,8 +93,8 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
     <div className="px-6 py-8 max-w-5xl mx-auto">
       {/* Back Link */}
       <div className="mb-8">
-        <Link href="/features" className="text-xs uppercase">
-          ← BACK TO FEATURES
+        <Link href="/lookbook" className="text-xs uppercase">
+          ← BACK TO LOOKBOOK
         </Link>
       </div>
 
