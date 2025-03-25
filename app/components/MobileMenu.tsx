@@ -51,26 +51,32 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </div>
           
           <div className="flex flex-col divide-y divide-gray-200">
-            {/* Shop - now a simple link */}
-            <div className="py-5 px-6">
-              <Link href="/collections/all" onClick={onClose} className="text-lg font-medium">
-                SHOP
-              </Link>
-            </div>
+            {/* Shop - now making the entire div clickable */}
+            <Link 
+              href="/collections/all" 
+              onClick={onClose} 
+              className="block py-5 px-6"
+            >
+              <span className="text-lg font-medium">SHOP</span>
+            </Link>
             
-            {/* Lookbook */}
-            <div className="py-5 px-6">
-              <Link href="/lookbook" onClick={onClose} className="text-lg font-medium">
-                LOOKBOOK
-              </Link>
-            </div>
+            {/* Lookbook - entire div clickable */}
+            <Link 
+              href="/lookbook" 
+              onClick={onClose} 
+              className="block py-5 px-6"
+            >
+              <span className="text-lg font-medium">LOOKBOOK</span>
+            </Link>
             
-            {/* Our Process */}
-            <div className="py-5 px-6">
-              <Link href="/our-process" onClick={onClose} className="text-lg font-medium">
-                OUR PROCESS
-              </Link>
-            </div>
+            {/* Our Process - entire div clickable */}
+            <Link 
+              href="/our-process" 
+              onClick={onClose} 
+              className="block py-5 px-6"
+            >
+              <span className="text-lg font-medium">OUR PROCESS</span>
+            </Link>
             
             {/* More Section - kept expandable */}
             <div className="py-5 px-6">
@@ -90,22 +96,64 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   className="mt-3 pl-4"
                 >
                   <ul className="space-y-3">
-                    <li><Link href="/support/contact" onClick={onClose} className="text-gray-600">Contact</Link></li>
-                    <li><Link href="/support/shipping-returns" onClick={onClose} className="text-gray-600">Shipping + Returns</Link></li>
-                    <li><Link href="/support/faq" onClick={onClose} className="text-gray-600">FAQ</Link></li>
-                    <li><Link href="/support/reviews" onClick={onClose} className="text-gray-600">Reviews</Link></li>
-                    <li><Link href="/support/pricing" onClick={onClose} className="text-gray-600">Pricing</Link></li>
+                    <li>
+                      <Link 
+                        href="/support/contact" 
+                        onClick={onClose} 
+                        className="block py-2 text-gray-600"
+                      >
+                        Contact
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="/support/shipping-returns" 
+                        onClick={onClose} 
+                        className="block py-2 text-gray-600"
+                      >
+                        Shipping + Returns
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="/support/faq" 
+                        onClick={onClose} 
+                        className="block py-2 text-gray-600"
+                      >
+                        FAQ
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="/support/reviews" 
+                        onClick={onClose} 
+                        className="block py-2 text-gray-600"
+                      >
+                        Reviews
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="/support/pricing" 
+                        onClick={onClose} 
+                        className="block py-2 text-gray-600"
+                      >
+                        Pricing
+                      </Link>
+                    </li>
                   </ul>
                 </motion.div>
               )}
             </div>
             
-            {/* Order */}
-            <div className="py-5 px-6">
-              <Link href="/order" onClick={onClose} className="text-lg font-medium">
-                ORDER
-              </Link>
-            </div>
+            {/* Order - entire div clickable */}
+            <Link 
+              href="/order" 
+              onClick={onClose} 
+              className="block py-5 px-6"
+            >
+              <span className="text-lg font-medium">ORDER</span>
+            </Link>
           </div>
         </motion.div>
       )}

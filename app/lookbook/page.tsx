@@ -40,7 +40,7 @@ const features = [
 export default function FeaturesPage() {
   return (
     <div className="px-6 py-8">
-      <h1 className="text-sm uppercase mb-8">FEATURES</h1>
+      <h1 className="text-sm uppercase mb-8">LOOKBOOk</h1>
 
       {/* Feature Grid - Simple, clean layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
