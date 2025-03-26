@@ -1,145 +1,101 @@
-import Image from "next/image"
 import Link from "next/link"
 
-// Pricing tiers
-const pricingTiers = [
+// Volume discount data with dollar amounts
+const volumeDiscounts = [
   {
-    name: "ESSENTIALS",
-    description: "Our core collection of everyday basics",
-    price: "From $45",
-    features: [
-      "Premium cotton basics",
-      "Classic designs",
-      "Durable construction",
-      "Standard shipping",
-      "30-day returns"
-    ],
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//IMG_2127.png",
-    cta: "SHOP ESSENTIALS",
-    link: "/shop?collection=essentials"
+    product: "Heavyweight Hoodie",
+    discounts: [
+      { quantity: "10-29 items", price: "$55 per hoodie" },
+      { quantity: "30-59 items", price: "$47-49 per hoodie" },
+      { quantity: "60-100 items", price: "$40-45 per hoodie" },
+      { quantity: "100+", price: "Custom Pricing" }
+    ]
   },
   {
-    name: "PREMIUM",
-    description: "Elevated staples with enhanced details",
-    price: "From $95",
-    features: [
-      "Luxury materials",
-      "Enhanced construction",
-      "Limited edition colors",
-      "Free standard shipping",
-      "60-day returns"
-    ],
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//3.jpg",
-    cta: "SHOP PREMIUM",
-    link: "/shop?collection=premium",
-    highlighted: true
+    product: "Heavyweight Crewneck",
+    discounts: [
+      { quantity: "10-29 items", price: "$52 per crewneck" },
+      { quantity: "30-59 items", price: "$44-46 per crewneck" },
+      { quantity: "60-100 items", price: "$37-42 per crewneck" },
+      { quantity: "100+", price: "Custom Pricing" }
+    ]
   },
   {
-    name: "COLLECTIONS",
-    description: "Limited edition seasonal releases",
-    price: "From $120",
-    features: [
-      "Exclusive designs",
-      "Collector's items",
-      "Numbered editions",
-      "Free express shipping",
-      "90-day returns"
-    ],
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg",
-    cta: "SHOP COLLECTIONS",
-    link: "/shop?collection=limited"
+    product: "Straightcut Sweatpants",
+    discounts: [
+      { quantity: "10-29 items", price: "$52 per sweatpant" },
+      { quantity: "30-59 items", price: "$44-46 per sweatpant" },
+      { quantity: "60-100 items", price: "$37-42 per sweatpant" },
+      { quantity: "100+", price: "Custom Pricing" }
+    ]
+  },
+  {
+    product: "Standard Quarter Zip",
+    discounts: [
+      { quantity: "10-29 items", price: "$51 per quarter zip" },
+      { quantity: "30-59 items", price: "$43-45 per quarter zip" },
+      { quantity: "60-100 items", price: "$36-41 per quarter zip" },
+      { quantity: "100+", price: "Custom Pricing" }
+    ]
+  },
+  {
+    product: "Standard T-Shirt",
+    discounts: [
+      { quantity: "10-29 items", price: "$35 per t-shirt" },
+      { quantity: "30-59 items", price: "$27-29 per t-shirt" },
+      { quantity: "60-100 items", price: "$20-25 per t-shirt" },
+      { quantity: "100+", price: "Custom Pricing" }
+    ]
   }
 ]
 
 export default function PricingPage() {
   return (
-    <div className="px-6 py-8">
-      <h1 className="text-sm uppercase mb-8">PRICING</h1>
-
-      <div className="max-w-5xl mx-auto">
-        {/* Introduction */}
-        <div className="mb-12 max-w-2xl">
-          <p className="text-sm mb-4">
-            At IKIGAI, we believe in transparent pricing that reflects the quality of our materials, 
-            craftsmanship, and commitment to sustainable practices. Our products are designed to last, 
-            providing value that extends beyond the initial purchase.
-          </p>
-        </div>
-
-        {/* Pricing Tiers */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pricingTiers.map((tier) => (
-            <div 
-              key={tier.name} 
-              className={`border ${tier.highlighted ? 'border-black' : 'border-gray-200'} p-6`}
-            >
-              <div className="relative aspect-square w-full mb-6 overflow-hidden">
-                <Image
-                  src={tier.image}
-                  alt={tier.name}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  className="w-full"
-                />
-              </div>
-              <h2 className="text-sm uppercase font-medium mb-2">{tier.name}</h2>
-              <p className="text-sm font-bold mb-2">{tier.price}</p>
-              <p className="text-xs mb-4">{tier.description}</p>
-              
-              <ul className="text-xs mb-6 space-y-2">
-                {tier.features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="mr-2">•</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <Link href={tier.link}>
-                <button className={`w-full py-2 px-4 text-xs uppercase ${
-                  tier.highlighted 
-                    ? 'bg-black text-white' 
-                    : 'border border-black hover:bg-black hover:text-white transition-colors'
-                }`}>
-                  {tier.cta}
-                </button>
-              </Link>
-            </div>
-          ))}
-        </div>
-
-        {/* Additional Information */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-sm uppercase font-medium mb-4">MEMBERSHIP BENEFITS</h2>
-            <p className="text-xs mb-4">
-              Join our membership program to receive exclusive benefits:
-            </p>
-            <ul className="text-xs list-disc pl-4 space-y-2">
-              <li>Early access to new collections</li>
-              <li>Member-only discounts</li>
-              <li>Free shipping on all orders</li>
-              <li>Extended return period</li>
-              <li>Birthday gifts</li>
-            </ul>
-            <div className="mt-4">
-              <Link href="/membership">
-                <button className="stussy-button">JOIN NOW</button>
-              </Link>
-            </div>
-          </div>
+    <div className="container mx-auto px-6 py-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-sm uppercase mb-8">PRICING</h1>
+        {/* Volume Discounts */}
+        <div className="mb-16">
           
+          {/* Volume Discount Tables - One per product */}
+          <div className="space-y-12">
+            {volumeDiscounts.map((item) => (
+              <div key={item.product} className="mb-10">
+                <h3 className="text-xs font-medium mb-4 text-center">{item.product}</h3>
+                <div className="flex justify-center">
+                  <table className="w-full max-w-md border-collapse">
+                    <thead>
+                      <tr className="border-b border-gray-200">
+                        <th className="py-3 px-4 text-center w-1/2">Quantity</th>
+                        <th className="py-3 px-4 text-center w-1/2">Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {item.discounts.map((discount, index) => (
+                        <tr key={index} className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-center">{discount.quantity}</td>
+                          <td className="py-3 px-4 text-center">{discount.price}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Custom Orders */}
+        <div className="mt-16 text-center">
+          <h2 className="text-sm uppercase font-medium mb-4">CUSTOM ORDERS</h2>
+          <p className="text-xs mb-6">
+            For custom designs, bulk orders, or special requirements, please contact our team.
+            We offer competitive pricing for organizations, events, and corporate orders.
+          </p>
           <div>
-            <h2 className="text-sm uppercase font-medium mb-4">BULK ORDERS</h2>
-            <p className="text-xs mb-4">
-              For wholesale inquiries or custom bulk orders, we offer special pricing and 
-              customization options. Contact our team to discuss your specific requirements.
-            </p>
-            <div className="mt-4">
-              <Link href="/support/contact?subject=bulk-order">
-                <button className="stussy-button">CONTACT US</button>
-              </Link>
-            </div>
+            <Link href="/order">
+              <button className="stussy-button">PLACE CUSTOM ORDER</button>
+            </Link>
           </div>
         </div>
       </div>
