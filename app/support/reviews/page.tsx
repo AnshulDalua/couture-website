@@ -1,111 +1,118 @@
 import Image from "next/image"
-import { Star, StarHalf } from "lucide-react"
 
-// Sample review data
+// Updated review data from actual customer reviews
 const reviews = [
   {
     id: 1,
-    name: "Alex Thompson",
-    date: "March 15, 2024",
-    rating: 5,
+    title: "They look really great!",
+    content: "Yes! They look really great! We have club photos this Sunday so I will try to get photos of some of the members wearing the merch!",
+    name: "Zeta Pi",
     product: "Heavyweight Hoodie",
-    title: "Exceptional Quality",
-    content: "The heavyweight hoodie exceeded my expectations. The material is substantial without being too heavy, and the fit is perfect. I've received numerous compliments when wearing it. Definitely worth the investment.",
+    date: "March 2023",
     verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg"
+    image: null,
   },
   {
     id: 2,
-    name: "Jordan Lee",
-    date: "February 28, 2024",
-    rating: 4.5,
-    product: "Classic Tshirt",
-    title: "Great Everyday Tee",
-    content: "This has quickly become my go-to t-shirt. The cotton is soft and breathable, and the cut is flattering without being too tight. After several washes, it's holding up well with minimal shrinkage. Would definitely purchase again.",
+    title: "The brothers love the merch!",
+    content: "The brothers love the merch! Thank you again and I'll send some pics later this week.",
+    name: "AkPsi",
+    product: "Heavyweight Hoodie",
+    date: "February 2023",
     verified: true,
+    image: null,
   },
   {
     id: 3,
-    name: "Morgan Rivera",
-    date: "February 10, 2024",
-    rating: 5,
-    product: "Heavyweight Crewneck",
-    title: "Perfect Fit and Feel",
-    content: "I've been searching for the perfect crewneck for years, and I've finally found it. The material is substantial but not bulky, and the fit is exactly what I was looking for. The attention to detail is evident in every stitch.",
+    title: "Just got the merch today",
+    content: "Just got the merch today, they look great!",
+    name: "Apex Consulting Group",
+    product: "Heavyweight Hoodie",
+    date: "January 2023",
     verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//6.jpg"
+    image: null,
   },
   {
     id: 4,
-    name: "Taylor Kim",
-    date: "January 22, 2024",
-    rating: 4,
-    product: "Classic Quarterzip",
-    title: "Versatile and Well-Made",
-    content: "This quarterzip is perfect for layering. The quality is excellent, and it looks much more expensive than it is. My only minor complaint is that the sleeves are slightly long for my frame, but otherwise it's perfect.",
+    title: "The merch is awesome!",
+    content: "The merch is awesome:) I have gotten so many compliments on how soft they are.",
+    name: "Net Impact",
+    product: "Heavyweight Hoodie",
+    date: "December 2022",
     verified: true,
+    image: null,
   },
   {
     id: 5,
-    name: "Casey Johnson",
-    date: "January 5, 2024",
-    rating: 5,
-    product: "Straightcut Sweatpants",
-    title: "Most Comfortable Sweatpants Ever",
-    content: "These sweatpants are incredible. The material is soft yet durable, and the fit is perfect - not too baggy, not too tight. I've worn them for everything from lounging to running errands, and they're comfortable for all activities.",
+    title: "Quality is miles better",
+    content: "The tees are solid, I've only worn once or twice but no complaints at all. The quality is miles better than what we had before.",
+    name: "V1",
+    product: "Standard T-Shirt",
+    date: "November 2022",
     verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg"
+    image: null,
   },
   {
     id: 6,
-    name: "Riley Martinez",
-    date: "December 18, 2023",
-    rating: 4.5,
+    title: "Best merch decision we've ever made",
+    content: "These hoodies have been the best merch decision we have ever made.",
+    name: "Atlas Digital Consulting Group",
     product: "Heavyweight Hoodie",
-    title: "Worth Every Penny",
-    content: "The quality of this hoodie is outstanding. It's warm without being bulky, and the design is clean and versatile. I've already ordered a second one in a different color. Highly recommend!",
+    date: "October 2022",
     verified: true,
+    image: null,
   },
   {
     id: 7,
-    name: "Jamie Wilson",
-    date: "December 3, 2023",
-    rating: 5,
-    product: "Classic Tshirt",
-    title: "Perfect Basic Tee",
-    content: "This t-shirt has the perfect weight - not too thin, not too thick. The cut is flattering and the fabric holds its shape well after washing. I'll definitely be purchasing more colors.",
+    title: "Great work and collaboration",
+    content: "You both rock thanks again for the hard work. We really enjoy working with you guys and cannot wait to see the product.",
+    name: "TEK",
+    product: "Straightcut Sweatpants and Heavyweight Hoodie",
+    date: "September 2022",
     verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg"
+    image: null,
   },
   {
     id: 8,
-    name: "Avery Thomas",
-    date: "November 15, 2023",
-    rating: 4,
-    product: "Straightcut Sweatpants",
-    title: "Great Quality, Slight Sizing Issue",
-    content: "The material and construction of these sweatpants is excellent. My only issue is that they run slightly large. I would recommend sizing down if you're between sizes. Otherwise, they're perfect for both lounging and casual outings.",
+    title: "Phenomenal quality",
+    content: "It is phenomenal great work guys. Hoodies are dope and everyone loves em. Thanks again guys.",
+    name: "PSE",
+    product: "Heavyweight Hoodie",
+    date: "August 2022",
     verified: true,
-  }
-]
-
-// Helper function to render star ratings
-const RatingStars = ({ rating }: { rating: number }) => {
-  const fullStars = Math.floor(rating)
-  const hasHalfStar = rating % 1 !== 0
-  
-  return (
-    <div className="flex">
-      {[...Array(fullStars)].map((_, i) => (
-        <Star key={i} className="h-4 w-4 fill-current text-black" />
-      ))}
-      {hasHalfStar && <StarHalf className="h-4 w-4 fill-current text-black" />}
-      {[...Array(5 - Math.ceil(rating))].map((_, i) => (
-        <Star key={i + fullStars + (hasHalfStar ? 1 : 0)} className="h-4 w-4 text-gray-300" />
-      ))}
-    </div>
-  )
-}
+    image: null,
+  },
+  {
+    id: 9,
+    title: "Premium quality that stands out",
+    content: "I'm not even exaggerating, I didn't even realize it was a club's hoodie. I straight up thought it was essentials.",
+    name: "Desi Dance Network",
+    product: "Heavyweight Hoodie",
+    date: "July 2022",
+    verified: true,
+    image: null,
+  },
+  {
+    id: 10,
+    title: "CEO approved quality",
+    content: "Received, thank you. Our CEO says the quality is great, we love them. Btw we'll be ordering more soon.",
+    name: "Hackerpulse",
+    product: "Standard T-Shirt, Straightcut Sweatpants, and Heavyweight Hoodie",
+    date: "June 2022",
+    verified: true,
+    image: null,
+  },
+  {
+    id: 11,
+    title: "Everyone was impressed!",
+    content: "Everyone was impressed! The quality, thickness, and warmth are noticeably better compared to brands like Custom Ink.",
+    name: "East Longmeadow",
+    product: "Heavyweight Crewneck",
+    date: "May 2022",
+    verified: true,
+    image: null,
+  },
+];
 
 export default function ReviewsPage() {
   return (
@@ -137,7 +144,6 @@ export default function ReviewsPage() {
                   <h3 className="text-sm font-medium">{review.title}</h3>
                   <p className="text-xs text-gray-600 mt-1">for {review.product}</p>
                 </div>
-                
               </div>
               
               {review.image && (
