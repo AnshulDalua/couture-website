@@ -8,10 +8,7 @@ const featuresData = {
     title: "2025 COLLECTION",
     date: "MARCH 23, 2025",
     content: [
-      "Our Spring '24 collection represents a thoughtful evolution of our core aesthetic, blending timeless silhouettes with contemporary details.",
-      "Each piece is crafted with meticulous attention to quality and designed to integrate seamlessly into your existing wardrobe.",
-      "This season, we've focused on versatile layering pieces that transition effortlessly between seasons and occasions.",
-    ],
+          ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000034.JPG",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-069-33.jpg",
@@ -24,10 +21,7 @@ const featuresData = {
     title: "2025 CLIENTS",
     date: "FEBRUARY 15, 2024",
     content: [
-      "Our World Tour initiative celebrates our global community and the diverse cultures that inspire our designs.",
-      "Each location features exclusive pieces that reflect the local aesthetic while maintaining our distinctive design language.",
-      "From Tokyo to New York, Paris to Sydney, our World Tour connects fashion enthusiasts across continents through shared appreciation for quality craftsmanship and timeless style.",
-    ],
+          ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-22.jpg",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-26.jpg",
