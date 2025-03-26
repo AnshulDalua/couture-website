@@ -116,17 +116,6 @@ export default function ReviewsPage() {
         {/* Reviews Summary */}
         <div className="mb-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <div className="flex items-center mb-2">
-                <RatingStars rating={4.8} />
-                <span className="ml-2 text-sm font-medium">4.8 out of 5</span>
-              </div>
-              <p className="text-xs text-gray-600">Based on {reviews.length} reviews</p>
-            </div>
-            
-            <div className="mt-4 md:mt-0">
-              <button className="stussy-button">WRITE A REVIEW</button>
-            </div>
           </div>
         </div>
 
@@ -148,7 +137,7 @@ export default function ReviewsPage() {
                   <h3 className="text-sm font-medium">{review.title}</h3>
                   <p className="text-xs text-gray-600 mt-1">for {review.product}</p>
                 </div>
-                <RatingStars rating={review.rating} />
+                
               </div>
               
               {review.image && (
