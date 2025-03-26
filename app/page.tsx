@@ -40,7 +40,7 @@ export default function HomePage() {
         setCurrentImage(images[0]) // Use first image as fallback
         setContentReady(true)
       }
-    }, 2000)
+    }, 1250)
     
     return () => clearTimeout(fallbackTimer)
   }, [contentReady])

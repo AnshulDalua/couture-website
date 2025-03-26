@@ -10,10 +10,10 @@ interface IntroAnimationProps {
 
 export default function IntroAnimation({ onComplete, isVisible }: IntroAnimationProps) {
   useEffect(() => {
-    // Allow animation to complete before triggering callback
+    // Set completion timer to exactly 1250ms as requested
     const completionTimer = setTimeout(() => {
       onComplete()
-    }, 1750) // Reduced from 4500ms to 4000ms for faster transition
+    }, 1250)
     
     return () => clearTimeout(completionTimer)
   }, [onComplete])
@@ -30,7 +30,7 @@ export default function IntroAnimation({ onComplete, isVisible }: IntroAnimation
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }} // Faster initial fade-in
             className="w-[280px] md:w-[350px] relative"
           >
             <svg
