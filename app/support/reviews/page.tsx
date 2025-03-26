@@ -116,16 +116,10 @@ const reviews = [
 
 export default function ReviewsPage() {
   return (
-    <div className="px-6 py-8">
+    <div className="px-6 py-8 max-w-3xl mx-auto">
       <h1 className="text-sm uppercase mb-8">CUSTOMER REVIEWS</h1>
 
-      <div className="max-w-5xl mx-auto">
-        {/* Reviews Summary */}
-        <div className="mb-12">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-          </div>
-        </div>
-
+      <div className="space-y-8">
         {/* Filter Options */}
         <div className="mb-8 flex flex-wrap gap-2">
           <button className="px-3 py-1 text-xs border border-black bg-black text-white">ALL REVIEWS</button>
