@@ -13,7 +13,7 @@ export default function IntroAnimation({ onComplete, isVisible }: IntroAnimation
     // Set completion timer to exactly 1250ms as requested
     const completionTimer = setTimeout(() => {
       onComplete()
-    }, 1250)
+    }, 1500)
     
     return () => clearTimeout(completionTimer)
   }, [onComplete])
