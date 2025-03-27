@@ -5,8 +5,8 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Stüssy",
-  description: "Stüssy Official Site",
+  title: "COUTURE",
+  description: "Couture by Ikigai - High quality merchandise",
     generator: 'v0.dev'
 }
 

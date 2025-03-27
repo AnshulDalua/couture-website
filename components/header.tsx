@@ -4,6 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
+import HamburgerIcon from "@/app/components/HamburgerIcon"
+import MobileMenu from "@/app/components/MobileMenu"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -30,17 +32,13 @@ export default function Header() {
             SHOP
           </Link>
 
-          <Link href="/features" className="stussy-nav-item">
+          <Link href="/lookbook" className="stussy-nav-item">
             LOOKBOOK
           </Link>
 
-          <Link href="/reviews" className="stussy-nav-item">
+          <Link href="/our-process" className="stussy-nav-item">
             OUR PROCESS
           </Link>
-
-          
-
-          
 
           <div className="stussy-nav-item">
             <button className="flex items-center">
@@ -48,12 +46,10 @@ export default function Header() {
             </button>
             <div className="stussy-dropdown">
               <Link href="/support/contact">CONTACT</Link>
-              <Link href="/support/shipping">SHIPPING</Link>
-              <Link href="/support/returns">RETURNS</Link>
+              <Link href="/support/shipping-returns">SHIPPING + RETURNS</Link>
               <Link href="/support/faq">FAQ</Link>
-              <Link href="/support/terms">TERMS</Link>
-              <Link href="/support/privacy">PRIVACY</Link>
-              <Link href="/reviews">REVIEWS</Link>
+              <Link href="/support/reviews">REVIEWS</Link>
+              <Link href="/support/pricing">PRICING</Link>
             </div>
           </div>
         </nav>
@@ -64,32 +60,21 @@ export default function Header() {
             ORDER
           </Link>
 
-          {/* Mobile Menu Button */}
-          <button className="ml-4 md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? "CLOSE" : "MENU"}
-          </button>
+          {/* ONLY CHANGE: Replace text button with hamburger icon */}
+          <div className="ml-4 md:hidden">
+            <HamburgerIcon 
+              isOpen={mobileMenuOpen} 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+            />
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu - updated to include Reviews */}
-      {mobileMenuOpen && (
-        <div className="md:hidden py-4">
-          <nav className="flex flex-col stussy-nav">
-            <Link href="/collections/all" className="py-2">
-              SHOP
-            </Link>
-            <Link href="/features" className="py-2">
-              LOOKBOOK
-            </Link>
-            <Link href="/reviews" className="py-2">
-              PROCESS
-            </Link>
-            <Link href="/support" className="py-2">
-              SUPPORT
-            </Link>
-          </nav>
-        </div>
-      )}
+      {/* Replace simple mobile menu with the new component */}
+      <MobileMenu 
+        isOpen={mobileMenuOpen} 
+        onClose={() => setMobileMenuOpen(false)} 
+      />
     </header>
   )
 }
