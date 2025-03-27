@@ -4,7 +4,27 @@ import Image from "next/image"
 import { useState, useEffect, useRef, use } from "react"
 import { notFound, useRouter } from "next/navigation"
 
-// Mock product data
+// Color swatch definitions with appropriate CSS colors
+const colorOptions = {
+  "BLACK": { color: "#333333", label: "Black" },
+  "NAVY": { color: "#3A4256", label: "Navy" },
+  "BABY BLUE": { color: "#6D92C5", label: "Baby Blue" },
+  "WHITE": { color: "#F2F2F2", label: "White" },
+  "GREEN": { color: "#3B5D50", label: "Green" },
+  "CLASSIC GREY": { color: "#E0E0E0", label: "Classic Grey" },
+  "STONE GREY": { color: "#7D8491", label: "Stone Grey" },
+  "OFF-WHITE": { color: "#EAE6D7", label: "Off-White" },
+  "BROWN": { color: "#6D4C41", label: "Brown" },
+  "RED": { color: "#C23B50", label: "Red" },
+  "PINK": { color: "#E991B9", label: "Pink" },
+  "PURPLE": { color: "#7E57C2", label: "Purple" },
+  "MUSTARD": { color: "#F9DC5C", label: "Mustard" },
+  "ORANGE": { color: "#F15A29", label: "Orange" },
+  "MAROON": { color: "#7D3C41", label: "Maroon" },
+  "YELLOW": { color: "#F9DC5C", label: "Yellow" },
+}
+
+// Mock product data with color codes
 const products = {
   "heavyweight-hoodie": {
     id: 1,
@@ -18,7 +38,7 @@ const products = {
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//8.jpg",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "NAVY"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
   },
   "heavyweight-crewneck": {
     id: 2,
@@ -39,7 +59,7 @@ const products = {
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//10.jpg",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "GREY HEATHER", "NAVY"],
+    colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED"],
   },
   "classic-quarterzip": {
     id: 3,
@@ -60,7 +80,7 @@ const products = {
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
     ],
     sizes: ["S", "M", "L", "XL"],
-    colors: ["BLACK", "KHAKI", "NAVY"],
+    colors: ["BLACK", "CLASSIC GREY", "NAVY", "GREEN"],
   },
   "straightcut-sweatpants": {
     id: 4,
@@ -80,10 +100,9 @@ const products = {
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000030.JPG",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
-      
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "GREY HEATHER", "NAVY"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
   },
   "classic-tshirt": {
     id: 5,
@@ -103,7 +122,7 @@ const products = {
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "GREY"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN","RED", "MAROON", "PINK", "BROWN", "YELLOW", "ORANGE"],
   },
 }
 
@@ -292,17 +311,33 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
           <div className="mt-6">
             <h3 className="text-xs uppercase mb-2">COLOR</h3>
-            <div className="flex flex-wrap gap-2">
-              {product.colors.map((color) => (
-                <button
-                  key={color}
-                  onClick={() => setSelectedColor(color)}
-                  className={`px-3 py-1 border text-xs ${selectedColor === color ? "border-black" : "border-gray-200"}`}
-                >
-                  {color}
-                </button>
-              ))}
+            <div className="flex flex-wrap gap-4">
+              {product.colors.map((colorCode) => {
+                const colorInfo = colorOptions[colorCode];
+                return (
+                  <button
+                    key={colorCode}
+                    onClick={() => setSelectedColor(colorCode)}
+                    className={`relative w-10 h-10 rounded-full ${selectedColor === colorCode ? "ring-2 ring-black ring-offset-2" : ""}`}
+                    style={{ backgroundColor: colorInfo.color }}
+                    aria-label={colorInfo.label}
+                  >
+                    {selectedColor === colorCode && (
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        {colorCode === "WHITE" || colorCode === "CLASSIC GREY" ? (
+                          <span className="w-2 h-2 bg-black rounded-full"></span>
+                        ) : (
+                          <span className="w-2 h-2 bg-white rounded-full"></span>
+                        )}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
+            {selectedColor && (
+              <p className="mt-2 text-xs">{colorOptions[selectedColor].label}</p>
+            )}
           </div>
 
           <div className="mt-4">
