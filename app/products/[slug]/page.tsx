@@ -9,12 +9,12 @@ const products = {
   "heavyweight-hoodie": {
     id: 1,
     name: "Heavyweight Hoodie",
-    price: 45,
+    price: "$40-55",
     description: "Classic cotton tee with printed Stüssy logo at chest.",
     details: ["100% cotton", "Regular fit", "Ribbed crewneck", "Printed logo at chest", "Machine wash cold"],
     images: [
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-035-16.jpg",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//19000025.png",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//8.jpg",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
@@ -23,7 +23,7 @@ const products = {
   "heavyweight-crewneck": {
     id: 2,
     name: "Heavyweight Crewneck",
-    price: 120,
+    price: "$37-52",
     description: "Classic cotton hoodie with embroidered Stüssy logo at chest.",
     details: [
       "80% cotton, 20% polyester",
@@ -34,8 +34,8 @@ const products = {
       "Machine wash cold",
     ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//6.jpg",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//87566EB3-8B8E-4238-AF38-3B9641F08E78.png",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//6.jpg",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//10.jpg",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
@@ -44,7 +44,7 @@ const products = {
   "classic-quarterzip": {
     id: 3,
     name: "Classic Quarterzip",
-    price: 180,
+    price: "$36-51",
     description: "Durable cotton twill work jacket with embroidered Stüssy logo.",
     details: [
       "100% cotton twill",
@@ -65,7 +65,7 @@ const products = {
   "straightcut-sweatpants": {
     id: 4,
     name: "Straightcut Sweatpants",
-    price: 50,
+    price: "$37-52",
     description: "Comfortable cotton blend sweatpants with embroidered logo.",
     details: [
       "80% cotton, 20% polyester",
@@ -77,9 +77,10 @@ const products = {
       "Machine wash cold",
     ],
     images: [
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000030.JPG",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//6.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
+      
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "GREY HEATHER", "NAVY"],
@@ -87,7 +88,7 @@ const products = {
   "classic-tshirt": {
     id: 5,
     name: "Classic Tshirt",
-    price: 95,
+    price: "$20-35",
     description: "Premium cotton t-shirt with printed logo.",
     details: [
       "100% cotton",
@@ -287,7 +288,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
         {/* Product Info - Fixed on scroll */}
         <div className="md:sticky md:top-[100px] md:self-start">
           <h1 className="text-sm uppercase">{product.name}</h1>
-          <p className="text-sm mt-1">${product.price}</p>
+          <p className="text-sm mt-1">{product.price}</p>
 
           <div className="mt-6">
             <h3 className="text-xs uppercase mb-2">COLOR</h3>
