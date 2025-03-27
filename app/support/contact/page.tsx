@@ -1,34 +1,46 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { submitContactForm } from "./actions"
+import { toast } from "sonner"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    orderNumber: "",
-    subject: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real implementation, this would send the form data to a server
-    alert("Thank you for your message. We will respond within 1-2 business days.")
-    setFormData({
-      name: "",
-      email: "",
-      orderNumber: "",
-      subject: "",
-      message: "",
-    })
+    setIsSubmitting(true)
+    
+    try {
+      const result = await submitContactForm(formData)
+      
+      if (result.success) {
+        toast.success("Thank you for your message. We will respond within 1-2 business days.")
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        })
+      } else {
+        toast.error(result.error || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      toast.error("Failed to submit form. Please try again later.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -67,6 +79,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   className="w-full border border-black p-2 text-xs"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -82,47 +95,10 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   className="w-full border border-black p-2 text-xs"
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="orderNumber" className="block text-xs uppercase mb-1">
-                  Order Number (if applicable)
-                </label>
-                <input
-                  type="text"
-                  id="orderNumber"
-                  name="orderNumber"
-                  value={formData.orderNumber}
-                  onChange={handleChange}
-                  className="w-full border border-black p-2 text-xs"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-xs uppercase mb-1">
-                  Subject *
-                </label>
-                <select
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-black p-2 text-xs"
-                >
-                  <option value="">Select a subject</option>
-                  <option value="Order Status">Order Status</option>
-                  <option value="Returns">Returns</option>
-                  <option value="Product Information">Product Information</option>
-                  <option value="Shipping">Shipping</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-
             <div>
               <label htmlFor="message" className="block text-xs uppercase mb-1">
                 Message *
@@ -135,12 +111,13 @@ export default function ContactPage() {
                 required
                 rows={6}
                 className="w-full border border-black p-2 text-xs"
+                disabled={isSubmitting}
               ></textarea>
             </div>
 
             <div>
-              <button type="submit" className="stussy-button">
-                SUBMIT
+              <button type="submit" className="stussy-button" disabled={isSubmitting}>
+                {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
               </button>
             </div>
           </form>
@@ -149,4 +126,3 @@ export default function ContactPage() {
     </div>
   )
 }
-
