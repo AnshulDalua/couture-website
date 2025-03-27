@@ -318,16 +318,16 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   <button
                     key={colorCode}
                     onClick={() => setSelectedColor(colorCode)}
-                    className={`relative w-10 h-10 rounded-full ${selectedColor === colorCode ? "ring-2 ring-black ring-offset-2" : ""}`}
+                    className={`relative w-8 h-8 rounded-full ${selectedColor === colorCode ? "ring-2 ring-black ring-offset-1" : ""}`}
                     style={{ backgroundColor: colorInfo.color }}
                     aria-label={colorInfo.label}
                   >
                     {selectedColor === colorCode && (
                       <span className="absolute inset-0 flex items-center justify-center">
                         {colorCode === "WHITE" || colorCode === "CLASSIC GREY" ? (
-                          <span className="w-2 h-2 bg-black rounded-full"></span>
+                          <span className="w-1.5 h-1.5 bg-black rounded-full"></span>
                         ) : (
-                          <span className="w-2 h-2 bg-white rounded-full"></span>
+                          <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
                         )}
                       </span>
                     )}
