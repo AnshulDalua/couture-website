@@ -83,8 +83,7 @@ export default function PricingPage() {
         <div className="mt-16 text-center">
           <h2 className="text-sm uppercase font-medium mb-4">CUSTOM ORDERS</h2>
           <p className="text-xs mb-6">
-            For custom designs, bulk orders, or special requirements, please contact our team.
-            We offer competitive pricing for organizations, events, and corporate orders.
+          The prices listed above serve as general estimates and may vary based on design complexity, custom elements, and order specifications. For custom designs, bulk orders, or special requirements, please contact our team.
           </p>
           <div>
             <Link href="/order">

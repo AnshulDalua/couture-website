@@ -75,9 +75,9 @@ const products = {
       "Machine wash cold",
     ],
     images: [
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/Screenshot%202025-02-19%20at%2011.49.11%20PM.png",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//3.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
+      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//10.jpg",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "CLASSIC GREY", "NAVY", "GREEN"],

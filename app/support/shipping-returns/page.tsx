@@ -1,7 +1,7 @@
 export default function ShippingReturnsPage() {
   return (
     <div className="px-6 py-8 max-w-3xl mx-auto">
-      <h1 className="text-sm uppercase mb-8">SHIPPING + RETURNS</h1>
+      <h1 className="text-sm uppercase mb-8">SHIPPING AND RETURNS</h1>
 
       <div className="space-y-8">
         {/* Shipping Section */}
@@ -22,21 +22,8 @@ export default function ShippingReturnsPage() {
           
           <div className="mb-6">
             <h3 className="text-xs uppercase font-medium mb-2">ELIGIBLE ITEMS</h3>
-            <p className="text-xs mb-2">All items purchased directly from COUTURE may be returned within 14 days of delivery.</p>
+            <p className="text-xs mb-2">At this time, we do not accept returns or offer refunds, as all of our products are custom-made to order. However, if there is an issue with your order, please reach out to us at support@couturebyikigai.com</p>
             <p className="text-xs">Items must be unworn, unwashed, and in original packaging with all tags attached.</p>
-          </div>
-          
-          <div className="mb-6">
-            <h3 className="text-xs uppercase font-medium mb-2">HOW TO RETURN</h3>
-            <p className="text-xs mb-2">To initiate a return, please contact us at support@couturebyikigai.com with your order number and reason for return.</p>
-            <p className="text-xs mb-2">Once approved, you will receive return instructions and a return shipping label if applicable.</p>
-            <p className="text-xs">Return shipping costs may be the responsibility of the customer unless the return is due to our error.</p>
-          </div>
-
-          <div>
-            <h3 className="text-xs uppercase font-medium mb-2">REFUNDS</h3>
-            <p className="text-xs mb-2">Refunds will be issued to the original payment method within 7-10 business days after we receive and inspect your return.</p>
-            <p className="text-xs">The original shipping costs included in your purchase price are non-refundable unless the return is due to our error.</p>
           </div>
         </section>
 

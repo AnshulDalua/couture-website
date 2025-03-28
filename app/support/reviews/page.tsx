@@ -121,13 +121,13 @@ export default function ReviewsPage() {
 
       <div className="space-y-8">
         {/* Filter Options */}
-        <div className="mb-8 flex flex-wrap gap-2">
+        {/* <div className="mb-8 flex flex-wrap gap-2">
           <button className="px-3 py-1 text-xs border border-black bg-black text-white">ALL REVIEWS</button>
           <button className="px-3 py-1 text-xs border border-gray-200 hover:border-black">5 STAR</button>
           <button className="px-3 py-1 text-xs border border-gray-200 hover:border-black">4 STAR</button>
           <button className="px-3 py-1 text-xs border border-gray-200 hover:border-black">3 STAR</button>
           <button className="px-3 py-1 text-xs border border-gray-200 hover:border-black">WITH PHOTOS</button>
-        </div>
+        </div> */}
 
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
