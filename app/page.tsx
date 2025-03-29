@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import IntroAnimation from "@/app/components/IntroAnimation"
 import { motion, AnimatePresence } from "framer-motion"
+import Cookies from 'js-cookie'
 
 // Array of images to rotate through
 const images = [
@@ -25,13 +26,13 @@ export default function HomePage() {
   useEffect(() => {
     // Check if we're in the browser environment
     if (typeof window !== 'undefined') {
-      const hasSeenAnimation = localStorage.getItem('hasSeenAnimation')
+      const hasSeenAnimation = Cookies.get('hasSeenAnimation')
       
       // Only show animation if user hasn't seen it before
       if (!hasSeenAnimation) {
         setShowIntro(true)
-        // Mark that user has seen the animation
-        localStorage.setItem('hasSeenAnimation', 'true')
+        // Mark that user has seen the animation - expires in 30 days
+        Cookies.set('hasSeenAnimation', 'true', { expires: 30 })
       } else {
         // Skip animation and show content immediately
         setContentReady(true)
