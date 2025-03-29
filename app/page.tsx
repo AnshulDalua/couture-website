@@ -17,9 +17,27 @@ export default function HomePage() {
   // State to store the current image
   const [currentImage, setCurrentImage] = useState(images[0])
   // State to control showing the intro animation
-  const [showIntro, setShowIntro] = useState(true)
+  const [showIntro, setShowIntro] = useState(false)
   // State to track if main content is ready to display
   const [contentReady, setContentReady] = useState(false)
+  
+  // Check if animation has been shown before and set initial state
+  useEffect(() => {
+    // Check if we're in the browser environment
+    if (typeof window !== 'undefined') {
+      const hasSeenAnimation = localStorage.getItem('hasSeenAnimation')
+      
+      // Only show animation if user hasn't seen it before
+      if (!hasSeenAnimation) {
+        setShowIntro(true)
+        // Mark that user has seen the animation
+        localStorage.setItem('hasSeenAnimation', 'true')
+      } else {
+        // Skip animation and show content immediately
+        setContentReady(true)
+      }
+    }
+  }, [])
   
   // Load a random image in the background, but don't wait for it
   useEffect(() => {
@@ -131,4 +149,3 @@ export default function HomePage() {
     </div>
   )
 }
-
