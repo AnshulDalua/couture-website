@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ChevronDown, ChevronUp } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -15,6 +16,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     more: false
   })
+  const pathname = usePathname()
+
+  // Helper function to check if the current path matches a nav item
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return pathname === path
+    }
+    return pathname.startsWith(path)
+  }
 
   const toggleSection = (section: string) => {
     setExpandedSections(prev => ({
@@ -34,13 +44,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <div className="flex justify-between items-center p-5 border-b border-gray-200">
-            <div className="w-[60px] h-[35px] flex items-center">
+            <div className="w-[80px] h-[35px] flex items-center overflow-hidden">
               <Link href="/" onClick={onClose}>
                 <Image
                   src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//Artboard%201.png"
                   alt="CoutureByIkgai"
-                  width={85}
-                  height={45}
+                  width={120}
+                  height={60}
                   className="w-full"
                 />
               </Link>
@@ -57,7 +67,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className="text-lg font-medium">SHOP</span>
+              <span className={`text-lg font-medium ${isActive('/products') ? 'font-bold' : ''}`}>SHOP</span>
             </Link>
             
             {/* Lookbook - entire div clickable */}
@@ -66,7 +76,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className="text-lg font-medium">LOOKBOOK</span>
+              <span className={`text-lg font-medium ${isActive('/lookbook') ? 'font-bold' : ''}`}>LOOKBOOK</span>
             </Link>
             
             {/* Our Process - entire div clickable */}
@@ -75,7 +85,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className="text-lg font-medium">OUR PROCESS</span>
+              <span className={`text-lg font-medium ${isActive('/our-process') ? 'font-bold' : ''}`}>OUR PROCESS</span>
             </Link>
             
             {/* More Section - kept expandable */}
@@ -84,7 +94,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 onClick={() => toggleSection('more')}
                 className="flex justify-between items-center w-full"
               >
-                <span className="text-lg font-medium">MORE</span>
+                <span className={`text-lg font-medium ${isActive('/support') ? 'font-bold' : ''}`}>MORE</span>
                 {expandedSections.more ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
               </button>
               
@@ -100,7 +110,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       <Link 
                         href="/support/contact" 
                         onClick={onClose} 
-                        className="block py-2 text-gray-600"
+                        className={`block py-2 text-gray-600 ${isActive('/support/contact') ? 'font-bold' : ''}`}
                       >
                         Contact
                       </Link>
@@ -109,7 +119,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       <Link 
                         href="/support/shipping-returns" 
                         onClick={onClose} 
-                        className="block py-2 text-gray-600"
+                        className={`block py-2 text-gray-600 ${isActive('/support/shipping-returns') ? 'font-bold' : ''}`}
                       >
                         Shipping + Returns
                       </Link>
@@ -118,7 +128,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       <Link 
                         href="/support/faq" 
                         onClick={onClose} 
-                        className="block py-2 text-gray-600"
+                        className={`block py-2 text-gray-600 ${isActive('/support/faq') ? 'font-bold' : ''}`}
                       >
                         FAQ
                       </Link>
@@ -127,7 +137,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       <Link 
                         href="/support/reviews" 
                         onClick={onClose} 
-                        className="block py-2 text-gray-600"
+                        className={`block py-2 text-gray-600 ${isActive('/support/reviews') ? 'font-bold' : ''}`}
                       >
                         Reviews
                       </Link>
@@ -136,7 +146,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       <Link 
                         href="/support/pricing" 
                         onClick={onClose} 
-                        className="block py-2 text-gray-600"
+                        className={`block py-2 text-gray-600 ${isActive('/support/pricing') ? 'font-bold' : ''}`}
                       >
                         Pricing
                       </Link>
@@ -152,11 +162,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className="text-lg font-medium">ORDER</span>
+              <span className={`text-lg font-medium ${isActive('/order') ? 'font-bold' : ''}`}>ORDER</span>
             </Link>
           </div>
         </motion.div>
       )}
     </AnimatePresence>
   )
-} 
+}
