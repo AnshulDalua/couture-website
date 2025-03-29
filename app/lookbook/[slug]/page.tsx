@@ -84,7 +84,7 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
   }
 
   return (
-    <div className="px-6 py-8 max-w-5xl mx-auto">
+    <div className="px-6 py-8">
       {/* Back Link */}
       <div className="mb-8">
         <Link href="/lookbook" className="text-xs uppercase">
@@ -98,31 +98,26 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         <p className="text-xs mt-1">{feature.date}</p>
       </div>
 
-      {/* Hero Image */}
-      <div className="mb-8">
-        <div className="relative aspect-[16/9] w-full">
-          <Image
+      {/* Images and Content */}
+      <div className="space-y-12 max-w-5xl mx-auto">
+        {/* Hero Image */}
+        <div className="w-full">
+          <img
             src={feature.images[0] || "/placeholder.svg"}
             alt={feature.title}
-            fill
-            style={{ objectFit: "cover" }}
-            priority
+            className="w-full"
           />
         </div>
-      </div>
 
-      {/* Content and Images - Alternating */}
-      <div className="space-y-8">
         {/* First paragraph */}
-        <p className="text-xs max-w-2xl">{feature.content[0]}</p>
+        {feature.content[0] && <p className="text-xs max-w-2xl">{feature.content[0]}</p>}
 
         {/* Second image */}
-        <div className="relative aspect-[16/9] w-full">
-          <Image
+        <div className="w-full">
+          <img
             src={feature.images[1] || "/placeholder.svg"}
             alt={`${feature.title} image 2`}
-            fill
-            style={{ objectFit: "cover" }}
+            className="w-full"
           />
         </div>
 
@@ -130,12 +125,11 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {feature.content[1] && <p className="text-xs max-w-2xl">{feature.content[1]}</p>}
 
         {/* Third image */}
-        <div className="relative aspect-[16/9] w-full">
-          <Image
+        <div className="w-full">
+          <img
             src={feature.images[2] || "/placeholder.svg"}
             alt={`${feature.title} image 3`}
-            fill
-            style={{ objectFit: "cover" }}
+            className="w-full"
           />
         </div>
 
@@ -144,45 +138,26 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Fourth image (if available) */}
         {feature.images[3] && (
-          <div className="relative aspect-[16/9] w-full">
-            <Image
+          <div className="w-full">
+            <img
               src={feature.images[3] || "/placeholder.svg"}
               alt={`${feature.title} image 4`}
-              fill
-              style={{ objectFit: "cover" }}
+              className="w-full"
             />
           </div>
         )}
 
         {/* Fifth image (if available) */}
         {feature.images[4] && (
-          <div className="relative aspect-[16/9] w-full">
-            <Image
+          <div className="w-full">
+            <img
               src={feature.images[4] || "/placeholder.svg"}
               alt={`${feature.title} image 5`}
-              fill
-              style={{ objectFit: "cover" }}
+              className="w-full"
             />
           </div>
         )}
       </div>
-
-      {/* Share Links */}
-      <div className="mt-12 pt-8 border-t border-[#ececec]">
-        <p className="text-xs uppercase mb-2">SHARE</p>
-        <div className="flex space-x-4">
-          <a href="#" className="text-xs uppercase">
-            FACEBOOK
-          </a>
-          <a href="#" className="text-xs uppercase">
-            TWITTER
-          </a>
-          <a href="#" className="text-xs uppercase">
-            PINTEREST
-          </a>
-        </div>
-      </div>
     </div>
   )
 }
-

@@ -63,13 +63,6 @@ export default function FeaturesPage() {
           </Link>
         ))}
       </div>
-
-      {/* Archive Link */}
-      <div className="mt-16 text-center">
-        <Link href="/lookbook/archive" className="stussy-button inline-block">
-          VIEW ARCHIVE
-        </Link>
-      </div>
     </div>
   )
 }

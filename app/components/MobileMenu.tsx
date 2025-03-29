@@ -53,7 +53,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="flex flex-col divide-y divide-gray-200">
             {/* Shop - now making the entire div clickable */}
             <Link 
-              href="/collections/all" 
+              href="/products" 
               onClick={onClose} 
               className="block py-5 px-6"
             >

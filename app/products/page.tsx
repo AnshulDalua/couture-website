@@ -2,8 +2,6 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { notFound } from "next/navigation"
-import { use } from "react"
 
 // Mock data for collections
 const collections = {
@@ -50,16 +48,9 @@ const collections = {
   },
 }
 
-type Collection = typeof collections[keyof typeof collections]
-type PageParams = { slug: string }
-
-export default function CollectionPage({ params }: { params: Promise<PageParams> }) {
-  const { slug } = use(params)
-  const collection = collections[slug as keyof typeof collections]
-
-  if (!collection) {
-    notFound()
-  }
+export default function ProductsPage() {
+  // Use the "all" collection
+  const collection = collections.all;
 
   return (
     <div className="px-6 py-8">

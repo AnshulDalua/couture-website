@@ -28,7 +28,7 @@ export default function Header() {
 
         {/* Desktop Navigation - modified to direct SHOP to /collections/all */}
         <nav className="hidden md:flex stussy-nav">
-          <Link href="/collections/all" className="stussy-nav-item">
+          <Link href="/products" className="stussy-nav-item">
             SHOP
           </Link>
 

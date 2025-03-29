@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useState, useEffect, useRef, use } from "react"
 import { notFound, useRouter } from "next/navigation"
 
@@ -225,6 +226,13 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
   return (
     <div className="px-6 py-8">
+      {/* Back to Shop Link */}
+      <div className="mb-8">
+        <Link href="/products" className="text-xs uppercase">
+          ← BACK TO SHOP
+        </Link>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Product Images - Scrollable on desktop */}
         <div className="md:sticky md:top-[100px] md:self-start">
