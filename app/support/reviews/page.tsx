@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image"
+import { useState } from "react"
 
 // Updated review data from actual customer reviews
 const reviews = [
@@ -115,72 +118,123 @@ const reviews = [
 ];
 
 export default function ReviewsPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const reviewsPerPage = 6;
+  
+  // Calculate reviews for current page
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+  const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+  
+  // Calculate total pages
+  const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+  
+  // Handle page navigation
+  const goToPage = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
+  };
+  
+  const goToPrevPage = () => {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
+  };
+  
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
+  };
+
   return (
-    <div className="px-6 py-8 max-w-3xl mx-auto">
-      <h1 className="text-sm uppercase mb-8">CUSTOMER REVIEWS</h1>
+    <div className="px-6 py-8 max-w-5xl mx-auto">
+      <h1 className="text-sm uppercase mb-12">CUSTOMER REVIEWS</h1>
 
-      <div className="space-y-8">
-        {/* Filter Options */}
-        {/* <div className="mb-8 flex flex-wrap gap-2">
-          <button className="px-3 py-1 text-xs border border-black bg-black text-white">ALL REVIEWS</button>
-          <button className="px-3 py-1 text-xs border border-gray-200 hover:border-black">5 STAR</button>
-          <button className="px-3 py-1 text-xs border border-gray-200 hover:border-black">4 STAR</button>
-          <button className="px-3 py-1 text-xs border border-gray-200 hover:border-black">3 STAR</button>
-          <button className="px-3 py-1 text-xs border border-gray-200 hover:border-black">WITH PHOTOS</button>
-        </div> */}
-
+      <div className="space-y-12">
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {reviews.map((review) => (
-            <div key={review.id} className="border border-gray-200 p-6">
-              <div className="flex justify-between items-start mb-3">
-                <div>
-                  <h3 className="text-sm font-medium">{review.title}</h3>
-                  <p className="text-xs text-gray-600 mt-1">for {review.product}</p>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {currentReviews.map((review) => (
+            <div key={review.id} className="group border border-[#ececec] hover:border-black transition-colors duration-200">
+              {/* Review Header */}
+              <div className="p-6 pb-3 border-b border-[#ececec]">
+                <h3 className="text-sm font-medium mb-2">{review.title}</h3>
+                <p className="text-xs text-gray-600">for {review.product}</p>
               </div>
               
+              {/* Review Image */}
               {review.image && (
-                <div className="mb-4">
-                  <div className="relative h-48 w-full">
-                    <Image 
-                      src={review.image} 
-                      alt={`Review by ${review.name}`}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      className="rounded"
-                    />
-                  </div>
+                <div className="relative h-52 w-full overflow-hidden">
+                  <Image 
+                    src={review.image} 
+                    alt={`Review by ${review.name}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: "cover" }}
+                    className="transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
               )}
               
-              <p className="text-xs mb-4">{review.content}</p>
-              
-              <div className="flex justify-between items-center text-xs text-gray-600">
-                <div className="flex items-center">
-                  <span>{review.name}</span>
-                  {review.verified && (
-                    <span className="ml-2 text-[10px] bg-gray-100 px-1 py-0.5">VERIFIED BUYER</span>
-                  )}
+              {/* Review Content */}
+              <div className="p-6">
+                <p className="text-xs leading-relaxed mb-6">{review.content}</p>
+                
+                <div className="flex justify-between items-center text-xs text-gray-600 pt-3 border-t border-[#ececec]">
+                  <div className="flex items-center">
+                    <span>{review.name}</span>
+                    {review.verified && (
+                      <span className="ml-2 text-[10px] bg-[#f9f9f9] px-1 py-0.5">VERIFIED</span>
+                    )}
+                  </div>
+                  <span>{review.date}</span>
                 </div>
-                <span>{review.date}</span>
               </div>
             </div>
           ))}
         </div>
         
         {/* Pagination */}
-        <div className="mt-12 flex justify-center">
-          <div className="flex border border-gray-200">
-            <button className="px-3 py-1 text-xs border-r border-gray-200 hover:bg-gray-100">PREV</button>
-            <button className="px-3 py-1 text-xs bg-black text-white">1</button>
-            <button className="px-3 py-1 text-xs border-l border-gray-200 hover:bg-gray-100">2</button>
-            <button className="px-3 py-1 text-xs border-l border-gray-200 hover:bg-gray-100">3</button>
-            <button className="px-3 py-1 text-xs border-l border-gray-200 hover:bg-gray-100">NEXT</button>
+        {totalPages > 1 && (
+          <div className="mt-16 flex justify-center">
+            <div className="flex border border-[#ececec]">
+              <button 
+                onClick={goToPrevPage}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 text-xs border-r border-[#ececec] ${
+                  currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#f9f9f9]'
+                }`}
+              >
+                PREV
+              </button>
+              
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => goToPage(page)}
+                  className={`px-4 py-2 text-xs ${
+                    currentPage === page 
+                      ? 'bg-black text-white' 
+                      : 'hover:bg-[#f9f9f9] border-l border-[#ececec]'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+              
+              <button
+                onClick={goToNextPage}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 text-xs border-l border-[#ececec] ${
+                  currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#f9f9f9]'
+                }`}
+              >
+                NEXT
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )
 }
-
