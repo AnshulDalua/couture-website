@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-stussy">
         <Header />
-        <main>{children}</main>
+        <main className="pt-[65px] pb-[60px]">{children}</main>
         <Footer />
       </body>
     </html>

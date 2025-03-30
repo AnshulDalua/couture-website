@@ -21,7 +21,7 @@ export default function Header() {
   }
 
   return (
-    <header className="py-5 px-6 border-b border-[#ececec]">
+    <header className="fixed top-0 left-0 right-0 py-5 px-6 border-b border-[#ececec] bg-white z-50">
       <div className="flex items-center justify-between">
         {/* Logo - increased size while maintaining container height */}
         <div className="w-[80px] h-[35px] flex items-center overflow-hidden">
