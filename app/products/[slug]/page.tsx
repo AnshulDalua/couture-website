@@ -31,8 +31,15 @@ const products = {
     id: 1,
     name: "Heavyweight Hoodie",
     price: "$40-55",
-    description: "Classic cotton tee with printed Stüssy logo at chest.",
-    details: ["100% cotton", "Regular fit", "Ribbed crewneck", "Printed logo at chest", "Machine wash cold"],
+    description: "Relaxed hooded sweatshirt in our heavyweight 12.4oz cotton blend.",
+    details: [
+      "Longsleeve",
+      "Ribbed Cuffs and Hem",
+      "Kangaroo Pocket",
+      "Relaxed Fit",
+      "Unisex",
+      "100% Cotton"
+    ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-035-16.jpg",
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg",
@@ -45,14 +52,14 @@ const products = {
     id: 2,
     name: "Heavyweight Crewneck",
     price: "$37-52",
-    description: "Classic cotton hoodie with embroidered Stüssy logo at chest.",
+    description: "Relaxed sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
-      "80% cotton, 20% polyester",
-      "Regular fit",
-      "Drawstring hood",
-      "Kangaroo pocket",
-      "Embroidered logo at chest",
-      "Machine wash cold",
+      "Crewneck",
+      "Longsleeve",
+      "Ribbed collar, cuffs and hem",
+      "Relaxed Fit",
+      "Unisex",
+      "100% Cotton"
     ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//87566EB3-8B8E-4238-AF38-3B9641F08E78.png",
@@ -66,14 +73,14 @@ const products = {
     id: 3,
     name: "Classic Quarterzip",
     price: "$36-51",
-    description: "Durable cotton twill work jacket with embroidered Stüssy logo.",
+    description: "Standard fitting Quarter Zip in our heavyweight 11.8oz cotton blend.",
     details: [
-      "100% cotton twill",
-      "Regular fit",
-      "Button front closure",
-      "Four front pockets",
-      "Embroidered logo at chest",
-      "Machine wash cold",
+      "Longsleeve",
+      "Ribbed Cuffs and Hem",
+      "Standard Fit",
+      "YKK Zipper",
+      "Unisex",
+      "100% Cotton"
     ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/Screenshot%202025-02-19%20at%2011.49.11%20PM.png",
@@ -87,15 +94,12 @@ const products = {
     id: 4,
     name: "Straightcut Sweatpants",
     price: "$37-52",
-    description: "Comfortable cotton blend sweatpants with embroidered logo.",
+    description: "Straight-legged sweatpants in our heavyweight 12.4oz cotton blend.",
     details: [
-      "80% cotton, 20% polyester",
-      "Regular fit",
-      "Elastic waistband with drawstring",
-      "Side pockets",
-      "Back pocket",
-      "Embroidered logo",
-      "Machine wash cold",
+      "Thigh Pockets",
+      "Open Hem",
+      "Relaxed Fit",
+      "100% Cotton"
     ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000030.JPG",
@@ -109,13 +113,12 @@ const products = {
     id: 5,
     name: "Classic Tshirt",
     price: "$20-35",
-    description: "Premium cotton t-shirt with printed logo.",
+    description: "Standard fit tee in midweight 5.6oz cotton blend.",
     details: [
-      "100% cotton",
-      "Regular fit",
-      "Crew neck",
-      "Printed logo",
-      "Machine wash cold",
+      "Shortsleeve",
+      "Ribbed Collar",
+      "Unisex",
+      "100% Cotton"
     ],
     images: [
       "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//2.jpg",
@@ -382,13 +385,6 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div className="mt-4">
-            <h3 className="text-xs uppercase mb-2">SHIPPING & RETURNS</h3>
-            <p className="text-xs">
-              Free standard shipping on all U.S. orders over $150. Returns accepted within 30 days of delivery.
-            </p>
           </div>
         </div>
       </div>
