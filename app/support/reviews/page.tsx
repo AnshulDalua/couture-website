@@ -129,7 +129,7 @@ const reviews = [
 
 export default function ReviewsPage() {
   const [currentPage, setCurrentPage] = useState(1);
-  const reviewsPerPage = 6;
+  const reviewsPerPage = 9;
   
   // Calculate reviews for current page
   const indexOfLastReview = currentPage * reviewsPerPage;
