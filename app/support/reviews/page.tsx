@@ -129,7 +129,7 @@ const reviews = [
 
 export default function ReviewsPage() {
   const [currentPage, setCurrentPage] = useState(1);
-  const reviewsPerPage = 6;
+  const reviewsPerPage = 9;
   
   // Calculate reviews for current page
   const indexOfLastReview = currentPage * reviewsPerPage;
@@ -197,7 +197,6 @@ export default function ReviewsPage() {
                       <span className="ml-2 text-[10px] bg-[#f9f9f9] px-1 py-0.5">VERIFIED</span>
                     )}
                   </div>
-                  <span>{review.date}</span>
                 </div>
               </div>
             </div>

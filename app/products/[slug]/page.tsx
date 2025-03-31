@@ -201,11 +201,6 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   }
 
   const handleOrderNow = () => {
-    if (!selectedSize || !selectedColor) {
-      alert("Please select both size and color")
-      return
-    }
-
     // Store selected product info in localStorage for the order form
     localStorage.setItem(
       "orderProduct",
@@ -214,8 +209,8 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
         name: product.name,
         price: product.price,
         image: product.images[0],
-        size: selectedSize,
-        color: selectedColor,
+        size: selectedSize || "",
+        color: selectedColor || "",
       }),
     )
 
