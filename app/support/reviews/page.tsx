@@ -197,7 +197,6 @@ export default function ReviewsPage() {
                       <span className="ml-2 text-[10px] bg-[#f9f9f9] px-1 py-0.5">VERIFIED</span>
                     )}
                   </div>
-                  <span>{review.date}</span>
                 </div>
               </div>
             </div>
