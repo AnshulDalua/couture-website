@@ -20,6 +20,9 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
+    serverActions: {
+      bodySizeLimit: '10mb', // Increase the body size limit to 10MB
+    },
   },
 }
 

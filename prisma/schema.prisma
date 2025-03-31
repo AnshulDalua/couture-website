@@ -25,3 +25,35 @@ model ContactFormSubmission {
 
   @@map("contact_form_submissions")
 }
+
+// Model for the order form submissions
+model OrderFormSubmission {
+  id              String        @id @default(uuid())
+  name            String
+  email           String
+  phoneNumber     String
+  organization    String
+  university      String?
+  projectDetails  String
+  designFiles     DesignFile[]  // Relation to multiple design files
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("order_form_submissions")
+}
+
+// Model for design files
+model DesignFile {
+  id                  String              @id @default(uuid())
+  fileName            String
+  fileUrl             String?
+  filePath            String?
+  fileSize            Int?
+  fileType            String?
+  orderFormSubmission OrderFormSubmission @relation(fields: [orderFormSubmissionId], references: [id], onDelete: Cascade)
+  orderFormSubmissionId String
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  @@map("design_files")
+}

@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
+import { submitOrderFormAction } from "./actions"
+import Cookies from "js-cookie"
 
 type OrderProduct = {
   id: number
@@ -22,17 +24,21 @@ export default function OrderPage() {
     university: "",
     projectDetails: "",
   })
-  const [file, setFile] = useState<File | null>(null)
+  const [files, setFiles] = useState<File[]>([])
   const [isDragging, setIsDragging] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState<{ type: "success" | "error", text: string } | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    // Get order product from localStorage
-    const product = localStorage.getItem('orderProduct')
+    // Get order product from localStorage or cookies
+    const product = Cookies.get('orderProduct') || localStorage.getItem('orderProduct')
     if (product) {
-      setOrderProduct(JSON.parse(product))
+      try {
+        setOrderProduct(JSON.parse(product))
+      } catch (error) {
+        console.error("Error parsing order product:", error)
+      }
     }
   }, [])
 
@@ -43,7 +49,9 @@ export default function OrderPage() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0])
+      // Convert FileList to array and add to existing files
+      const newFiles = Array.from(e.target.files)
+      setFiles(prev => [...prev, ...newFiles])
     }
   }
 
@@ -70,34 +78,75 @@ export default function OrderPage() {
     setIsDragging(false)
     
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      setFile(e.dataTransfer.files[0])
+      // Convert FileList to array and add to existing files
+      const newFiles = Array.from(e.dataTransfer.files)
+      setFiles(prev => [...prev, ...newFiles])
       e.dataTransfer.clearData()
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitMessage({
-        type: "success",
-        text: "Your order has been submitted successfully! We'll contact you shortly."
-      })
-      setIsSubmitting(false)
+    try {
+      // Create submission data including the files
+      const submissionData = new FormData();
+      submissionData.append('name', formData.name);
+      submissionData.append('email', formData.email);
+      submissionData.append('phoneNumber', formData.phoneNumber);
+      submissionData.append('organization', formData.organization);
+      submissionData.append('university', formData.university);
+      submissionData.append('projectDetails', formData.projectDetails);
       
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phoneNumber: "",
-        organization: "",
-        university: "",
-        projectDetails: "",
+      // Append all files with the same field name
+      files.forEach(file => {
+        submissionData.append('files', file);
+      });
+      
+      // Submit the form data using the server action
+      const result = await submitOrderFormAction(submissionData)
+      
+      if (result.success) {
+        setSubmitMessage({
+          type: "success",
+          text: "Your order has been submitted successfully! We'll contact you shortly."
+        })
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          organization: "",
+          university: "",
+          projectDetails: "",
+        })
+        setFiles([])
+        
+        // Clear the product from localStorage and cookies
+        localStorage.removeItem('orderProduct')
+        Cookies.remove('orderProduct')
+        setOrderProduct(null)
+      } else {
+        setSubmitMessage({
+          type: "error",
+          text: result.error || "There was an error submitting your order. Please try again."
+        })
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setSubmitMessage({
+        type: "error",
+        text: "There was an error submitting your order. Please try again."
       })
-      setFile(null)
-    }, 1500)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -106,8 +155,10 @@ export default function OrderPage() {
         <h1 className="text-2xl font-light tracking-wider mb-12 uppercase">PLACE ORDER</h1>
 
         {submitMessage ? (
-          <div className="mb-6 p-8 border border-black">
-            <p className="text-lg">{submitMessage.text}</p>
+          <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
+            <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
+              {submitMessage.text}
+            </p>
             <button 
               className="mt-6 underline"
               onClick={() => setSubmitMessage(null)}
@@ -123,9 +174,9 @@ export default function OrderPage() {
                   type="text"
                   id="name"
                   name="name"
+                  required
                   value={formData.name}
                   onChange={handleChange}
-                  required
                   className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                   disabled={isSubmitting}
                   placeholder="NAME *"
@@ -137,9 +188,9 @@ export default function OrderPage() {
                   type="email"
                   id="email"
                   name="email"
+                  required
                   value={formData.email}
                   onChange={handleChange}
-                  required
                   className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                   disabled={isSubmitting}
                   placeholder="EMAIL *"
@@ -151,9 +202,9 @@ export default function OrderPage() {
                   type="tel"
                   id="phoneNumber"
                   name="phoneNumber"
+                  required
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  required
                   className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                   disabled={isSubmitting}
                   placeholder="PHONE NUMBER *"
@@ -165,9 +216,9 @@ export default function OrderPage() {
                   type="text"
                   id="organization"
                   name="organization"
+                  required
                   value={formData.organization}
                   onChange={handleChange}
-                  required
                   className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                   disabled={isSubmitting}
                   placeholder="ORGANIZATION *"
@@ -230,7 +281,7 @@ export default function OrderPage() {
             </div>
 
             <div className="pt-2 group">
-              <p className="uppercase text-xs mb-3 tracking-wider">UPLOAD DESIGN</p>
+              <p className="uppercase text-xs mb-3 tracking-wider">UPLOAD DESIGN FILES</p>
               <input
                 type="file"
                 id="designFile"
@@ -240,40 +291,64 @@ export default function OrderPage() {
                 className="hidden"
                 accept=".jpg,.jpeg,.png,.pdf,.ai,.psd"
                 disabled={isSubmitting}
+                multiple
               />
               <div
                 className={`border border-black p-6 text-center cursor-pointer transition-all duration-300 ${
                   isDragging ? 'bg-gray-50 border-2' : ''
-                } ${file ? 'bg-gray-50' : ''} group-hover:border-2`}
+                } ${files.length > 0 ? 'bg-gray-50' : ''} group-hover:border-2`}
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
                 onClick={() => fileInputRef.current?.click()}
               >
-                {file ? (
+                {files.length > 0 ? (
                   <div className="py-2">
-                    <p className="text-sm">{file.name}</p>
+                    <p className="text-sm">{files.length} file{files.length !== 1 ? 's' : ''} selected</p>
                     <button
                       type="button"
                       className="text-xs underline mt-3"
                       onClick={(e) => {
                         e.stopPropagation()
-                        setFile(null)
+                        setFiles([])
                       }}
                     >
-                      Remove
+                      Clear all
                     </button>
                   </div>
                 ) : (
                   <div className="py-4">
-                    <p className="text-sm">Drag and drop your file here or click to browse</p>
+                    <p className="text-sm">Drag and drop your files here or click to browse</p>
                     <p className="text-xs text-gray-500 mt-2">
                       Accepted formats: JPG, PNG, PDF, AI, PSD
                     </p>
                   </div>
                 )}
               </div>
+              
+              {/* Display selected files */}
+              {files.length > 0 && (
+                <div className="mt-4 space-y-2">
+                  <ul className="space-y-2">
+                    {files.map((file, index) => (
+                      <li key={index} className="flex items-center justify-between text-sm border-b border-gray-200 py-2">
+                        <span className="truncate max-w-xs">{file.name}</span>
+                        <button 
+                          type="button" 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            removeFile(index);
+                          }}
+                          className="text-xs underline ml-2"
+                        >
+                          Remove
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             <div className="pt-6">
