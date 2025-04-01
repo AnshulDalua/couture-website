@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect, useRef, use } from "react"
 import { notFound, useRouter } from "next/navigation"
+import { X } from "lucide-react"
 
 // Color swatch definitions with appropriate CSS colors
 const colorOptions = {
@@ -23,6 +24,15 @@ const colorOptions = {
   "ORANGE": { color: "#F15A29", label: "Orange" },
   "MAROON": { color: "#7D3C41", label: "Maroon" },
   "YELLOW": { color: "#F9DC5C", label: "Yellow" },
+}
+
+// Sizing chart URLs for each product type
+const sizingCharts = {
+  "heavyweight-hoodie": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Hoodie%20Size%20Guide.jpg",
+  "heavyweight-crewneck": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Crew%20Size%20Guide.jpg",
+  "classic-quarterzip": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Crew%20Size%20Guide.jpg", // Using crew sizing for now
+  "straightcut-sweatpants": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Sweats%20Size%20Guide.jpg",
+  "classic-tshirt": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
 }
 
 // Mock product data with color codes
@@ -143,6 +153,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [showSizingChart, setShowSizingChart] = useState(false)
 
   // Check if mobile on mount
   useEffect(() => {
@@ -347,16 +358,24 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
           <div className="mt-4">
             <h3 className="text-xs uppercase mb-2">SIZE</h3>
-            <div className="flex flex-wrap gap-2">
-              {product.sizes.map((size) => (
-                <button
-                  key={size}
-                  onClick={() => setSelectedSize(size)}
-                  className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black" : "border-gray-200"}`}
-                >
-                  {size}
-                </button>
-              ))}
+            <div className="flex items-center mb-2">
+              <div className="flex flex-wrap gap-2 flex-1">
+                {product.sizes.map((size) => (
+                  <button
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black" : "border-gray-200"}`}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+              <button 
+                onClick={() => setShowSizingChart(true)}
+                className="text-xs underline ml-4 hover:opacity-70 transition-opacity"
+              >
+                Size Guide
+              </button>
             </div>
           </div>
 
@@ -383,6 +402,30 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           </div>
         </div>
       </div>
+      
+      {/* Sizing Chart Modal */}
+      {showSizingChart && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4">
+          <div className="relative bg-white max-w-3xl w-full max-h-[90vh] overflow-auto">
+            <button 
+              onClick={() => setShowSizingChart(false)}
+              className="absolute top-4 right-4 p-1 bg-white rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Close sizing chart"
+            >
+              <X size={20} />
+            </button>
+            <div className="p-1">
+              <Image
+                src={sizingCharts[slug as keyof typeof sizingCharts]}
+                alt={`${product.name} sizing chart`}
+                width={1200}
+                height={800}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

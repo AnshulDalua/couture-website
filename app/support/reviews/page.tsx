@@ -158,8 +158,8 @@ export default function ReviewsPage() {
   };
 
   return (
-    <div className="px-6 py-8 max-w-5xl mx-auto">
-      <h1 className="text-sm uppercase mb-12">CUSTOMER REVIEWS</h1>
+    <div className="px-6 py-8 max-w-3xl mx-auto">
+      <h1 className="text-sm uppercase mb-10">CUSTOMER REVIEWS</h1>
 
       <div className="space-y-12">
         {/* Reviews Grid */}

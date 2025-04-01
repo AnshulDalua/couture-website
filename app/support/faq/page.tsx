@@ -97,8 +97,8 @@ export default function FAQPage() {
   }
 
   return (
-    <div className="px-6 py-8 min-h-[calc(100vh-300px)]">
-      <h1 className="text-sm uppercase mb-8">FREQUENTLY ASKED QUESTIONS</h1>
+    <div className="px-6 py-8 max-w-3xl mx-auto">
+      <h1 className="text-sm uppercase mb-10">FREQUENTLY ASKED QUESTIONS</h1>
 
       <div className="max-w-3xl mx-auto">
         {faqCategories.map((category, categoryIndex) => (
@@ -146,4 +146,3 @@ export default function FAQPage() {
     </div>
   )
 }
-
