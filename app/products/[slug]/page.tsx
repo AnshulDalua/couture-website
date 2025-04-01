@@ -30,7 +30,7 @@ const colorOptions = {
 const sizingCharts = {
   "heavyweight-hoodie": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Hoodie%20Size%20Guide.jpg",
   "heavyweight-crewneck": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Crew%20Size%20Guide.jpg",
-  "classic-quarterzip": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Crew%20Size%20Guide.jpg", // Using crew sizing for now
+  "classic-quarterzip": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/QZ_Size_Guide.jpg", // Using crew sizing for now
   "straightcut-sweatpants": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Sweats%20Size%20Guide.jpg",
   "classic-tshirt": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
 }
