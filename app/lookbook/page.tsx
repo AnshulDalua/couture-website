@@ -51,8 +51,12 @@ export default function FeaturesPage() {
                 src={feature.image || "/placeholder.svg"}
                 alt={feature.title}
                 fill
+                priority={feature.id === "2025-lookbook"}
+                loading={feature.id === "2025-lookbook" ? "eager" : "lazy"}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 style={{
                   objectFit: "cover",
+                  objectPosition: "center",
                   transition: "transform 0.3s ease",
                 }}
                 className="group-hover:scale-105"
@@ -66,4 +70,3 @@ export default function FeaturesPage() {
     </div>
   )
 }
-

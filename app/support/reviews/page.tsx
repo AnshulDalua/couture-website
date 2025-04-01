@@ -179,9 +179,13 @@ export default function ReviewsPage() {
                     src={review.image} 
                     alt={`Review by ${review.name}`}
                     fill
+                    loading={review.id <= 3 ? "eager" : "lazy"}
+                    priority={review.id === 1}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    style={{ objectFit: "cover" }}
-                    className="transition-transform duration-500 group-hover:scale-105"
+                    style={{ 
+                      objectFit: "cover",
+                      objectPosition: "center"
+                    }}
                   />
                 </div>
               )}

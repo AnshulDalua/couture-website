@@ -15,9 +15,13 @@ export default function OurProcessPage() {
                 src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/Screenshot%202025-03-24%20at%207.56.35%20PM.png"
                 alt="Design process"
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
                 priority
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, 33vw"
+                style={{ 
+                  objectFit: "cover",
+                  objectPosition: "center"
+                }}
               />
             </div>
             <div className="py-4">
@@ -35,8 +39,12 @@ export default function OurProcessPage() {
                 src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/PHOTO-2025-02-20-06-13-41-removebg-preview.png"
                 alt="Material selection"
                 fill
-                className="object-cover"
+                loading="lazy"
                 sizes="(max-width: 768px) 100vw, 33vw"
+                style={{ 
+                  objectFit: "cover",
+                  objectPosition: "center"
+                }}
               />
             </div>
             <div className="py-4">
@@ -54,8 +62,12 @@ export default function OurProcessPage() {
                 src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-24.jpg"
                 alt="Production process"
                 fill
-                className="object-cover"
+                loading="lazy"
                 sizes="(max-width: 768px) 100vw, 33vw"
+                style={{ 
+                  objectFit: "cover",
+                  objectPosition: "center"
+                }}
               />
             </div>
             <div className="py-4">

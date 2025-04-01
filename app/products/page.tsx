@@ -65,6 +65,10 @@ export default function ProductsPage() {
               width={600}
               height={600}
               className="w-full"
+              loading={product.id <= 2 ? "eager" : "lazy"}
+              priority={product.id === 1}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
             <h3 className="stussy-product-title">{product.name}</h3>
             <p className="stussy-product-price">{product.price}</p>

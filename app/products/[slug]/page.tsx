@@ -253,8 +253,12 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   src={product.images[activeImageIndex] || "/placeholder.svg"}
                   alt={product.name}
                   fill
-                  style={{ objectFit: "cover" }}
-                  className="w-full"
+                  priority
+                  sizes="100vw"
+                  style={{ 
+                    objectFit: "cover",
+                    objectPosition: "center"
+                  }}
                 />
               </div>
               <div className="flex space-x-2">
@@ -267,9 +271,13 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                     <Image
                       src={image || "/placeholder.svg"}
                       alt={`${product.name} view ${index + 1}`}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      className="w-full h-full"
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      style={{ 
+                        objectFit: "cover",
+                        objectPosition: "center" 
+                      }}
                     />
                   </button>
                 ))}
@@ -293,8 +301,13 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                       src={image || "/placeholder.svg"}
                       alt={`${product.name} view ${index + 1}`}
                       fill
-                      style={{ objectFit: "cover" }}
-                      className="w-full"
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      sizes="100vw"
+                      style={{ 
+                        objectFit: "cover",
+                        objectPosition: "center"
+                      }}
                     />
                   </div>
                 ))}
@@ -309,9 +322,13 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                     <Image
                       src={image || "/placeholder.svg"}
                       alt={`${product.name} view ${index + 1}`}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      className="w-full h-full"
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      style={{ 
+                        objectFit: "cover",
+                        objectPosition: "center"
+                      }}
                     />
                   </button>
                 ))}

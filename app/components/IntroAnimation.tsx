@@ -10,6 +10,9 @@ interface IntroAnimationProps {
 
 export default function IntroAnimation({ onComplete, isVisible }: IntroAnimationProps) {
   useEffect(() => {
+    // Only run this effect on the client side
+    if (typeof window === 'undefined') return;
+    
     // Set completion timer to exactly 1250ms as requested
     const completionTimer = setTimeout(() => {
       onComplete()
@@ -25,12 +28,19 @@ export default function IntroAnimation({ onComplete, isVisible }: IntroAnimation
           className="fixed inset-0 z-50 flex items-center justify-center bg-white"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
+          transition={{ 
+            duration: 0.4, 
+            ease: "easeInOut",
+            willChange: "opacity"
+          }}
         >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }} // Faster initial fade-in
+            transition={{ 
+              duration: 0.2,
+              willChange: "opacity"
+            }} // Faster initial fade-in
             className="w-[280px] md:w-[350px] relative"
           >
             <svg
@@ -46,11 +56,13 @@ export default function IntroAnimation({ onComplete, isVisible }: IntroAnimation
                   @keyframes drawPath {
                     0% { stroke-dashoffset: 1000; }
                     100% { stroke-dashoffset: 0; }
+                    will-change: stroke-dashoffset;
                   }
                   
                   @keyframes fillIn {
                     0% { fill-opacity: 0; }
-                    100% { fill-opacity: 0.82; }
+                    100% { fill-opacity: 1; }
+                    will-change: fill-opacity;
                   }
                   
                   @keyframes fadeOut {

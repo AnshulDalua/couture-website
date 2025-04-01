@@ -14,7 +14,16 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    unoptimized: false,
+    formats: ['image/webp', 'image/avif'],
+    domains: ['dcnyckkspvcivlaetfie.supabase.co'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'dcnyckkspvcivlaetfie.supabase.co',
+        pathname: '/**',
+      },
+    ],
   },
   experimental: {
     webpackBuildWorker: true,

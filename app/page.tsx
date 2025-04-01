@@ -14,9 +14,12 @@ const images = [
   "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/sinh001485-R1-027-12.jpg"
 ]
 
+// Preload the first image to improve LCP
+const preloadedImage = images[0]
+
 export default function HomePage() {
   // State to store the current image
-  const [currentImage, setCurrentImage] = useState(images[0])
+  const [currentImage, setCurrentImage] = useState(preloadedImage)
   // State to control showing the intro animation
   const [showIntro, setShowIntro] = useState(false)
   // State to track if main content is ready to display
@@ -42,6 +45,9 @@ export default function HomePage() {
   
   // Load a random image in the background, but don't wait for it
   useEffect(() => {
+    // Only run this effect on the client side
+    if (typeof window === 'undefined') return;
+    
     const randomIndex = Math.floor(Math.random() * images.length)
     
     // Use the global window.Image constructor instead of just Image
@@ -107,7 +113,11 @@ export default function HomePage() {
                       alt="IKIGAI Featured Collection"
                       fill
                       priority
-                      style={{ objectFit: "cover" }}
+                      sizes="33vw"
+                      style={{ 
+                        objectFit: "cover",
+                        objectPosition: "center"
+                      }}
                     />
                   </div>
                 ))}
@@ -131,7 +141,11 @@ export default function HomePage() {
                 alt="IKIGAI Featured Collection"
                 fill
                 priority
-                style={{ objectFit: "cover" }}
+                sizes="100vw"
+                style={{ 
+                  objectFit: "cover",
+                  objectPosition: "center"
+                }}
               />
               
               {/* Overlay text for mobile - kept on multiple lines but larger */}
