@@ -7,7 +7,7 @@ const features = [
     id: "2025-lookbook",
     title: "2025 COLLECTION",
     date: "MARCH 23, 2025",
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000034.JPG",
+    image: "/lookbook/19000034.webp",
   },
   {
     id: "2025-clients",

@@ -51,9 +51,9 @@ const products = {
       "100% Cotton"
     ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-035-16.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//8.jpg",
+      "/shop/346048sinh002946-R1-035-16.webp",
+      "/shop/7.webp",
+      "/shop/8.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
@@ -72,9 +72,9 @@ const products = {
       "100% Cotton"
     ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//87566EB3-8B8E-4238-AF38-3B9641F08E78.png",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//6.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//10.jpg",
+      "/shop/sinh001485-R1-047-22.webp",
+      "/shop/6.webp",
+      "/shop/10.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED"],
@@ -93,9 +93,9 @@ const products = {
       "100% Cotton"
     ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/Screenshot%202025-02-19%20at%2011.49.11%20PM.png",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//3.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/9.jpg",
+      "/shop/aniket.webp",
+      "/shop/3.webp",
+      "/shop/9.webp",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "CLASSIC GREY", "NAVY", "GREEN"],
@@ -112,9 +112,9 @@ const products = {
       "100% Cotton"
     ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000030.JPG",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//4.jpg",
+      "/shop/19000029.webp",
+      "/shop/5.webp",
+      "/shop/4.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
@@ -131,8 +131,8 @@ const products = {
       "100% Cotton"
     ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//2.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/1.jpg",
+      "/shop/2.webp",
+      "/shop/1.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN","RED", "MAROON", "PINK", "BROWN", "YELLOW", "ORANGE"],

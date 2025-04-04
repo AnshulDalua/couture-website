@@ -10,23 +10,26 @@ const featuresData = {
     content: [
           ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000034.JPG",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-069-33.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-065-31.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/sinh001485-R1-025-11.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/339344sin002250-R1-017-7.jpg",
+      "/lookbook/19000034.webp",
+      "/lookbook/346048sinh002946-R1-065-31.webp",
+      "/lookbook/sinh001485-R1-025-11.webp",
+      "/lookbook/19000016.webp",
+      "/lookbook/339344sin002250-R1-035-16.webp",
+      "/lookbook/19000029.webp",
+      "/lookbook/346048sinh002946-R1-077-37.webp"
     ],
   },
   "2025-clients": {
-    title: "2025 CLIENTS",
+    title: "2025 CLIENTS",  
     date: "FEBRUARY 15, 2024",
     content: [
           ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-22.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-26.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/GEC5PTe8uxKZavqgo3m795moqU0.webp",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/KJRAgt7DZiKyfgWFlAFbqMIopQ.avif",
+      "/lookbook/Couture-AXO-22.webp",
+      "/lookbook/Couture-AXO-26.webp",
+      "/lookbook/IMG_1312.webp",
+      "/lookbook/IMG_2456.webp",
+      "/lookbook/GEC5PTe8uxKZavqgo3m795moqU0.webp",
     ],
   },
   // "artist-series": {
@@ -102,10 +105,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
       <div className="space-y-12 max-w-5xl mx-auto">
         {/* Hero Image */}
         <div className="w-full">
-          <img
+          <Image
             src={feature.images[0] || "/placeholder.svg"}
-            alt={feature.title}
+            alt={`${feature.title} - High quality custom merchandise`}
+            width={1200}
+            height={800}
             className="w-full"
+            priority
           />
         </div>
 
@@ -114,9 +120,11 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Second image */}
         <div className="w-full">
-          <img
+          <Image
             src={feature.images[1] || "/placeholder.svg"}
-            alt={`${feature.title} image 2`}
+            alt={`${feature.title} - Premium custom hoodies and apparel`}
+            width={1200}
+            height={800}
             className="w-full"
           />
         </div>
@@ -126,9 +134,11 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Third image */}
         <div className="w-full">
-          <img
+          <Image
             src={feature.images[2] || "/placeholder.svg"}
-            alt={`${feature.title} image 3`}
+            alt={`${feature.title} - Best custom merchandise designs`}
+            width={1200}
+            height={800}
             className="w-full"
           />
         </div>
@@ -139,9 +149,11 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {/* Fourth image (if available) */}
         {feature.images[3] && (
           <div className="w-full">
-            <img
+            <Image
               src={feature.images[3] || "/placeholder.svg"}
-              alt={`${feature.title} image 4`}
+              alt={`${feature.title} - Custom organization apparel`}
+              width={1200}
+              height={800}
               className="w-full"
             />
           </div>
@@ -150,9 +162,35 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {/* Fifth image (if available) */}
         {feature.images[4] && (
           <div className="w-full">
-            <img
+            <Image
               src={feature.images[4] || "/placeholder.svg"}
-              alt={`${feature.title} image 5`}
+              alt={`${feature.title} - University custom merchandise`}
+              width={1200}
+              height={800}
+              className="w-full"
+            />
+          </div>
+        )}
+
+        {/* Sixth image (if available) */}
+        {feature.images[5] && (
+          <div className="w-full">
+            <Image
+              src={feature.images[5] || "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              width={1200}
+              height={800}
+              className="w-full"
+            />
+          </div>
+        )}
+        {feature.images[6] && (
+          <div className="w-full">
+            <Image
+              src={feature.images[6] || "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              width={1200}
+              height={800}
               className="w-full"
             />
           </div>

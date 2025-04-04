@@ -8,10 +8,10 @@ import Cookies from 'js-cookie'
 
 // Array of images to rotate through
 const images = [
-  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000008.JPG",
-  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/339344sin002250-R1-043-20.jpg",
-  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-057-27.jpg",
-  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/sinh001485-R1-027-12.jpg"
+  "/homepage/v1.webp",
+  "/homepage/z1.webp",
+  "/homepage/ary1.webp",
+  "/homepage/janssen1.webp"
 ]
 
 export default function HomePage() {
