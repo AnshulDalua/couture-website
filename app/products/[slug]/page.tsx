@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect, useRef, use } from "react"
 import { notFound, useRouter } from "next/navigation"
-import { X } from "lucide-react"
+import { X, ChevronRight } from "lucide-react"
 
 // Color swatch definitions with appropriate CSS colors
 const colorOptions = {
@@ -35,6 +35,109 @@ const sizingCharts = {
   "classic-tshirt": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
 }
 
+// Product reviews organized by product type
+const productReviews = {
+  "heavyweight-hoodie": [
+    {
+      id: 1,
+      content: "Yes! They look really great! We have club photos this Sunday so I will try to get photos of some of the members wearing the merch!",
+      name: "KTP",
+    },
+    {
+      id: 6,
+      content: "It is phenomenal great work guys. Hoodies are dope and everyone loves em. Thanks again guys.",
+      name: "PSE",
+    },
+    {
+      id: 8,
+      content: "These hoodies have been the best merch decision we have ever made.",
+      name: "Atlas Consulting Group",
+    },
+    {
+      id: 9,
+      content: "I'm not even exaggerating, I didn't even realize it was a club's hoodie. I straight up thought it was essentials.",
+      name: "Flux",
+    }
+  ],
+  "heavyweight-crewneck": [
+    {
+      id: 5,
+      content: "The crewnecks are solid, I've only worn once or twice but no complaints at all. The quality is miles better than what we had before.",
+      name: "V1",
+    },
+    {
+      id: 12,
+      content: "Everyone was impressed! The quality, thickness, and warmth are noticeably better compared to brands like Custom Ink.",
+      name: "East Longmeadow",
+    }
+  ],
+  "classic-quarterzip": [
+    {
+      id: 11,
+      content: "Received, thank you. Our CEO says the quality is great, we love them. Btw we'll be ordering more soon.",
+      name: "Hackerpulse",
+    }
+  ],
+  "straightcut-sweatpants": [
+    {
+      id: 7,
+      content: "You both rock thanks again for the hard work. We really enjoy working with you guys and cannot wait to see the product.",
+      name: "TEK",
+    },
+    {
+      id: 10,
+      content: "These are easily the best merch I own, and the service from couture was fantastic",
+      name: "Zeta Pi",
+    }
+  ],
+  "classic-tshirt": [
+    {
+      id: 5,
+      content: "The tees are solid, I've only worn once or twice but no complaints at all. The quality is miles better than what we had before.",
+      name: "V1",
+    },
+    {
+      id: 10,
+      content: "These are easily the best merch I own, and the service from couture was fantastic",
+      name: "Zeta Pi",
+    }
+  ]
+}
+
+// Volume discount data with dollar amounts
+const volumeDiscounts = {
+  "heavyweight-hoodie": [
+    { quantity: "10-29 items", price: "$55 per hoodie" },
+    { quantity: "30-59 items", price: "$47-49 per hoodie" },
+    { quantity: "60-100 items", price: "$40-45 per hoodie" },
+    { quantity: "100+", price: "Custom Pricing" }
+  ],
+  "heavyweight-crewneck": [
+    { quantity: "10-29 items", price: "$52 per crewneck" },
+    { quantity: "30-59 items", price: "$44-46 per crewneck" },
+    { quantity: "60-100 items", price: "$37-42 per crewneck" },
+    { quantity: "100+", price: "Custom Pricing" }
+  ],
+  "straightcut-sweatpants": [
+    { quantity: "10-29 items", price: "$52 per sweatpant" },
+    { quantity: "30-59 items", price: "$44-46 per sweatpant" },
+    { quantity: "60-100 items", price: "$37-42 per sweatpant" },
+    { quantity: "100+", price: "Custom Pricing" }
+  ],
+  "classic-quarterzip": [
+    { quantity: "10-29 items", price: "$51 per quarter zip" },
+    { quantity: "30-59 items", price: "$43-45 per quarter zip" },
+    { quantity: "60-100 items", price: "$36-41 per quarter zip" },
+    { quantity: "100+", price: "Custom Pricing" }
+  ],
+  "classic-tshirt": [
+    { quantity: "10-29 items", price: "$35 per t-shirt" },
+    { quantity: "30-59 items", price: "$27-29 per t-shirt" },
+    { quantity: "60-100 items", price: "$20-25 per t-shirt" },
+    { quantity: "100+", price: "Custom Pricing" }
+  ]
+};
+
 // Mock product data with color codes
 const products = {
   "heavyweight-hoodie": {
@@ -43,7 +146,7 @@ const products = {
     price: "$40-55",
     description: "Relaxed hooded sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
-      "Longsleeve",
+      "420 GSM",
       "Ribbed Cuffs and Hem",
       "Kangaroo Pocket",
       "Relaxed Fit",
@@ -62,9 +165,9 @@ const products = {
     id: 2,
     name: "Heavyweight Crewneck",
     price: "$37-52",
-    description: "Relaxed sweatshirt in our heavyweight 12.4oz cotton blend.",
+    description: "Relaxed crewneck sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
-      "Crewneck",
+      "420 GSM",
       "Longsleeve",
       "Ribbed collar, cuffs and hem",
       "Relaxed Fit",
@@ -83,12 +186,13 @@ const products = {
     id: 3,
     name: "Classic Quarterzip",
     price: "$36-51",
-    description: "Standard fitting Quarter Zip in our heavyweight 11.8oz cotton blend.",
+    description: "Standard fit quarterzip in our heavyweight 11.8oz cotton blend.",
     details: [
-      "Longsleeve",
+      "400 GSM",
       "Ribbed Cuffs and Hem",
       "Standard Fit",
       "YKK Zipper",
+      "Fleece Lining",
       "Unisex",
       "100% Cotton"
     ],
@@ -106,6 +210,7 @@ const products = {
     price: "$37-52",
     description: "Straight-legged sweatpants in our heavyweight 12.4oz cotton blend.",
     details: [
+      "420 GSM",
       "Thigh Pockets",
       "Open Hem",
       "Relaxed Fit",
@@ -125,7 +230,7 @@ const products = {
     price: "$20-35",
     description: "Standard fit tee in midweight 5.6oz cotton blend.",
     details: [
-      "Shortsleeve",
+      "200 GSM",
       "Ribbed Collar",
       "Unisex",
       "100% Cotton"
@@ -154,6 +259,9 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [showSizingChart, setShowSizingChart] = useState(false)
+  
+  // New state for collapsible sections
+  const [openSection, setOpenSection] = useState<string | null>(null)
 
   // Check if mobile on mount
   useEffect(() => {
@@ -229,20 +337,39 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
     router.push("/order")
   }
 
+  // Toggle section open/closed
+  const toggleSection = (section: string) => {
+    if (openSection === section) {
+      setOpenSection(null)
+    } else {
+      setOpenSection(section)
+    }
+  }
+
+  // Get reviews for the current product
+  const getProductReviews = () => {
+    return productReviews[slug as keyof typeof productReviews] || []
+  }
+
+  // Get pricing for the current product
+  const getProductPricing = () => {
+    return volumeDiscounts[slug as keyof typeof volumeDiscounts] || []
+  }
+
   if (!product) {
     notFound()
   }
 
   return (
-    <div className="px-6 py-8">
+    <div className="px-6 py-8 md:px-12 lg:px-16 xl:px-24">
       {/* Back to Shop Link */}
-      <div className="mb-8">
+      <div className="mb-8 md:mb-12">
         <Link href="/products" className="text-xs uppercase">
           ← BACK TO SHOP
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24">
         {/* Product Images - Scrollable on desktop */}
         <div className="md:sticky md:top-[100px] md:self-start">
           {/* Mobile view - single image with thumbnails */}
@@ -276,11 +403,31 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
               </div>
             </>
           ) : (
-            /* Desktop view - scrollable images */
-            <div className="relative">
+            /* Desktop view - scrollable images with vertical thumbnails */
+            <div className="relative flex gap-4">
+              {/* Vertical thumbnails on the left */}
+              <div className="hidden md:flex flex-col gap-2 h-[calc(100vh-200px)] overflow-y-auto scrollbar-hide">
+                {product.images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToImage(index)}
+                    className={`w-16 h-16 relative flex-shrink-0 ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
+                  >
+                    <Image
+                      src={image || "/placeholder.svg"}
+                      alt={`${product.name} view ${index + 1}`}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      className="w-full h-full"
+                    />
+                  </button>
+                ))}
+              </div>
+              
+              {/* Main large images on the right */}
               <div
                 ref={imagesContainerRef}
-                className="h-[calc(100vh-200px)] overflow-y-auto scrollbar-hide"
+                className="h-[calc(100vh-200px)] overflow-y-auto scrollbar-hide flex-grow"
                 style={{ scrollSnapType: "y mandatory" }}
               >
                 {product.images.map((image, index) => (
@@ -299,37 +446,20 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   </div>
                 ))}
               </div>
-              <div className="flex space-x-2 mt-4">
-                {product.images.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => scrollToImage(index)}
-                    className={`w-16 h-16 relative ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
-                  >
-                    <Image
-                      src={image || "/placeholder.svg"}
-                      alt={`${product.name} view ${index + 1}`}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      className="w-full h-full"
-                    />
-                  </button>
-                ))}
-              </div>
             </div>
           )}
         </div>
 
         {/* Product Info - Fixed on scroll */}
-        <div className="md:sticky md:top-[100px] md:self-start">
+        <div className="md:sticky md:top-[100px] md:self-start md:max-w-md">
           <h1 className="text-sm uppercase">{product.name}</h1>
-          <p className="text-sm mt-1">{product.price}</p>
+          <p className="text-sm mt-1 mb-8">{product.price}</p>
 
-          <div className="mt-6">
-            <h3 className="text-xs uppercase mb-2">COLOR</h3>
+          <div className="mt-6 mb-8">
+            <h3 className="text-xs uppercase mb-3">COLOR</h3>
             <div className="flex flex-wrap gap-4">
               {product.colors.map((colorCode) => {
-                const colorInfo = colorOptions[colorCode];
+                const colorInfo = colorOptions[colorCode as keyof typeof colorOptions];
                 return (
                   <button
                     key={colorCode}
@@ -352,12 +482,12 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
               })}
             </div>
             {selectedColor && (
-              <p className="mt-2 text-xs">{colorOptions[selectedColor].label}</p>
+              <p className="mt-2 text-xs">{colorOptions[selectedColor as keyof typeof colorOptions].label}</p>
             )}
           </div>
 
-          <div className="mt-4">
-            <h3 className="text-xs uppercase mb-2">SIZE</h3>
+          <div className="mt-4 mb-8">
+            <h3 className="text-xs uppercase mb-3">SIZE</h3>
             <div className="flex items-center mb-2">
               <div className="flex flex-wrap gap-2 flex-1">
                 {product.sizes.map((size) => (
@@ -370,40 +500,125 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   </button>
                 ))}
               </div>
-              <button 
-                onClick={() => setShowSizingChart(true)}
-                className="text-xs underline ml-4 hover:opacity-70 transition-opacity"
-              >
-                Size Guide
-              </button>
             </div>
           </div>
 
-          <div className="mt-6">
-            <button className="stussy-button w-full" onClick={handleOrderNow}>
-              ORDER NOW
-            </button>
-          </div>
-
-          <div className="mt-6">
-            <h3 className="text-xs uppercase mb-2">DESCRIPTION</h3>
-            <p className="text-xs">{product.description}</p>
-          </div>
-
-          <div className="mt-4">
-            <h3 className="text-xs uppercase mb-2">DETAILS</h3>
-            <ul className="text-xs list-disc pl-4">
+          {/* Product details displayed directly under size */}
+          <div className="mt-6 mb-8 text-xs">
+            <p className="mb-4">{product.description}</p>
+            <ul className="list-disc pl-4">
               {product.details.map((detail, index) => (
-                <li key={index} className="mb-1">
+                <li key={index} className="mb-2">
                   {detail}
                 </li>
               ))}
             </ul>
           </div>
+
+          {/* Collapsible sections - Stussy style */}
+          <div className="mt-8 border-t border-gray-200">
+            {/* Size Guide section */}
+            <button 
+              onClick={() => toggleSection('sizeGuide')}
+              className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
+            >
+              <span className="uppercase">SIZE GUIDE</span>
+              <ChevronRight 
+                className={`h-4 w-4 transition-transform ${openSection === 'sizeGuide' ? 'rotate-90' : ''}`} 
+              />
+            </button>
+            {openSection === 'sizeGuide' && (
+              <div className="py-6 text-xs">
+                <div className="relative w-full">
+                  <Image
+                    src={sizingCharts[slug as keyof typeof sizingCharts]}
+                    alt={`${product.name} sizing chart`}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Reviews section */}
+            <button 
+              onClick={() => toggleSection('reviews')}
+              className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
+            >
+              <span className="uppercase">REVIEWS</span>
+              <ChevronRight 
+                className={`h-4 w-4 transition-transform ${openSection === 'reviews' ? 'rotate-90' : ''}`} 
+              />
+            </button>
+            {openSection === 'reviews' && (
+              <div className="py-6 text-xs">
+                {getProductReviews().length > 0 ? (
+                  <div className="overflow-x-auto pb-4 scrollbar-hide">
+                    <div className="flex space-x-6" style={{ minWidth: 'max-content' }}>
+                      {getProductReviews().map((review) => (
+                        <div 
+                          key={review.id} 
+                          className="border border-gray-100 p-4 rounded-sm"
+                          style={{ minWidth: '260px', maxWidth: '300px' }}
+                        >
+                          <h4 className="font-medium mb-2">{review.name}</h4>
+                          <p className="mb-3">{review.content}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <p>No reviews yet. Be the first to leave a review.</p>
+                )}
+              </div>
+            )}
+
+            {/* Pricing Chart section */}
+            <button 
+              onClick={() => toggleSection('pricing')}
+              className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
+            >
+              <span className="uppercase">PRICING</span>
+              <ChevronRight 
+                className={`h-4 w-4 transition-transform ${openSection === 'pricing' ? 'rotate-90' : ''}`} 
+              />
+            </button>
+            {openSection === 'pricing' && (
+              <div className="py-6 text-xs">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="border-b border-gray-200">
+                      <th className="py-3 px-4 text-left w-1/2">Quantity</th>
+                      <th className="py-3 px-4 text-left w-1/2">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {getProductPricing().map((discount, index) => (
+                      <tr key={index} className="border-b border-gray-100">
+                        <td className="py-3 px-4">{discount.quantity}</td>
+                        <td className="py-3 px-4">{discount.price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="mt-4">
+                  Prices may vary based on design complexity. For custom orders, please <Link href="/order" className="underline">contact us</Link>.
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Order Now button - moved below the collapsible sections */}
+          <div className="mt-8">
+            <button className="stussy-button w-full py-3" onClick={handleOrderNow}>
+              ORDER NOW
+            </button>
+          </div>
         </div>
       </div>
       
-      {/* Sizing Chart Modal */}
+      {/* Sizing Chart Modal - keep this for backward compatibility */}
       {showSizingChart && (
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4">
           <div className="relative bg-white max-w-3xl w-full max-h-[90vh] overflow-auto">
@@ -427,5 +642,5 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
         </div>
       )}
     </div>
-  )
+  );
 }

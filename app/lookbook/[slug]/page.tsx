@@ -21,14 +21,14 @@ const featuresData = {
   },
   "2025-clients": {
     title: "2025 CLIENTS",  
-    date: "FEBRUARY 15, 2024",
+    date: "APRIL 10, 2025",
     content: [
           ],
     images: [
       "/lookbook/Couture-AXO-22.webp",
       "/lookbook/Couture-AXO-26.webp",
-      "/lookbook/IMG_1312.webp",
-      "/lookbook/IMG_2456.webp",
+      // "/lookbook/IMG_1312.webp",
+      // "/lookbook/IMG_2456.webp",
       "/lookbook/GEC5PTe8uxKZavqgo3m795moqU0.webp",
     ],
   },

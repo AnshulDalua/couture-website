@@ -1,3 +1,6 @@
+import Link from "next/link"
+import { Instagram } from "lucide-react"
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -5,11 +8,19 @@ export default function Footer() {
     <footer className="fixed bottom-0 left-0 right-0 py-4 px-6 border-t border-[#ececec] stussy-footer bg-white z-40">
       <div className="flex flex-row justify-between items-center">
         <div>
-          <h3 className="uppercase font-normal">NEWSLETTER</h3>
+          <Link 
+            href="https://instagram.com/couturebyikigai" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+          >
+            <Instagram size={16} />
+            <span className="uppercase font-normal">INSTAGRAM</span>
+          </Link>
         </div>
 
         <div>
-          <p>© {currentYear} COUTUREBYIKIGAI</p>
+          <p>&copy; {currentYear} COUTUREBYIKIGAI</p>
         </div>
       </div>
     </footer>

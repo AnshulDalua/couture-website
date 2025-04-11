@@ -12,7 +12,7 @@ const features = [
   {
     id: "2025-clients",
     title: "2025 CLIENTS",
-    date: "MARCH 25, 2022",
+    date: "APRIL 10, 2025",
     image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-22.jpg",
   },
   // {
