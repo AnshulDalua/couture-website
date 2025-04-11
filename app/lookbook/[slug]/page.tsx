@@ -27,9 +27,9 @@ const featuresData = {
     images: [
       "/lookbook/Couture-AXO-22.webp",
       "/lookbook/Couture-AXO-26.webp",
-      // "/lookbook/IMG_1312.webp",
-      // "/lookbook/IMG_2456.webp",
       "/lookbook/GEC5PTe8uxKZavqgo3m795moqU0.webp",
+      "/lookbook/KJRAgt7DZiKyfgWFlAFbqMIopQ.webp",
+      "/lookbook/NjIQS8yGyr46mzcULQwyoq2nCE.webp",
     ],
   },
   // "artist-series": {
