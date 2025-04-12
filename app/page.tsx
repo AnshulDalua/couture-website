@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import IntroAnimation from "@/app/components/IntroAnimation"
 import ImagePreloader from "@/app/components/ImagePreloader"
+import OptimizedImage from "@/app/components/OptimizedImage"
 import { motion, AnimatePresence } from "framer-motion"
 import Cookies from 'js-cookie'
 import Head from 'next/head'
@@ -118,14 +119,16 @@ export default function HomePage() {
               <div className="flex w-full">
                 {[1, 2, 3].map((index) => (
                   <div key={index} className="relative w-1/3 h-[80vh]">
-                    <Image
+                    <OptimizedImage
                       src={currentImage}
                       alt="IKIGAI Featured Collection - High quality custom merchandise"
-                      fill
-                      priority
-                      fetchPriority="high"
+                      priority={index === 1}
+                      fetchPriority={index === 1 ? "high" : "auto"}
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      style={{ objectFit: "cover", objectPosition: "center" }}
+                      aspectRatio="aspect-none h-full"
+                      objectPosition="center"
+                      loadingStrategy="progressive"
+                      fallbackSrc="/placeholder.svg"
                     />
                   </div>
                 ))}
@@ -144,14 +147,16 @@ export default function HomePage() {
 
             {/* Mobile Version - Single image */}
             <div className="md:hidden relative w-full h-full">
-              <Image
+              <OptimizedImage
                 src={currentImage}
                 alt="IKIGAI Featured Collection - Premium custom hoodies"
-                fill
                 priority
                 fetchPriority="high"
                 sizes="100vw"
-                style={{ objectFit: "cover", objectPosition: "center" }}
+                aspectRatio="aspect-none h-full"
+                objectPosition="center"
+                loadingStrategy="progressive"
+                fallbackSrc="/placeholder.svg"
               />
               
               {/* Overlay text for mobile - kept on multiple lines but larger */}

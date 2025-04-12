@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Metadata } from "next"
+import OptimizedImage from "@/app/components/OptimizedImage"
 
 // Feature data
 const featuresData = {
@@ -121,17 +122,15 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
       <div className="space-y-12 max-w-5xl mx-auto">
         {/* Hero Image */}
         <div className="w-full">
-          <div className="relative aspect-[4/3] md:aspect-[3/2]">
-            <Image
-              src={feature.images[0] ?? "/placeholder.svg"}
-              alt={`${feature.title} - High quality custom merchandise`}
-              fill
-              sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-cover object-center"
-              priority
-              fetchPriority="high"
-            />
-          </div>
+          <OptimizedImage
+            src={feature.images[0] ?? "/placeholder.svg"}
+            alt={`${feature.title} - High quality custom merchandise`}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            loadingStrategy="eager"
+          />
         </div>
 
         {/* First paragraph */}
@@ -139,17 +138,15 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Second image */}
         <div className="w-full">
-          <div className="relative aspect-[4/3] md:aspect-[3/2]">
-            <Image
-              src={feature.images[1] ?? "/placeholder.svg"}
-              alt={`${feature.title} - Premium custom hoodies and apparel`}
-              fill
-              sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-cover object-center"
-              priority
-              fetchPriority="high"
-            />
-          </div>
+          <OptimizedImage
+            src={feature.images[1] ?? "/placeholder.svg"}
+            alt={`${feature.title} - Premium custom hoodies and apparel`}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            loadingStrategy="eager"
+          />
         </div>
 
         {/* Second paragraph */}
@@ -157,16 +154,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Third image */}
         <div className="w-full">
-          <div className="relative aspect-[4/3] md:aspect-[3/2]">
-            <Image
-              src={feature.images[2] ?? "/placeholder.svg"}
-              alt={`${feature.title} - Best custom merchandise designs`}
-              fill
-              sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-cover object-center"
-              loading="eager"
-            />
-          </div>
+          <OptimizedImage
+            src={feature.images[2] ?? "/placeholder.svg"}
+            alt={`${feature.title} - Best custom merchandise designs`}
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            loadingStrategy="progressive"
+          />
         </div>
 
         {/* Third paragraph */}
@@ -175,60 +169,51 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {/* Fourth image (if available) */}
         {feature.images[3] && (
           <div className="w-full">
-            <div className="relative aspect-[4/3] md:aspect-[3/2]">
-              <Image
-                src={feature.images[3] ?? "/placeholder.svg"}
-                alt={`${feature.title} - Custom organization apparel`}
-                fill
-                sizes="(max-width: 768px) 100vw, 1200px"
-                className="object-cover object-center"
-                loading="eager"
-              />
-            </div>
+            <OptimizedImage
+              src={feature.images[3] ?? "/placeholder.svg"}
+              alt={`${feature.title} - Custom organization apparel`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              loadingStrategy="progressive"
+            />
           </div>
         )}
 
         {/* Fifth image (if available) */}
         {feature.images[4] && (
           <div className="w-full">
-            <div className="relative aspect-[4/3] md:aspect-[3/2]">
-              <Image
-                src={feature.images[4] ?? "/placeholder.svg"}
-                alt={`${feature.title} - University custom merchandise`}
-                fill
-                sizes="(max-width: 768px) 100vw, 1200px"
-                className="object-cover object-center"
-              />
-            </div>
+            <OptimizedImage
+              src={feature.images[4] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              loadingStrategy="progressive"
+            />
           </div>
         )}
 
         {/* Sixth image (if available) */}
         {feature.images[5] && (
           <div className="w-full">
-            <div className="relative aspect-[4/3] md:aspect-[3/2]">
-              <Image
-                src={feature.images[5] ?? "/placeholder.svg"}
-                alt={`${feature.title} - University custom merchandise`}
-                fill
-                sizes="(max-width: 768px) 100vw, 1200px"
-                className="object-cover object-center"
-              />
-            </div>
+            <OptimizedImage
+              src={feature.images[5] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              loadingStrategy="progressive"
+            />
           </div>
         )}
         
         {feature.images[6] && (
           <div className="w-full">
-            <div className="relative aspect-[4/3] md:aspect-[3/2]">
-              <Image
-                src={feature.images[6] ?? "/placeholder.svg"}
-                alt={`${feature.title} - University custom merchandise`}
-                fill
-                sizes="(max-width: 768px) 100vw, 1200px"
-                className="object-cover object-center"
-              />
-            </div>
+            <OptimizedImage
+              src={feature.images[6] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              loadingStrategy="progressive"
+            />
           </div>
         )}
       </div>

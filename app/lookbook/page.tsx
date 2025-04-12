@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Metadata } from "next"
+import OptimizedImage from "@/app/components/OptimizedImage"
 
 // Feature data
 const features = [
@@ -52,17 +53,17 @@ export default function FeaturesPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
         {features.map((feature, index) => (
           <Link href={`/lookbook/${feature.id}`} key={feature.id} className="block group">
-            <div className="relative aspect-[4/3] w-full mb-4 overflow-hidden">
-              <Image
-                src={feature.image ?? "/placeholder.svg"}
-                alt={`${feature.title} - High quality custom merchandise lookbook`}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                priority={index < 2} // Prioritize loading the first 2 features
-                fetchPriority={index < 2 ? "high" : "auto"}
-              />
-            </div>
+            <OptimizedImage
+              src={feature.image ?? "/placeholder.svg"}
+              alt={`${feature.title} - High quality custom merchandise lookbook`}
+              priority={index < 2}
+              fetchPriority={index < 2 ? "high" : "auto"}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              aspectRatio="aspect-[4/3]"
+              containerClassName="w-full mb-4 overflow-hidden"
+              className="transition-transform duration-700 group-hover:scale-105"
+              loadingStrategy={index < 2 ? "eager" : "progressive"}
+            />
             <h2 className="text-xs uppercase font-medium">{feature.title}</h2>
             <p className="text-xs mt-1">{feature.date}</p>
           </Link>

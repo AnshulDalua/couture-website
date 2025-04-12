@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import OptimizedImage from "@/app/components/OptimizedImage"
 
 // Mock data for collections
 const collections = {
@@ -59,16 +60,16 @@ export default function ProductsPage() {
       <div className="stussy-product-grid">
         {collection.products.map((product, index) => (
           <Link href={`/products/${product.slug}`} key={product.id} className="stussy-product-card">
-            <div className="relative aspect-square w-full mb-2 overflow-hidden">
-              <Image
-                src={product.image ?? "/placeholder.svg"}
-                alt={`${product.name} - High quality custom merchandise`}
-                fill
-                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-                className="object-cover object-center"
-                priority={index < 4} // Prioritize loading the first 4 products
-              />
-            </div>
+            <OptimizedImage
+              src={product.image ?? "/placeholder.svg"}
+              alt={`${product.name} - High quality custom merchandise`}
+              priority={index < 2}
+              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+              aspectRatio="aspect-square"
+              containerClassName="mb-2 w-full"
+              loadingStrategy={index < 4 ? "eager" : "progressive"}
+              fetchPriority={index < 2 ? "high" : "auto"}
+            />
             <h3 className="stussy-product-title">{product.name}</h3>
             <p className="stussy-product-price">{product.price}</p>
           </Link>
