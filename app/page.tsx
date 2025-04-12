@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import IntroAnimation from "@/app/components/IntroAnimation"
 import { motion, AnimatePresence } from "framer-motion"
 import Cookies from 'js-cookie'
+import Head from 'next/head'
 
 // Array of images to rotate through
 const images = [
@@ -56,13 +57,24 @@ export default function HomePage() {
     // Fallback in case image loading takes too long
     const fallbackTimer = setTimeout(() => {
       if (!contentReady) {
-        setCurrentImage(images[0]) // Use first image as fallback
+        setCurrentImage("/placeholder.svg") // Use first image as fallback
         setContentReady(true)
       }
     }, 1250)
     
     return () => clearTimeout(fallbackTimer)
   }, [contentReady])
+  
+  // Preload all images on component mount
+  useEffect(() => {
+    images.forEach(img => {
+      const preloadLink = document.createElement('link')
+      preloadLink.rel = 'preload'
+      preloadLink.as = 'image'
+      preloadLink.href = img
+      document.head.appendChild(preloadLink)
+    })
+  }, [])
   
   return (
     <div className="bg-white">
@@ -104,10 +116,12 @@ export default function HomePage() {
                   <div key={index} className="relative w-1/3 h-[80vh]">
                     <Image
                       src={currentImage}
-                      alt="IKIGAI Featured Collection"
+                      alt="IKIGAI Featured Collection - High quality custom merchandise"
                       fill
                       priority
-                      style={{ objectFit: "cover" }}
+                      fetchPriority="high"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      style={{ objectFit: "cover", objectPosition: "center" }}
                     />
                   </div>
                 ))}
@@ -128,10 +142,12 @@ export default function HomePage() {
             <div className="md:hidden relative w-full h-full">
               <Image
                 src={currentImage}
-                alt="IKIGAI Featured Collection"
+                alt="IKIGAI Featured Collection - Premium custom hoodies"
                 fill
                 priority
-                style={{ objectFit: "cover" }}
+                fetchPriority="high"
+                sizes="100vw"
+                style={{ objectFit: "cover", objectPosition: "center" }}
               />
               
               {/* Overlay text for mobile - kept on multiple lines but larger */}

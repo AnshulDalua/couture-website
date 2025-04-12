@@ -377,24 +377,28 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
             <>
               <div className="mb-4 relative aspect-square w-full">
                 <Image
-                  src={product.images[activeImageIndex] || "/placeholder.svg"}
-                  alt={product.name}
+                  src={product.images[activeImageIndex] ?? "/placeholder.svg"}
+                  alt={`${product.name} - High quality custom ${product.name.toLowerCase()}`}
                   fill
+                  priority
+                  fetchPriority="high"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   style={{ objectFit: "cover" }}
                   className="w-full"
                 />
               </div>
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 overflow-x-auto scrollbar-hide">
                 {product.images.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToImage(index)}
-                    className={`w-16 h-16 relative ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
+                    className={`w-16 h-16 relative flex-shrink-0 ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
                   >
                     <Image
-                      src={image || "/placeholder.svg"}
+                      src={image ?? "/placeholder.svg"}
                       alt={`${product.name} view ${index + 1}`}
                       fill
+                      sizes="64px"
                       style={{ objectFit: "cover" }}
                       className="w-full h-full"
                     />
@@ -414,9 +418,10 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                     className={`w-16 h-16 relative flex-shrink-0 ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
                   >
                     <Image
-                      src={image || "/placeholder.svg"}
+                      src={image ?? "/placeholder.svg"}
                       alt={`${product.name} view ${index + 1}`}
                       fill
+                      sizes="64px"
                       style={{ objectFit: "cover" }}
                       className="w-full h-full"
                     />
@@ -437,9 +442,12 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                     style={{ scrollSnapAlign: "start" }}
                   >
                     <Image
-                      src={image || "/placeholder.svg"}
-                      alt={`${product.name} view ${index + 1}`}
+                      src={image ?? "/placeholder.svg"}
+                      alt={`${product.name} view ${index + 1} - Premium custom apparel`}
                       fill
+                      priority={index === 0}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       style={{ objectFit: "cover" }}
                       className="w-full"
                     />

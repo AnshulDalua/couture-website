@@ -35,7 +35,7 @@ const collections = {
         name: "Straightcut Sweatpants",
         price: "$37-52",
         slug: "straightcut-sweatpants",
-        image: "/shop/5.webp/",
+        image: "/shop/5.webp",
       },
       {
         id: 5,
@@ -57,15 +57,18 @@ export default function ProductsPage() {
       <h1 className="text-sm uppercase mb-6">{collection.title}</h1>
 
       <div className="stussy-product-grid">
-        {collection.products.map((product) => (
+        {collection.products.map((product, index) => (
           <Link href={`/products/${product.slug}`} key={product.id} className="stussy-product-card">
-            <Image
-              src={product.image || "/placeholder.svg"}
-              alt={product.name}
-              width={600}
-              height={600}
-              className="w-full"
-            />
+            <div className="relative aspect-square w-full mb-2 overflow-hidden">
+              <Image
+                src={product.image ?? "/placeholder.svg"}
+                alt={`${product.name} - High quality custom merchandise`}
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                className="object-cover object-center"
+                priority={index < 4} // Prioritize loading the first 4 products
+              />
+            </div>
             <h3 className="stussy-product-title">{product.name}</h3>
             <p className="stussy-product-price">{product.price}</p>
           </Link>
