@@ -17,7 +17,7 @@ const images = [
 
 export default function HomePage() {
   // State to store the current image
-  const [currentImage, setCurrentImage] = useState(images[0])
+  const [currentImage, setCurrentImage] = useState("/placeholder.svg")
   // State to control showing the intro animation
   const [showIntro, setShowIntro] = useState(false)
   // State to track if main content is ready to display
