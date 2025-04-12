@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import IntroAnimation from "@/app/components/IntroAnimation"
 import ImagePreloader from "@/app/components/ImagePreloader"
 import OptimizedImage from "@/app/components/OptimizedImage"
@@ -24,7 +25,14 @@ export default function HomePage() {
   const [showIntro, setShowIntro] = useState(false)
   // State to track if main content is ready to display
   const [contentReady, setContentReady] = useState(false)
-  
+  // Router for navigation
+  const router = useRouter()
+
+  // Function to handle image click and redirect to products page
+  const handleImageClick = () => {
+    router.push('/products')
+  }
+
   // Check if animation has been shown before and set initial state
   useEffect(() => {
     // Check if we're in the browser environment
@@ -118,7 +126,11 @@ export default function HomePage() {
             <div className="hidden md:block relative w-full max-w-[98%]">
               <div className="flex w-full">
                 {[1, 2, 3].map((index) => (
-                  <div key={index} className="relative w-1/3 h-[80vh]">
+                  <div 
+                    key={index} 
+                    className="relative w-1/3 h-[80vh] cursor-pointer" 
+                    onClick={handleImageClick}
+                  >
                     <OptimizedImage
                       src={currentImage}
                       alt="IKIGAI Featured Collection - High quality custom merchandise"
@@ -135,7 +147,10 @@ export default function HomePage() {
               </div>
               
               {/* Overlay text for desktop - single line */}
-              <div className="absolute bottom-16 right-6 z-10">
+              <div 
+                className="absolute bottom-16 right-6 z-10 cursor-pointer" 
+                onClick={handleImageClick}
+              >
                 <h1 
                   className="text-5xl md:text-6xl lg:text-7xl font-bold text-white text-right whitespace-nowrap" 
                   style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
@@ -146,7 +161,10 @@ export default function HomePage() {
             </div>
 
             {/* Mobile Version - Single image */}
-            <div className="md:hidden relative w-full h-full">
+            <div 
+              className="md:hidden relative w-full h-full cursor-pointer" 
+              onClick={handleImageClick}
+            >
               <OptimizedImage
                 src={currentImage}
                 alt="IKIGAI Featured Collection - Premium custom hoodies"
