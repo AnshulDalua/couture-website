@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import IntroAnimation from "@/app/components/IntroAnimation"
+import ImagePreloader from "@/app/components/ImagePreloader"
 import { motion, AnimatePresence } from "framer-motion"
 import Cookies from 'js-cookie'
 import Head from 'next/head'
@@ -78,6 +79,9 @@ export default function HomePage() {
   
   return (
     <div className="bg-white">
+      {/* Preload product images during intro animation */}
+      {showIntro && <ImagePreloader />}
+      
       <IntroAnimation 
         isVisible={showIntro}
         onComplete={() => {
