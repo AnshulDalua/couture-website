@@ -52,7 +52,7 @@ const volumeDiscounts = [
 export default function PricingPage() {
   return (
     <div className="px-6 py-8 max-w-3xl mx-auto">
-      <h1 className="text-sm uppercase mb-8">PRICING</h1>
+      <h1 className="text-sm uppercase mb-10 text-center">PRICING</h1>
       
       <div className="space-y-12">
         {volumeDiscounts.map((item) => (

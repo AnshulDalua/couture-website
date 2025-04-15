@@ -150,10 +150,10 @@ export default function OrderPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <h1 className="text-2xl font-light tracking-wider mb-12 uppercase">PLACE ORDER</h1>
+    <div className="px-6 py-8 max-w-3xl mx-auto">
+      <h1 className="text-sm uppercase mb-8">PLACE ORDER</h1>
 
+      <div className="space-y-8">
         {submitMessage ? (
           <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
             <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>

@@ -1,5 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
+import { Metadata } from "next"
+import OptimizedImage from "@/app/components/OptimizedImage"
 
 // Feature data
 const features = [
@@ -7,13 +9,13 @@ const features = [
     id: "2025-lookbook",
     title: "2025 COLLECTION",
     date: "MARCH 23, 2025",
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000034.JPG",
+    image: "/lookbook/19000034.webp",
   },
   {
     id: "2025-clients",
     title: "2025 CLIENTS",
-    date: "MARCH 25, 2022",
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-22.jpg",
+    date: "APRIL 10, 2025",
+    image: "/lookbook/Couture-AXO-22.webp",
   },
   // {
   //   id: "artist-series",
@@ -37,28 +39,32 @@ const features = [
   // },
 ]
 
+export const metadata: Metadata = {
+  title: 'Lookbook | Couture by Ikigai',
+  description: 'Explore our lookbook featuring high quality custom merchandise and premium apparel for organizations and universities.',
+}
+
 export default function FeaturesPage() {
   return (
     <div className="px-6 py-8">
-      <h1 className="text-sm uppercase mb-8">LOOKBOOk</h1>
+      <h1 className="text-sm uppercase mb-8">LOOKBOOK</h1>
 
       {/* Feature Grid - Simple, clean layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
-        {features.map((feature) => (
+        {features.map((feature, index) => (
           <Link href={`/lookbook/${feature.id}`} key={feature.id} className="block group">
-            <div className="relative aspect-[4/3] w-full mb-4 overflow-hidden">
-              <Image
-                src={feature.image || "/placeholder.svg"}
-                alt={feature.title}
-                fill
-                style={{
-                  objectFit: "cover",
-                  transition: "transform 0.3s ease",
-                }}
-                className="group-hover:scale-105"
-              />
-            </div>
-            <h2 className="text-sm uppercase font-medium">{feature.title}</h2>
+            <OptimizedImage
+              src={feature.image ?? "/placeholder.svg"}
+              alt={`${feature.title} - High quality custom merchandise lookbook`}
+              priority={index < 2}
+              fetchPriority={index < 2 ? "high" : "auto"}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              aspectRatio="aspect-[4/3]"
+              containerClassName="w-full mb-4 overflow-hidden"
+              className="transition-transform duration-700 group-hover:scale-105"
+              loadingStrategy={index < 2 ? "eager" : "progressive"}
+            />
+            <h2 className="text-xs uppercase font-medium">{feature.title}</h2>
             <p className="text-xs mt-1">{feature.date}</p>
           </Link>
         ))}
@@ -66,4 +72,3 @@ export default function FeaturesPage() {
     </div>
   )
 }
-

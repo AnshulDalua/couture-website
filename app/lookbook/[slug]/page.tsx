@@ -1,6 +1,8 @@
+import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { notFound } from "next/navigation"
+import { Metadata } from "next"
+import OptimizedImage from "@/app/components/OptimizedImage"
 
 // Feature data
 const featuresData = {
@@ -10,23 +12,26 @@ const featuresData = {
     content: [
           ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000034.JPG",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-069-33.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-065-31.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/sinh001485-R1-025-11.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/339344sin002250-R1-017-7.jpg",
+      "/lookbook/19000034.webp",
+      "/lookbook/346048sinh002946-R1-065-31.webp",
+      "/lookbook/sinh001485-R1-025-11.webp",
+      "/lookbook/19000016.webp",
+      "/lookbook/339344sin002250-R1-035-16.webp",
+      "/lookbook/19000029.webp",
+      "/lookbook/346048sinh002946-R1-077-37.webp"
     ],
   },
   "2025-clients": {
-    title: "2025 CLIENTS",
-    date: "FEBRUARY 15, 2024",
+    title: "2025 CLIENTS",  
+    date: "APRIL 10, 2025",
     content: [
           ],
     images: [
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-22.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-26.jpg",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/GEC5PTe8uxKZavqgo3m795moqU0.webp",
-      "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/KJRAgt7DZiKyfgWFlAFbqMIopQ.avif",
+      "/lookbook/Couture-AXO-22.webp",
+      "/lookbook/Couture-AXO-26.webp",
+      "/lookbook/GEC5PTe8uxKZavqgo3m795moqU0.webp",
+      "/lookbook/KJRAgt7DZiKyfgWFlAFbqMIopQ.webp",
+      "/lookbook/NjIQS8yGyr46mzcULQwyoq2nCE.webp",
     ],
   },
   // "artist-series": {
@@ -76,6 +81,21 @@ const featuresData = {
   // },
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const feature = featuresData[params.slug as keyof typeof featuresData]
+  
+  if (!feature) {
+    return {
+      title: "Lookbook Not Found",
+    }
+  }
+  
+  return {
+    title: `${feature.title} | Couture by Ikigai`,
+    description: `View our ${feature.title.toLowerCase()} featuring high quality custom merchandise and premium apparel.`,
+  }
+}
+
 export default function FeatureDetailPage({ params }: { params: { slug: string } }) {
   const feature = featuresData[params.slug as keyof typeof featuresData]
 
@@ -102,10 +122,14 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
       <div className="space-y-12 max-w-5xl mx-auto">
         {/* Hero Image */}
         <div className="w-full">
-          <img
-            src={feature.images[0] || "/placeholder.svg"}
-            alt={feature.title}
-            className="w-full"
+          <OptimizedImage
+            src={feature.images[0] ?? "/placeholder.svg"}
+            alt={`${feature.title} - High quality custom merchandise`}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            loadingStrategy="eager"
           />
         </div>
 
@@ -114,10 +138,14 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Second image */}
         <div className="w-full">
-          <img
-            src={feature.images[1] || "/placeholder.svg"}
-            alt={`${feature.title} image 2`}
-            className="w-full"
+          <OptimizedImage
+            src={feature.images[1] ?? "/placeholder.svg"}
+            alt={`${feature.title} - Premium custom hoodies and apparel`}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            loadingStrategy="eager"
           />
         </div>
 
@@ -126,10 +154,12 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Third image */}
         <div className="w-full">
-          <img
-            src={feature.images[2] || "/placeholder.svg"}
-            alt={`${feature.title} image 3`}
-            className="w-full"
+          <OptimizedImage
+            src={feature.images[2] ?? "/placeholder.svg"}
+            alt={`${feature.title} - Best custom merchandise designs`}
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            loadingStrategy="progressive"
           />
         </div>
 
@@ -139,10 +169,12 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {/* Fourth image (if available) */}
         {feature.images[3] && (
           <div className="w-full">
-            <img
-              src={feature.images[3] || "/placeholder.svg"}
-              alt={`${feature.title} image 4`}
-              className="w-full"
+            <OptimizedImage
+              src={feature.images[3] ?? "/placeholder.svg"}
+              alt={`${feature.title} - Custom organization apparel`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              loadingStrategy="progressive"
             />
           </div>
         )}
@@ -150,10 +182,37 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {/* Fifth image (if available) */}
         {feature.images[4] && (
           <div className="w-full">
-            <img
-              src={feature.images[4] || "/placeholder.svg"}
-              alt={`${feature.title} image 5`}
-              className="w-full"
+            <OptimizedImage
+              src={feature.images[4] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              loadingStrategy="progressive"
+            />
+          </div>
+        )}
+
+        {/* Sixth image (if available) */}
+        {feature.images[5] && (
+          <div className="w-full">
+            <OptimizedImage
+              src={feature.images[5] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              loadingStrategy="progressive"
+            />
+          </div>
+        )}
+        
+        {feature.images[6] && (
+          <div className="w-full">
+            <OptimizedImage
+              src={feature.images[6] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              loadingStrategy="progressive"
             />
           </div>
         )}

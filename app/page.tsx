@@ -2,16 +2,20 @@
 
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import IntroAnimation from "@/app/components/IntroAnimation"
+import ImagePreloader from "@/app/components/ImagePreloader"
+import OptimizedImage from "@/app/components/OptimizedImage"
 import { motion, AnimatePresence } from "framer-motion"
 import Cookies from 'js-cookie'
+import Head from 'next/head'
 
 // Array of images to rotate through
 const images = [
-  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/19000008.JPG",
-  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/339344sin002250-R1-043-20.jpg",
-  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/346048sinh002946-R1-057-27.jpg",
-  "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/lookbook/sinh001485-R1-027-12.jpg"
+  "/homepage/v1.webp",
+  "/homepage/z1.webp",
+  "/homepage/ary1.webp",
+  "/homepage/janssen1.webp"
 ]
 
 export default function HomePage() {
@@ -21,7 +25,14 @@ export default function HomePage() {
   const [showIntro, setShowIntro] = useState(false)
   // State to track if main content is ready to display
   const [contentReady, setContentReady] = useState(false)
-  
+  // Router for navigation
+  const router = useRouter()
+
+  // Function to handle image click and redirect to products page
+  const handleImageClick = () => {
+    router.push('/products')
+  }
+
   // Check if animation has been shown before and set initial state
   useEffect(() => {
     // Check if we're in the browser environment
@@ -74,6 +85,9 @@ export default function HomePage() {
   
   return (
     <div className="bg-white">
+      {/* Preload product images during intro animation */}
+      {showIntro && <ImagePreloader />}
+      
       <IntroAnimation 
         isVisible={showIntro}
         onComplete={() => {
@@ -112,17 +126,21 @@ export default function HomePage() {
                   <div key={index} className="relative w-1/3 h-[80vh]">
                     <Image
                       src={currentImage}
-                      alt="IKIGAI Featured Collection"
+                      alt="IKIGAI Featured Collection - High quality custom merchandise"
+                      priority={index === 1}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       fill
-                      priority
-                      style={{ objectFit: "cover" }}
+                      style={{ objectFit: "cover", objectPosition: "center" }}
                     />
                   </div>
                 ))}
               </div>
               
               {/* Overlay text for desktop - single line */}
-              <div className="absolute bottom-16 right-6 z-10">
+              <div 
+                className="absolute bottom-16 right-6 z-10 cursor-pointer" 
+                onClick={handleImageClick}
+              >
                 <h1 
                   className="text-5xl md:text-6xl lg:text-7xl font-bold text-white text-right whitespace-nowrap" 
                   style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}

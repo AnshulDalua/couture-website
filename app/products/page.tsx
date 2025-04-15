@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import OptimizedImage from "@/app/components/OptimizedImage"
 
 // Mock data for collections
 const collections = {
@@ -14,35 +15,35 @@ const collections = {
         name: "Heavyweight Hoodie",
         price: "$40-55",
         slug: "heavyweight-hoodie",
-        image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//7.jpg",
+        image: "/shop/7.webp",
       },
       {
         id: 2,
         name: "Heavyweight Crewneck",
         price: "$37-52",
         slug: "heavyweight-crewneck",
-        image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//6.jpg",
+        image: "/shop/6.webp",
       },
       {
         id: 3,
         name: "Classic Quarterzip",
         price: "$36-51",
         slug: "classic-quarterzip",
-        image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//3.jpg",
+        image: "/shop/3.webp",
       },
       {
         id: 4,
         name: "Straightcut Sweatpants",
         price: "$37-52",
         slug: "straightcut-sweatpants",
-        image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//5.jpg",
+        image: "/shop/5.webp",
       },
       {
         id: 5,
         name: "Classic Tshirt",
         price: "$20-35",
         slug: "classic-tshirt",
-        image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//2.jpg",
+        image: "/shop/2.webp",
       },
     ],
   },
@@ -57,14 +58,17 @@ export default function ProductsPage() {
       <h1 className="text-sm uppercase mb-6">{collection.title}</h1>
 
       <div className="stussy-product-grid">
-        {collection.products.map((product) => (
+        {collection.products.map((product, index) => (
           <Link href={`/products/${product.slug}`} key={product.id} className="stussy-product-card">
-            <Image
-              src={product.image || "/placeholder.svg"}
-              alt={product.name}
-              width={600}
-              height={600}
-              className="w-full"
+            <OptimizedImage
+              src={product.image ?? "/placeholder.svg"}
+              alt={`${product.name} - High quality custom merchandise`}
+              priority={index < 2}
+              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+              aspectRatio="aspect-square"
+              containerClassName="mb-2 w-full"
+              loadingStrategy={index < 4 ? "eager" : "progressive"}
+              fetchPriority={index < 2 ? "high" : "auto"}
             />
             <h3 className="stussy-product-title">{product.name}</h3>
             <p className="stussy-product-price">{product.price}</p>

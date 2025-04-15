@@ -42,7 +42,7 @@ export default function OurProcessPage() {
             <div className="py-4">
               <h2 className="text-sm uppercase font-medium mb-4">2. High quality production </h2>
               <p className="text-xs">
-               We bring the vision to life with 100% Heavyweight cotton.           
+              We start manufacturing your designs using embroidery, screenprint and hot press.            
                 </p>
             </div>
           </div>
