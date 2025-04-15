@@ -15,8 +15,8 @@ const images = [
 ]
 
 export default function HomePage() {
-  // State to store the current image
-  const [currentImage, setCurrentImage] = useState(images[0])
+  // State to store the current image - initialize as null to prevent flash
+  const [currentImage, setCurrentImage] = useState<string | null>(null)
   // State to control showing the intro animation
   const [showIntro, setShowIntro] = useState(false)
   // State to track if main content is ready to display
@@ -42,27 +42,35 @@ export default function HomePage() {
   
   // Load a random image in the background, but don't wait for it
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * images.length)
+    // Check if we're in the browser environment
+    if (typeof window === 'undefined') return;
+    
+    // Always select a new random image on each page load
+    const randomIndex = Math.floor(Math.random() * images.length);
+    
+    // Immediately set the current image to prevent flashing
+    const selectedImage = images[randomIndex];
+    setCurrentImage(selectedImage);
     
     // Use the global window.Image constructor instead of just Image
     // This avoids conflict with the imported Next.js Image component
     const imgLoader = new window.Image()
-    imgLoader.src = images[randomIndex]
-    imgLoader.onload = () => {
-      setCurrentImage(images[randomIndex])
+    
+    // Add error handling for the image load
+    imgLoader.onerror = () => {
+      console.error("Failed to load image:", selectedImage)
+      // Only set content ready, image is already set
       setContentReady(true)
     }
     
-    // Fallback in case image loading takes too long
-    const fallbackTimer = setTimeout(() => {
-      if (!contentReady) {
-        setCurrentImage(images[0]) // Use first image as fallback
-        setContentReady(true)
-      }
-    }, 1250)
+    imgLoader.onload = () => {
+      // Image is already set, just mark content as ready
+      setContentReady(true)
+    }
     
-    return () => clearTimeout(fallbackTimer)
-  }, [contentReady])
+    // Set the src after setting up the event handlers
+    imgLoader.src = selectedImage
+  }, []) // Only run once on component mount, not when contentReady changes
   
   return (
     <div className="bg-white">
@@ -100,7 +108,7 @@ export default function HomePage() {
             {/* Desktop Version - Three images side by side */}
             <div className="hidden md:block relative w-full max-w-[98%]">
               <div className="flex w-full">
-                {[1, 2, 3].map((index) => (
+                {currentImage && [1, 2, 3].map((index) => (
                   <div key={index} className="relative w-1/3 h-[80vh]">
                     <Image
                       src={currentImage}
@@ -126,13 +134,15 @@ export default function HomePage() {
 
             {/* Mobile Version - Single image */}
             <div className="md:hidden relative w-full h-full">
-              <Image
-                src={currentImage}
-                alt="IKIGAI Featured Collection"
-                fill
-                priority
-                style={{ objectFit: "cover" }}
-              />
+              {currentImage && (
+                <Image
+                  src={currentImage}
+                  alt="IKIGAI Featured Collection"
+                  fill
+                  priority
+                  style={{ objectFit: "cover" }}
+                />
+              )}
               
               {/* Overlay text for mobile - kept on multiple lines but larger */}
               <div className="absolute bottom-12 right-6 text-right z-10">
