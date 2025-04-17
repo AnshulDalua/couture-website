@@ -83,13 +83,13 @@ const featuresData = {
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const feature = featuresData[params.slug as keyof typeof featuresData]
-  
+
   if (!feature) {
     return {
       title: "Lookbook Not Found",
     }
   }
-  
+
   return {
     title: `${feature.title} | Couture by Ikigai`,
     description: `View our ${feature.title.toLowerCase()} featuring high quality custom merchandise and premium apparel.`,
@@ -125,12 +125,12 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[0] ?? "/placeholder.svg"}
             alt={`${feature.title} - High quality custom merchandise`}
-            width={1200}
-            height={800}
-            className="object-scale-down w-full h-auto"
+
+
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
             loadingStrategy="eager"
           />
         </div>
@@ -143,12 +143,12 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[1] ?? "/placeholder.svg"}
             alt={`${feature.title} - Premium custom hoodies and apparel`}
-            width={1200}
-            height={800}
-            className="object-scale-down w-full h-auto"
+
+
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
             loadingStrategy="eager"
           />
         </div>
@@ -161,10 +161,10 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[2] ?? "/placeholder.svg"}
             alt={`${feature.title} - Best custom merchandise designs`}
-            width={1200}
-            height={800}
-            className="object-scale-down w-full h-auto"
+
+
             sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
             loadingStrategy="progressive"
           />
         </div>
@@ -178,10 +178,10 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[3] ?? "/placeholder.svg"}
               alt={`${feature.title} - Custom organization apparel`}
-              width={1200}
-              height={800}
-              className="object-scale-down w-full h-auto"
+
+
               sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
               loadingStrategy="progressive"
             />
           </div>
@@ -193,10 +193,10 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[4] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-              width={1200}
-              height={800}
-              className="object-scale-down w-full h-auto"
+
+
               sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
               loadingStrategy="progressive"
             />
           </div>
@@ -208,24 +208,24 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[5] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-              width={1200}
-              height={800}
-              className="object-scale-down w-full h-auto"
+
+
               sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
               loadingStrategy="progressive"
             />
           </div>
         )}
-        
+
         {feature.images[6] && (
           <div className="w-full">
             <OptimizedImage
               src={feature.images[6] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-              width={1200}
-              height={800}
-              className="object-scale-down w-full h-auto"
+
+
               sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
               loadingStrategy="progressive"
             />
           </div>
