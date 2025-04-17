@@ -121,12 +121,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
       {/* Images and Content */}
       <div className="space-y-12 max-w-5xl mx-auto">
         {/* Hero Image */}
-        <div className="w-full min-h-[500px]">
+        <div className="w-full">
           <OptimizedImage
             src={feature.images[0] ?? "/placeholder.svg"}
             alt={`${feature.title} - High quality custom merchandise`}
-            fill
-            className="object-contain"
+            width={1200}
+            height={800}
+            className="object-scale-down w-full h-auto"
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
@@ -138,12 +139,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {feature.content[0] && <p className="text-xs max-w-2xl">{feature.content[0]}</p>}
 
         {/* Second image */}
-        <div className="w-full min-h-[500px]">
+        <div className="w-full">
           <OptimizedImage
             src={feature.images[1] ?? "/placeholder.svg"}
             alt={`${feature.title} - Premium custom hoodies and apparel`}
-            fill
-            className="object-contain"
+            width={1200}
+            height={800}
+            className="object-scale-down w-full h-auto"
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
@@ -155,12 +157,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {feature.content[1] && <p className="text-xs max-w-2xl">{feature.content[1]}</p>}
 
         {/* Third image */}
-        <div className="w-full min-h-[500px]">
+        <div className="w-full">
           <OptimizedImage
             src={feature.images[2] ?? "/placeholder.svg"}
             alt={`${feature.title} - Best custom merchandise designs`}
-            fill
-            className="object-contain"
+            width={1200}
+            height={800}
+            className="object-scale-down w-full h-auto"
             sizes="(max-width: 768px) 100vw, 1200px"
             loadingStrategy="progressive"
           />
@@ -171,12 +174,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Fourth image (if available) */}
         {feature.images[3] && (
-          <div className="w-full min-h-[500px]">
+          <div className="w-full">
             <OptimizedImage
               src={feature.images[3] ?? "/placeholder.svg"}
               alt={`${feature.title} - Custom organization apparel`}
-              fill
-              className="object-contain"
+              width={1200}
+              height={800}
+              className="object-scale-down w-full h-auto"
               sizes="(max-width: 768px) 100vw, 1200px"
               loadingStrategy="progressive"
             />
@@ -185,12 +189,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Fifth image (if available) */}
         {feature.images[4] && (
-          <div className="w-full min-h-[500px]">
+          <div className="w-full">
             <OptimizedImage
               src={feature.images[4] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-              fill
-              className="object-contain"
+              width={1200}
+              height={800}
+              className="object-scale-down w-full h-auto"
               sizes="(max-width: 768px) 100vw, 1200px"
               loadingStrategy="progressive"
             />
@@ -199,12 +204,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Sixth image (if available) */}
         {feature.images[5] && (
-          <div className="w-full min-h-[500px]">
+          <div className="w-full">
             <OptimizedImage
               src={feature.images[5] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-              fill
-              className="object-contain"
+              width={1200}
+              height={800}
+              className="object-scale-down w-full h-auto"
               sizes="(max-width: 768px) 100vw, 1200px"
               loadingStrategy="progressive"
             />
@@ -212,12 +218,13 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         )}
         
         {feature.images[6] && (
-          <div className="w-full min-h-[500px]">
+          <div className="w-full">
             <OptimizedImage
               src={feature.images[6] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-              fill
-              className="object-contain"
+              width={1200}
+              height={800}
+              className="object-scale-down w-full h-auto"
               sizes="(max-width: 768px) 100vw, 1200px"
               loadingStrategy="progressive"
             />
