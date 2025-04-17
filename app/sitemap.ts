@@ -45,6 +45,12 @@ const mainPages = [
     changeFrequency: 'monthly' as ChangeFrequency,
     priority: 0.6,
   },
+  {
+    url: '/blog',
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.8,
+  },
 ]
 
 // Define support pages
@@ -155,14 +161,31 @@ const lookbookPages = [
   },
 ]
 
+// Define blog posts
+const blogPosts = [
+  {
+    url: '/blog/why-high-quality-custom-merch-matters',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/blog/top-university-merch-trends-2025',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+]
+
 // Export the sitemap function
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Combine all pages
+  // Combine all pages (excluding gallery redirect)
   const allPages = [
     ...mainPages,
     ...supportPages,
     ...productPages,
     ...lookbookPages,
+    ...blogPosts,
   ]
 
   // Add the base URL to each page
