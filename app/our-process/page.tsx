@@ -35,7 +35,7 @@ export default function OurProcessPage() {
                 src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/PHOTO-2025-02-20-06-13-41-removebg-preview.png"
                 alt="Material selection"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
