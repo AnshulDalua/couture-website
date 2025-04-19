@@ -83,13 +83,13 @@ const featuresData = {
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const feature = featuresData[params.slug as keyof typeof featuresData]
-  
+
   if (!feature) {
     return {
       title: "Lookbook Not Found",
     }
   }
-  
+
   return {
     title: `${feature.title} | Couture by Ikigai`,
     description: `View our ${feature.title.toLowerCase()} featuring high quality custom merchandise and premium apparel.`,
@@ -129,6 +129,8 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[0] ?? "/placeholder.svg"}
             alt={`${feature.title} - High quality custom merchandise`}
+
+
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
@@ -146,6 +148,8 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[1] ?? "/placeholder.svg"}
             alt={`${feature.title} - Premium custom hoodies and apparel`}
+
+
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
@@ -163,6 +167,8 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[2] ?? "/placeholder.svg"}
             alt={`${feature.title} - Best custom merchandise designs`}
+
+
             sizes="(max-width: 768px) 100vw, 1200px"
             aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
             loadingStrategy="progressive"
@@ -179,6 +185,8 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[3] ?? "/placeholder.svg"}
               alt={`${feature.title} - Custom organization apparel`}
+
+
               sizes="(max-width: 768px) 100vw, 1200px"
               aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
@@ -193,6 +201,8 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[4] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
+
+
               sizes="(max-width: 768px) 100vw, 1200px"
               aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
@@ -207,6 +217,8 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[5] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
+
+
               sizes="(max-width: 768px) 100vw, 1200px"
               aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
@@ -214,12 +226,14 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             />
           </div>
         )}
-        
+
         {feature.images[6] && (
           <div className="w-full">
             <OptimizedImage
               src={feature.images[6] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
+
+
               sizes="(max-width: 768px) 100vw, 1200px"
               aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"

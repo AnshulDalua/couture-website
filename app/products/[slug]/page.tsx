@@ -39,67 +39,144 @@ const sizingCharts = {
 const productReviews = {
   "heavyweight-hoodie": [
     {
+      id: 20,
+      content: "Legendary merch plug. Have ordered 3-4 times from these guys and gotten super high quality pieces, great response time & support, and helped us work within our budget and timeline. Really respect how they treat customers and provide a great product. Highly recommend!",
+      name: "V1",
+      university: "UMich"
+    },
+    {
+      id: 21,
+      content: "super responsive and helpful pre-production and the quality is great :))",
+      name: "Zeta Pi",
+      university: "UMich"
+    },
+    {
+      id: 22,
+      content: "They did a great job of coming up with designs and were super responsive when getting my order in. Everyone that I got a hoodie for fell in love with it because of the material and design. Highly recommend bringing your business here.",
+      name: "Michigan Evans",
+      university: "UMich"
+    },
+    {
+      id: 23,
+      content: "the team is so communicative and responsive, and the merch was very good quality! we had a slight issues during shipping but the team was so kind and quick with response! we figured out the issue immediately :) would definitely order again",
+      name: "CSA",
+      university: "UMich"
+    },
+    {
+      id: 24,
+      content: "Placed a bulk order for a large club and was extremely pleased with how high-quality each piece was. Worked perfectly with our timeline and budget, and couldn't be more happy with how comfortable these hoodies are.",
+      name: "Elliott Nederhood",
+      university: "UMich"
+    },
+    {
+      id: 25,
+      content: "Very high quality merch and very communicative staff! Highly recommend to anyone interested in making custom merch!!",
+      name: "PBL",
+      university: "UMich"
+    },
+    {
+      id: 26,
+      content: "Amazing quality and very quick and efficient shipping!",
+      name: "DTD",
+      university: "UMich"
+    },
+    {
       id: 1,
       content: "Yes! They look really great! We have club photos this Sunday so I will try to get photos of some of the members wearing the merch!",
       name: "KTP",
+      university: "UMich"
     },
     {
       id: 6,
       content: "It is phenomenal great work guys. Hoodies are dope and everyone loves em. Thanks again guys.",
       name: "PSE",
+      university: "UMich"
     },
     {
       id: 8,
       content: "These hoodies have been the best merch decision we have ever made.",
       name: "Atlas Consulting Group",
+      university: "UMich"
     },
     {
       id: 9,
       content: "I'm not even exaggerating, I didn't even realize it was a club's hoodie. I straight up thought it was essentials.",
       name: "Flux",
+      university: "UMich"
     }
   ],
   "heavyweight-crewneck": [
     {
+      id: 27,
+      content: "From the beginning, they brought professionalism and strong communication to the table. They helped us create custom East Longmeadow High School crewnecks that perfectly captured our vision.\n\nThe quality of their work was next level. The material was thick and soft, and the embroidery was clean and durable.",
+      name: "East Longmeadow",
+      university: "Highschool"
+    },
+    {
       id: 5,
       content: "The crewnecks are solid, I've only worn once or twice but no complaints at all. The quality is miles better than what we had before.",
       name: "V1",
+      university: "UMich"
     },
     {
       id: 12,
       content: "Everyone was impressed! The quality, thickness, and warmth are noticeably better compared to brands like Custom Ink.",
       name: "East Longmeadow",
+      university: "Highschool"
     }
   ],
   "classic-quarterzip": [
     {
+      id: 28,
+      content: "Amazing quality and the team is so easy to work with, they are very personable and communicative. I ordered quarter zips for my business club and they were perfect. Affordable pricing and extremely fast shipping as well!",
+      name: "Frank Batten Investment",
+      university: "UVA"
+    },
+    {
       id: 11,
       content: "Received, thank you. Our CEO says the quality is great, we love them. Btw we'll be ordering more soon.",
       name: "Hackerpulse",
+      university: "Startup"
     }
   ],
   "straightcut-sweatpants": [
     {
+      id: 29,
+      content: "Very impressed with the quality of the hoodies and sweatpants. Merch arrived ahead of schedule too. You guys also crushed it.",
+      name: "Eigenlayer",
+      university: "Startup"
+    },
+    {
       id: 7,
       content: "You both rock thanks again for the hard work. We really enjoy working with you guys and cannot wait to see the product.",
       name: "TEK",
+      university: "UMich"
     },
     {
       id: 10,
       content: "These are easily the best merch I own, and the service from couture was fantastic",
       name: "Zeta Pi",
+      university: "UMich"
     }
   ],
   "classic-tshirt": [
     {
+      id: 20,
+      content: "Legendary merch plug. Have ordered 3-4 times from these guys and gotten super high quality pieces, great response time & support, and helped us work within our budget and timeline. Really respect how they treat customers and provide a great product. Highly recommend!",
+      name: "V1",
+      university: "UMich"
+    },
+    {
       id: 5,
       content: "The tees are solid, I've only worn once or twice but no complaints at all. The quality is miles better than what we had before.",
       name: "V1",
+      university: "UMich"
     },
     {
       id: 10,
       content: "These are easily the best merch I own, and the service from couture was fantastic",
       name: "Zeta Pi",
+      university: "UMich"
     }
   ]
 }
@@ -392,7 +469,8 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   <button
                     key={index}
                     onClick={() => scrollToImage(index)}
-                    className={`w-16 h-16 relative flex-shrink-0 ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
+                    className={`relative w-8 h-8 rounded-full ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
+                    style={{ backgroundColor: "white" }}
                   >
                     <Image
                       src={image ?? "/placeholder.svg"}
@@ -416,6 +494,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                     key={index}
                     onClick={() => scrollToImage(index)}
                     className={`w-16 h-16 relative flex-shrink-0 ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
+                    style={{ backgroundColor: "white" }}
                   >
                     <Image
                       src={image ?? "/placeholder.svg"}
@@ -565,12 +644,17 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   <div className="overflow-x-auto pb-4 scrollbar-hide">
                     <div className="flex space-x-6" style={{ minWidth: 'max-content' }}>
                       {getProductReviews().map((review) => (
-                        <div 
-                          key={review.id} 
-                          className="border border-gray-100 p-4 rounded-sm"
+                        <div
+                          key={review.id}
+                          className="flex flex-col p-4 rounded-lg bg-white shadow-sm"
                           style={{ minWidth: '260px', maxWidth: '300px' }}
                         >
-                          <h4 className="font-medium mb-2">{review.name}</h4>
+                          <div className="flex items-center gap-2 mb-2">
+                            <h4 className="font-medium">{review.name}</h4>
+                            <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
+                              {review.university}
+                            </span>
+                          </div>
                           <p className="mb-3">{review.content}</p>
                         </div>
                       ))}
