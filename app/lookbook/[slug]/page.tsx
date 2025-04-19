@@ -99,6 +99,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default function FeatureDetailPage({ params }: { params: { slug: string } }) {
   const feature = featuresData[params.slug as keyof typeof featuresData]
 
+  // Determine if this is a full-image (contain) page
+  const showFullImage = params.slug === '2025-lookbook'
+  const forceAspectCover = params.slug === '2025-clients'
+
   if (!feature) {
     notFound()
   }
@@ -119,7 +123,7 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
       </div>
 
       {/* Images and Content */}
-      <div className="space-y-12 max-w-5xl mx-auto">
+      <div className={`space-y-12 mx-auto ${showFullImage || forceAspectCover ? 'max-w-7xl md:max-w-[90vw]' : 'max-w-5xl'}`}>
         {/* Hero Image */}
         <div className="w-full">
           <OptimizedImage
@@ -128,8 +132,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
-            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
             loadingStrategy="eager"
+            fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
           />
         </div>
 
@@ -144,8 +149,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
-            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
             loadingStrategy="eager"
+            fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
           />
         </div>
 
@@ -158,8 +164,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             src={feature.images[2] ?? "/placeholder.svg"}
             alt={`${feature.title} - Best custom merchandise designs`}
             sizes="(max-width: 768px) 100vw, 1200px"
-            aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+            aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
             loadingStrategy="progressive"
+            fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
           />
         </div>
 
@@ -173,8 +180,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
               src={feature.images[3] ?? "/placeholder.svg"}
               alt={`${feature.title} - Custom organization apparel`}
               sizes="(max-width: 768px) 100vw, 1200px"
-              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
+              fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
             />
           </div>
         )}
@@ -186,8 +194,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
               src={feature.images[4] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
               sizes="(max-width: 768px) 100vw, 1200px"
-              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
+              fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
             />
           </div>
         )}
@@ -199,8 +208,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
               src={feature.images[5] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
               sizes="(max-width: 768px) 100vw, 1200px"
-              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
+              fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
             />
           </div>
         )}
@@ -211,8 +221,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
               src={feature.images[6] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
               sizes="(max-width: 768px) 100vw, 1200px"
-              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
+              aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
+              fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
             />
           </div>
         )}

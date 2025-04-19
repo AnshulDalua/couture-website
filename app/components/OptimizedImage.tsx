@@ -12,6 +12,7 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src' | 'alt'> {
   objectPosition?: string
   containerClassName?: string
   loadingStrategy?: 'eager' | 'lazy' | 'progressive'
+  fitMode?: 'cover' | 'contain'
 }
 
 /**
@@ -32,6 +33,7 @@ export default function OptimizedImage({
   objectPosition = 'center',
   containerClassName = '',
   loadingStrategy = 'progressive',
+  fitMode = 'cover',
   priority,
   sizes,
   className,
@@ -117,7 +119,7 @@ export default function OptimizedImage({
         sizes={defaultSizes}
         priority={priority}
         loading={getLoadingAttribute()}
-        className={`object-cover object-${objectPosition} transition-opacity duration-500 ${
+        className={`object-${fitMode} object-${objectPosition} transition-opacity duration-500 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         } ${className || ''}`}
         onLoad={() => loadingStrategy !== 'progressive' && setIsLoaded(true)}
@@ -133,7 +135,7 @@ export default function OptimizedImage({
             alt={alt}
             fill
             sizes={defaultSizes}
-            className={`object-cover object-${objectPosition} blur-sm ${className || ''}`}
+            className={`object-${fitMode} object-${objectPosition} blur-sm ${className || ''}`}
           />
         </div>
       )}
