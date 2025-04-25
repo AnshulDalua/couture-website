@@ -1,10 +1,13 @@
 "use client"
+import "../../../styles/zoom.css"
+
 
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect, useRef, use } from "react"
 import { notFound, useRouter } from "next/navigation"
 import { X, ChevronRight } from "lucide-react"
+import ImageZoomOverlay from "@/components/ImageZoomOverlay"
 
 // Color swatch definitions with appropriate CSS colors
 const colorOptions = {
@@ -359,6 +362,10 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   const [isMobile, setIsMobile] = useState(false)
   const [showSizingChart, setShowSizingChart] = useState(false)
   
+  // New state for image zoom overlay
+  const [showZoomOverlay, setShowZoomOverlay] = useState(false)
+  const [zoomImageIndex, setZoomImageIndex] = useState(0)
+  
   // New state for collapsible sections
   const [openSection, setOpenSection] = useState<string | null>(null)
 
@@ -474,7 +481,11 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           {/* Mobile view - single image with thumbnails */}
           {isMobile ? (
             <>
-              <div className="mb-4 relative aspect-square w-full">
+              <div className="mb-4 relative aspect-square w-full zoom-cursor product-image-container" 
+                   onClick={() => {
+                     setShowZoomOverlay(true)
+                     setZoomImageIndex(activeImageIndex)
+                   }}>
                 <Image
                   src={product.images[activeImageIndex] ?? "/placeholder.svg"}
                   alt={`${product.name} - High quality custom ${product.name.toLowerCase()}`}
@@ -539,8 +550,12 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                 {product.images.map((image, index) => (
                   <div
                     key={index}
-                    className="relative h-[calc(100vh-200px)] w-full mb-2"
+                    className="relative h-[calc(100vh-200px)] w-full mb-2 zoom-cursor product-image-container"
                     style={{ scrollSnapAlign: "start" }}
+                    onClick={() => {
+                      setShowZoomOverlay(true)
+                      setZoomImageIndex(index)
+                    }}
                   >
                     <Image
                       src={image ?? "/placeholder.svg"}
@@ -749,7 +764,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
             >
               <X size={20} />
             </button>
-            <div className="p-1">
+            <div className="p-6">
               <Image
                 src={sizingCharts[slug as keyof typeof sizingCharts]}
                 alt={`${product.name} sizing chart`}
@@ -761,6 +776,15 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           </div>
         </div>
       )}
+
+      {/* Image Zoom Overlay */}
+      {showZoomOverlay && (
+        <ImageZoomOverlay 
+          images={product.images} 
+          initialIndex={zoomImageIndex} 
+          onClose={() => setShowZoomOverlay(false)} 
+        />
+      )}
     </div>
-  );
+  )
 }
