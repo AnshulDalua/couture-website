@@ -7,7 +7,13 @@ import Footer from "@/components/footer"
 export const metadata: Metadata = {
   title: "COUTURE",
   description: "Couture by Ikigai - High quality merchandise",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: '/favicon.png',
+  },
+  openGraph: {
+    images: '/website_preview.png',
+  }
 }
 
 export default function RootLayout({
@@ -25,7 +31,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
