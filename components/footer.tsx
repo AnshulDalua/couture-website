@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { Instagram } from "lucide-react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -12,10 +11,13 @@ export default function Footer() {
             href="https://instagram.com/couturebyikigai" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+            className="flex items-center gap-2 hover:opacity-90 transition-opacity group"
           >
-            <Instagram size={16} />
-            <span className="uppercase font-normal">INSTAGRAM</span>
+            <div className="instagram-gradient-icon"></div>
+            <span className="uppercase font-normal relative">
+              <span className="instagram-gradient-text">INSTAGRAM</span>
+              <span className="absolute inset-0 uppercase font-normal opacity-0 group-hover:opacity-100 transition-opacity">INSTAGRAM</span>
+            </span>
           </Link>
         </div>
 
