@@ -67,7 +67,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className={`text-lg font-medium ${isActive('/products') ? 'font-bold' : ''}`}>SHOP</span>
+              <span className={`text-medium ${isActive('/products') ? 'font' : ''}`}>SHOP</span>
             </Link>
             
             {/* Lookbook - entire div clickable */}
@@ -76,7 +76,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className={`text-lg font-medium ${isActive('/lookbook') ? 'font-bold' : ''}`}>LOOKBOOK</span>
+              <span className={`text-medium ${isActive('/lookbook') ? 'font-bold' : ''}`}>LOOKBOOK</span>
             </Link>
             
             {/* Our Process - entire div clickable */}
@@ -85,7 +85,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className={`text-lg font-medium ${isActive('/our-process') ? 'font-bold' : ''}`}>OUR PROCESS</span>
+              <span className={`text-medium ${isActive('/our-process') ? 'font-bold' : ''}`}>OUR PROCESS</span>
             </Link>
             
             {/* More Section - kept expandable */}
@@ -94,7 +94,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 onClick={() => toggleSection('more')}
                 className="flex justify-between items-center w-full"
               >
-                <span className={`text-lg font-medium ${isActive('/support') ? 'font-bold' : ''}`}>MORE</span>
+                <span className={`text-medium ${isActive('/support') ? 'font-bold' : ''}`}>MORE</span>
                 {expandedSections.more ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
               </button>
               
@@ -162,7 +162,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className={`text-lg font-medium ${isActive('/order') ? 'font-bold' : ''}`}>ORDER</span>
+              <span className={`text-medium ${isActive('/order') ? 'font-bold' : ''}`}>ORDER</span>
             </Link>
           </div>
         </motion.div>

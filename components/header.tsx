@@ -56,7 +56,7 @@ export default function Header() {
             </button>
             <div className="stussy-dropdown">
               <Link href="/support/contact" className={isActive('/support/contact') ? 'font-bold' : ''}>CONTACT</Link>
-              <Link href="/support/shipping-returns" className={isActive('/support/shipping-returns') ? 'font-bold' : ''}>SHIPPING + RETURNS</Link>
+              {/* <Link href="/support/about" className={isActive('/support/about') ? 'font-bold' : ''}>ABOUT</Link> */}
               <Link href="/support/faq" className={isActive('/support/faq') ? 'font-bold' : ''}>FAQ</Link>
               <Link href="/support/reviews" className={isActive('/support/reviews') ? 'font-bold' : ''}>REVIEWS</Link>
               <Link href="/support/pricing" className={isActive('/support/pricing') ? 'font-bold' : ''}>PRICING</Link>

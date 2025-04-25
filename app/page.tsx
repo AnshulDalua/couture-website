@@ -123,7 +123,7 @@ export default function HomePage() {
             <div className="hidden md:block relative w-full max-w-[98%]">
               <div className="flex w-full">
                 {currentImage && [1, 2, 3].map((index) => (
-                  <div key={index} className="relative w-1/3 h-[80vh]">
+                  <div key={index} className="relative w-1/3 h-[80vh] cursor-pointer" onClick={handleImageClick}>
                     <Image
                       src={currentImage}
                       alt="IKIGAI Featured Collection - High quality custom merchandise"
