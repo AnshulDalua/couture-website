@@ -50,7 +50,7 @@ export default function ImageZoomOverlay({ images, initialIndex, onClose }: Imag
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+        className="absolute top-4 right-4 bg-white rounded-full p-1 text-black hover:bg-gray-200 transition-colors z-10"
         aria-label="Close image zoom"
       >
         <X size={24} />
