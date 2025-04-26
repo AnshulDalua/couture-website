@@ -151,17 +151,49 @@ body {
 
 /* Instagram gradient animation */
 .instagram-gradient-text {
-  color: black;
-  animation: instagram-text-cycle 12s infinite;
+  color: transparent;
+  animation: instagram-text-cycle 8s linear infinite;
   display: inline-block;
+  background: linear-gradient(
+    to right,
+    #405DE6,
+    #5851DB,
+    #833AB4,
+    #C13584,
+    #E1306C,
+    #FD1D1D,
+    #F56040,
+    #F77737,
+    #FCAF45,
+    #FFDC80,
+    #405DE6
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 /* Instagram icon with gradient using mask */
 .instagram-gradient-icon {
   width: 16px;
   height: 16px;
-  background-color: black;
-  animation: instagram-icon-cycle 12s infinite;
+  background-color: transparent;
+  background-image: linear-gradient(
+    to right,
+    #405DE6,
+    #5851DB,
+    #833AB4,
+    #C13584,
+    #E1306C,
+    #FD1D1D,
+    #F56040,
+    #F77737,
+    #FCAF45,
+    #FFDC80,
+    #405DE6
+  );
+  background-size: 300% auto;
+  animation: instagram-icon-cycle 8s linear infinite;
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='20' rx='5' ry='5'%3E%3C/rect%3E%3Cpath d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'%3E%3C/path%3E%3Cline x1='17.5' y1='6.5' x2='17.51' y2='6.5'%3E%3C/line%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='20' rx='5' ry='5'%3E%3C/rect%3E%3Cpath d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'%3E%3C/path%3E%3Cline x1='17.5' y1='6.5' x2='17.51' y2='6.5'%3E%3C/line%3E%3C/svg%3E");
   -webkit-mask-size: contain;
@@ -173,70 +205,19 @@ body {
 }
 
 @keyframes instagram-text-cycle {
-  0%, 65%, 100% {
-    color: black;
-    background: none;
-  }
-  70%, 95% {
-    color: transparent;
-    background: linear-gradient(
-      to right,
-      #405DE6,
-      #5851DB,
-      #833AB4,
-      #C13584,
-      #E1306C,
-      #FD1D1D,
-      #F56040,
-      #F77737,
-      #FCAF45,
-      #FFDC80,
-      #405DE6
-    );
-    background-size: 300% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-position: 0% center;
-  }
-  90% {
-    background-position: 100% center;
-  }
-}
-
-@keyframes instagram-icon-cycle {
-  0%, 65%, 100% {
-    background-color: black;
-    background-image: none;
-  }
-  70%, 95% {
-    background-color: transparent;
-    background-image: linear-gradient(
-      to right,
-      #405DE6,
-      #5851DB,
-      #833AB4,
-      #C13584,
-      #E1306C,
-      #FD1D1D,
-      #F56040,
-      #F77737,
-      #FCAF45,
-      #FFDC80,
-      #405DE6
-    );
-    background-size: 300% auto;
-    background-position: 0% center;
-  }
-  90% {
-    background-position: 100% center;
-  }
-}
-
-@keyframes instagram-gradient {
   0% {
     background-position: 0% center;
   }
   100% {
-    background-position: 200% center;
+    background-position: 300% center;
+  }
+}
+
+@keyframes instagram-icon-cycle {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 300% center;
   }
 }
