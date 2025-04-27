@@ -65,7 +65,7 @@ const faqCategories = [
       {
         question: "How long will it take to receive my order?",
         answer:
-          "Standard shipping typically takes 2-3 weeks. We do not offer expedited shipping options at this time.",
+          "Turnaround time from payment to delivery is 2-3 weeks. We do not offer expedited shipping options at this time.",
       },
       {
         question: "What is your return policy?",
@@ -74,7 +74,7 @@ const faqCategories = [
       },
       {
         question: "Do you offer free shipping?",
-        answer: "Yes, we offer free standard shipping on all U.S. orders.",
+        answer: "Shipping is already incorporated into the price of the product and is not an additional charge.",
       },
     ],
   },

@@ -253,7 +253,8 @@ const products = {
       "Kangaroo Pocket",
       "Relaxed Fit",
       "Unisex",
-      "100% Cotton"
+      "100% Cotton",
+      "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
       "/shop/346048sinh002946-R1-035-16.webp",
@@ -274,7 +275,8 @@ const products = {
       "Ribbed collar, cuffs and hem",
       "Relaxed Fit",
       "Unisex",
-      "100% Cotton"
+      "100% Cotton",
+      "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
       "/shop/sinh001485-R1-047-22.webp",
@@ -296,7 +298,8 @@ const products = {
       "YKK Zipper",
       "Fleece Lining",
       "Unisex",
-      "100% Cotton"
+      "100% Cotton",
+      "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
       "/shop/aniket.webp",
@@ -316,7 +319,8 @@ const products = {
       "Thigh Pockets",
       "Open Hem",
       "Relaxed Fit",
-      "100% Cotton"
+      "100% Cotton",
+      "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
       "/shop/19000029.webp",
@@ -335,7 +339,8 @@ const products = {
       "200 GSM",
       "Ribbed Collar",
       "Unisex",
-      "100% Cotton"
+      "100% Cotton",
+      "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
       "/shop/2.webp",
