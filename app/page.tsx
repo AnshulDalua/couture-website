@@ -151,7 +151,7 @@ export default function HomePage() {
             </div>
 
             {/* Mobile Version - Single image */}
-            <div className="md:hidden relative w-full h-full">
+            <div className="md:hidden relative w-full h-full cursor-pointer" onClick={handleImageClick}>
               {currentImage && (
                 <Image
                   src={currentImage}

@@ -61,9 +61,7 @@ export default function OurProcessPage() {
             <div className="py-4">
               <h2 className="text-sm uppercase font-medium mb-4">3. DELIVERY </h2>
               <p className="text-xs">
-                Expect your order in 2-3 weeks.
-
-
+              Expect your order at your doorstep in 2-3 weeks.
               </p>
             </div>
           </div>
