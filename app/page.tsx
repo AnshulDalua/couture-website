@@ -147,6 +147,12 @@ export default function HomePage() {
                 >
                   NOT NORMAL MERCH
                 </h1>
+                <p 
+                  className="text-xl md:text-2xl text-white text-right mt-2" 
+                  style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
+                >
+                  CUSTOM APPAREL YOU'LL ACTUALLY WEAR.
+                </p>
               </div>
             </div>
 
@@ -170,6 +176,12 @@ export default function HomePage() {
                 >
                   NOT<br />NORMAL<br />MERCH
                 </h1>
+                <p 
+                  className="text-md text-white text-right mt-2" 
+                  style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
+                >
+                  CUSTOM APPAREL YOU'LL ACTUALLY WEAR.
+                </p>
               </div>
             </div>
           </motion.div>
