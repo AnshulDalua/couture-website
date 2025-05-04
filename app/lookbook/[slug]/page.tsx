@@ -20,6 +20,15 @@ const featuresData = {
       "/lookbook/19000029.webp",
       "/lookbook/346048sinh002946-R1-077-37.webp"
     ],
+    captions: [
+      "VICTORIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN RED",
+      "ZHARIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN BABY BLUE",
+      "ARY IN OUR HEAVYWEIGHT CREWNECK AND STRAIGHTCUT SWEATPANTS IN BLACK",
+      "VICTORIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN RED",
+      "JANSEN IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN GREY",
+      "VICTORIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN RED",
+      "ZHARIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN BABY BLUE"
+    ]
   },
   "2025-clients": {
     title: "2025 CLIENTS",  
@@ -33,6 +42,13 @@ const featuresData = {
       "/lookbook/KJRAgt7DZiKyfgWFlAFbqMIopQ.webp",
       "/lookbook/NjIQS8yGyr46mzcULQwyoq2nCE.webp",
     ],
+    captions: [
+      "ALPHA CHI OMEGA - CUSTOM EMBROIDERED SWEATSUIT IN BLACK",
+      "ALPHA CHI OMEGA - CUSTOM EMBROIDERED SWEATSUIT IN RED",
+      "MICHIGAN ATLAS DIGITAL - CUSTOM SCREENPRINTED HEAVYWEIGHT HOODIE IN GREY",
+      "MICHIGAN NET IMPACT - CUSTOM SCREENPRINTED HEAVYWEIGHT HOODIE IN NAVY",
+      "PI SIGMA EPSILON - CUSTOM SCREENPRINTED HEAVYWEIGHT HOODIE IN BLACK"
+    ]
   },
   // "artist-series": {
   //   title: "ARTIST SERIES",
@@ -129,8 +145,6 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[0] ?? "/placeholder.svg"}
             alt={`${feature.title} - High quality custom merchandise`}
-
-
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
@@ -138,6 +152,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             loadingStrategy="eager"
             fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
           />
+          {feature.captions && feature.captions[0] && (
+            <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[0]}</p>
+          )}
         </div>
 
         {/* First paragraph */}
@@ -148,8 +165,6 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[1] ?? "/placeholder.svg"}
             alt={`${feature.title} - Premium custom hoodies and apparel`}
-
-
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 1200px"
@@ -157,6 +172,9 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             loadingStrategy="eager"
             fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
           />
+          {feature.captions && feature.captions[1] && (
+            <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[1]}</p>
+          )}
         </div>
 
         {/* Second paragraph */}
@@ -167,13 +185,14 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
           <OptimizedImage
             src={feature.images[2] ?? "/placeholder.svg"}
             alt={`${feature.title} - Best custom merchandise designs`}
-
-
             sizes="(max-width: 768px) 100vw, 1200px"
             aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
             loadingStrategy="progressive"
             fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
           />
+          {feature.captions && feature.captions[2] && (
+            <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[2]}</p>
+          )}
         </div>
 
         {/* Third paragraph */}
@@ -185,13 +204,14 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[3] ?? "/placeholder.svg"}
               alt={`${feature.title} - Custom organization apparel`}
-
-
               sizes="(max-width: 768px) 100vw, 1200px"
               aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
               fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
             />
+            {feature.captions && feature.captions[3] && (
+              <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[3]}</p>
+            )}
           </div>
         )}
 
@@ -201,13 +221,14 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[4] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-
-
               sizes="(max-width: 768px) 100vw, 1200px"
               aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
               fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
             />
+            {feature.captions && feature.captions[4] && (
+              <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[4]}</p>
+            )}
           </div>
         )}
 
@@ -217,13 +238,14 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[5] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-
-
               sizes="(max-width: 768px) 100vw, 1200px"
               aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
               fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
             />
+            {feature.captions && feature.captions[5] && (
+              <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[5]}</p>
+            )}
           </div>
         )}
 
@@ -232,13 +254,14 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
             <OptimizedImage
               src={feature.images[6] ?? "/placeholder.svg"}
               alt={`${feature.title} - University custom merchandise`}
-
-
               sizes="(max-width: 768px) 100vw, 1200px"
               aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
               loadingStrategy="progressive"
               fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
             />
+            {feature.captions && feature.captions[6] && (
+              <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[6]}</p>
+            )}
           </div>
         )}
       </div>
