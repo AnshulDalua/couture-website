@@ -60,12 +60,16 @@ export default function FeaturesPage() {
               fetchPriority={index < 2 ? "high" : "auto"}
               sizes="(max-width: 768px) 100vw, 50vw"
               aspectRatio="aspect-[4/3]"
-              containerClassName="w-full mb-4 overflow-hidden"
+              containerClassName="w-full overflow-hidden"
               className="transition-transform duration-700 group-hover:scale-105"
               loadingStrategy={index < 2 ? "eager" : "progressive"}
             />
-            <h2 className="text-xs uppercase font-medium">{feature.title}</h2>
-            <p className="text-xs mt-1">{feature.date}</p>
+            <div className="w-full">
+              <div className="mt-2 text-right">
+                <h2 className="text-[10px] uppercase font-medium italic text-gray-500">{feature.title}</h2>
+                <p className="text-[10px] mt-0.5 italic text-gray-500">{feature.date}</p>
+              </div>
+            </div>
           </Link>
         ))}
       </div>
