@@ -507,7 +507,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   <button
                     key={index}
                     onClick={() => scrollToImage(index)}
-                    className={`relative w-8 h-8 rounded-full ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
+                    className={`relative w-8 h-8 ${activeImageIndex === index ? "border border-black" : "border border-transparent"}`}
                     style={{ backgroundColor: "white" }}
                   >
                     <Image
