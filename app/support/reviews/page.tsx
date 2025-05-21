@@ -2,28 +2,33 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import Link from "next/link"
+
+// Google Reviews URL - Clean version for better UX
+const GOOGLE_REVIEWS_URL = "https://g.co/kgs/sooWQSv"; // URL to view Google reviews
+// const GOOGLE_WRITE_REVIEW_URL = "https://www.google.com/maps/place/Couture+by+Ikigai/@42.2782,-83.7382,17z/data=!4m7!3m6!1s0x883ca400a0706465:0x13537375b316773!8m2!3d42.2782!4d-83.7382!9m1!1b1"; // URL to Google Maps with reviews tab open
 
 // Updated review data from actual customer reviews
 const reviews = [
   {
     id: 1,
-    title: "They look really great!",
+    title: "They look really great, and the brothers loved them!",
     content: "Yes! They look really great! We have club photos this Sunday so I will try to get photos of some of the members wearing the merch!",
     name: "KTP",
     product: "Heavyweight Hoodie",
     date: "March 2023",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/20240420_021722_74544B.png",
+    school: "U of Michigan",
+    image: "/reviews/1.webp",
   },
   {
     id: 2,
-    title: "The brothers love the merch!",
-    content: "The brothers love the merch! Thank you again and I'll send some pics later this week.",
+    title: "This was the best merch  we have ever made",
+    content: "Very impressed with the quality of the hoodies and sweatpants. Merch arrived ahead of schedule too. You guys also crushed it.",
     name: "Eigenlayer",
     product: "Heavyweight Hoodie",
     date: "February 2023",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/IMG_2456.png",
+    school: "Startup",
+    image: "/reviews/2.webp",
   },
   {
     id: 3,
@@ -32,8 +37,8 @@ const reviews = [
     name: "Atlas Digital Consulting Group",
     product: "Heavyweight Hoodie",
     date: "January 2023",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/IMG_3233.png",
+    school: "U of Michigan",
+    image: "/reviews/3.webp",
   },
   {
     id: 4,
@@ -42,8 +47,8 @@ const reviews = [
     name: "Net Impact",
     product: "Heavyweight Hoodie",
     date: "December 2022",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/145_2174.png",
+    school: "U of Michigan",
+    image: "/reviews/4.webp",
   },
   {
     id: 5,
@@ -52,8 +57,8 @@ const reviews = [
     name: "V1",
     product: "Heavyweight Crewnecks and Standard T-Shirt",
     date: "November 2022",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/IMG_1312.png",
+    school: "U of Michigan",
+    image: "/reviews/5.webp",
   },
   {
     id: 6,
@@ -62,18 +67,18 @@ const reviews = [
     name: "PSE",
     product: "Heavyweight Hoodie",
     date: "August 2022",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/PSE_merch.jpeg",
+    school: "U of Michigan",
+    image: "/reviews/6.webp",
   },
   {
     id: 7,
-    title: "Great work and collaboration",
-    content: "You both rock thanks again for the hard work. We really enjoy working with you guys and cannot wait to see the product.",
-    name: "TEK",
-    product: "Straightcut Sweatpants and Heavyweight Hoodie",
-    date: "September 2022",
-    verified: true,
-    image: null,
+    title: "Awesome Hoodies",
+    content: "These are easily the best merch I own, and the service from couture was fantastic",
+    name: "Zeta Pi",
+    product: "Standard T-Shirt, Straightcut Sweatpants, and Heavyweight Hoodie",
+    date: "June 2022",
+    school: "U of Michigan",
+    image: "/reviews/7.webp",
   },
   {
     id: 8,
@@ -82,8 +87,8 @@ const reviews = [
     name: "Atlas Consulting Group",
     product: "Heavyweight Hoodie",
     date: "October 2022",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/20240420_021727_781A14.png",
+    school: "U of Michigan",
+    image: "/reviews/8.webp",
   },
   {
     id: 9,
@@ -92,8 +97,8 @@ const reviews = [
     name: "Flux",
     product: "Heavyweight Hoodie",
     date: "July 2022",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/IMG_2618.png",
+    school: "U of Michigan",
+    image: "/reviews/9.webp",
   },
   {
     id: 10,
@@ -102,8 +107,8 @@ const reviews = [
     name: "Zeta Pi",
     product: "Standard T-Shirt, Straightcut Sweatpants, and Heavyweight Hoodie",
     date: "June 2022",
-    verified: true,
-    image: "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/clubs/IMG_6431.png",
+    school: "U of Michigan",
+    image: "/reviews/10.webp",
   },
   {
     id: 11,
@@ -112,7 +117,7 @@ const reviews = [
     name: "Hackerpulse",
     product: "Standard T-Shirt, Straightcut Sweatpants, and Heavyweight Hoodie",
     date: "June 2022",
-    verified: true,
+    school: "U of Michigan",
     image: null,
   },
   {
@@ -122,7 +127,7 @@ const reviews = [
     name: "East Longmeadow",
     product: "Heavyweight Crewneck",
     date: "May 2022",
-    verified: true,
+    school: "U of Michigan",
     image: null,
   },
 ];
@@ -161,6 +166,36 @@ export default function ReviewsPage() {
     <div className="px-6 py-8 max-w-3xl mx-auto">
       <h1 className="text-sm uppercase mb-10">CUSTOMER REVIEWS</h1>
 
+      {/* Google Reviews Integration */}
+      <div className="mb-16 border border-[#ececec] p-6 hover:border-black transition-colors duration-200">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <h2 className="text-sm uppercase font-medium mb-2">GOOGLE REVIEWS</h2>
+            <p className="text-xs text-gray-600 mb-4 md:mb-0 max-w-lg">
+              See what customers are saying about our high quality custom merchandise on Google. Your feedback helps us improve our products and services.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a 
+              href={GOOGLE_REVIEWS_URL} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs uppercase px-4 py-2 border border-black bg-black text-white hover:bg-white hover:text-black transition-colors duration-200 text-center"
+            >
+              Leave a  Review
+            </a>
+            {/* <a 
+              href={GOOGLE_WRITE_REVIEW_URL} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs uppercase px-4 py-2 border border-black hover:bg-black hover:text-white transition-colors duration-200 text-center"
+            >
+              Leave a Review
+            </a> */}
+          </div>
+        </div>
+      </div>
+
       <div className="space-y-12">
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -193,8 +228,8 @@ export default function ReviewsPage() {
                 <div className="flex justify-between items-center text-xs text-gray-600 pt-3 border-t border-[#ececec]">
                   <div className="flex items-center">
                     <span>{review.name}</span>
-                    {review.verified && (
-                      <span className="ml-2 text-[10px] bg-[#f9f9f9] px-1 py-0.5">VERIFIED</span>
+                    {review.school && (
+                      <span className="ml-2 text-[10px] bg-[#f9f9f9] px-1 py-0.5">{review.school}</span>
                     )}
                   </div>
                 </div>

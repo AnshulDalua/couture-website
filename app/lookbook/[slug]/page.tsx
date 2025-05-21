@@ -25,7 +25,7 @@ const featuresData = {
       "ZHARIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN BABY BLUE",
       "ARY IN OUR HEAVYWEIGHT CREWNECK AND STRAIGHTCUT SWEATPANTS IN BLACK",
       "VICTORIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN RED",
-      "JANSSEN IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN GREY",
+      "JANSEN IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN GREY",
       "VICTORIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN RED",
       "ZHARIA IN OUR HEAVYWEIGHT HOODIE AND STRAIGHTCUT SWEATPANTS IN BABY BLUE"
     ]
@@ -115,8 +115,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default function FeatureDetailPage({ params }: { params: { slug: string } }) {
   const feature = featuresData[params.slug as keyof typeof featuresData]
 
-  // All lookbook pages should have the same width
-  // But we need to handle the 2025-lookbook differently for image display
+  // Determine if this is a full-image (contain) page
+  const showFullImage = params.slug === '2025-lookbook'
+  const forceAspectCover = params.slug === '2025-clients'
 
   if (!feature) {
     notFound()
@@ -138,39 +139,21 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
       </div>
 
       {/* Images and Content */}
-      <div className="space-y-12 mx-auto max-w-7xl md:max-w-[90vw]">
+      <div className={`space-y-12 mx-auto ${showFullImage || forceAspectCover ? 'max-w-7xl md:max-w-[90vw]' : 'max-w-5xl'}`}>
         {/* Hero Image */}
         <div className="w-full">
-          {params.slug === '2025-lookbook' ? (
-            <div className="w-full">
-              <div className="relative w-full" style={{ maxWidth: '100%' }}>
-                <Image
-                  src={feature.images[0] ?? "/placeholder.svg"}
-                  alt={`${feature.title} - High quality custom merchandise`}
-                  priority
-                  width={1200}
-                  height={900}
-                  style={{ width: '100%', height: 'auto' }}
-                  className="w-full"
-                />
-              </div>
-            </div>
-          ) : (
-            <OptimizedImage
-              src={feature.images[0] ?? "/placeholder.svg"}
-              alt={`${feature.title} - High quality custom merchandise`}
-              priority
-              fetchPriority="high"
-              sizes="(max-width: 768px) 100vw, 1200px"
-              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
-              loadingStrategy="eager"
-              fitMode="cover"
-            />
-          )}
+          <OptimizedImage
+            src={feature.images[0] ?? "/placeholder.svg"}
+            alt={`${feature.title} - High quality custom merchandise`}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
+            loadingStrategy="eager"
+            fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
+          />
           {feature.captions && feature.captions[0] && (
-            <div className="w-full">
-              <p className="mt-2 text-[10px] italic text-gray-500 text-right uppercase tracking-wide pr-0">{feature.captions[0]}</p>
-            </div>
+            <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[0]}</p>
           )}
         </div>
 
@@ -179,36 +162,18 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Second image */}
         <div className="w-full">
-          {params.slug === '2025-lookbook' ? (
-            <div className="w-full">
-              <div className="relative w-full" style={{ maxWidth: '100%' }}>
-                <Image
-                  src={feature.images[1] ?? "/placeholder.svg"}
-                  alt={`${feature.title} - Premium custom hoodies and apparel`}
-                  priority
-                  width={1200}
-                  height={900}
-                  style={{ width: '100%', height: 'auto' }}
-                  className="w-full"
-                />
-              </div>
-            </div>
-          ) : (
-            <OptimizedImage
-              src={feature.images[1] ?? "/placeholder.svg"}
-              alt={`${feature.title} - Premium custom hoodies and apparel`}
-              priority
-              fetchPriority="high"
-              sizes="(max-width: 768px) 100vw, 1200px"
-              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
-              loadingStrategy="eager"
-              fitMode="cover"
-            />
-          )}
+          <OptimizedImage
+            src={feature.images[1] ?? "/placeholder.svg"}
+            alt={`${feature.title} - Premium custom hoodies and apparel`}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
+            loadingStrategy="eager"
+            fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
+          />
           {feature.captions && feature.captions[1] && (
-            <div className="w-full">
-              <p className="mt-2 text-[10px] italic text-gray-500 text-right uppercase tracking-wide pr-0">{feature.captions[1]}</p>
-            </div>
+            <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[1]}</p>
           )}
         </div>
 
@@ -217,33 +182,16 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
 
         {/* Third image */}
         <div className="w-full">
-          {params.slug === '2025-lookbook' ? (
-            <div className="w-full">
-              <div className="relative w-full" style={{ maxWidth: '100%' }}>
-                <Image
-                  src={feature.images[2] ?? "/placeholder.svg"}
-                  alt={`${feature.title} - Best custom merchandise designs`}
-                  width={1200}
-                  height={900}
-                  style={{ width: '100%', height: 'auto' }}
-                  className="w-full"
-                />
-              </div>
-            </div>
-          ) : (
-            <OptimizedImage
-              src={feature.images[2] ?? "/placeholder.svg"}
-              alt={`${feature.title} - Best custom merchandise designs`}
-              sizes="(max-width: 768px) 100vw, 1200px"
-              aspectRatio="aspect-[4/3] md:aspect-[3/2]"
-              loadingStrategy="progressive"
-              fitMode="cover"
-            />
-          )}
+          <OptimizedImage
+            src={feature.images[2] ?? "/placeholder.svg"}
+            alt={`${feature.title} - Best custom merchandise designs`}
+            sizes="(max-width: 768px) 100vw, 1200px"
+            aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
+            loadingStrategy="progressive"
+            fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
+          />
           {feature.captions && feature.captions[2] && (
-            <div className="w-full">
-              <p className="mt-2 text-[10px] italic text-gray-500 text-right uppercase tracking-wide pr-0">{feature.captions[2]}</p>
-            </div>
+            <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[2]}</p>
           )}
         </div>
 
@@ -253,33 +201,16 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {/* Fourth image (if available) */}
         {feature.images[3] && (
           <div className="w-full">
-            {params.slug === '2025-lookbook' ? (
-              <div className="w-full">
-                <div className="relative w-full" style={{ maxWidth: '100%' }}>
-                  <Image
-                    src={feature.images[3] ?? "/placeholder.svg"}
-                    alt={`${feature.title} - Custom organization apparel`}
-                    width={1200}
-                    height={900}
-                    style={{ width: '100%', height: 'auto' }}
-                    className="w-full"
-                  />
-                </div>
-              </div>
-            ) : (
-              <OptimizedImage
-                src={feature.images[3] ?? "/placeholder.svg"}
-                alt={`${feature.title} - Custom organization apparel`}
-                sizes="(max-width: 768px) 100vw, 1200px"
-                aspectRatio="aspect-[4/3] md:aspect-[3/2]"
-                loadingStrategy="progressive"
-                fitMode="cover"
-              />
-            )}
+            <OptimizedImage
+              src={feature.images[3] ?? "/placeholder.svg"}
+              alt={`${feature.title} - Custom organization apparel`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
+              loadingStrategy="progressive"
+              fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
+            />
             {feature.captions && feature.captions[3] && (
-              <div className="w-full">
-                <p className="mt-2 text-[10px] italic text-gray-500 text-right uppercase tracking-wide pr-0">{feature.captions[3]}</p>
-              </div>
+              <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[3]}</p>
             )}
           </div>
         )}
@@ -287,33 +218,16 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {/* Fifth image (if available) */}
         {feature.images[4] && (
           <div className="w-full">
-            {params.slug === '2025-lookbook' ? (
-              <div className="w-full">
-                <div className="relative w-full" style={{ maxWidth: '100%' }}>
-                  <Image
-                    src={feature.images[4] ?? "/placeholder.svg"}
-                    alt={`${feature.title} - University custom merchandise`}
-                    width={1200}
-                    height={900}
-                    style={{ width: '100%', height: 'auto' }}
-                    className="w-full"
-                  />
-                </div>
-              </div>
-            ) : (
-              <OptimizedImage
-                src={feature.images[4] ?? "/placeholder.svg"}
-                alt={`${feature.title} - University custom merchandise`}
-                sizes="(max-width: 768px) 100vw, 1200px"
-                aspectRatio="aspect-[4/3] md:aspect-[3/2]"
-                loadingStrategy="progressive"
-                fitMode="cover"
-              />
-            )}
+            <OptimizedImage
+              src={feature.images[4] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
+              loadingStrategy="progressive"
+              fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
+            />
             {feature.captions && feature.captions[4] && (
-              <div className="w-full">
-                <p className="mt-2 text-[10px] italic text-gray-500 text-right uppercase tracking-wide pr-0">{feature.captions[4]}</p>
-              </div>
+              <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[4]}</p>
             )}
           </div>
         )}
@@ -321,66 +235,32 @@ export default function FeatureDetailPage({ params }: { params: { slug: string }
         {/* Sixth image (if available) */}
         {feature.images[5] && (
           <div className="w-full">
-            {params.slug === '2025-lookbook' ? (
-              <div className="w-full">
-                <div className="relative w-full" style={{ maxWidth: '100%' }}>
-                  <Image
-                    src={feature.images[5] ?? "/placeholder.svg"}
-                    alt={`${feature.title} - University custom merchandise`}
-                    width={1200}
-                    height={900}
-                    style={{ width: '100%', height: 'auto' }}
-                    className="w-full"
-                  />
-                </div>
-              </div>
-            ) : (
-              <OptimizedImage
-                src={feature.images[5] ?? "/placeholder.svg"}
-                alt={`${feature.title} - University custom merchandise`}
-                sizes="(max-width: 768px) 100vw, 1200px"
-                aspectRatio="aspect-[4/3] md:aspect-[3/2]"
-                loadingStrategy="progressive"
-                fitMode="cover"
-              />
-            )}
+            <OptimizedImage
+              src={feature.images[5] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
+              loadingStrategy="progressive"
+              fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
+            />
             {feature.captions && feature.captions[5] && (
-              <div className="w-full">
-                <p className="mt-2 text-[10px] italic text-gray-500 text-right uppercase tracking-wide pr-0">{feature.captions[5]}</p>
-              </div>
+              <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[5]}</p>
             )}
           </div>
         )}
 
         {feature.images[6] && (
           <div className="w-full">
-            {params.slug === '2025-lookbook' ? (
-              <div className="w-full">
-                <div className="relative w-full" style={{ maxWidth: '100%' }}>
-                  <Image
-                    src={feature.images[6] ?? "/placeholder.svg"}
-                    alt={`${feature.title} - University custom merchandise`}
-                    width={1200}
-                    height={900}
-                    style={{ width: '100%', height: 'auto' }}
-                    className="w-full"
-                  />
-                </div>
-              </div>
-            ) : (
-              <OptimizedImage
-                src={feature.images[6] ?? "/placeholder.svg"}
-                alt={`${feature.title} - University custom merchandise`}
-                sizes="(max-width: 768px) 100vw, 1200px"
-                aspectRatio="aspect-[4/3] md:aspect-[3/2]"
-                loadingStrategy="progressive"
-                fitMode="cover"
-              />
-            )}
+            <OptimizedImage
+              src={feature.images[6] ?? "/placeholder.svg"}
+              alt={`${feature.title} - University custom merchandise`}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              aspectRatio={showFullImage ? undefined : "aspect-[4/3] md:aspect-[3/2]"}
+              loadingStrategy="progressive"
+              fitMode={forceAspectCover ? 'cover' : (showFullImage ? 'contain' : 'cover')}
+            />
             {feature.captions && feature.captions[6] && (
-              <div className="w-full">
-                <p className="mt-2 text-[10px] italic text-gray-500 text-right uppercase tracking-wide pr-0">{feature.captions[6]}</p>
-              </div>
+              <p className="text-xs mt-3 text-center uppercase tracking-wide">{feature.captions[6]}</p>
             )}
           </div>
         )}
