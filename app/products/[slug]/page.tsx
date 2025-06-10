@@ -343,6 +343,8 @@ const products = {
       "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
+      "/shop/la_tee2.webp",
+      "/shop/la_tee1.webp",
       "/shop/2.webp",
       "/shop/1.webp",
     ],
