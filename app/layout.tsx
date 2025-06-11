@@ -53,7 +53,7 @@ export default function RootLayout({
           />
         </noscript>
         
-        <Script
+        {/* <Script
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VicFLw"
           strategy="afterInteractive"
         />
@@ -70,7 +70,28 @@ export default function RootLayout({
              }
            });
          `}
-       </Script>
+       </Script> */}
+            <Script
+        id="klaviyo-sdk"
+        src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VicFLw"
+        strategy="afterInteractive"
+        onLoad={() => {
+        // now that Klaviyo is definitely ready, attach our form-submit callback
+        (window as any)._klOnFormSubmit = (window as any)._klOnFormSubmit || [];
+        (window as any)._klOnFormSubmit.push(function (form: any, data: any) {
+          console.log('[Klaviyo] form submitted:', form.id, data);
+
+          if (typeof (window as any).fbq === 'function') {
+            (window as any).fbq('track', 'Lead', {
+              content_name: 'KlaviyoForm_' + form.id,
+            });
+            console.log('[Meta Pixel] fired Lead for KlaviyoForm_' + form.id);
+          }
+        });
+
+        console.log('[Setup] Klaviyo form-submit callback registered');
+        }}
+        />
       </body>
     </html>
   )
