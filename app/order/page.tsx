@@ -112,6 +112,13 @@ export default function OrderPage() {
       const result = await submitOrderFormAction(submissionData)
       
       if (result.success) {
+        // Track a lead in Meta
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead', {
+            content_name: 'InterestFormSubmission',
+            content_category: 'OrderInterest',
+          })
+        }
         setSubmitMessage({
           type: "success",
           text: "Your order has been submitted successfully! We'll contact you shortly."

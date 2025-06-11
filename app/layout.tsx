@@ -28,7 +28,7 @@ export default function RootLayout({
         <Header />
         <main className="pt-[65px] pb-[60px]">{children}</main>
         <Footer />
-        
+
         <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -43,11 +43,34 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
+
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1388049735679585&ev=PageView&noscript=1"
+          />
+        </noscript>
         
         <Script
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VicFLw"
           strategy="afterInteractive"
         />
+
+        <Script id="klaviyo-callback" strategy="afterInteractive">
+          {`
+            window._klOnFormSubmit = window._klOnFormSubmit || [];
+            window._klOnFormSubmit.push(function(form, data) {
+             console.log('Klaviyo form submitted:', form.id, data);
+             if (typeof window.fbq === 'function') {
+               window.fbq('track', 'Lead', {
+                 content_name: 'KlaviyoForm_' + form.id,
+               });
+             }
+           });
+         `}
+       </Script>
       </body>
     </html>
   )
