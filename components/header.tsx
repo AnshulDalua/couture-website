@@ -39,7 +39,7 @@ export default function Header() {
         {/* Desktop Navigation - modified to direct SHOP to /collections/all */}
         <nav className="hidden md:flex stussy-nav">
           <Link href="/products" className={`stussy-nav-item ${isActive('/products') ? 'font-bold' : ''}`}>
-            SHOP
+            OUR BLANKS
           </Link>
 
           <Link href="/lookbook" className={`stussy-nav-item ${isActive('/lookbook') ? 'font-bold' : ''}`}>
@@ -47,7 +47,7 @@ export default function Header() {
           </Link>
 
           <Link href="/our-process" className={`stussy-nav-item ${isActive('/our-process') ? 'font-bold' : ''}`}>
-            OUR PROCESS
+            PROCESS
           </Link>
 
           <div className="stussy-nav-item">
@@ -67,7 +67,7 @@ export default function Header() {
         {/* Right Side Navigation */}
         <div className="flex items-center stussy-nav">
           <Link href="/order" className={`mx-3 ${isActive('/order') ? 'font-bold' : ''}`}>
-            ORDER
+            REQUEST ORDER
           </Link>
 
           {/* Mobile Menu Button */}

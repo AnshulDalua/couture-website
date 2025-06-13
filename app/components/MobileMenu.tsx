@@ -67,7 +67,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className={`text-medium ${isActive('/products') ? 'font' : ''}`}>SHOP</span>
+              <span className={`text-medium ${isActive('/products') ? 'font' : ''}`}>OUR BLANKS</span>
             </Link>
             
             {/* Lookbook - entire div clickable */}
@@ -85,7 +85,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className={`text-medium ${isActive('/our-process') ? 'font-bold' : ''}`}>OUR PROCESS</span>
+              <span className={`text-medium ${isActive('/our-process') ? 'font-bold' : ''}`}>PROCESS</span>
             </Link>
             
             {/* More Section - kept expandable */}

@@ -587,7 +587,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           <p className="text-sm mt-1 mb-8">{product.price}</p>
 
           <div className="mt-6 mb-8">
-            <h3 className="text-xs uppercase mb-3">COLOR</h3>
+            <h3 className="text-xs uppercase mb-3">COLORS AVAILABLE</h3>
             <div className="flex flex-wrap gap-4">
               {product.colors.map((colorCode) => {
                 const colorInfo = colorOptions[colorCode as keyof typeof colorOptions];
@@ -618,20 +618,20 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           </div>
 
           <div className="mt-4 mb-8">
-            <h3 className="text-xs uppercase mb-3">SIZE</h3>
-            <div className="flex items-center mb-2">
+            <h3 className="text-xs uppercase mb-3">SIZES AVAILABLE: S-2XL</h3>
+            {/* <div className="flex items-center mb-2">
               <div className="flex flex-wrap gap-2 flex-1">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
-                    onClick={() => setSelectedSize(size)}
+                    // onClick={() => setSelectedSize(size)}
                     className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black" : "border-gray-200"}`}
                   >
                     {size}
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Product details displayed directly under size */}
@@ -644,6 +644,14 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Gallery link section */}
+          <div className="mt-4 mb-4 text-xs flex items-center gap-2">
+            <span>See how others customized these blanks.</span>
+            <Link href="/gallery" className="text-black font-semibold hover:underline">
+              View Gallery →
+            </Link>
           </div>
 
           {/* Collapsible sections - Stussy style */}
@@ -754,7 +762,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           {/* Order Now button - moved below the collapsible sections */}
           <div className="mt-8">
             <button className="stussy-button w-full py-3" onClick={handleOrderNow}>
-              ORDER NOW
+              REQUEST ORDER
             </button>
           </div>
         </div>

@@ -76,7 +76,7 @@ export default function OrderPage() {
     e.preventDefault()
     e.stopPropagation()
     setIsDragging(false)
-    
+
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       // Convert FileList to array and add to existing files
       const newFiles = Array.from(e.dataTransfer.files)
@@ -92,7 +92,7 @@ export default function OrderPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     try {
       // Create submission data including the files
       const submissionData = new FormData();
@@ -102,15 +102,15 @@ export default function OrderPage() {
       submissionData.append('organization', formData.organization);
       submissionData.append('university', formData.university);
       submissionData.append('projectDetails', formData.projectDetails);
-      
+
       // Append all files with the same field name
       files.forEach(file => {
         submissionData.append('files', file);
       });
-      
+
       // Submit the form data using the server action
       const result = await submitOrderFormAction(submissionData)
-      
+
       if (result.success) {
         // Track a lead in Meta
         if (typeof window !== 'undefined' && (window as any).fbq) {
@@ -123,7 +123,7 @@ export default function OrderPage() {
           type: "success",
           text: "Your order has been submitted successfully! We'll contact you shortly."
         })
-        
+
         // Reset form
         setFormData({
           name: "",
@@ -134,7 +134,7 @@ export default function OrderPage() {
           projectDetails: "",
         })
         setFiles([])
-        
+
         // Clear the product from localStorage and cookies
         localStorage.removeItem('orderProduct')
         Cookies.remove('orderProduct')
@@ -158,15 +158,18 @@ export default function OrderPage() {
 
   return (
     <div className="px-6 py-8 max-w-3xl mx-auto">
-      <h1 className="text-sm uppercase mb-8">PLACE ORDER</h1>
+      <h1 className="text-sm uppercase tracking-wide text-black mb-2">REQUEST ORDER</h1>
 
+      <p className="text-xs text-gray-600 leading-relaxed mb-6">
+        Tell us about your project so we can start creating your custom merch.
+      </p>
       <div className="space-y-8">
         {submitMessage ? (
           <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
             <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
               {submitMessage.text}
             </p>
-            <button 
+            <button
               className="mt-6 underline"
               onClick={() => setSubmitMessage(null)}
             >
@@ -256,27 +259,27 @@ export default function OrderPage() {
                 rows={3}
                 className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                 disabled={isSubmitting}
-                placeholder="PROJECT DETAILS * (ex: we are a sorority and need merch for our upcoming rush)"
+                placeholder="Tell us what you need (e.g. 50 hoodies for a consulting club, rush merch for a sorority, startup launch gear)."
                 style={{ resize: 'vertical' }}
               ></textarea>
-              <div 
+              <div
                 className="absolute bottom-2 right-0 w-4 h-4 cursor-se-resize flex items-end justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 onMouseDown={(e) => {
                   e.preventDefault();
                   const textarea = e.currentTarget.previousElementSibling as HTMLTextAreaElement;
                   const startY = e.clientY;
                   const startHeight = textarea.clientHeight;
-                  
+
                   const handleMouseMove = (moveEvent: MouseEvent) => {
                     const deltaY = moveEvent.clientY - startY;
                     textarea.style.height = `${startHeight + deltaY}px`;
                   };
-                  
+
                   const handleMouseUp = () => {
                     document.removeEventListener('mousemove', handleMouseMove);
                     document.removeEventListener('mouseup', handleMouseUp);
                   };
-                  
+
                   document.addEventListener('mousemove', handleMouseMove);
                   document.addEventListener('mouseup', handleMouseUp);
                 }}
@@ -288,7 +291,7 @@ export default function OrderPage() {
             </div>
 
             <div className="pt-2 group">
-              <p className="uppercase text-xs mb-3 tracking-wider">UPLOAD DESIGN FILES</p>
+              <p className="uppercase text-xs mb-3 tracking-wider">UPLOAD DESIGN FILES OR LOGOS (OPTIONAL) </p>
               <input
                 type="file"
                 id="designFile"
@@ -301,9 +304,8 @@ export default function OrderPage() {
                 multiple
               />
               <div
-                className={`border border-black p-6 text-center cursor-pointer transition-all duration-300 ${
-                  isDragging ? 'bg-gray-50 border-2' : ''
-                } ${files.length > 0 ? 'bg-gray-50' : ''} group-hover:border-2`}
+                className={`border border-black p-6 text-center cursor-pointer transition-all duration-300 ${isDragging ? 'bg-gray-50 border-2' : ''
+                  } ${files.length > 0 ? 'bg-gray-50' : ''} group-hover:border-2`}
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
                 onDragOver={handleDragOver}
@@ -333,7 +335,7 @@ export default function OrderPage() {
                   </div>
                 )}
               </div>
-              
+
               {/* Display selected files */}
               {files.length > 0 && (
                 <div className="mt-4 space-y-2">
@@ -341,8 +343,8 @@ export default function OrderPage() {
                     {files.map((file, index) => (
                       <li key={index} className="flex items-center justify-between text-sm border-b border-gray-200 py-2">
                         <span className="truncate max-w-xs">{file.name}</span>
-                        <button 
-                          type="button" 
+                        <button
+                          type="button"
                           onClick={(e) => {
                             e.preventDefault();
                             removeFile(index);
@@ -359,8 +361,8 @@ export default function OrderPage() {
             </div>
 
             <div className="pt-6">
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="w-full bg-black text-white py-4 uppercase text-sm tracking-widest hover:bg-gray-900 transition-colors duration-300"
                 disabled={isSubmitting}
               >
