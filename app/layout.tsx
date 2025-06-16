@@ -53,12 +53,12 @@ export default function RootLayout({
           />
         </noscript>
         
-        {/* <Script
+        <Script
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VicFLw"
           strategy="afterInteractive"
         />
 
-        <Script id="klaviyo-callback" strategy="afterInteractive">
+        {/* <Script id="klaviyo-callback" strategy="afterInteractive">
           {`
             window._klOnFormSubmit = window._klOnFormSubmit || [];
             window._klOnFormSubmit.push(function(form, data) {
