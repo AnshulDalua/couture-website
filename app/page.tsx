@@ -13,9 +13,9 @@ import Head from 'next/head'
 // Array of images to rotate through
 const images = [
   "/homepage/v1.webp",
-  "/homepage/z1.webp",
-  "/homepage/ary1.webp",
-  "/homepage/janssen1.webp"
+  "/homepage/aryani.webp",
+  "/lookbook/Couture-AXO-26.webp",
+  "/homepage/clubhouse.webp"
 ]
 
 export default function HomePage() {
