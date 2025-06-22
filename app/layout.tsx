@@ -29,6 +29,17 @@ export default function RootLayout({
         <main className="pt-[65px] pb-[60px]">{children}</main>
         <Footer />
 
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-9WVFLS4CL0" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-9WVFLS4CL0');
+          `}
+        </Script>
+
         <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
