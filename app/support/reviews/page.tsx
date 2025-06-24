@@ -163,7 +163,7 @@ export default function ReviewsPage() {
   };
 
   return (
-    <div className="px-6 py-8 max-w-3xl mx-auto">
+    <div className="px-6 py-8 max-w-5xl mx-auto">
       <h1 className="text-sm uppercase mb-10">CUSTOMER REVIEWS</h1>
 
       {/* Google Reviews Integration */}
@@ -198,23 +198,23 @@ export default function ReviewsPage() {
 
       <div className="space-y-12">
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
           {currentReviews.map((review) => (
             <div key={review.id} className="group border border-[#ececec] hover:border-black transition-colors duration-200">
               {/* Review Header */}
-              <div className="p-6 pb-3 border-b border-[#ececec]">
-                <h3 className="text-sm font-medium mb-2">{review.title}</h3>
-                <p className="text-xs text-gray-600">for {review.product}</p>
+              <div className="p-8 pb-4 border-b border-[#ececec]">
+                <h3 className="text-base font-medium mb-3">{review.title}</h3>
+                <p className="text-sm text-gray-600">{review.product}</p>
               </div>
               
               {/* Review Image */}
               {review.image && (
-                <div className="relative h-52 w-full overflow-hidden">
+                <div className="relative h-[300px] w-full overflow-hidden">
                   <Image 
                     src={review.image} 
                     alt={`Review by ${review.name}`}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="100vw"
                     style={{ objectFit: "cover" }}
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
@@ -222,10 +222,10 @@ export default function ReviewsPage() {
               )}
               
               {/* Review Content */}
-              <div className="p-6">
-                <p className="text-xs leading-relaxed mb-6">{review.content}</p>
+              <div className="p-8">
+                <p className="text-sm leading-relaxed mb-8">{review.content}</p>
                 
-                <div className="flex justify-between items-center text-xs text-gray-600 pt-3 border-t border-[#ececec]">
+                <div className="flex justify-between items-center text-sm text-gray-600 pt-4 border-t border-[#ececec]">
                   <div className="flex items-center">
                     <span>{review.name}</span>
                     {review.school && (
