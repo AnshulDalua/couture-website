@@ -175,6 +175,36 @@ const blogPosts = [
     changeFrequency: 'monthly' as ChangeFrequency,
     priority: 0.7,
   },
+  {
+    url: '/blog/best-merch-in-berkeley',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/blog/from-concert-tees-to-streetwear-how-merch-became-fashion',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/blog/modern-merch-tech-pod-shopify-social-media',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/blog/what-makes-custom-merch-high-quality-2025',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/blog/why-we-wear-merch-psychology-behind-custom-apparel',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
 ]
 
 // Export the sitemap function
