@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: 'Explore the cutting-edge trends shaping university merchandise in 2025.',
     images: [
       {
-        url: '/lookbook/Couture-AXO-22.webp',
+        url: '/lookbook/346048sinh002946-R1-077-37.webp',
         width: 1200,
         height: 630,
         alt: 'University merchandise trends',
@@ -40,7 +40,7 @@ export default function BlogPost() {
           </div>
           <div className="relative h-[50vh] md:h-[60vh] mb-8">
             <Image
-              src="/lookbook/Couture-AXO-22.webp"
+              src="/lookbook/346048sinh002946-R1-077-37.webp"
               alt="University merchandise trends"
               fill
               className="object-cover"

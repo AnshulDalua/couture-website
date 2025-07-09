@@ -24,65 +24,80 @@ const blogPosts = [
     title: 'TOP UNIVERSITY MERCHANDISE TRENDS FOR 2025',
     date: 'APRIL 10, 2025',
     excerpt: 'Explore the cutting-edge trends shaping university merchandise in 2025, from sustainable materials to innovative customization techniques.',
-    image: '/lookbook/Couture-AXO-22.webp',
+    image: '/lookbook/346048sinh002946-R1-077-37.webp',
     readTime: '4 MIN READ',
     featured: true,
   },
-]
+  {
+    slug: 'best-merch-in-berkeley',
+    title: 'Custom Merch for UC Berkeley Done Right',
+    date: 'JUNE 14, 2025',
+    excerpt: 'Discover how Couture helps UC Berkeley clubs, frats, and cultural orgs create custom, high-quality merch in bulk.',
+    image: '/lookbook/339344sin002250-R1-035-16.webp',
+    readTime: '4 MIN READ',
+    featured: false,
+  },
+  {
+    slug: 'from-concert-tees-to-streetwear-how-merch-became-fashion',
+    title: 'How Merch Became Fashion: From Concert Tees to Streetwear Drops',
+    date: 'JULY 4, 2025',
+    excerpt: 'Explore the cultural shift that turned fan merch into fashion statements—from vintage concert tees to creator-led streetwear drops.',
+    image: '/homepage/aryani.webp',
+    readTime: '5 MIN READ',
+    featured: false,
+  },
+  {
+    slug: 'modern-merch-tech-pod-shopify-social-media',
+    title: 'The Tech Behind Modern Merch: Shopify, Print on Demand, Social Media',
+    date: 'JULY 4, 2025',
+    excerpt: 'Explore the essential tools, platforms, and production workflows creators use to build merch lines that feel like real fashion brands—from POD to DTC e-commerce.',
+    image: '/lookbook/IMG_1312.webp',
+    readTime: '5 MIN READ',
+    featured: false,
+  },
+  {
+    slug: 'what-makes-custom-merch-high-quality-2025',
+    title: 'What Makes Custom Merch High Quality in 2025',
+    date: 'JULY 7, 2025',
+    excerpt: 'A technical breakdown of what actually makes custom merch feel premium, from fabric GSM to Pantone matching and print method comparisons.',
+    image: '/lookbook/19000016.webp',
+    readTime: '5 MIN READ',
+    featured: false,
+  },
+  {
+    slug: 'why-we-wear-merch-psychology-behind-custom-apparel',
+    title: 'Why We Wear Merch: The Psychology Behind Custom Apparel',
+    date: 'JULY 1, 2025',
+    excerpt: 'Explore the psychology of merch—how identity, memory, social proof, and exclusivity influence why people wear custom apparel.',
+    image: '/lookbook/clubhous.webp',
+    readTime: '8 MIN READ',
+    featured: false,
+  },
+];
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen px-6 py-8">
-      <h1 className="text-sm uppercase mb-8">JOURNAL</h1>
+    <div className="min-h-screen px-4 sm:px-6 lg:px-8 py-8">
+      <h1 className="text-sm uppercase mb-8 tracking-wider text-center">Journal</h1>
 
-      {/* Featured Posts */}
-      <div className="mb-16">
-        <h2 className="text-xs uppercase mb-6">FEATURED</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-          {blogPosts.filter(post => post.featured).map((post) => (
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
+          {blogPosts.map((post, index) => (
             <Link href={`/blog/${post.slug}`} key={post.slug} className="group block">
-              <div className="relative h-[50vh] md:h-[40vh] mb-4 overflow-hidden">
+              <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  priority={index < 4} // Prioritize loading for the first few images
                 />
               </div>
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xs uppercase font-medium">{post.title}</h3>
-                <span className="text-[10px] uppercase">{post.readTime}</span>
+              <div className="mt-4">
+                <h3 className="text-xs uppercase font-medium tracking-wide">{post.title}</h3>
+                <p className="text-xs text-gray-500 uppercase mt-1">{post.date}</p>
               </div>
-              <p className="text-xs mb-2">{post.date}</p>
-              <p className="text-xs text-gray-600">{post.excerpt}</p>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* All Posts */}
-      <div>
-        <h2 className="text-xs uppercase mb-6">ALL POSTS</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-12">
-          {blogPosts.map((post) => (
-            <Link href={`/blog/${post.slug}`} key={post.slug} className="group block">
-              <div className="relative h-[30vh] mb-4 overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xs uppercase font-medium">{post.title}</h3>
-                <span className="text-[10px] uppercase">{post.readTime}</span>
-              </div>
-              <p className="text-xs mb-2">{post.date}</p>
-              <p className="text-xs text-gray-600 line-clamp-2">{post.excerpt}</p>
             </Link>
           ))}
         </div>
