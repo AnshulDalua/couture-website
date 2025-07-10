@@ -4,16 +4,11 @@
 User-agent: *
 Allow: /
 
-# Disallow admin and API routes
+# Disallow admin, API, and other non-page routes
 Disallow: /api/
 Disallow: /admin/
 Disallow: /_next/
+Disallow: /og/
 
 # Sitemap location
 Sitemap: https://couturebyikigai.com/sitemap.xml
-
-# Crawl delay to prevent server overload
-Crawl-delay: 1
-
-# Host directive for canonical domain
-Host: couturebyikigai.com
