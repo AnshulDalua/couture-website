@@ -6,15 +6,35 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "COUTURE",
-  description: "Couture by Ikigai - High quality merchandise",
+  metadataBase: new URL('https://couturebyikigai.com'),
+  title: {
+    default: 'COUTURE BY IKIGAI - High Quality Custom Merch',
+    template: '%s | COUTURE BY IKIGAI',
+  },
+  description: "Couture by Ikigai - Premium, custom-designed merchandise including hoodies, t-shirts, and more. Not normal merch.",
+  keywords: ['high quality merch', 'best merch', 'custom hoodies', 'custom merch', 'university merch', 'premium custom apparel'],
   generator: 'v0.dev',
   icons: {
     icon: '/favicon.png',
   },
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
+    title: 'COUTURE BY IKIGAI - High Quality Custom Merch',
+    description: "Premium, custom-designed merchandise. Not normal merch.",
     images: '/website_preview.png',
-  }
+    url: 'https://couturebyikigai.com',
+    siteName: 'COUTURE BY IKIGAI',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'COUTURE BY IKIGAI - High Quality Custom Merch',
+    description: 'Premium, custom-designed merchandise. Not normal merch.',
+    images: ['/website_preview.png'],
+  },
 }
 
 export default function RootLayout({

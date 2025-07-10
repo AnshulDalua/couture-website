@@ -46,6 +46,11 @@ const nextConfig = {
       { source: '/support/reviews', destination: '/', permanent: true },
       { source: '/lookbook/2025-clients', destination: '/lookbook', permanent: true },
       { source: '/lookbook/2025-lookbook', destination: '/lookbook', permanent: true },
+
+      // Redirects for test/duplicate blog posts from GSC report
+      { source: '/blog/test', destination: '/blog', permanent: true },
+      { source: '/blog/custom-hoodie-5', destination: '/blog', permanent: true },
+      { source: '/blog/custom-hoodie-5-copy', destination: '/blog', permanent: true }
     ]
   },
   eslint: {
