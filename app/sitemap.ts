@@ -56,12 +56,6 @@ const mainPages = [
 // Define support pages
 const supportPages = [
   {
-    url: '/support/contact',
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as ChangeFrequency,
-    priority: 0.5,
-  },
-  {
     url: '/support/faq',
     lastModified: new Date(),
     changeFrequency: 'monthly' as ChangeFrequency,
@@ -78,30 +72,6 @@ const supportPages = [
     lastModified: new Date(),
     changeFrequency: 'yearly' as ChangeFrequency,
     priority: 0.3,
-  },
-  {
-    url: '/support/returns',
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as ChangeFrequency,
-    priority: 0.5,
-  },
-  {
-    url: '/support/reviews',
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as ChangeFrequency,
-    priority: 0.6,
-  },
-  {
-    url: '/support/shipping',
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as ChangeFrequency,
-    priority: 0.5,
-  },
-  {
-    url: '/support/shipping-returns',
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as ChangeFrequency,
-    priority: 0.5,
   },
   {
     url: '/support/terms',

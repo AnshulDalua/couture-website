@@ -37,6 +37,15 @@ const nextConfig = {
       { source: '/blog/5-tools', destination: '/blog', permanent: true },
       { source: '/blog/design-personal-style', destination: '/blog', permanent: true },
       { source: '/blog/custom-essentials', destination: '/blog', permanent: true },
+
+      // Redirects from Google Search Console report
+      { source: '/gallery', destination: '/lookbook', permanent: true },
+      { source: '/support/returns', destination: '/support/faq', permanent: true },
+      { source: '/support/shipping', destination: '/support/faq', permanent: true },
+      { source: '/support/contact', destination: '/order', permanent: true },
+      { source: '/support/reviews', destination: '/', permanent: true },
+      { source: '/lookbook/2025-clients', destination: '/lookbook', permanent: true },
+      { source: '/lookbook/2025-lookbook', destination: '/lookbook', permanent: true },
     ]
   },
   eslint: {
