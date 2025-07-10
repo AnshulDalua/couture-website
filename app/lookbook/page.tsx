@@ -4,7 +4,7 @@ import OptimizedImage from "@/app/components/OptimizedImage"
 
 // Combined lookbook data
 const lookbookData = {
-  title: "Looks",
+  title: "Lookbook",
   images: [
     "/homepage/clubhouse.webp",
     "/lookbook/19000034.webp",
