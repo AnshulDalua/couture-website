@@ -148,13 +148,7 @@ const productPages = [
 // Define lookbook pages
 const lookbookPages = [
   {
-    url: '/lookbook/2025-lookbook',
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as ChangeFrequency,
-    priority: 0.7,
-  },
-  {
-    url: '/lookbook/2025-clients',
+    url: '/lookbook',
     lastModified: new Date(),
     changeFrequency: 'monthly' as ChangeFrequency,
     priority: 0.7,
