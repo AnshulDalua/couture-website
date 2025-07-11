@@ -11,7 +11,6 @@ const nextConfig = {
     return [
       // General Pages
       { source: '/support/shipping-returns', destination: '/support/faq', permanent: true },
-      { source: '/reviews', destination: '/', permanent: true },
       { source: '/request-order', destination: '/order', permanent: true },
       { source: '/shop', destination: '/products', permanent: true },
       { source: '/faq', destination: '/support/faq', permanent: true },
@@ -43,7 +42,6 @@ const nextConfig = {
       { source: '/support/returns', destination: '/support/faq', permanent: true },
       { source: '/support/shipping', destination: '/support/faq', permanent: true },
       { source: '/support/contact', destination: '/order', permanent: true },
-      { source: '/support/reviews', destination: '/', permanent: true },
       { source: '/lookbook/2025-clients', destination: '/lookbook', permanent: true },
       { source: '/lookbook/2025-lookbook', destination: '/lookbook', permanent: true },
 
