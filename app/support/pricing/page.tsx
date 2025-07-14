@@ -5,45 +5,40 @@ const volumeDiscounts = [
   {
     product: "Heavyweight Hoodie",
     discounts: [
-      { quantity: "10-29 items", price: "$55 per hoodie" },
-      { quantity: "30-59 items", price: "$47-49 per hoodie" },
-      { quantity: "60-100 items", price: "$40-45 per hoodie" },
+      { quantity: "0-39 items", price: "$55 per hoodie" },
+      { quantity: "40-100 items", price: "$50 per hoodie" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
   },
   {
     product: "Heavyweight Crewneck",
     discounts: [
-      { quantity: "10-29 items", price: "$52 per crewneck" },
-      { quantity: "30-59 items", price: "$44-46 per crewneck" },
-      { quantity: "60-100 items", price: "$37-42 per crewneck" },
+      { quantity: "0-39 items", price: "$50 per crewneck" },
+      { quantity: "40-100 items", price: "$45 per crewneck" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
   },
   {
     product: "Straightcut Sweatpants",
     discounts: [
-      { quantity: "10-29 items", price: "$52 per sweatpant" },
-      { quantity: "30-59 items", price: "$44-46 per sweatpant" },
-      { quantity: "60-100 items", price: "$37-42 per sweatpant" },
+      { quantity: "0-39 items", price: "$55 per sweatpant" },
+      { quantity: "40-100 items", price: "$50 per sweatpant" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
   },
   {
     product: "Standard Quarter Zip",
     discounts: [
-      { quantity: "10-29 items", price: "$51 per quarter zip" },
-      { quantity: "30-59 items", price: "$43-45 per quarter zip" },
-      { quantity: "60-100 items", price: "$36-41 per quarter zip" },
+      { quantity: "0-39 items", price: "$50 per quarter zip" },
+      { quantity: "40-100 items", price: "$45 per quarter zip" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
   },
   {
     product: "Standard T-Shirt",
     discounts: [
-      { quantity: "10-29 items", price: "$35 per t-shirt" },
-      { quantity: "30-59 items", price: "$27-29 per t-shirt" },
-      { quantity: "60-100 items", price: "$20-25 per t-shirt" },
+      { quantity: "0-39 items", price: "$30 per t-shirt" },
+      { quantity: "40-100 items", price: "$25 per t-shirt" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
   }

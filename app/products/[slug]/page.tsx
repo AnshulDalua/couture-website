@@ -209,33 +209,28 @@ const productReviews = {
 // Volume discount data with dollar amounts
 const volumeDiscounts = {
   "heavyweight-hoodie": [
-    { quantity: "10-29 items", price: "$55 per hoodie" },
-    { quantity: "30-59 items", price: "$47-49 per hoodie" },
-    { quantity: "60-100 items", price: "$40-45 per hoodie" },
+    { quantity: "0-39 items", price: "$55 per hoodie" },
+    { quantity: "40-100 items", price: "$50 per hoodie" },
     { quantity: "100+", price: "Custom Pricing" }
   ],
   "heavyweight-crewneck": [
-    { quantity: "10-29 items", price: "$52 per crewneck" },
-    { quantity: "30-59 items", price: "$44-46 per crewneck" },
-    { quantity: "60-100 items", price: "$37-42 per crewneck" },
+    { quantity: "0-39 items", price: "$50 per crewneck" },
+    { quantity: "40-100 items", price: "$45 per crewneck" },
     { quantity: "100+", price: "Custom Pricing" }
   ],
   "straightcut-sweatpants": [
-    { quantity: "10-29 items", price: "$52 per sweatpant" },
-    { quantity: "30-59 items", price: "$44-46 per sweatpant" },
-    { quantity: "60-100 items", price: "$37-42 per sweatpant" },
+    { quantity: "0-39 items", price: "$55 per sweatpant" },
+    { quantity: "40-100 items", price: "$50 per sweatpant" },
     { quantity: "100+", price: "Custom Pricing" }
   ],
   "classic-quarterzip": [
-    { quantity: "10-29 items", price: "$51 per quarter zip" },
-    { quantity: "30-59 items", price: "$43-45 per quarter zip" },
-    { quantity: "60-100 items", price: "$36-41 per quarter zip" },
+    { quantity: "0-39 items", price: "$50 per quarter zip" },
+    { quantity: "40-100 items", price: "$45 per quarter zip" },
     { quantity: "100+", price: "Custom Pricing" }
   ],
   "classic-tshirt": [
-    { quantity: "10-29 items", price: "$35 per t-shirt" },
-    { quantity: "30-59 items", price: "$27-29 per t-shirt" },
-    { quantity: "60-100 items", price: "$20-25 per t-shirt" },
+    { quantity: "0-39 items", price: "$30 per t-shirt" },
+    { quantity: "40-100 items", price: "$25 per t-shirt" },
     { quantity: "100+", price: "Custom Pricing" }
   ]
 };
@@ -245,7 +240,7 @@ const products = {
   "heavyweight-hoodie": {
     id: 1,
     name: "Heavyweight Hoodie",
-    price: "$40-55",
+    price: "$50-55",
     description: "Relaxed hooded sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
@@ -267,7 +262,7 @@ const products = {
   "heavyweight-crewneck": {
     id: 2,
     name: "Heavyweight Crewneck",
-    price: "$37-52",
+    price: "$45-50",
     description: "Relaxed crewneck sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
@@ -289,7 +284,7 @@ const products = {
   "classic-quarterzip": {
     id: 3,
     name: "Classic Quarterzip",
-    price: "$36-51",
+    price: "$45-50",
     description: "Standard fit quarterzip in our heavyweight 11.8oz cotton blend.",
     details: [
       "400 GSM",
@@ -312,7 +307,7 @@ const products = {
   "straightcut-sweatpants": {
     id: 4,
     name: "Straightcut Sweatpants",
-    price: "$37-52",
+    price: "$50-55",
     description: "Straight-legged sweatpants in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
@@ -333,7 +328,7 @@ const products = {
   "classic-tshirt": {
     id: 5,
     name: "Classic Tshirt",
-    price: "$20-35",
+    price: "$25-30",
     description: "Standard fit tee in midweight 5.6oz cotton blend.",
     details: [
       "200 GSM",
