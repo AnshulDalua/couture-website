@@ -13,16 +13,18 @@ import Head from 'next/head'
 // Array of images to rotate through
 const images = [
   "/homepage/v1.webp",
-  "/homepage/aryani.webp",
-  "/lookbook/Couture-AXO-26.webp",
-  "/homepage/clubhouse.webp"
+  // "/homepage/aryani.webp",
+  // "/lookbook/Couture-AXO-26.webp",
+  // "/homepage/clubhouse.webp"
 ]
 
 export default function HomePage() {
   // State to store the current image - initialize as null to prevent flash
   const [currentImage, setCurrentImage] = useState<string | null>(null)
+  /*
   // State to control showing the intro animation
   const [showIntro, setShowIntro] = useState(false)
+  */
   // State to track if main content is ready to display
   const [contentReady, setContentReady] = useState(false)
   // Router for navigation
@@ -33,6 +35,7 @@ export default function HomePage() {
     router.push('/products')
   }
 
+  /*
   // Check if animation has been shown before and set initial state
   useEffect(() => {
     // Check if we're in the browser environment
@@ -49,6 +52,12 @@ export default function HomePage() {
         setContentReady(true)
       }
     }
+  }, [])
+  */
+
+  // Always show main content immediately (animation disabled)
+  useEffect(() => {
+    setContentReady(true)
   }, [])
   
   // Load a random image in the background, but don't wait for it
@@ -85,9 +94,9 @@ export default function HomePage() {
   
   return (
     <div className="bg-white">
-      {/* Preload product images during intro animation */}
+      {/* Animation temporarily disabled. To re-enable, uncomment below blocks. */}
+      {/*
       {showIntro && <ImagePreloader />}
-      
       <IntroAnimation 
         isVisible={showIntro}
         onComplete={() => {
@@ -104,15 +113,13 @@ export default function HomePage() {
                 clearInterval(checkContentReady)
               }
             }, 100)
-            
-            // Clean up in case component unmounts
             setTimeout(() => clearInterval(checkContentReady), 3000)
           }
         }} 
       />
-      
+      */}
       <AnimatePresence>
-        {(!showIntro || contentReady) && (
+        {contentReady && (
           <motion.div 
             className="h-[calc(100vh-120px)] flex items-center md:items-start justify-center px-2 md:px-2 md:pt-4"
             initial={{ opacity: 0 }}
