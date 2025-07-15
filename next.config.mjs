@@ -41,7 +41,6 @@ const nextConfig = {
       { source: '/gallery', destination: '/lookbook', permanent: true },
       { source: '/support/returns', destination: '/support/faq', permanent: true },
       { source: '/support/shipping', destination: '/support/faq', permanent: true },
-      { source: '/support/contact', destination: '/order', permanent: true },
       { source: '/lookbook/2025-clients', destination: '/lookbook', permanent: true },
       { source: '/lookbook/2025-lookbook', destination: '/lookbook', permanent: true },
 
