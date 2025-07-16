@@ -115,15 +115,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         Contact
                       </Link>
                     </li>
-                    <li>
-                      <Link 
-                        href="/support/shipping-returns" 
-                        onClick={onClose} 
-                        className={`block py-2 text-gray-600 ${isActive('/support/shipping-returns') ? 'font-bold' : ''}`}
-                      >
-                        Shipping + Returns
-                      </Link>
-                    </li>
+
                     <li>
                       <Link 
                         href="/support/faq" 
@@ -131,6 +123,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         className={`block py-2 text-gray-600 ${isActive('/support/faq') ? 'font-bold' : ''}`}
                       >
                         FAQ
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="/support/pricing" 
+                        onClick={onClose} 
+                        className={`block py-2 text-gray-600 ${isActive('/support/pricing') ? 'font-bold' : ''}`}
+                      >
+                        Pricing
                       </Link>
                     </li>
                     <li>
@@ -144,11 +145,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     </li>
                     <li>
                       <Link 
-                        href="/support/pricing" 
+                        href="/blog" 
                         onClick={onClose} 
-                        className={`block py-2 text-gray-600 ${isActive('/support/pricing') ? 'font-bold' : ''}`}
+                        className={`block py-2 text-gray-600 ${isActive('/blog') ? 'font-bold' : ''}`}
                       >
-                        Pricing
+                        Blog
                       </Link>
                     </li>
                   </ul>
