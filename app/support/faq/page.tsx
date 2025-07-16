@@ -11,7 +11,7 @@ const faqCategories = [
       {
         question: "I dont have a design in mind, can you help me?",
         answer:
-          "Yes, we offer custom design services. Please contact us at info@couturebyikigai.com to discuss your ideas and we can create a custom design for you.",
+          "Yes, we offer custom design services. Please contact us at orders@couturebyikigai.com to discuss your ideas and we can create a custom design for you.",
       },
       {
         question: "What payment methods do you accept?",
@@ -30,7 +30,7 @@ const faqCategories = [
       {
         question: "How do I place a bulk order?",
         answer:
-          "To place a bulk order, please contact us at info@couturebyikigai.com with your order details and quantity. We will provide a custom quote and payment instructions.",
+          "To place a bulk order, please contact us at orders@couturebyikigai.com with your order details and quantity. We will provide a custom quote and payment instructions.",
       },
       {
         question: "How does pricing work?",
@@ -70,7 +70,7 @@ const faqCategories = [
       {
         question: "What is your return policy?",
         answer:
-          "We do not accept returns or offer refunds, as all of our products are custom-made to order. However, if there is an issue with your order, please reach out to us at info@couturebyikigai.com",
+          "We do not accept returns or offer refunds, as all of our products are custom-made to order. However, if there is an issue with your order, please reach out to us at orders@couturebyikigai.com",
       },
       {
         question: "Do you offer free shipping?",
