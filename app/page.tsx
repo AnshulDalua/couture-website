@@ -135,9 +135,16 @@ export default function HomePage() {
                       src={currentImage}
                       alt="IKIGAI Featured Collection - High quality custom merchandise"
                       priority={index === 1}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      fill
-                      style={{ objectFit: "cover", objectPosition: "center" }}
+                      fetchPriority={index === 1 ? "high" : "low"}
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      width={466}
+                      height={703}
+                      style={{ 
+                        objectFit: "cover", 
+                        objectPosition: "center",
+                        width: "100%",
+                        height: "100%"
+                      }}
                     />
                   </div>
                 ))}
@@ -169,9 +176,16 @@ export default function HomePage() {
                 <Image
                   src={currentImage}
                   alt="IKIGAI Featured Collection"
-                  fill
                   priority
-                  style={{ objectFit: "cover" }}
+                  fetchPriority="high"
+                  sizes="100vw"
+                  width={466}
+                  height={703}
+                  style={{ 
+                    objectFit: "cover",
+                    width: "100%",
+                    height: "100%"
+                  }}
                 />
               )}
               
