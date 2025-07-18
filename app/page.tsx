@@ -178,9 +178,9 @@ export default function HomePage() {
                   alt="IKIGAI Featured Collection"
                   priority
                   fetchPriority="high"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  width={375}
-                  height={566}
+                  sizes="100vw"
+                  width={466}
+                  height={703}
                   style={{ 
                     objectFit: "cover",
                     width: "100%",
