@@ -48,22 +48,8 @@ export default function RootLayout({
         {/* Inline critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            @font-face {
-              font-family: "Helvetica";
-              src: url("/fonts/helvetica.woff2") format("woff2");
-              font-weight: normal;
-              font-style: normal;
-              font-display: swap;
-            }
-            @font-face {
-              font-family: "Helvetica";
-              src: url("/fonts/helvetica-bold.woff2") format("woff2");
-              font-weight: bold;
-              font-style: normal;
-              font-display: swap;
-            }
             body {
-              font-family: "Helvetica", sans-serif;
+              font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
               font-size: 12px;
               letter-spacing: 0.5px;
               margin: 0;
@@ -137,8 +123,6 @@ export default function RootLayout({
         }} />
         
         {/* Preload critical resources */}
-        <link rel="preload" href="/fonts/helvetica.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/homepage/v1.webp" as="image" />
         
         {/* DNS prefetch for third-party domains */}
@@ -149,6 +133,10 @@ export default function RootLayout({
         {/* Preconnect to critical third-party origins */}
         <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://static.klaviyo.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.facebook.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
       </head>
       <body className="font-stussy">
         <Header />

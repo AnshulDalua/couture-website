@@ -118,6 +118,24 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/(connect\\.facebook\\.net/.*)',
+        headers: [
+          {
+            key: 'Cache-Control', 
+            value: 'public, max-age=86400, stale-while-revalidate=3600',
+          },
+        ],
+      },
+      {
+        source: '/(static\\.klaviyo\\.com/.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=3600',
+          },
+        ],
+      },
     ]
   },
   compress: true,
@@ -128,6 +146,19 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '10mb', // Increase the body size limit to 10MB
     },
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    
+    // Target modern browsers to reduce polyfills
+    config.target = ['web', 'es2020'];
+    
+    return config;
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

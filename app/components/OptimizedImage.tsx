@@ -101,8 +101,12 @@ export default function OptimizedImage({
     }
   }
 
-  // Default sizes if not provided
-  const defaultSizes = sizes || '(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw'
+  // Default sizes if not provided - optimized for mobile first
+  const defaultSizes = sizes || '(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
+  
+  // Calculate width/height based on displayed dimensions
+  const width = props.width ? Number(props.width) : (typeof window !== 'undefined' ? window.innerWidth : 640)
+  const height = props.height ? Number(props.height) : Math.floor(width * (aspectRatio === 'aspect-square' ? 1 : 0.75))
 
   // Determine loading attribute based on strategy and priority
   const getLoadingAttribute = () => {

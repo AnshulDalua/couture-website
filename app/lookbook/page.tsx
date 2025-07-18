@@ -1,6 +1,5 @@
 import Image from "next/image"
 import { Metadata } from "next"
-import OptimizedImage from "@/app/components/OptimizedImage"
 
 // Combined lookbook data
 const lookbookData = {
@@ -69,15 +68,16 @@ export default function LookbookPage() {
             return (
               <div key={index}>
                 <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
-                  <OptimizedImage
-                    src={image}
-                    alt={lookbookData.captions[index] || 'Lookbook image'}
-                    priority={index < 8}
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    containerClassName="w-full h-full"
-                    className="object-contain w-full h-full transition-transform duration-700 hover:scale-105"
-                    loadingStrategy={index < 8 ? "eager" : "progressive"}
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={image}
+                      alt={lookbookData.captions[index] || 'Lookbook image'}
+                      fill
+                      priority={index < 8}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-contain transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
                 </div>
               </div>
             );
