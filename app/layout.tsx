@@ -44,6 +44,112 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Inline critical CSS for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            @font-face {
+              font-family: "Helvetica";
+              src: url("/fonts/helvetica.woff2") format("woff2");
+              font-weight: normal;
+              font-style: normal;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: "Helvetica";
+              src: url("/fonts/helvetica-bold.woff2") format("woff2");
+              font-weight: bold;
+              font-style: normal;
+              font-display: swap;
+            }
+            body {
+              font-family: "Helvetica", sans-serif;
+              font-size: 12px;
+              letter-spacing: 0.5px;
+              margin: 0;
+              padding: 0;
+              background: white;
+              color: black;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+            }
+            .hero-container {
+              height: calc(100vh - 120px);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+            }
+            .hero-image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+            }
+            .hero-text {
+              position: absolute;
+              bottom: 4rem;
+              right: 1.5rem;
+              z-index: 10;
+              text-align: right;
+              color: white;
+              text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+            .hero-title {
+              font-size: 3rem;
+              font-weight: bold;
+              text-transform: uppercase;
+              line-height: 1;
+              margin: 0;
+            }
+            @media (min-width: 769px) {
+              .hero-title {
+                font-size: 4rem;
+                white-space: nowrap;
+              }
+            }
+            /* Header critical styles */
+            .fixed {
+              position: fixed;
+            }
+            .top-0 {
+              top: 0;
+            }
+            .left-0 {
+              left: 0;
+            }
+            .right-0 {
+              right: 0;
+            }
+            .z-50 {
+              z-index: 50;
+            }
+            .bg-white {
+              background-color: white;
+            }
+            .border-b {
+              border-bottom-width: 1px;
+            }
+            .border-gray-200 {
+              border-color: #e5e7eb;
+            }
+          `
+        }} />
+        
+        {/* Preload critical resources */}
+        <link rel="preload" href="/fonts/helvetica.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/homepage/v1.webp" as="image" />
+        
+        {/* DNS prefetch for third-party domains */}
+        <link rel="dns-prefetch" href="//connect.facebook.net" />
+        <link rel="dns-prefetch" href="//static.klaviyo.com" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        
+        {/* Preconnect to critical third-party origins */}
+        <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://static.klaviyo.com" crossOrigin="anonymous" />
+      </head>
       <body className="font-stussy">
         <Header />
         <main className="pt-[65px] pb-[60px]">{children}</main>
