@@ -253,8 +253,10 @@ const products = {
     ],
     images: [
       "/shop/346048sinh002946-R1-035-16.webp",
+      "/shop/hoodie_2.webp",
       "/shop/7.webp",
       "/shop/8.webp",
+      "/shop/10.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
@@ -339,7 +341,7 @@ const products = {
     ],
     images: [
       "/shop/la_tee2.webp",
-      "/shop/la_tee1.webp",
+      "/shop/tee_2.webp",
       "/shop/2.webp",
       "/shop/1.webp",
     ],
