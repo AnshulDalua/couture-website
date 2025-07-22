@@ -365,6 +365,8 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [showSizingChart, setShowSizingChart] = useState(false)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
   
   // New state for image zoom overlay
   const [showZoomOverlay, setShowZoomOverlay] = useState(false)
@@ -489,6 +491,20 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                    onClick={() => {
                      setShowZoomOverlay(true)
                      setZoomImageIndex(activeImageIndex)
+                   }}
+                   onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientX)}
+                   onTouchMove={(e) => setTouchEnd(e.targetTouches[0].clientX)}
+                   onTouchEnd={() => {
+                     if (touchStart - touchEnd > 50) {
+                       // Swipe left - go to next image
+                       const nextIndex = (activeImageIndex + 1) % product.images.length;
+                       scrollToImage(nextIndex);
+                     }
+                     if (touchStart - touchEnd < -50) {
+                       // Swipe right - go to previous image
+                       const prevIndex = activeImageIndex === 0 ? product.images.length - 1 : activeImageIndex - 1;
+                       scrollToImage(prevIndex);
+                     }
                    }}>
                 <Image
                   src={product.images[activeImageIndex] ?? "/placeholder.svg"}
