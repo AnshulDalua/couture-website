@@ -8,6 +8,7 @@ import { useState, useEffect, useRef, use } from "react"
 import { notFound, useRouter } from "next/navigation"
 import { X, ChevronRight } from "lucide-react"
 import ImageZoomOverlay from "@/components/ImageZoomOverlay"
+import SizingAgentModal from "@/components/SizingAgentModal"
 
 // Color swatch definitions with appropriate CSS colors
 const colorOptions = {
@@ -235,6 +236,44 @@ const volumeDiscounts = {
   ]
 };
 
+// Product dimensions for sizing agent
+const productDimensions = {
+  "heavyweight-hoodie": [
+    { size: "S", chest: 20, length: 26.5, sleeve: 24 },
+    { size: "M", chest: 22, length: 28, sleeve: 25 },
+    { size: "L", chest: 24, length: 29.5, sleeve: 26 },
+    { size: "XL", chest: 26, length: 31, sleeve: 27 },
+    { size: "XXL", chest: 28, length: 32.5, sleeve: 28 }
+  ],
+  "heavyweight-crewneck": [
+    { size: "S", chest: 20, length: 26.5, sleeve: 24 },
+    { size: "M", chest: 22, length: 28, sleeve: 25 },
+    { size: "L", chest: 24, length: 29.5, sleeve: 26 },
+    { size: "XL", chest: 26, length: 31, sleeve: 27 },
+    { size: "XXL", chest: 28, length: 32.5, sleeve: 28 }
+  ],
+  "classic-quarterzip": [
+    { size: "S", chest: 20, length: 26, sleeve: 24 },
+    { size: "M", chest: 22, length: 27.5, sleeve: 25 },
+    { size: "L", chest: 24, length: 29, sleeve: 26 },
+    { size: "XL", chest: 26, length: 30.5, sleeve: 27 }
+  ],
+  "straightcut-sweatpants": [
+    { size: "S", waist: 28, length: 42, inseam: 30 },
+    { size: "M", waist: 30, length: 42.5, inseam: 30.5 },
+    { size: "L", waist: 32, length: 43, inseam: 31 },
+    { size: "XL", waist: 34, length: 43.5, inseam: 31.5 },
+    { size: "XXL", waist: 36, length: 44, inseam: 32 }
+  ],
+  "classic-tshirt": [
+    { size: "S", chest: 18, length: 28 },
+    { size: "M", chest: 20, length: 29 },
+    { size: "L", chest: 22, length: 30 },
+    { size: "XL", chest: 24, length: 31 },
+    { size: "XXL", chest: 26, length: 32 }
+  ]
+}
+
 // Mock product data with color codes
 const products = {
   "heavyweight-hoodie": {
@@ -365,6 +404,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [showSizingChart, setShowSizingChart] = useState(false)
+  const [showSizingAgent, setShowSizingAgent] = useState(false)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
   
@@ -466,6 +506,11 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   // Get pricing for the current product
   const getProductPricing = () => {
     return volumeDiscounts[slug as keyof typeof volumeDiscounts] || []
+  }
+
+  // Handle sizing agent recommendation
+  const handleSizeRecommendation = (recommendedSize: string) => {
+    setSelectedSize(recommendedSize)
   }
 
   if (!product) {
@@ -632,19 +677,25 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
           <div className="mt-4 mb-8">
             <h3 className="text-xs uppercase mb-3">SIZES AVAILABLE: S-2XL</h3>
-            {/* <div className="flex items-center mb-2">
+            {selectedSize && (
+              <div className="mb-4 p-3 bg-gray-50 border">
+                <p className="text-xs text-gray-600 mb-1">Recommended size:</p>
+                <p className="text-sm font-medium">{selectedSize}</p>
+              </div>
+            )}
+            <div className="flex items-center mb-2">
               <div className="flex flex-wrap gap-2 flex-1">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
-                    // onClick={() => setSelectedSize(size)}
-                    className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black" : "border-gray-200"}`}
+                    onClick={() => setSelectedSize(size)}
+                    className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black bg-black text-white" : "border-gray-200"}`}
                   >
                     {size}
                   </button>
                 ))}
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Product details displayed directly under size */}
@@ -671,27 +722,12 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           <div className="mt-8 border-t border-gray-200">
             {/* Size Guide section */}
             <button 
-              onClick={() => toggleSection('sizeGuide')}
+              onClick={() => setShowSizingAgent(true)}
               className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
             >
               <span className="uppercase">SIZE GUIDE</span>
-              <ChevronRight 
-                className={`h-4 w-4 transition-transform ${openSection === 'sizeGuide' ? 'rotate-90' : ''}`} 
-              />
+              <ChevronRight className="h-4 w-4" />
             </button>
-            {openSection === 'sizeGuide' && (
-              <div className="py-6 text-xs">
-                <div className="relative w-full">
-                  <Image
-                    src={sizingCharts[slug as keyof typeof sizingCharts]}
-                    alt={`${product.name} sizing chart`}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
-            )}
 
             {/* Reviews section */}
             <button 
@@ -811,6 +847,17 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           images={product.images} 
           initialIndex={zoomImageIndex} 
           onClose={() => setShowZoomOverlay(false)} 
+        />
+      )}
+
+      {/* Sizing Agent Modal */}
+      {showSizingAgent && (
+        <SizingAgentModal 
+          productName={product.name}
+          productSizes={product.sizes}
+          productDimensions={productDimensions[slug as keyof typeof productDimensions] || []}
+          onClose={() => setShowSizingAgent(false)}
+          onRecommendSize={handleSizeRecommendation}
         />
       )}
     </div>
