@@ -8,6 +8,7 @@ interface ProductDimensions {
   chest?: number
   length: number
   sleeve?: number
+  shoulder?: number
   waist?: number
   inseam?: number
 }
@@ -99,108 +100,187 @@ export default function SizingAgentModal({
     const heightInInches = userMeasurements.height.feet * 12 + userMeasurements.height.inches
     const weight = userMeasurements.weight
     
-    // Check if this is a lower body product (has waist measurements)
-    const isLowerBodyProduct = productDimensions.some(dim => dim.waist)
-    
-    if (isLowerBodyProduct) {
-      // Calculate target waist measurement for lower body products
-      let targetWaist = 32
-      if (userMeasurements.gender === "Male") {
-        targetWaist = 28 + (heightInInches - 60) * 0.3 + (weight - 140) * 0.08
-      } else if (userMeasurements.gender === "Female") {
-        targetWaist = 26 + (heightInInches - 60) * 0.25 + (weight - 120) * 0.06
-      } else {
-        targetWaist = 27 + (heightInInches - 60) * 0.275 + (weight - 130) * 0.07
-      }
-
-      // Adjust based on body attributes
-      if (userMeasurements.stomach === "Broad/Large") targetWaist += 2
-      if (userMeasurements.stomach === "Narrow/Small") targetWaist -= 1
-      if (userMeasurements.seat === "Broad/Large") targetWaist += 1.5
-
-      // Adjust based on fit preference
-      const fitAdjustment = {
-        "Very Fitted": -2,
-        "Regular Fit": 0,
-        "Relaxed Fit": 3
-      }[userMeasurements.fitPreference] || 0
+    // Helper function to calculate target measurements based on user profile
+    const calculateTargetMeasurements = () => {
+      const targets: any = {}
       
-      targetWaist += fitAdjustment
-
-      // Find best matching size from product dimensions
-      let bestSize = productSizes[Math.floor(productSizes.length / 2)]
-      let bestDifference = Infinity
-
-      productDimensions.forEach(dimension => {
-        if (dimension.waist) {
-          const difference = Math.abs(dimension.waist - targetWaist)
-          if (difference < bestDifference) {
-            bestDifference = difference
-            bestSize = dimension.size
-          }
-        }
-      })
-
-      return bestSize
-    } else {
-      // Calculate target chest measurement for upper body products
-      let targetChest = 34
-      if (userMeasurements.gender === "Male") {
-        targetChest = 28 + (heightInInches - 60) * 0.5 + (weight - 140) * 0.05
-      } else if (userMeasurements.gender === "Female") {
-        targetChest = 26 + (heightInInches - 60) * 0.4 + (weight - 120) * 0.04
-      } else {
-        targetChest = 27 + (heightInInches - 60) * 0.45 + (weight - 130) * 0.045
+      // Base calculations by gender with height and weight adjustments
+      const genderMultipliers = {
+        "Male": { base: 1.0, heightFactor: 0.5, weightFactor: 0.05 },
+        "Female": { base: 0.9, heightFactor: 0.4, weightFactor: 0.04 },
+        "Prefer not to say": { base: 0.95, heightFactor: 0.45, weightFactor: 0.045 }
       }
-
-      // Adjust based on body attributes
-      if (userMeasurements.chest === "Broad/Large") targetChest += 2
-      if (userMeasurements.chest === "Narrow/Small") targetChest -= 1
-      if (userMeasurements.stomach === "Broad/Large") targetChest += 1
-      if (userMeasurements.shoulders === "Broad/Large") targetChest += 1.5
-
-      // Adjust based on fit preference
-      const fitAdjustment = {
-        "Very Fitted": -2,
-        "Regular Fit": 0,
-        "Relaxed Fit": 3
-      }[userMeasurements.fitPreference] || 0
       
-      targetChest += fitAdjustment
-
-      // Find best matching size from product dimensions
-      let bestSize = productSizes[Math.floor(productSizes.length / 2)]
-      let bestDifference = Infinity
-
-      productDimensions.forEach(dimension => {
-        if (dimension.chest) {
-          const difference = Math.abs(dimension.chest - targetChest)
-          if (difference < bestDifference) {
-            bestDifference = difference
-            bestSize = dimension.size
-          }
-        }
-      })
-
-      // Use usual size as a strong anchor and adjust if needed
-      if (userMeasurements.usualSize && productSizes.includes(userMeasurements.usualSize)) {
-        const usualIndex = productSizes.indexOf(userMeasurements.usualSize)
-        const recommendedIndex = productSizes.indexOf(bestSize)
-        
-        // If the difference is only 1 size, lean towards usual size
-        if (Math.abs(usualIndex - recommendedIndex) <= 1) {
-          if (userMeasurements.fitPreference === "Relaxed Fit" && usualIndex < productSizes.length - 1) {
-            bestSize = productSizes[usualIndex + 1]
-          } else if (userMeasurements.fitPreference === "Very Fitted" && usualIndex > 0) {
-            bestSize = productSizes[usualIndex - 1]
-          } else {
-            bestSize = userMeasurements.usualSize
-          }
-        }
-      }
-
-      return bestSize
+      const multiplier = genderMultipliers[userMeasurements.gender as keyof typeof genderMultipliers] || genderMultipliers["Prefer not to say"]
+      
+      // Calculate target chest (for upper body products)
+      targets.chest = (18 + (heightInInches - 60) * multiplier.heightFactor + (weight - 140) * multiplier.weightFactor) * multiplier.base
+      
+      // For quarter-zip products, calculate full circumference target (double the half-chest)
+      targets.chestFull = targets.chest * 2
+      
+      // Calculate target waist (for lower body products) 
+      targets.waist = (14 + (heightInInches - 60) * 0.3 + (weight - 140) * 0.08) * multiplier.base
+      
+      // Calculate target shoulder
+      targets.shoulder = (16 + (heightInInches - 60) * 0.2 + (weight - 140) * 0.02) * multiplier.base
+      
+      // Calculate target sleeve length based on height primarily
+      targets.sleeve = 7 + (heightInInches - 60) * 0.15
+      
+      // Calculate target length based on torso description and height
+      targets.length = 26 + (heightInInches - 60) * 0.2
+      
+      return targets
     }
+    
+    const targetMeasurements = calculateTargetMeasurements()
+    
+    // Apply body attribute adjustments
+    const bodyAdjustments = {
+      chest: {
+        "Narrow/Small": -1.5,
+        "Normal/Average": 0,
+        "Broad/Large": 2.0
+      },
+      stomach: {
+        "Narrow/Small": -1.0,
+        "Normal/Average": 0,
+        "Broad/Large": 1.5
+      },
+      shoulders: {
+        "Narrow/Small": -1.0,
+        "Normal/Average": 0,
+        "Broad/Large": 1.8
+      },
+      seat: {
+        "Narrow/Small": -1.0,
+        "Normal/Average": 0,
+        "Broad/Large": 1.5
+      },
+      torsoLength: {
+        "Short": -0.8,
+        "Normal/Average": 0,
+        "Long": 1.2
+      },
+      legLength: {
+        "Short": -1.0,
+        "Normal/Average": 0,
+        "Long": 1.5
+      }
+    }
+    
+    // Apply body adjustments
+    const chestAdj = (bodyAdjustments.chest[userMeasurements.chest as keyof typeof bodyAdjustments.chest] || 0) +
+                     (bodyAdjustments.stomach[userMeasurements.stomach as keyof typeof bodyAdjustments.stomach] || 0)
+    
+    targetMeasurements.chest += chestAdj
+    targetMeasurements.chestFull += chestAdj * 2 // Apply to full chest measurement too
+    targetMeasurements.shoulder += bodyAdjustments.shoulders[userMeasurements.shoulders as keyof typeof bodyAdjustments.shoulders] || 0
+    targetMeasurements.waist += bodyAdjustments.stomach[userMeasurements.stomach as keyof typeof bodyAdjustments.stomach] || 0
+    targetMeasurements.waist += bodyAdjustments.seat[userMeasurements.seat as keyof typeof bodyAdjustments.seat] || 0
+    targetMeasurements.length += bodyAdjustments.torsoLength[userMeasurements.torsoLength as keyof typeof bodyAdjustments.torsoLength] || 0
+    
+    // Apply fit preference adjustments
+    const fitAdjustments = {
+      "Very Fitted": { chest: -1.5, waist: -1.5, shoulder: -0.5, length: 0 },
+      "Regular Fit": { chest: 0, waist: 0, shoulder: 0, length: 0 },
+      "Relaxed Fit": { chest: 2.5, waist: 2.5, shoulder: 1.0, length: 0.5 }
+    }
+    
+    const fitAdjustment = fitAdjustments[userMeasurements.fitPreference as keyof typeof fitAdjustments] || fitAdjustments["Regular Fit"]
+    
+    Object.keys(fitAdjustment).forEach(key => {
+      targetMeasurements[key] += fitAdjustment[key as keyof typeof fitAdjustment]
+      // Also apply to full chest measurement for quarter-zip products
+      if (key === 'chest') {
+        targetMeasurements.chestFull += fitAdjustment[key] * 2
+      }
+    })
+    
+    // Multi-factor scoring system for each size
+    const sizeScores = productDimensions.map(dimension => {
+      let totalScore = 0
+      let factorCount = 0
+      
+      // Chest scoring (most important for upper body)
+      if (dimension.chest && targetMeasurements.chest) {
+        // Detect if this is a quarter-zip with full circumference measurements
+        const isQuarterZip = dimension.chest > 35 // Quarter-zip measurements are much larger
+        const targetChest = isQuarterZip ? targetMeasurements.chestFull : targetMeasurements.chest
+        const chestDiff = Math.abs(dimension.chest - targetChest)
+        const chestScore = Math.max(0, 100 - (chestDiff * 15)) // Higher penalty for chest mismatch
+        totalScore += chestScore * 3 // 3x weight for chest
+        factorCount += 3
+      }
+      
+      // Waist scoring (most important for lower body)
+      if (dimension.waist && targetMeasurements.waist) {
+        const waistDiff = Math.abs(dimension.waist - targetMeasurements.waist)
+        const waistScore = Math.max(0, 100 - (waistDiff * 15))
+        totalScore += waistScore * 3 // 3x weight for waist
+        factorCount += 3
+      }
+      
+      // Shoulder scoring (important for fit)
+      if (dimension.shoulder && targetMeasurements.shoulder) {
+        const shoulderDiff = Math.abs(dimension.shoulder - targetMeasurements.shoulder)
+        const shoulderScore = Math.max(0, 100 - (shoulderDiff * 20)) // Higher penalty for shoulder
+        totalScore += shoulderScore * 2 // 2x weight for shoulders
+        factorCount += 2
+      }
+      
+      // Length scoring (moderate importance)
+      if (dimension.length && targetMeasurements.length) {
+        const lengthDiff = Math.abs(dimension.length - targetMeasurements.length)
+        const lengthScore = Math.max(0, 100 - (lengthDiff * 10))
+        totalScore += lengthScore * 1.5 // 1.5x weight for length
+        factorCount += 1.5
+      }
+      
+      // Sleeve scoring (lower importance)
+      if (dimension.sleeve && targetMeasurements.sleeve) {
+        const sleeveDiff = Math.abs(dimension.sleeve - targetMeasurements.sleeve)
+        const sleeveScore = Math.max(0, 100 - (sleeveDiff * 10))
+        totalScore += sleeveScore // 1x weight for sleeve
+        factorCount += 1
+      }
+      
+      // Usual size bonus (strong anchor)
+      if (userMeasurements.usualSize === dimension.size) {
+        totalScore += 30 // Significant bonus for usual size
+        factorCount += 0.5
+      }
+      
+      return {
+        size: dimension.size,
+        score: factorCount > 0 ? totalScore / factorCount : 0,
+        dimension
+      }
+    })
+    
+    // Sort by score and get the best recommendation
+    sizeScores.sort((a, b) => b.score - a.score)
+    
+    // Apply final adjustments based on fit preference and usual size relationship
+    let bestSize = sizeScores[0].size
+    
+    if (userMeasurements.usualSize && productSizes.includes(userMeasurements.usualSize)) {
+      const usualIndex = productSizes.indexOf(userMeasurements.usualSize)
+      const recommendedIndex = productSizes.indexOf(bestSize)
+      
+      // If the algorithm suggests a very different size from usual, be more conservative
+      if (Math.abs(usualIndex - recommendedIndex) >= 2) {
+        // Moderate the recommendation towards usual size
+        if (recommendedIndex > usualIndex) {
+          bestSize = productSizes[Math.min(usualIndex + 1, productSizes.length - 1)]
+        } else {
+          bestSize = productSizes[Math.max(usualIndex - 1, 0)]
+        }
+      }
+    }
+    
+    return bestSize
   }
 
   const handleGetSize = () => {
