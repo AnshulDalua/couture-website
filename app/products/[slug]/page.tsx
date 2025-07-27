@@ -239,38 +239,39 @@ const volumeDiscounts = {
 // Product dimensions for sizing agent
 const productDimensions = {
   "heavyweight-hoodie": [
-    { size: "S", chest: 20, length: 26.5, sleeve: 24 },
-    { size: "M", chest: 22, length: 28, sleeve: 25 },
-    { size: "L", chest: 24, length: 29.5, sleeve: 26 },
-    { size: "XL", chest: 26, length: 31, sleeve: 27 },
-    { size: "XXL", chest: 28, length: 32.5, sleeve: 28 }
+    { size: "S", chest: 26, length: 26.8, sleeve: 21.1, shoulder: 25.6 },
+    { size: "M", chest: 26.8, length: 27.6, sleeve: 21.5, shoulder: 26.4 },
+    { size: "L", chest: 27.6, length: 28.4, sleeve: 21.9, shoulder: 27.2 },
+    { size: "XL", chest: 28.4, length: 29.1, sleeve: 22.2, shoulder: 27.9 },
+    { size: "XXL", chest: 29.1, length: 29.9, sleeve: 22.6, shoulder: 28.7 }
   ],
   "heavyweight-crewneck": [
-    { size: "S", chest: 20, length: 26.5, sleeve: 24 },
-    { size: "M", chest: 22, length: 28, sleeve: 25 },
-    { size: "L", chest: 24, length: 29.5, sleeve: 26 },
-    { size: "XL", chest: 26, length: 31, sleeve: 27 },
-    { size: "XXL", chest: 28, length: 32.5, sleeve: 28 }
+    { size: "S", chest: 26.8, length: 26.8, sleeve: 20.1, shoulder: 24.0 },
+    { size: "M", chest: 27.6, length: 27.6, sleeve: 20.5, shoulder: 24.8 },
+    { size: "L", chest: 28.3, length: 28.3, sleeve: 20.9, shoulder: 25.6 },
+    { size: "XL", chest: 29.1, length: 29.1, sleeve: 21.3, shoulder: 26.4 },
+    { size: "XXL", chest: 29.9, length: 29.9, sleeve: 21.7, shoulder: 26.4 }
   ],
   "classic-quarterzip": [
-    { size: "S", chest: 20, length: 26, sleeve: 24 },
-    { size: "M", chest: 22, length: 27.5, sleeve: 25 },
-    { size: "L", chest: 24, length: 29, sleeve: 26 },
-    { size: "XL", chest: 26, length: 30.5, sleeve: 27 }
+    { size: "S", chest: 42.5, length: 27.6, sleeve: 23.8, shoulder: 18.7 },
+    { size: "M", chest: 44.5, length: 28.3, sleeve: 24.4, shoulder: 19.5 },
+    { size: "L", chest: 46.5, length: 29.1, sleeve: 24.8, shoulder: 20.3 },
+    { size: "XL", chest: 48.4, length: 29.9, sleeve: 25.2, shoulder: 21.1 },
+    { size: "XXL", chest: 50.4, length: 30.7, sleeve: 25.2, shoulder: 21.9 }
   ],
   "straightcut-sweatpants": [
-    { size: "S", waist: 28, length: 42, inseam: 30 },
-    { size: "M", waist: 30, length: 42.5, inseam: 30.5 },
-    { size: "L", waist: 32, length: 43, inseam: 31 },
-    { size: "XL", waist: 34, length: 43.5, inseam: 31.5 },
-    { size: "XXL", waist: 36, length: 44, inseam: 32 }
+    { size: "S", waist: 26.0, length: 31.5, inseam: 30 },
+    { size: "M", waist: 27.6, length: 32.0, inseam: 30.5 },
+    { size: "L", waist: 29.1, length: 32.6, inseam: 31 },
+    { size: "XL", waist: 30.7, length: 33.2, inseam: 31.5 },
+    { size: "XXL", waist: 32.3, length: 33.9, inseam: 32 }
   ],
   "classic-tshirt": [
-    { size: "S", chest: 18, length: 28 },
-    { size: "M", chest: 20, length: 29 },
-    { size: "L", chest: 22, length: 30 },
-    { size: "XL", chest: 24, length: 31 },
-    { size: "XXL", chest: 26, length: 32 }
+    { size: "S", chest: 19.7, length: 27.2, sleeve: 8.3, shoulder: 17.3 },
+    { size: "M", chest: 20.5, length: 28.0, sleeve: 8.3, shoulder: 17.9 },
+    { size: "L", chest: 21.3, length: 28.7, sleeve: 9.1, shoulder: 18.5 },
+    { size: "XL", chest: 22.0, length: 29.5, sleeve: 9.1, shoulder: 19.1 },
+    { size: "XXL", chest: 22.8, length: 30.3, sleeve: 9.4, shoulder: 19.7 }
   ]
 }
 
