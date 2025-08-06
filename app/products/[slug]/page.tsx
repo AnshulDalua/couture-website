@@ -21,12 +21,16 @@ const colorOptions = {
   "OFF-WHITE": { color: "#EAE6D7", label: "Off-White" },
   "BROWN": { color: "#6D4C41", label: "Brown" },
   "RED": { color: "#C23B50", label: "Red" },
-  "PINK": { color: "#E991B9", label: "Pink" },
+  "PINK": { color: "#D882B0", label: "Pink" },
   "PURPLE": { color: "#7E57C2", label: "Purple" },
   "MUSTARD": { color: "#F9DC5C", label: "Mustard" },
   "ORANGE": { color: "#F15A29", label: "Orange" },
   "MAROON": { color: "#7D3C41", label: "Maroon" },
+  "BUTTER YELLOW": { color: "#F3E09D", label: "Butter Yellow" },
   "YELLOW": { color: "#F9DC5C", label: "Yellow" },
+  "ROYAL BLUE": { color: "#4E5BA4", label: "Royal Blue" },
+  "GRAPHITE": { color: "#383A41", label: "Graphite" },
+  "ARMY GRAY": { color: "#978E81", label: "Army Gray" },
 }
 
 // Sizing chart URLs for each product type
@@ -259,7 +263,7 @@ const products = {
       "/shop/10.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "BUTTER YELLOW", "ROYAL BLUE", "GRAPHITE"],
   },
   "heavyweight-crewneck": {
     id: 2,
@@ -281,7 +285,7 @@ const products = {
       "/shop/10.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED"],
+    colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED", "GRAPHITE", "ARMY GRAY"],
   },
   "classic-quarterzip": {
     id: 3,
@@ -325,7 +329,7 @@ const products = {
       "/shop/4.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "GRAPHITE"],
   },
   "classic-tshirt": {
     id: 5,
