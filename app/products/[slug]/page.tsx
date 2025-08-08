@@ -280,7 +280,7 @@ const products = {
       "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
-      "/shop/sinh001485-R1-047-22.webp",
+      "/shop/arycrew.webp",
       "/shop/6.webp",
       "/shop/10.webp",
     ],
@@ -324,7 +324,7 @@ const products = {
       "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
-      "/shop/19000029.webp",
+      "/shop/sweats.webp",
       "/shop/5.webp",
       "/shop/4.webp",
     ],
