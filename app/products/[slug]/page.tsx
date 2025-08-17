@@ -213,7 +213,7 @@ const productReviews = {
 // Volume discount data with dollar amounts
 const volumeDiscounts = {
   "heavyweight-hoodie": [
-    { quantity: "0-39 items", price: "$55 per hoodie" },
+    { quantity: "10-39 items", price: "$55 per hoodie" },
     { quantity: "40-100 items", price: "$50 per hoodie" },
     { quantity: "100+", price: "Custom Pricing" }
   ],
