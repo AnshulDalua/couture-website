@@ -275,7 +275,7 @@ const productDimensions = {
   ]
 }
 
-// Mock product data with color codes
+// Mock product data with color codes and fit factors
 const products = {
   "heavyweight-hoodie": {
     id: 1,
@@ -300,6 +300,7 @@ const products = {
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
+    fitFactor: 5, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
   },
   "heavyweight-crewneck": {
     id: 2,
@@ -322,6 +323,7 @@ const products = {
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED"],
+    fitFactor: 3, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
   },
   "classic-quarterzip": {
     id: 3,
@@ -345,6 +347,7 @@ const products = {
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "CLASSIC GREY", "NAVY", "GREEN"],
+    fitFactor: 3, // Standard fit (1-5 scale, 1=tight, 5=baggy)
   },
   "straightcut-sweatpants": {
     id: 4,
@@ -366,6 +369,7 @@ const products = {
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
+    fitFactor: 4, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
   },
   "classic-tshirt": {
     id: 5,
@@ -387,6 +391,7 @@ const products = {
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN","RED", "MAROON", "PINK", "BROWN", "YELLOW", "ORANGE"],
+    fitFactor: 2, // Standard fit (1-5 scale, 1=tight, 5=baggy)
   },
 }
 
@@ -853,10 +858,11 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
       {/* Sizing Agent Modal */}
       {showSizingAgent && (
-        <SizingAgentModal 
+        <SizingAgentModal
           productName={product.name}
           productSizes={product.sizes}
           productDimensions={productDimensions[slug as keyof typeof productDimensions] || []}
+          fitFactor={product.fitFactor || 3} // Default to regular fit (3) if not specified
           onClose={() => setShowSizingAgent(false)}
           onRecommendSize={handleSizeRecommendation}
         />
