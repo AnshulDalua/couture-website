@@ -70,7 +70,7 @@ export default function SizingAgentModal({
   const isUpperBodyProduct = ["Heavyweight Hoodie", "Heavyweight Crewneck", "Classic Quarterzip", "Classic Tshirt"].includes(productName)
   const isLowerBodyProduct = ["Straightcut Sweatpants"].includes(productName)
 
-  const totalSteps = isUpperBodyProduct ? 6 : isLowerBodyProduct ? 7 : 6
+  const totalSteps = isUpperBodyProduct ? 6 : isLowerBodyProduct ? 5 : 6
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -102,18 +102,8 @@ export default function SizingAgentModal({
     const heightInInches = userMeasurements.height.feet * 12 + userMeasurements.height.inches
     const weight = userMeasurements.weight
     
-    // Log user inputs for debugging
-    console.log('===== SIZING AGENT INPUTS =====');
-    console.log(`Height: ${userMeasurements.height.feet}'${userMeasurements.height.inches}" (${heightInInches} inches)`);
-    console.log(`Weight: ${weight} lbs`);
     const heightToWeightRatio = heightInInches / weight;
     const buildType = heightToWeightRatio < 0.45 ? 'Stocky' : heightToWeightRatio > 0.55 ? 'Lean' : 'Average';
-    console.log(`Height-to-Weight Ratio: ${heightToWeightRatio.toFixed(2)} (${buildType} build)`);
-    console.log(`Gender: ${userMeasurements.gender}`);
-    console.log(`Usual Size: ${userMeasurements.usualSize}`);
-    console.log(`Fit Preference: ${userMeasurements.fitPreference}`);
-    console.log(`Garment Fit Factor: ${fitFactor}`);
-    console.log('=============================');
     
     // Define gender-neutral reference points for unisex products
     // Instead of using gender-specific multipliers, we'll use a unified approach with gender-appropriate reference points
@@ -130,8 +120,6 @@ export default function SizingAgentModal({
     const calculateTargetMeasurements = () => {
       const targets: any = {}
       
-      // Log reference points being used
-      console.log(`Using reference points: Height ${reference.baseHeight} inches (${Math.floor(reference.baseHeight/12)}'${reference.baseHeight%12}"), Weight ${reference.baseWeight} lbs`);
       
       // Calculate target chest (for upper body products)
       // Adjust formula to better account for height-to-weight ratio
@@ -159,14 +147,16 @@ export default function SizingAgentModal({
       
       // Calculate target waist (for lower body products)
       // Apply the same height-to-weight ratio adjustment for waist
-      const baseWaist = userMeasurements.gender === "Female" ? 12 : 15
-      const adjustedWaistWeightFactor = isStockyBuild ? 0.03 : 0.04 // Reduce weight impact for stocky builds
+      // Note: Sweatpants measurements appear to be full waist circumference, not half-waist
+      // Target: 5'10" 150lb male should get Medium (27.6")
+      const baseWaist = userMeasurements.gender === "Female" ? 25 : 27.5 // Calibrated for Medium at reference
+      const adjustedWaistWeightFactor = isStockyBuild ? 0.05 : 0.06 // Reduced for better calibration
       
       // Use the same progressive scaling for waist as we did for chest
       const waistWeightFactor = weightDiff >= 0 ? adjustedWaistWeightFactor : adjustedWaistWeightFactor * 0.8;
       
       targets.waist = baseWaist + 
-                     (heightInInches - reference.baseHeight) * 0.1 + 
+                     (heightInInches - reference.baseHeight) * 0.15 + 
                      weightDiff * waistWeightFactor
       
       // Calculate target shoulder
@@ -191,10 +181,7 @@ export default function SizingAgentModal({
       return targets
     }
     
-    console.log('===== CALCULATING TARGET MEASUREMENTS =====');
     const targetMeasurements = calculateTargetMeasurements()
-    console.log('Target measurements before adjustments:');
-    console.log(targetMeasurements);
     
     // Apply body attribute adjustments
     const bodyAdjustments = {
@@ -260,35 +247,20 @@ export default function SizingAgentModal({
     const validFitFactor = fitFactor >= 1 && fitFactor <= 5 ? fitFactor : 3;
     const garmentFitAdjustment = garmentFitAdjustments[validFitFactor as keyof typeof garmentFitAdjustments];
     
-    // Apply garment fit factor adjustments (before user preference)
-    console.log('===== APPLYING GARMENT FIT FACTOR ADJUSTMENTS =====');
-    console.log(`Garment Fit Factor: ${fitFactor} (1=tight, 3=regular, 5=baggy)`);
-    console.log('Garment fit adjustments to apply:', garmentFitAdjustment);
-    
     // Apply garment fit adjustments to measurements
-    console.log('Applying garment fit adjustments to measurements:');
-    const measurementsBeforeGarmentFit = {...targetMeasurements};
-    
     Object.keys(garmentFitAdjustment).forEach(key => {
       const adjustmentValue = garmentFitAdjustment[key as keyof typeof garmentFitAdjustment];
       if (adjustmentValue !== 0 && targetMeasurements[key] !== undefined) {
-        const oldValue = targetMeasurements[key];
         targetMeasurements[key] += adjustmentValue;
-        console.log(`${key.charAt(0).toUpperCase() + key.slice(1)} adjustment: ${oldValue.toFixed(2)}" → ${targetMeasurements[key].toFixed(2)}" (${adjustmentValue > 0 ? '+' : ''}${adjustmentValue.toFixed(2)}")`);
         
         // Also apply to full chest measurement for quarter-zip products
         if (key === 'chest' && targetMeasurements.chestFull !== undefined) {
-          const oldChestFull = targetMeasurements.chestFull;
           targetMeasurements.chestFull += adjustmentValue * 2;
-          console.log(`ChestFull adjustment: ${oldChestFull.toFixed(2)}" → ${targetMeasurements.chestFull.toFixed(2)}" (${adjustmentValue > 0 ? '+' : ''}${(adjustmentValue * 2).toFixed(2)}")`);
         }
       }
     })
     
     // Apply user fit preference adjustments (after garment fit factor)
-    console.log('===== APPLYING USER FIT PREFERENCE ADJUSTMENTS =====');
-    console.log(`User Fit Preference: ${userMeasurements.fitPreference}`);
-    
     // Using more moderate adjustments to prevent extreme size jumps
     // Scale user fit preference adjustments based on user size to avoid oversizing petite users
     const userFitAdjustments = {
@@ -298,47 +270,35 @@ export default function SizingAgentModal({
     }
     
     const userFitAdjustment = userFitAdjustments[userMeasurements.fitPreference as keyof typeof userFitAdjustments] || userFitAdjustments["Regular Fit"]
-    console.log('User fit adjustments to apply:', userFitAdjustment);
     
     // Apply user fit preference adjustments
-    console.log('Applying user fit preference adjustments to measurements:');
-    
     Object.keys(userFitAdjustment).forEach(key => {
       const adjustmentValue = userFitAdjustment[key as keyof typeof userFitAdjustment];
       if (adjustmentValue !== 0 && targetMeasurements[key] !== undefined) {
-        const oldValue = targetMeasurements[key];
         targetMeasurements[key] += adjustmentValue;
-        console.log(`${key.charAt(0).toUpperCase() + key.slice(1)} adjustment: ${oldValue.toFixed(2)}" → ${targetMeasurements[key].toFixed(2)}" (${adjustmentValue > 0 ? '+' : ''}${adjustmentValue.toFixed(2)}")`);
         
         // Also apply to full chest measurement for quarter-zip products
         if (key === 'chest' && targetMeasurements.chestFull !== undefined) {
-          const oldChestFull = targetMeasurements.chestFull;
           targetMeasurements.chestFull += adjustmentValue * 2;
-          console.log(`ChestFull adjustment: ${oldChestFull.toFixed(2)}" → ${targetMeasurements.chestFull.toFixed(2)}" (${adjustmentValue > 0 ? '+' : ''}${(adjustmentValue * 2).toFixed(2)}")`);
         }
       }
     })
     
-    console.log('Final target measurements after all adjustments:');
-    console.log(targetMeasurements);
-    
     // Multi-factor scoring system for each size
-    console.log('===== CALCULATING SIZE SCORES =====');
-    console.log('Product dimensions to evaluate:', productDimensions);
     
     const sizeScores = productDimensions.map(dimension => {
       let totalScore = 0
       let factorCount = 0
       const detailedScores: Record<string, {actual: number, target: number, diff: number, score: number, weight: number, weightedScore: number}> = {}
       
-      // Chest scoring (most important for upper body)
+      // Chest scoring (secondary importance)
       if (dimension.chest && targetMeasurements.chest) {
         // Detect if this is a quarter-zip with full circumference measurements
         const isQuarterZip = dimension.chest > 35 // Quarter-zip measurements are much larger
         const targetChest = isQuarterZip ? targetMeasurements.chestFull : targetMeasurements.chest
         const chestDiff = Math.abs(dimension.chest - targetChest)
         const chestScore = Math.max(0, 100 - (chestDiff * 15)) // Higher penalty for chest mismatch
-        const chestWeight = 3; // 3x weight for chest
+        const chestWeight = 2; // 2x weight for chest
         const weightedChestScore = chestScore * chestWeight;
         
         totalScore += weightedChestScore
@@ -354,11 +314,11 @@ export default function SizingAgentModal({
         }
       }
       
-      // Waist scoring (most important for lower body)
+      // Waist scoring (secondary importance for lower body)
       if (dimension.waist && targetMeasurements.waist) {
         const waistDiff = Math.abs(dimension.waist - targetMeasurements.waist)
         const waistScore = Math.max(0, 100 - (waistDiff * 15))
-        const waistWeight = 3; // 3x weight for waist
+        const waistWeight = 2; // 2x weight for waist
         const weightedWaistScore = waistScore * waistWeight;
         
         totalScore += weightedWaistScore
@@ -374,11 +334,11 @@ export default function SizingAgentModal({
         }
       }
       
-      // Shoulder scoring (important for fit)
+      // Shoulder scoring (lower importance)
       if (dimension.shoulder && targetMeasurements.shoulder) {
         const shoulderDiff = Math.abs(dimension.shoulder - targetMeasurements.shoulder)
         const shoulderScore = Math.max(0, 100 - (shoulderDiff * 20)) // Higher penalty for shoulder
-        const shoulderWeight = 2; // 2x weight for shoulders
+        const shoulderWeight = 1; // 1x weight for shoulders
         const weightedShoulderScore = shoulderScore * shoulderWeight;
         
         totalScore += weightedShoulderScore
@@ -394,12 +354,12 @@ export default function SizingAgentModal({
         }
       }
       
-      // Length scoring (HIGH importance for upper body garments)
+      // Length scoring (HIGHEST importance for ALL garments)
       if (dimension.length && targetMeasurements.length) {
         const lengthDiff = Math.abs(dimension.length - targetMeasurements.length)
         // Higher penalty for length mismatch and increased importance
         const lengthScore = Math.max(0, 100 - (lengthDiff * 15))
-        const lengthWeight = 3.5; // 3.5x weight for length (critical factor)
+        const lengthWeight = 5; // 5x weight for length (MOST critical factor)
         const weightedLengthScore = lengthScore * lengthWeight;
         
         totalScore += weightedLengthScore
@@ -415,11 +375,11 @@ export default function SizingAgentModal({
         }
       }
       
-      // Sleeve scoring (lower importance)
+      // Sleeve scoring (lowest importance)
       if (dimension.sleeve && targetMeasurements.sleeve) {
         const sleeveDiff = Math.abs(dimension.sleeve - targetMeasurements.sleeve)
         const sleeveScore = Math.max(0, 100 - (sleeveDiff * 10))
-        const sleeveWeight = 1; // 1x weight for sleeve
+        const sleeveWeight = 0.5; // 0.5x weight for sleeve
         const weightedSleeveScore = sleeveScore * sleeveWeight;
         
         totalScore += weightedSleeveScore
@@ -457,10 +417,6 @@ export default function SizingAgentModal({
       // Calculate final normalized score
       const finalScore = factorCount > 0 ? totalScore / factorCount : 0;
       
-      // Log detailed scoring breakdown
-      console.log(`Size ${dimension.size} scoring breakdown:`);
-      console.log(JSON.stringify(detailedScores, null, 2));
-      console.log(`Total score: ${totalScore}, Factor count: ${factorCount}, Final score: ${finalScore}`);
       
       return {
         size: dimension.size,
@@ -474,25 +430,8 @@ export default function SizingAgentModal({
     // Sort by score and get the best recommendation
     sizeScores.sort((a, b) => b.score - a.score)
     
-    // Log the pre-normalization scores to console
-    console.log('Pre-normalization size rankings:')
-    console.log(JSON.stringify(sizeScores.map(item => ({
-      size: item.size,
-      score: item.score.toFixed(2),
-      details: item.details
-    })), null, 2))
-    
     // Store the raw recommendation before usual size adjustment
     const rawRecommendedSize = sizeScores[0].size
-    const rawRecommendedScore = sizeScores[0].score
-    
-    console.log('===== RAW RECOMMENDATION =====');
-    console.log(`Raw recommended size: ${rawRecommendedSize}`);
-    console.log(`Raw recommended score: ${rawRecommendedScore.toFixed(2)}`);
-    console.log('Top 3 size candidates:');
-    sizeScores.slice(0, 3).forEach((size, index) => {
-      console.log(`${index + 1}. ${size.size} (score: ${size.score.toFixed(2)})`);
-    });
     
     // Apply final adjustments based on fit preference and usual size relationship
     let bestSize = rawRecommendedSize
@@ -512,93 +451,9 @@ export default function SizingAgentModal({
         }
         
         // Log the adjustment
-        console.log(`Size adjustment applied: ${originalSize} → ${bestSize} (usual size: ${userMeasurements.usualSize})`)
       }
     }
     
-    // Log final recommendation summary
-    console.log('===== FINAL RECOMMENDATION =====');
-    console.log(`Final recommended size: ${bestSize}`);
-    console.log(`Raw recommended size: ${rawRecommendedSize}`);
-    if (bestSize !== rawRecommendedSize) {
-      console.log(`Size was adjusted from raw recommendation due to usual size relationship`);
-    }
-    console.log('===== END OF SIZING CALCULATION =====');
-    
-    // Add debug information to the DOM for visibility
-    const debugInfo = document.createElement('div')
-    debugInfo.id = 'sizing-debug-info'
-    debugInfo.style.position = 'fixed'
-    debugInfo.style.bottom = '10px'
-    debugInfo.style.right = '10px'
-    debugInfo.style.backgroundColor = 'rgba(0,0,0,0.8)'
-    debugInfo.style.color = 'white'
-    debugInfo.style.padding = '10px'
-    debugInfo.style.borderRadius = '5px'
-    debugInfo.style.maxWidth = '400px'
-    debugInfo.style.maxHeight = '80vh'
-    debugInfo.style.overflow = 'auto'
-    debugInfo.style.zIndex = '9999'
-    debugInfo.style.fontSize = '12px'
-    // Create debug content with detailed information
-    let debugContent = `
-      <h4>Sizing Agent Debug Info</h4>
-      <p><strong>User Inputs:</strong><br>
-      Height: ${userMeasurements.height.feet}'${userMeasurements.height.inches}" (${heightInInches}")<br>
-      Weight: ${weight} lbs<br>
-      Gender: ${userMeasurements.gender}<br>
-      Usual Size: ${userMeasurements.usualSize}<br>
-      Fit Preference: ${userMeasurements.fitPreference}</p>
-      
-      <p><strong>Reference Points:</strong><br>
-      Base Height: ${reference.baseHeight}" (${Math.floor(reference.baseHeight/12)}'${reference.baseHeight%12}")<br>
-      Base Weight: ${reference.baseWeight} lbs<br>
-      Height Difference: ${(heightInInches - reference.baseHeight).toFixed(1)}"<br>
-      Weight Difference: ${(weight - reference.baseWeight).toFixed(1)} lbs</p>
-      
-      <p><strong>Garment Properties:</strong><br>
-      Fit Factor: ${fitFactor} (1=tight, 3=regular, 5=baggy)<br>
-      User Fit Preference: ${userMeasurements.fitPreference}</p>
-      
-      <p><strong>Fit Adjustments:</strong><br>
-      Garment Fit: Chest ${garmentFitAdjustment.chest > 0 ? '+' : ''}${garmentFitAdjustment.chest}", Waist ${garmentFitAdjustment.waist > 0 ? '+' : ''}${garmentFitAdjustment.waist}"<br>
-      User Preference: Chest ${userFitAdjustment.chest > 0 ? '+' : ''}${userFitAdjustment.chest}", Waist ${userFitAdjustment.waist > 0 ? '+' : ''}${userFitAdjustment.waist}"<br>
-      Total: Chest ${(garmentFitAdjustment.chest + userFitAdjustment.chest) > 0 ? '+' : ''}${(garmentFitAdjustment.chest + userFitAdjustment.chest).toFixed(1)}", Waist ${(garmentFitAdjustment.waist + userFitAdjustment.waist) > 0 ? '+' : ''}${(garmentFitAdjustment.waist + userFitAdjustment.waist).toFixed(1)}"</p>
-      
-      <p><strong>Target Measurements:</strong><br>
-      ${Object.entries(targetMeasurements).map(([key, value]) => `${key}: ${Number(value).toFixed(2)}`).join('<br>')}</p>
-      
-      <p><strong>Size Rankings (Pre-Adjustment)</strong><br>
-      ${sizeScores.map(item => `${item.size}: ${item.score.toFixed(2)}`).join('<br>')}</p>
-      
-      <p><strong>Raw Recommendation:</strong> ${rawRecommendedSize}</p>
-      
-      <p><strong>Final Recommendation:</strong> ${bestSize}</p>
-    `
-    
-    debugInfo.innerHTML = debugContent
-    
-    // Remove any existing debug info
-    const existingDebug = document.getElementById('sizing-debug-info')
-    if (existingDebug) {
-      document.body.removeChild(existingDebug)
-    }
-    
-    // Add to DOM
-    document.body.appendChild(debugInfo)
-    
-    // Add close button functionality
-    setTimeout(() => {
-      const closeButton = document.getElementById('close-debug')
-      if (closeButton) {
-        closeButton.addEventListener('click', () => {
-          const debugElement = document.getElementById('sizing-debug-info')
-          if (debugElement) {
-            document.body.removeChild(debugElement)
-          }
-        })
-      }
-    }, 100)
     
     return bestSize
   }
@@ -724,40 +579,82 @@ export default function SizingAgentModal({
         )
 
       case 2:
-        return (
-          <div className="space-y-6">
-            <h2 className="text-lg font-medium text-center">How would you describe your chest?</h2>
-            <div className="space-y-2">
-              {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
-                <button
-                  key={option}
-                  onClick={() => updateMeasurement('chest', option)}
-                  className={`w-full p-3 text-xs border sizing-option-button ${userMeasurements.chest === option ? 'border-black bg-black text-white' : 'border-gray-300'}`}
-                >
-                  {option}
-                </button>
-              ))}
+        if (isLowerBodyProduct) {
+          // Skip chest question for sweatpants, go directly to seat/hips
+          return (
+            <div className="space-y-6">
+              <h2 className="text-lg font-medium text-center">How would you describe your seat/hips?</h2>
+              <div className="space-y-2">
+                {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
+                  <button
+                    key={option}
+                    onClick={() => updateMeasurement('seat', option)}
+                    className={`w-full p-3 text-xs border sizing-option-button ${userMeasurements.seat === option ? 'border-black bg-black text-white' : 'border-gray-300'}`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        )
+          )
+        } else {
+          // Upper body products still get chest question
+          return (
+            <div className="space-y-6">
+              <h2 className="text-lg font-medium text-center">How would you describe your chest?</h2>
+              <div className="space-y-2">
+                {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
+                  <button
+                    key={option}
+                    onClick={() => updateMeasurement('chest', option)}
+                    className={`w-full p-3 text-xs border sizing-option-button ${userMeasurements.chest === option ? 'border-black bg-black text-white' : 'border-gray-300'}`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )
+        }
 
       case 3:
-        return (
-          <div className="space-y-6">
-            <h2 className="text-lg font-medium text-center">How would you describe your stomach/waist area?</h2>
-            <div className="space-y-2">
-              {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
-                <button
-                  key={option}
-                  onClick={() => updateMeasurement('stomach', option)}
-                  className={`w-full p-3 text-xs border sizing-option-button ${userMeasurements.stomach === option ? 'border-black bg-black text-white' : 'border-gray-300'}`}
-                >
-                  {option}
-                </button>
-              ))}
+        if (isLowerBodyProduct) {
+          // For sweatpants, ask about leg length
+          return (
+            <div className="space-y-6">
+              <h2 className="text-lg font-medium text-center">How would you describe your leg length?</h2>
+              <div className="space-y-2">
+                {["Short", "Normal/Average", "Long"].map(option => (
+                  <button
+                    key={option}
+                    onClick={() => updateMeasurement('legLength', option)}
+                    className={`w-full p-3 text-xs border sizing-option-button ${userMeasurements.legLength === option ? 'border-black bg-black text-white' : 'border-gray-300'}`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        )
+          )
+        } else {
+          // For upper body products, ask about stomach
+          return (
+            <div className="space-y-6">
+              <h2 className="text-lg font-medium text-center">How would you describe your stomach/waist area?</h2>
+              <div className="space-y-2">
+                {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
+                  <button
+                    key={option}
+                    onClick={() => updateMeasurement('stomach', option)}
+                    className={`w-full p-3 text-xs border sizing-option-button ${userMeasurements.stomach === option ? 'border-black bg-black text-white' : 'border-gray-300'}`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )
+        }
 
       case 4:
         if (isUpperBodyProduct) {
@@ -778,45 +675,7 @@ export default function SizingAgentModal({
             </div>
           )
         } else if (isLowerBodyProduct) {
-          return (
-            <div className="space-y-6">
-              <h2 className="text-lg font-medium text-center">How would you describe your seat/hips?</h2>
-              <div className="space-y-2">
-                {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
-                  <button
-                    key={option}
-                    onClick={() => updateMeasurement('seat', option)}
-                    className={`w-full p-3 text-xs border sizing-option-button ${userMeasurements.seat === option ? 'border-black bg-black text-white' : 'border-gray-300'}`}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )
-        }
-        break
-
-      case 5:
-        if (isLowerBodyProduct) {
-          return (
-            <div className="space-y-6">
-              <h2 className="text-lg font-medium text-center">How would you describe your leg length?</h2>
-              <div className="space-y-2">
-                {["Short", "Normal/Average", "Long"].map(option => (
-                  <button
-                    key={option}
-                    onClick={() => updateMeasurement('legLength', option)}
-                    className={`w-full p-3 text-xs border sizing-option-button ${userMeasurements.legLength === option ? 'border-black bg-black text-white' : 'border-gray-300'}`}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )
-        } else {
-          // Final recommendation step for upper body
+          // Final recommendation step for sweatpants
           const recommendedSize = calculateRecommendation()
           // Always recommend a size above for baggier fit option
           const baggierSize = productSizes.indexOf(recommendedSize) < productSizes.length - 1 ? 
@@ -826,8 +685,8 @@ export default function SizingAgentModal({
             <div className="space-y-6 text-center">
               <div>
                 <h2 className="text-lg font-medium mb-4">Perfect! We found your size.</h2>
-                <div className="bg-gray-50 p-6 rounded size-recommendation">
-                  <p className="text-xs mb-2">Based on your preferences for a {userMeasurements.fitPreference.toLowerCase()} fit and your unique body profile, we recommend:</p>
+                <div className="bg-gray-50 p-6 rounded">
+                  <p className="text-xs mb-2">Based on your preferences for a {userMeasurements.fitPreference.toLowerCase()}, we recommend:</p>
                   <div className="text-3xl font-bold my-4">{recommendedSize}</div>
                   <p className="text-xs">for your {productName}</p>
                 </div>
@@ -842,9 +701,9 @@ export default function SizingAgentModal({
           )
         }
         break
-        
-      default:
-        // Final recommendation step for lower body
+
+      case 5:
+        // Final recommendation step for upper body
         const recommendedSize = calculateRecommendation()
         // Always recommend a size above for baggier fit option
         const baggierSize = productSizes.indexOf(recommendedSize) < productSizes.length - 1 ? 
@@ -854,8 +713,8 @@ export default function SizingAgentModal({
           <div className="space-y-6 text-center">
             <div>
               <h2 className="text-lg font-medium mb-4">Perfect! We found your size.</h2>
-              <div className="bg-gray-50 p-6 rounded">
-                <p className="text-xs mb-2">Based on your preferences for a {userMeasurements.fitPreference.toLowerCase()} fit and your unique body profile, we recommend:</p>
+              <div className="bg-gray-50 p-6 rounded size-recommendation">
+                <p className="text-xs mb-2">Based on your preferences for a {userMeasurements.fitPreference.toLowerCase()}, we recommend:</p>
                 <div className="text-3xl font-bold my-4">{recommendedSize}</div>
                 <p className="text-xs">for your {productName}</p>
               </div>
@@ -875,15 +734,17 @@ export default function SizingAgentModal({
     switch (currentStep) {
       case 0: return userMeasurements.height.feet && userMeasurements.weight && userMeasurements.gender
       case 1: return userMeasurements.fitPreference && userMeasurements.usualSize
-      case 2: return userMeasurements.chest
-      case 3: return userMeasurements.stomach
+      case 2: 
+        if (isLowerBodyProduct) return userMeasurements.seat
+        return userMeasurements.chest
+      case 3:
+        if (isLowerBodyProduct) return userMeasurements.legLength
+        return userMeasurements.stomach
       case 4: 
         if (isUpperBodyProduct) return userMeasurements.shoulders
-        if (isLowerBodyProduct) return userMeasurements.seat
-        return true
+        return true // Final step for sweatpants
       case 5: 
-        if (isLowerBodyProduct) return userMeasurements.legLength
-        return true
+        return true // Final step for upper body
       default: return true
     }
   }

@@ -683,12 +683,6 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
           <div className="mt-4 mb-8">
             <h3 className="text-xs uppercase mb-3">SIZES AVAILABLE: S-2XL</h3>
-            {selectedSize && (
-              <div className="mb-4 p-3 bg-gray-50 border">
-                <p className="text-xs text-gray-600 mb-1">Recommended size:</p>
-                <p className="text-sm font-medium">{selectedSize}</p>
-              </div>
-            )}
             <div className="flex items-center mb-2">
               <div className="flex flex-wrap gap-2 flex-1">
                 {product.sizes.map((size) => (
