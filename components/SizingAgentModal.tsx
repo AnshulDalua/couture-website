@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
 
 interface ProductDimensions {
   size: string
@@ -584,6 +585,17 @@ export default function SizingAgentModal({
           return (
             <div className="space-y-6">
               <h2 className="text-lg font-medium text-center">How would you describe your seat/hips?</h2>
+              <div className="flex justify-center mb-4">
+                <div className="relative w-32 h-32">
+                  <Image
+                    src="/sizing/hip.jpg"
+                    alt="Hip measurement reference"
+                    fill
+                    className="object-contain"
+                    sizes="128px"
+                  />
+                </div>
+              </div>
               <div className="space-y-2">
                 {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
                   <button
@@ -602,6 +614,17 @@ export default function SizingAgentModal({
           return (
             <div className="space-y-6">
               <h2 className="text-lg font-medium text-center">How would you describe your chest?</h2>
+              <div className="flex justify-center mb-4">
+                <div className="relative w-32 h-32">
+                  <Image
+                    src="/sizing/chest.jpg"
+                    alt="Chest measurement reference"
+                    fill
+                    className="object-contain"
+                    sizes="128px"
+                  />
+                </div>
+              </div>
               <div className="space-y-2">
                 {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
                   <button
@@ -623,6 +646,17 @@ export default function SizingAgentModal({
           return (
             <div className="space-y-6">
               <h2 className="text-lg font-medium text-center">How would you describe your leg length?</h2>
+              <div className="flex justify-center mb-4">
+                <div className="relative w-32 h-32">
+                  <Image
+                    src="/sizing/pant_length.jpg"
+                    alt="Pant length measurement reference"
+                    fill
+                    className="object-contain"
+                    sizes="128px"
+                  />
+                </div>
+              </div>
               <div className="space-y-2">
                 {["Short", "Normal/Average", "Long"].map(option => (
                   <button
@@ -641,6 +675,17 @@ export default function SizingAgentModal({
           return (
             <div className="space-y-6">
               <h2 className="text-lg font-medium text-center">How would you describe your stomach/waist area?</h2>
+              <div className="flex justify-center mb-4">
+                <div className="relative w-32 h-32">
+                  <Image
+                    src="/sizing/waist.jpg"
+                    alt="Waist measurement reference"
+                    fill
+                    className="object-contain"
+                    sizes="128px"
+                  />
+                </div>
+              </div>
               <div className="space-y-2">
                 {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
                   <button
@@ -661,6 +706,17 @@ export default function SizingAgentModal({
           return (
             <div className="space-y-6">
               <h2 className="text-lg font-medium text-center">How would you describe your shoulders?</h2>
+              <div className="flex justify-center mb-4">
+                <div className="relative w-32 h-32">
+                  <Image
+                    src="/sizing/shoulder.jpg"
+                    alt="Shoulder measurement reference"
+                    fill
+                    className="object-contain"
+                    sizes="128px"
+                  />
+                </div>
+              </div>
               <div className="space-y-2">
                 {["Narrow/Small", "Normal/Average", "Broad/Large"].map(option => (
                   <button
