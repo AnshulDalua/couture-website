@@ -70,7 +70,7 @@ export default function SizingAgentModal({
   const isUpperBodyProduct = ["Heavyweight Hoodie", "Heavyweight Crewneck", "Classic Quarterzip", "Classic Tshirt"].includes(productName)
   const isLowerBodyProduct = ["Straightcut Sweatpants"].includes(productName)
 
-  const totalSteps = isUpperBodyProduct ? 6 : isLowerBodyProduct ? 6 : 5
+  const totalSteps = isUpperBodyProduct ? 6 : isLowerBodyProduct ? 7 : 6
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -243,7 +243,6 @@ export default function SizingAgentModal({
     
     // Apply garment fit factor adjustments (1-5 scale: 1=tight, 3=regular, 5=baggy)
     // This adjustment happens before user fit preference to account for the garment's inherent fit
-    // Using more moderate adjustments to prevent extreme size jumps
     // Scale fit adjustments based on user size to avoid oversizing petite users
     const isSmallUser = userMeasurements.gender === "Female" && weight < 120;
     const fitScaleFactor = isSmallUser ? 0.7 : 1.0; // Reduce fit adjustments for petite users
@@ -256,41 +255,35 @@ export default function SizingAgentModal({
       4: { chest: 0.6 * fitScaleFactor, waist: 0.6 * fitScaleFactor, shoulder: 0.2 * fitScaleFactor, length: 0.12 * fitScaleFactor },   // Relaxed fit
       5: { chest: 1.2 * fitScaleFactor, waist: 1.2 * fitScaleFactor, shoulder: 0.4 * fitScaleFactor, length: 0.25 * fitScaleFactor }      // Baggy/oversized fit
     }
+    
     // Get the garment fit adjustment based on the fitFactor (default to 3/regular if out of range)
     const validFitFactor = fitFactor >= 1 && fitFactor <= 5 ? fitFactor : 3;
-    const garmentFitAdjustment = {
-      chest: 0,
-      waist: 0,
-      shoulder: 0,
-      length: 0
-    }
+    const garmentFitAdjustment = garmentFitAdjustments[validFitFactor as keyof typeof garmentFitAdjustments];
     
     // Apply garment fit factor adjustments (before user preference)
     console.log('===== APPLYING GARMENT FIT FACTOR ADJUSTMENTS =====');
     console.log(`Garment Fit Factor: ${fitFactor} (1=tight, 3=regular, 5=baggy)`);
+    console.log('Garment fit adjustments to apply:', garmentFitAdjustment);
     
-    if (fitFactor !== 3) { // 3 is regular fit
-      // Calculate adjustment based on how far from regular fit (3) the garment is
-      // Reduced magnitude by ~50% to avoid extreme shifts
-      const fitAdjustmentFactor = (fitFactor - 3) * 0.5 // +/- 0.5" per fit level difference
-      console.log(`Fit Adjustment Factor: ${fitAdjustmentFactor.toFixed(2)}" per measurement`);
-      
-      if (targetMeasurements.chest) {
-        garmentFitAdjustment.chest = fitAdjustmentFactor
-        const oldChest = targetMeasurements.chest;
-        targetMeasurements.chest += fitAdjustmentFactor
-        console.log(`Chest adjustment: ${oldChest.toFixed(2)}" → ${targetMeasurements.chest.toFixed(2)}" (${fitAdjustmentFactor > 0 ? '+' : ''}${fitAdjustmentFactor.toFixed(2)}")`);
+    // Apply garment fit adjustments to measurements
+    console.log('Applying garment fit adjustments to measurements:');
+    const measurementsBeforeGarmentFit = {...targetMeasurements};
+    
+    Object.keys(garmentFitAdjustment).forEach(key => {
+      const adjustmentValue = garmentFitAdjustment[key as keyof typeof garmentFitAdjustment];
+      if (adjustmentValue !== 0 && targetMeasurements[key] !== undefined) {
+        const oldValue = targetMeasurements[key];
+        targetMeasurements[key] += adjustmentValue;
+        console.log(`${key.charAt(0).toUpperCase() + key.slice(1)} adjustment: ${oldValue.toFixed(2)}" → ${targetMeasurements[key].toFixed(2)}" (${adjustmentValue > 0 ? '+' : ''}${adjustmentValue.toFixed(2)}")`);
+        
+        // Also apply to full chest measurement for quarter-zip products
+        if (key === 'chest' && targetMeasurements.chestFull !== undefined) {
+          const oldChestFull = targetMeasurements.chestFull;
+          targetMeasurements.chestFull += adjustmentValue * 2;
+          console.log(`ChestFull adjustment: ${oldChestFull.toFixed(2)}" → ${targetMeasurements.chestFull.toFixed(2)}" (${adjustmentValue > 0 ? '+' : ''}${(adjustmentValue * 2).toFixed(2)}")`);
+        }
       }
-      
-      if (targetMeasurements.waist) {
-        garmentFitAdjustment.waist = fitAdjustmentFactor
-        const oldWaist = targetMeasurements.waist;
-        targetMeasurements.waist += fitAdjustmentFactor
-        console.log(`Waist adjustment: ${oldWaist.toFixed(2)}" → ${targetMeasurements.waist.toFixed(2)}" (${fitAdjustmentFactor > 0 ? '+' : ''}${fitAdjustmentFactor.toFixed(2)}")`);
-      }
-    } else {
-      console.log('No garment fit adjustments needed (regular fit garment)');
-    }
+    })
     
     // Apply user fit preference adjustments (after garment fit factor)
     console.log('===== APPLYING USER FIT PREFERENCE ADJUSTMENTS =====');
@@ -309,7 +302,6 @@ export default function SizingAgentModal({
     
     // Apply user fit preference adjustments
     console.log('Applying user fit preference adjustments to measurements:');
-    const measurementsBeforeUserFit = {...targetMeasurements};
     
     Object.keys(userFitAdjustment).forEach(key => {
       const adjustmentValue = userFitAdjustment[key as keyof typeof userFitAdjustment];
@@ -826,9 +818,9 @@ export default function SizingAgentModal({
         } else {
           // Final recommendation step for upper body
           const recommendedSize = calculateRecommendation()
-          const alternativeSize = userMeasurements.fitPreference === "Relaxed Fit" ? 
-            (productSizes.indexOf(recommendedSize) > 0 ? productSizes[productSizes.indexOf(recommendedSize) - 1] : null) :
-            (productSizes.indexOf(recommendedSize) < productSizes.length - 1 ? productSizes[productSizes.indexOf(recommendedSize) + 1] : null)
+          // Always recommend a size above for baggier fit option
+          const baggierSize = productSizes.indexOf(recommendedSize) < productSizes.length - 1 ? 
+            productSizes[productSizes.indexOf(recommendedSize) + 1] : null
 
           return (
             <div className="space-y-6 text-center">
@@ -841,9 +833,9 @@ export default function SizingAgentModal({
                 </div>
               </div>
               
-              {alternativeSize && (
+              {baggierSize && (
                 <div className="text-xs">
-                  <p>If you prefer a {userMeasurements.fitPreference === "Relaxed Fit" ? "more fitted" : "more relaxed"} fit, consider trying a <strong>{alternativeSize}</strong>.</p>
+                  <p>For a baggier fit, consider trying a <strong>{baggierSize}</strong>.</p>
                 </div>
               )}
             </div>
@@ -854,9 +846,9 @@ export default function SizingAgentModal({
       default:
         // Final recommendation step for lower body
         const recommendedSize = calculateRecommendation()
-        const alternativeSize = userMeasurements.fitPreference === "Relaxed Fit" ? 
-          (productSizes.indexOf(recommendedSize) > 0 ? productSizes[productSizes.indexOf(recommendedSize) - 1] : null) :
-          (productSizes.indexOf(recommendedSize) < productSizes.length - 1 ? productSizes[productSizes.indexOf(recommendedSize) + 1] : null)
+        // Always recommend a size above for baggier fit option
+        const baggierSize = productSizes.indexOf(recommendedSize) < productSizes.length - 1 ? 
+          productSizes[productSizes.indexOf(recommendedSize) + 1] : null
 
         return (
           <div className="space-y-6 text-center">
@@ -869,9 +861,9 @@ export default function SizingAgentModal({
               </div>
             </div>
             
-            {alternativeSize && (
+            {baggierSize && (
               <div className="text-xs">
-                <p>If you prefer a {userMeasurements.fitPreference === "Relaxed Fit" ? "more fitted" : "more relaxed"} fit, consider trying a <strong>{alternativeSize}</strong>.</p>
+                <p>For a baggier fit, consider trying a <strong>{baggierSize}</strong>.</p>
               </div>
             )}
           </div>
