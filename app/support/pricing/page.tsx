@@ -5,7 +5,7 @@ const volumeDiscounts = [
   {
     product: "Heavyweight Hoodie",
     discounts: [
-      { quantity: "0-39 items", price: "$55 per hoodie" },
+      { quantity: "10-39 items", price: "$55 per hoodie" },
       { quantity: "40-100 items", price: "$50 per hoodie" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
@@ -13,7 +13,7 @@ const volumeDiscounts = [
   {
     product: "Heavyweight Crewneck",
     discounts: [
-      { quantity: "0-39 items", price: "$50 per crewneck" },
+      { quantity: "10-39 items", price: "$50 per crewneck" },
       { quantity: "40-100 items", price: "$45 per crewneck" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
@@ -21,7 +21,7 @@ const volumeDiscounts = [
   {
     product: "Straightcut Sweatpants",
     discounts: [
-      { quantity: "0-39 items", price: "$55 per sweatpant" },
+      { quantity: "10-39 items", price: "$55 per sweatpant" },
       { quantity: "40-100 items", price: "$50 per sweatpant" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
@@ -29,7 +29,7 @@ const volumeDiscounts = [
   {
     product: "Standard Quarter Zip",
     discounts: [
-      { quantity: "0-39 items", price: "$50 per quarter zip" },
+      { quantity: "10-39 items", price: "$50 per quarter zip" },
       { quantity: "40-100 items", price: "$45 per quarter zip" },
       { quantity: "100+", price: "Custom Pricing" }
     ]

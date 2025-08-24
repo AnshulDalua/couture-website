@@ -22,12 +22,16 @@ const colorOptions = {
   "OFF-WHITE": { color: "#EAE6D7", label: "Off-White" },
   "BROWN": { color: "#6D4C41", label: "Brown" },
   "RED": { color: "#C23B50", label: "Red" },
-  "PINK": { color: "#E991B9", label: "Pink" },
+  "PINK": { color: "#D882B0", label: "Pink" },
   "PURPLE": { color: "#7E57C2", label: "Purple" },
   "MUSTARD": { color: "#F9DC5C", label: "Mustard" },
   "ORANGE": { color: "#F15A29", label: "Orange" },
   "MAROON": { color: "#7D3C41", label: "Maroon" },
+  "BUTTER YELLOW": { color: "#F3E09D", label: "Butter Yellow" },
   "YELLOW": { color: "#F9DC5C", label: "Yellow" },
+  "ROYAL BLUE": { color: "#4E5BA4", label: "Royal Blue" },
+  "GRAPHITE": { color: "#383A41", label: "Graphite" },
+  "ARMY GRAY": { color: "#978E81", label: "Army Gray" },
 }
 
 // Sizing chart URLs for each product type
@@ -210,7 +214,7 @@ const productReviews = {
 // Volume discount data with dollar amounts
 const volumeDiscounts = {
   "heavyweight-hoodie": [
-    { quantity: "0-39 items", price: "$55 per hoodie" },
+    { quantity: "10-39 items", price: "$55 per hoodie" },
     { quantity: "40-100 items", price: "$50 per hoodie" },
     { quantity: "100+", price: "Custom Pricing" }
   ],
@@ -301,6 +305,7 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
     fitFactor: 5, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
+
   },
   "heavyweight-crewneck": {
     id: 2,
@@ -317,7 +322,7 @@ const products = {
       "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
-      "/shop/sinh001485-R1-047-22.webp",
+      "/shop/arycrew.webp",
       "/shop/6.webp",
       "/shop/10.webp",
     ],
@@ -363,7 +368,7 @@ const products = {
       "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
-      "/shop/19000029.webp",
+      "/shop/sweats.webp",
       "/shop/5.webp",
       "/shop/4.webp",
     ],
