@@ -8,6 +8,7 @@ import { useState, useEffect, useRef, use } from "react"
 import { notFound, useRouter } from "next/navigation"
 import { X, ChevronRight } from "lucide-react"
 import ImageZoomOverlay from "@/components/ImageZoomOverlay"
+import SizingAgentModal from "@/components/SizingAgentModal"
 
 // Color swatch definitions with appropriate CSS colors
 const colorOptions = {
@@ -239,7 +240,46 @@ const volumeDiscounts = {
   ]
 };
 
-// Mock product data with color codes
+// Product dimensions for sizing agent
+const productDimensions = {
+  "heavyweight-hoodie": [
+    { size: "S", chest: 26, length: 26.8, sleeve: 21.1, shoulder: 25.6 },
+    { size: "M", chest: 26.8, length: 27.6, sleeve: 21.5, shoulder: 26.4 },
+    { size: "L", chest: 27.6, length: 28.4, sleeve: 21.9, shoulder: 27.2 },
+    { size: "XL", chest: 28.4, length: 29.1, sleeve: 22.2, shoulder: 27.9 },
+    { size: "XXL", chest: 29.1, length: 29.9, sleeve: 22.6, shoulder: 28.7 }
+  ],
+  "heavyweight-crewneck": [
+    { size: "S", chest: 26.8, length: 26.8, sleeve: 20.1, shoulder: 24.0 },
+    { size: "M", chest: 27.6, length: 27.6, sleeve: 20.5, shoulder: 24.8 },
+    { size: "L", chest: 28.3, length: 28.3, sleeve: 20.9, shoulder: 25.6 },
+    { size: "XL", chest: 29.1, length: 29.1, sleeve: 21.3, shoulder: 26.4 },
+    { size: "XXL", chest: 29.9, length: 29.9, sleeve: 21.7, shoulder: 26.4 }
+  ],
+  "classic-quarterzip": [
+    { size: "S", chest: 42.5, length: 27.6, sleeve: 23.8, shoulder: 18.7 },
+    { size: "M", chest: 44.5, length: 28.3, sleeve: 24.4, shoulder: 19.5 },
+    { size: "L", chest: 46.5, length: 29.1, sleeve: 24.8, shoulder: 20.3 },
+    { size: "XL", chest: 48.4, length: 29.9, sleeve: 25.2, shoulder: 21.1 },
+    { size: "XXL", chest: 50.4, length: 30.7, sleeve: 25.2, shoulder: 21.9 }
+  ],
+  "straightcut-sweatpants": [
+    { size: "S", waist: 26.0, length: 31.5, inseam: 30 },
+    { size: "M", waist: 27.6, length: 32.0, inseam: 30.5 },
+    { size: "L", waist: 29.1, length: 32.6, inseam: 31 },
+    { size: "XL", waist: 30.7, length: 33.2, inseam: 31.5 },
+    { size: "XXL", waist: 32.3, length: 33.9, inseam: 32 }
+  ],
+  "classic-tshirt": [
+    { size: "S", chest: 19.7, length: 27.2, sleeve: 8.3, shoulder: 17.3 },
+    { size: "M", chest: 20.5, length: 28.0, sleeve: 8.3, shoulder: 17.9 },
+    { size: "L", chest: 21.3, length: 28.7, sleeve: 9.1, shoulder: 18.5 },
+    { size: "XL", chest: 22.0, length: 29.5, sleeve: 9.1, shoulder: 19.1 },
+    { size: "XXL", chest: 22.8, length: 30.3, sleeve: 9.4, shoulder: 19.7 }
+  ]
+}
+
+// Mock product data with color codes and fit factors
 const products = {
   "heavyweight-hoodie": {
     id: 1,
@@ -263,7 +303,9 @@ const products = {
       "/shop/10.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "BUTTER YELLOW", "ROYAL BLUE", "GRAPHITE"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
+    fitFactor: 5, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
+
   },
   "heavyweight-crewneck": {
     id: 2,
@@ -285,7 +327,8 @@ const products = {
       "/shop/10.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED", "GRAPHITE", "ARMY GRAY"],
+    colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED"],
+    fitFactor: 3, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
   },
   "classic-quarterzip": {
     id: 3,
@@ -309,6 +352,7 @@ const products = {
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "CLASSIC GREY", "NAVY", "GREEN"],
+    fitFactor: 3, // Standard fit (1-5 scale, 1=tight, 5=baggy)
   },
   "straightcut-sweatpants": {
     id: 4,
@@ -329,7 +373,8 @@ const products = {
       "/shop/4.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "GRAPHITE"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
+    fitFactor: 4, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
   },
   "classic-tshirt": {
     id: 5,
@@ -351,6 +396,7 @@ const products = {
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN","RED", "MAROON", "PINK", "BROWN", "YELLOW", "ORANGE"],
+    fitFactor: 2, // Standard fit (1-5 scale, 1=tight, 5=baggy)
   },
 }
 
@@ -369,6 +415,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [showSizingChart, setShowSizingChart] = useState(false)
+  const [showSizingAgent, setShowSizingAgent] = useState(false)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
   
@@ -470,6 +517,11 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   // Get pricing for the current product
   const getProductPricing = () => {
     return volumeDiscounts[slug as keyof typeof volumeDiscounts] || []
+  }
+
+  // Handle sizing agent recommendation
+  const handleSizeRecommendation = (recommendedSize: string) => {
+    setSelectedSize(recommendedSize)
   }
 
   if (!product) {
@@ -636,19 +688,19 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
           <div className="mt-4 mb-8">
             <h3 className="text-xs uppercase mb-3">SIZES AVAILABLE: S-2XL</h3>
-            {/* <div className="flex items-center mb-2">
+            <div className="flex items-center mb-2">
               <div className="flex flex-wrap gap-2 flex-1">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
-                    // onClick={() => setSelectedSize(size)}
-                    className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black" : "border-gray-200"}`}
+                    onClick={() => setSelectedSize(size)}
+                    className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black bg-black text-white" : "border-gray-200"}`}
                   >
                     {size}
                   </button>
                 ))}
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Product details displayed directly under size */}
@@ -675,27 +727,12 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           <div className="mt-8 border-t border-gray-200">
             {/* Size Guide section */}
             <button 
-              onClick={() => toggleSection('sizeGuide')}
+              onClick={() => setShowSizingAgent(true)}
               className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
             >
               <span className="uppercase">SIZE GUIDE</span>
-              <ChevronRight 
-                className={`h-4 w-4 transition-transform ${openSection === 'sizeGuide' ? 'rotate-90' : ''}`} 
-              />
+              <ChevronRight className="h-4 w-4" />
             </button>
-            {openSection === 'sizeGuide' && (
-              <div className="py-6 text-xs">
-                <div className="relative w-full">
-                  <Image
-                    src={sizingCharts[slug as keyof typeof sizingCharts]}
-                    alt={`${product.name} sizing chart`}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
-            )}
 
             {/* Reviews section */}
             <button 
@@ -815,6 +852,18 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           images={product.images} 
           initialIndex={zoomImageIndex} 
           onClose={() => setShowZoomOverlay(false)} 
+        />
+      )}
+
+      {/* Sizing Agent Modal */}
+      {showSizingAgent && (
+        <SizingAgentModal
+          productName={product.name}
+          productSizes={product.sizes}
+          productDimensions={productDimensions[slug as keyof typeof productDimensions] || []}
+          fitFactor={product.fitFactor || 3} // Default to regular fit (3) if not specified
+          onClose={() => setShowSizingAgent(false)}
+          onRecommendSize={handleSizeRecommendation}
         />
       )}
     </div>
