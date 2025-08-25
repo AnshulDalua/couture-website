@@ -54,8 +54,8 @@ export default function SizingAgentModal({
 }: SizingAgentModalProps) {
   const [currentStep, setCurrentStep] = useState(0)
   const [userMeasurements, setUserMeasurements] = useState<UserMeasurements>({
-    height: { feet: 5, inches: 8 },
-    weight: 150,
+    height: { feet: 5, inches: 4 },
+    weight: 120,
     gender: "",
     fitPreference: "",
     usualSize: "",
