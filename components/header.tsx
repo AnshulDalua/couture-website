@@ -49,7 +49,9 @@ export default function Header() {
           <Link href="/support/reviews" className={`stussy-nav-item ${isActive('/support/reviews') ? 'font-bold' : ''}`}>
             REVIEWS
           </Link>
-
+          <Link href="/about-us" className={`stussy-nav-item ${isActive('/about-us') ? 'font-bold' : ''}`}>
+            ABOUT US
+          </Link>
           <Link href="/our-process" className={`stussy-nav-item ${isActive('/our-process') ? 'font-bold' : ''}`}>
             PROCESS
           </Link>
