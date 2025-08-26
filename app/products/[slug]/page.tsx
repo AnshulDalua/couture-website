@@ -688,8 +688,8 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
           <div className="mt-4 mb-8">
             <h3 className="text-xs uppercase mb-3">SIZES AVAILABLE: S-2XL</h3>
-            <div className="flex items-center mb-2">
-              <div className="flex flex-wrap gap-2 flex-1">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex flex-wrap gap-2">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
@@ -700,6 +700,12 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   </button>
                 ))}
               </div>
+              <button 
+                onClick={() => setShowSizingAgent(true)}
+                className="text-xs underline hover:no-underline"
+              >
+                WHAT'S MY SIZE?
+              </button>
             </div>
           </div>
 
@@ -727,12 +733,29 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           <div className="mt-8 border-t border-gray-200">
             {/* Size Guide section */}
             <button 
-              onClick={() => setShowSizingAgent(true)}
+              onClick={() => toggleSection('sizeGuide')}
               className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
             >
               <span className="uppercase">SIZE GUIDE</span>
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight 
+                className={`h-4 w-4 transition-transform ${openSection === 'sizeGuide' ? 'rotate-90' : ''}`} 
+              />
             </button>
+            {openSection === 'sizeGuide' && (
+              <div className="py-6">
+                {sizingCharts[slug as keyof typeof sizingCharts] && (
+                  <div className="w-full">
+                    <Image
+                      src={sizingCharts[slug as keyof typeof sizingCharts]}
+                      alt={`${product.name} sizing chart`}
+                      width={800}
+                      height={600}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Reviews section */}
             <button 

@@ -8,7 +8,7 @@ import OptimizedImage from "@/app/components/OptimizedImage"
 const collections = {
   
   all: {
-    title: "ALL",
+    title: "OUR BLANKS",
     products: [
       {
         id: 1,
