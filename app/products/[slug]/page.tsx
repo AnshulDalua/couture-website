@@ -305,6 +305,13 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
     fitFactor: 5, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'2", size: "S" }, // Image 1: /shop/346048sinh002946-R1-035-16.webp
+      { height: "5'10", size: "M" }, // Image 2: /shop/hoodie_2.webp
+      null, // Image 3: /shop/7.webp (no model)
+      null, // Image 4: /shop/8.webp (no model)
+      null, // Image 5: /shop/10.webp (no model)
+    ], // Array corresponding to each image - null for product shots without models
 
   },
   "heavyweight-crewneck": {
@@ -329,6 +336,11 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED"],
     fitFactor: 3, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'10", size: "M" }, // Image 1: /shop/arycrew.webp (no model data yet)
+      null, // Image 2: /shop/6.webp (no model data yet)
+      null, // Image 3: /shop/10.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
   },
   "classic-quarterzip": {
     id: 3,
@@ -353,6 +365,11 @@ const products = {
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "CLASSIC GREY", "NAVY", "GREEN"],
     fitFactor: 3, // Standard fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'10", size: "M" }, // Image 1: /shop/aniket.webp (no model data yet)
+      null, // Image 2: /shop/3.webp (no model data yet)
+      null, // Image 3: /shop/9.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
   },
   "straightcut-sweatpants": {
     id: 4,
@@ -375,6 +392,11 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
     fitFactor: 4, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'2", size: "S" }, // Image 1: /shop/sweats.webp (no model data yet)
+      null, // Image 2: /shop/5.webp (no model data yet)
+      null, // Image 3: /shop/4.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
   },
   "classic-tshirt": {
     id: 5,
@@ -397,6 +419,12 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN","RED", "MAROON", "PINK", "BROWN", "YELLOW", "ORANGE"],
     fitFactor: 2, // Standard fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'10", size: "S" }, // Image 1: /shop/la_tee2.webp (no model data yet)
+      { height: "5'10", size: "S" }, // Image 2: /shop/tee_2.webp (no model data yet)
+      null, // Image 3: /shop/2.webp (no model data yet)
+      null, // Image 4: /shop/1.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
   },
 }
 
@@ -689,7 +717,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           <div className="mt-4 mb-8">
             {/* Desktop layout - header with aligned link */}
             <div className="hidden md:flex items-center justify-between mb-1">
-              <h3 className="text-xs uppercase">SIZES AVAILABLE: S-2XL</h3>
+              <h3 className="text-xs uppercase">SIZES AVAILABLE: S-XXL</h3>
               <button 
                 onClick={() => setShowSizingAgent(true)}
                 className="text-xs font-bold underline hover:no-underline"
@@ -755,6 +783,13 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
               View Gallery →
             </Link>
           </div>
+
+          {/* Model info section - only show if current image has model info */}
+          {product.modelInfo[activeImageIndex] && (
+            <div className="mb-4 text-xs text-gray-600">
+              Model is {product.modelInfo[activeImageIndex].height} wearing size {product.modelInfo[activeImageIndex].size}
+            </div>
+          )}
 
           {/* Collapsible sections - Stussy style */}
           <div className="mt-8 border-t border-gray-200">
