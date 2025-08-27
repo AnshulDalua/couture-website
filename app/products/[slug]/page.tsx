@@ -687,10 +687,19 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           </div>
 
           <div className="mt-4 mb-8">
-            <h3 className="text-xs uppercase mb-3">SIZES AVAILABLE: S-2XL</h3>
-            <div className="flex items-center justify-between mb-2">
+            {/* Desktop layout - header with aligned link */}
+            <div className="hidden md:flex items-center justify-between mb-1">
+              <h3 className="text-xs uppercase">SIZES AVAILABLE: S-2XL</h3>
+              <button 
+                onClick={() => setShowSizingAgent(true)}
+                className="text-xs font-bold underline hover:no-underline"
+              >
+                WHAT'S MY SIZE?
+              </button>
+            </div>
+            <div className="hidden md:flex items-center mb-2">
               <div className="flex flex-wrap gap-2">
-                {product.sizes.map((size) => (
+                {/* {product.sizes.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
@@ -698,14 +707,32 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   >
                     {size}
                   </button>
-                ))}
+                ))} */}
               </div>
-              <button 
-                onClick={() => setShowSizingAgent(true)}
-                className="text-xs underline hover:no-underline"
-              >
-                WHAT'S MY SIZE?
-              </button>
+            </div>
+            
+            {/* Mobile layout - header with aligned link */}
+            <div className="md:hidden">
+              <div className="flex items-center justify-between mb-1">
+                <h3 className="text-xs uppercase">SIZES AVAILABLE: S-2XL</h3>
+                <button 
+                  onClick={() => setShowSizingAgent(true)}
+                  className="text-xs font-bold underline hover:no-underline"
+                >
+                  WHAT'S MY SIZE?
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {/* {product.sizes.map((size) => (
+                  <button
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black bg-black text-white" : "border-gray-200"}`}
+                  >
+                    {size}
+                  </button>
+                ))} */}
+              </div>
             </div>
           </div>
 
