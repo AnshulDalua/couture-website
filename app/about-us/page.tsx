@@ -2,11 +2,11 @@ import Image from "next/image"
 
 export default function AboutUsPage() {
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      <h1 className="text-sm uppercase px-6 py-8">ABOUT US</h1>
+    <div className="relative">
+      <h1 className="text-sm uppercase px-6 py-2 md:py-8">ABOUT US</h1>
 
       {/* Desktop Layout */}
-      <div className="hidden md:block relative h-[80vh] px-6">
+      <div className="hidden md:block relative min-h-[80vh] px-6">
         {/* Curved background lines */}
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 600" fill="none">
           <path
@@ -78,20 +78,11 @@ export default function AboutUsPage() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="md:hidden px-6 pb-8">
-        {/* Curved background lines for mobile */}
-        <svg className="absolute left-0 top-20 w-full h-full opacity-30" viewBox="0 0 400 800" fill="none">
-          <path
-            d="M50 200 Q200 100 350 200 Q200 300 50 400"
-            stroke="#E5E7EB"
-            strokeWidth="2"
-            fill="none"
-          />
-        </svg>
-
-        {/* Yellow character at top */}
-        <div className="flex justify-center mb-8">
-          <div className="w-32 h-32 relative transform rotate-[30deg]">
+      <div className="md:hidden relative">
+        {/* Mobile container with full height */}
+        <div className="h-screen relative overflow-hidden">
+          {/* Yellow character positioned closer to header */}
+          <div className="absolute top-2 left-1/2 transform -translate-x-1/2 translate-x-4 rotate-[30deg] w-24 h-24 z-10">
             <Image
               src="/arlo/yellow.png"
               alt="Yellow character"
@@ -99,44 +90,46 @@ export default function AboutUsPage() {
               className="object-contain"
             />
           </div>
-        </div>
 
-        {/* Main text content */}
-        <div className="text-xs leading-relaxed space-y-4 mb-8 relative z-10">
-          <p>
-            COUTURE WAS FOUNDED BY 3 BEST FRIENDS DURING THEIR SENIOR YEAR AT THE UNIVERSITY OF MICHIGAN WITH A SIMPLE MISSION IN MIND - TO CONNECT PEOPLE & ORGANIZATIONS THROUGH CLOTHING. SO WE SET OUT TO MAKE MERCH THAT PEOPLE ACTUALLY <em>WANT</em> TO WEAR.
-          </p>
-          
-          <p>
-            IN JUST 6 MONTHS, WE'VE BUILT A COMMUNITY OF OVER 2000 STUDENTS ALL AROUND THE WORLD. EVERY ORGANIZATION. HAS A STORY WORTH TELLING.
-          </p>
-          
-          <p>
-            WE'RE HERE TO BRING YOUR VISIONS TO LIFE. THIS IS NOT NORMAL MERCH. THIS THE BEST MERCH IN THE WORLD. AND WE'RE JUST GETTING STARTED.
-          </p>
-          
-          <p className="pt-4">
-            ◊ COUTURE, EST 2024
-          </p>
-        </div>
-
-        {/* Bottom characters */}
-        <div className="flex justify-between items-end">
-          <div className="w-32 h-32 relative">
-            <Image
-              src="/arlo/green.png"
-              alt="Green character"
-              fill
-              className="object-contain"
-            />
+          {/* Main content positioned close to yellow character */}
+          <div className="absolute top-36 left-1/2 transform -translate-x-1/2 px-6">
+            <div className="text-xs leading-tight space-y-2 text-center max-w-sm">
+              <p>
+                COUTURE WAS FOUNDED BY 3 BEST FRIENDS DURING THEIR SENIOR YEAR AT THE UNIVERSITY OF MICHIGAN WITH A SIMPLE MISSION IN MIND - TO CONNECT PEOPLE & ORGANIZATIONS THROUGH CLOTHING. SO WE SET OUT TO MAKE MERCH THAT PEOPLE ACTUALLY <em>WANT</em> TO WEAR.
+              </p>
+              
+              <p>
+                IN JUST 6 MONTHS, WE'VE BUILT A COMMUNITY OF OVER 2000 STUDENTS ALL AROUND THE WORLD. EVERY ORGANIZATION. HAS A STORY WORTH TELLING.
+              </p>
+              
+              <p>
+                WE'RE HERE TO BRING YOUR VISIONS TO LIFE. THIS IS NOT NORMAL MERCH. THIS THE BEST MERCH IN THE WORLD. AND WE'RE JUST GETTING STARTED.
+              </p>
+              
+              <p className="pt-2">
+                ◊ COUTURE, EST 2024
+              </p>
+            </div>
           </div>
-          <div className="w-32 h-32 relative">
-            <Image
-              src="/arlo/red.png"
-              alt="Red character"
-              fill
-              className="object-contain"
-            />
+
+          {/* Bottom characters positioned flush at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 flex justify-between px-4">
+            <div className="w-48 h-56 relative">
+              <Image
+                src="/arlo/green.png"
+                alt="Green character"
+                fill
+                className="object-contain object-bottom"
+              />
+            </div>
+            <div className="w-48 h-56 relative">
+              <Image
+                src="/arlo/red.png"
+                alt="Red character"
+                fill
+                className="object-contain object-bottom"
+              />
+            </div>
           </div>
         </div>
       </div>
