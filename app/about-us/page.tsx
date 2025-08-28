@@ -11,7 +11,7 @@ export default function AboutUsPage() {
         {/* Main text content - centered */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-md text-center">
-            <div className="text-xs leading-relaxed space-y-4">
+            <div className="text-base leading-relaxed space-y-6">
               <p>
                 COUTURE WAS FOUNDED BY 3 BEST FRIENDS DURING THEIR SENIOR YEAR AT THE UNIVERSITY OF MICHIGAN WITH A SIMPLE MISSION IN MIND - TO CONNECT PEOPLE & ORGANIZATIONS THROUGH CLOTHING. SO WE SET OUT TO MAKE MERCH THAT PEOPLE ACTUALLY <em>WANT</em> TO WEAR.
               </p>
@@ -33,12 +33,12 @@ export default function AboutUsPage() {
       </div>
 
       {/* Mobile Layout - optimized to fit on one screen */}
-      <div className="md:hidden h-[calc(100vh-130px)] flex items-center justify-center">
+      <div className="md:hidden h-[calc(100vh-130px)] flex items-center justify-center" style={{ paddingTop: '0', marginTop: '-40px' }}>
         {/* Mobile container with all content visible and vertically centered */}
         <div className="relative">
           {/* Main content with optimized spacing */}
           <div className="px-3 pb-32"> {/* Reduced horizontal padding, adjusted bottom padding */}
-            <div className="text-[10px] leading-none space-y-1 text-center w-[90%] max-w-[300px] mx-auto"> {/* Smaller font, tighter line height, narrower width, reduced spacing */}
+            <div className="text-[10px] leading-none space-y-3 text-center w-[90%] max-w-[300px] mx-auto"> {/* Smaller font, tighter line height, narrower width, reduced spacing */}
               <p>
                 COUTURE WAS FOUNDED BY 3 BEST FRIENDS DURING THEIR SENIOR YEAR AT THE UNIVERSITY OF MICHIGAN WITH A SIMPLE MISSION IN MIND - TO CONNECT PEOPLE & ORGANIZATIONS THROUGH CLOTHING. SO WE SET OUT TO MAKE MERCH THAT PEOPLE ACTUALLY <em>WANT</em> TO WEAR.
               </p>
