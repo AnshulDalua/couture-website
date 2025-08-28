@@ -305,6 +305,13 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
     fitFactor: 5, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'2", size: "S" }, // Image 1: /shop/346048sinh002946-R1-035-16.webp
+      { height: "5'10", size: "M" }, // Image 2: /shop/hoodie_2.webp
+      null, // Image 3: /shop/7.webp (no model)
+      null, // Image 4: /shop/8.webp (no model)
+      null, // Image 5: /shop/10.webp (no model)
+    ], // Array corresponding to each image - null for product shots without models
 
   },
   "heavyweight-crewneck": {
@@ -329,6 +336,11 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED"],
     fitFactor: 3, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'10", size: "M" }, // Image 1: /shop/arycrew.webp (no model data yet)
+      null, // Image 2: /shop/6.webp (no model data yet)
+      null, // Image 3: /shop/10.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
   },
   "classic-quarterzip": {
     id: 3,
@@ -353,6 +365,11 @@ const products = {
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "CLASSIC GREY", "NAVY", "GREEN"],
     fitFactor: 3, // Standard fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'10", size: "M" }, // Image 1: /shop/aniket.webp (no model data yet)
+      null, // Image 2: /shop/3.webp (no model data yet)
+      null, // Image 3: /shop/9.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
   },
   "straightcut-sweatpants": {
     id: 4,
@@ -375,6 +392,11 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
     fitFactor: 4, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'2", size: "S" }, // Image 1: /shop/sweats.webp (no model data yet)
+      null, // Image 2: /shop/5.webp (no model data yet)
+      null, // Image 3: /shop/4.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
   },
   "classic-tshirt": {
     id: 5,
@@ -397,6 +419,12 @@ const products = {
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN","RED", "MAROON", "PINK", "BROWN", "YELLOW", "ORANGE"],
     fitFactor: 2, // Standard fit (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      { height: "5'10", size: "S" }, // Image 1: /shop/la_tee2.webp (no model data yet)
+      { height: "5'10", size: "S" }, // Image 2: /shop/tee_2.webp (no model data yet)
+      null, // Image 3: /shop/2.webp (no model data yet)
+      null, // Image 4: /shop/1.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
   },
 }
 
@@ -687,10 +715,19 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           </div>
 
           <div className="mt-4 mb-8">
-            <h3 className="text-xs uppercase mb-3">SIZES AVAILABLE: S-2XL</h3>
-            <div className="flex items-center mb-2">
-              <div className="flex flex-wrap gap-2 flex-1">
-                {product.sizes.map((size) => (
+            {/* Desktop layout - header with aligned link */}
+            <div className="hidden md:flex items-center justify-between mb-1">
+              <h3 className="text-xs uppercase">SIZES AVAILABLE: S-XXL</h3>
+              <button 
+                onClick={() => setShowSizingAgent(true)}
+                className="text-xs font-bold underline hover:no-underline"
+              >
+                WHAT'S MY SIZE?
+              </button>
+            </div>
+            <div className="hidden md:flex items-center mb-2">
+              <div className="flex flex-wrap gap-2">
+                {/* {product.sizes.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
@@ -698,7 +735,31 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   >
                     {size}
                   </button>
-                ))}
+                ))} */}
+              </div>
+            </div>
+            
+            {/* Mobile layout - header with aligned link */}
+            <div className="md:hidden">
+              <div className="flex items-center justify-between mb-1">
+                <h3 className="text-xs uppercase">SIZES AVAILABLE: S-2XL</h3>
+                <button 
+                  onClick={() => setShowSizingAgent(true)}
+                  className="text-xs font-bold underline hover:no-underline"
+                >
+                  WHAT'S MY SIZE?
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {/* {product.sizes.map((size) => (
+                  <button
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`w-10 h-10 flex items-center justify-center border text-xs ${selectedSize === size ? "border-black bg-black text-white" : "border-gray-200"}`}
+                  >
+                    {size}
+                  </button>
+                ))} */}
               </div>
             </div>
           </div>
@@ -723,16 +784,40 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
             </Link>
           </div>
 
+          {/* Model info section - only show if current image has model info */}
+          {product.modelInfo[activeImageIndex] && (
+            <div className="mb-4 text-xs text-gray-600">
+              Model is {product.modelInfo[activeImageIndex].height} wearing size {product.modelInfo[activeImageIndex].size}
+            </div>
+          )}
+
           {/* Collapsible sections - Stussy style */}
           <div className="mt-8 border-t border-gray-200">
             {/* Size Guide section */}
             <button 
-              onClick={() => setShowSizingAgent(true)}
+              onClick={() => toggleSection('sizeGuide')}
               className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
             >
               <span className="uppercase">SIZE GUIDE</span>
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight 
+                className={`h-4 w-4 transition-transform ${openSection === 'sizeGuide' ? 'rotate-90' : ''}`} 
+              />
             </button>
+            {openSection === 'sizeGuide' && (
+              <div className="py-6">
+                {sizingCharts[slug as keyof typeof sizingCharts] && (
+                  <div className="w-full">
+                    <Image
+                      src={sizingCharts[slug as keyof typeof sizingCharts]}
+                      alt={`${product.name} sizing chart`}
+                      width={800}
+                      height={600}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Reviews section */}
             <button 
