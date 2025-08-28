@@ -40,23 +40,47 @@ export default function Footer() {
 
           {/* Green Arlo positioned at the left side of the page with padding */}
           <div className="fixed left-0 bottom-12 z-40">
-            <Image 
-              src="/arlo/green.webp" 
-              alt="Green Arlo" 
-              width={200} 
-              height={200} 
-              className="object-contain"
-            />
+            {/* Desktop version */}
+            <div className="hidden md:block">
+              <Image 
+                src="/arlo/green.webp" 
+                alt="Green Arlo" 
+                width={200} 
+                height={200} 
+                className="object-contain"
+              />
+            </div>
+            {/* Mobile version */}
+            <div className="block md:hidden">
+              <Image 
+                src="/arlo/green.webp" 
+                alt="Green Arlo" 
+                width={100} 
+                height={100} 
+                className="object-contain"
+              />
+            </div>
           </div>
           
           {/* Red Arlo positioned at the right side with zero spacing */}
           <div className="fixed right-0 bottom-2 z-40">
-            <div style={{ marginRight: '-50px' }}>
+            {/* Desktop version */}
+            <div className="hidden md:block" style={{ marginRight: '-50px' }}>
               <Image 
                 src="/arlo/red.webp" 
                 alt="Red Arlo" 
                 width={300} 
                 height={300} 
+                className="object-contain"
+              />
+            </div>
+            {/* Mobile version */}
+            <div className="block md:hidden" style={{ marginRight: '-25px' }}>
+              <Image 
+                src="/arlo/red.webp" 
+                alt="Red Arlo" 
+                width={200} 
+                height={200} 
                 className="object-contain"
               />
             </div>
