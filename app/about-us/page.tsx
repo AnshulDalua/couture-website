@@ -32,13 +32,13 @@ export default function AboutUsPage() {
         </div>
       </div>
 
-      {/* Mobile Layout */}
-      <div className="md:hidden fixed inset-0 overflow-hidden">
-        {/* Mobile container with full height */}
-        <div className="h-full relative overflow-hidden">
-          {/* Main content positioned to avoid cutoff */}
-          <div className="absolute top-56 left-1/2 transform -translate-x-1/2 px-6">
-            <div className="text-xs leading-tight space-y-2 text-center max-w-sm">
+      {/* Mobile Layout - optimized to fit on one screen */}
+      <div className="md:hidden">
+        {/* Mobile container with all content visible */}
+        <div className="relative">
+          {/* Main content with optimized spacing */}
+          <div className="px-3 pb-32"> {/* Reduced horizontal padding, adjusted bottom padding */}
+            <div className="text-[10px] leading-none space-y-1 text-center max-w-full mx-auto"> {/* Smaller font, tighter line height, wider content, reduced spacing */}
               <p>
                 COUTURE WAS FOUNDED BY 3 BEST FRIENDS DURING THEIR SENIOR YEAR AT THE UNIVERSITY OF MICHIGAN WITH A SIMPLE MISSION IN MIND - TO CONNECT PEOPLE & ORGANIZATIONS THROUGH CLOTHING. SO WE SET OUT TO MAKE MERCH THAT PEOPLE ACTUALLY <em>WANT</em> TO WEAR.
               </p>
@@ -51,7 +51,7 @@ export default function AboutUsPage() {
                 WE'RE HERE TO BRING YOUR VISIONS TO LIFE. THIS IS NOT NORMAL MERCH. THIS THE BEST MERCH IN THE WORLD. AND WE'RE JUST GETTING STARTED.
               </p>
               
-              <p className="pt-2">
+              <p className="pt-1">
                 ◊ COUTURE, EST 2024
               </p>
             </div>
