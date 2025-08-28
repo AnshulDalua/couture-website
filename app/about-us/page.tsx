@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function AboutUsPage() {
   return (
     <div className="relative">
-      <h1 className="text-sm uppercase px-6 py-2 md:py-8">ABOUT US</h1>
+      <h1 className="text-sm uppercase px-6 py-8 md:py-8">ABOUT US</h1>
 
       {/* Desktop Layout */}
       <div className="hidden md:block relative min-h-[80vh] px-6">
@@ -78,11 +78,11 @@ export default function AboutUsPage() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="md:hidden relative">
+      <div className="md:hidden fixed inset-0 overflow-hidden">
         {/* Mobile container with full height */}
-        <div className="h-screen relative overflow-hidden">
-          {/* Yellow character positioned closer to header */}
-          <div className="absolute top-2 left-1/2 transform -translate-x-1/2 translate-x-4 rotate-[30deg] w-24 h-24 z-10">
+        <div className="h-full relative overflow-hidden">
+          {/* Yellow character positioned to avoid cutoff */}
+          <div className="absolute top-24 left-1/2 transform -translate-x-1/2 translate-x-4 rotate-[30deg] w-24 h-24 z-10">
             <Image
               src="/arlo/yellow.png"
               alt="Yellow character"
@@ -91,8 +91,8 @@ export default function AboutUsPage() {
             />
           </div>
 
-          {/* Main content positioned close to yellow character */}
-          <div className="absolute top-36 left-1/2 transform -translate-x-1/2 px-6">
+          {/* Main content positioned to avoid cutoff */}
+          <div className="absolute top-56 left-1/2 transform -translate-x-1/2 px-6">
             <div className="text-xs leading-tight space-y-2 text-center max-w-sm">
               <p>
                 COUTURE WAS FOUNDED BY 3 BEST FRIENDS DURING THEIR SENIOR YEAR AT THE UNIVERSITY OF MICHIGAN WITH A SIMPLE MISSION IN MIND - TO CONNECT PEOPLE & ORGANIZATIONS THROUGH CLOTHING. SO WE SET OUT TO MAKE MERCH THAT PEOPLE ACTUALLY <em>WANT</em> TO WEAR.
