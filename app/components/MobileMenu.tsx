@@ -79,6 +79,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <span className={`text-medium ${isActive('/lookbook') ? 'font-bold' : ''}`}>LOOKBOOK</span>
             </Link>
             
+            {/* Our Designs - entire div clickable */}
+            <Link 
+              href="/our-designs" 
+              onClick={onClose} 
+              className="block py-5 px-6"
+            >
+              <span className={`text-medium ${isActive('/our-designs') ? 'font-bold' : ''}`}>OUR DESIGNS</span>
+            </Link>
+            
             {/* Our Process - entire div clickable */}
             <Link 
               href="/our-process" 
@@ -87,7 +96,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             >
               <span className={`text-medium ${isActive('/our-process') ? 'font-bold' : ''}`}>PROCESS</span>
             </Link>
-            {/* Our Process - entire div clickable */}
+            
+            {/* About Us - entire div clickable */}
             <Link 
               href="/about-us" 
               onClick={onClose} 
