@@ -7,11 +7,34 @@ const designsData = {
   title: "Our Designs",
   images: [
     "/designs/ThetaTankpng.webp",
-    // Add more design images here as they are uploaded
+    "/designs/ThetaTank.webp",
+    "/designs/AphiHoodie (1).webp",
+    
+    "/designs/AphiPants.webp",
+    "/designs/AphiHoodie. (1).webp",
+    "/designs/AphiHoodie.webp",
+    "/designs/AphiPants.webp",
+    "/designs/EvansScholarsPants.webp",
+    "/designs/KKGHoodie.webp",
+    "/designs/SigChiHoodie (1).webp",
+    "/designs/SigChiHoodie.webp",
+    "/designs/SigChiHoodie5.webp",
+    "/designs/UMichSigChiHoodie.webp",
   ],
   captions: [
     "THETA TANK DESIGN",
-    // Add corresponding captions here
+    "THETA TANK DESIGN ALT",
+    "ALPHA PHI HOODIE DESIGN",
+    "ALPHA PHI HOODIE DESIGN ALT",
+    "ALPHA PHI HOODIE DESIGN VARIANT",
+    "ALPHA PHI HOODIE DESIGN",
+    "ALPHA PHI PANTS DESIGN",
+    "EVANS SCHOLARS PANTS DESIGN",
+    "KAPPA KAPPA GAMMA HOODIE",
+    "SIGMA CHI HOODIE DESIGN",
+    "SIGMA CHI HOODIE DESIGN ALT",
+    "SIGMA CHI HOODIE DESIGN V5",
+    "UMICH SIGMA CHI HOODIE",
   ]
 }
 
