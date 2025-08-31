@@ -50,9 +50,6 @@ export default function Header() {
             OUR DESIGNS
           </Link>
 
-          <Link href="/support/reviews" className={`stussy-nav-item ${isActive('/support/reviews') ? 'font-bold' : ''}`}>
-            REVIEWS
-          </Link>
           <Link href="/about-us" className={`stussy-nav-item ${isActive('/about-us') ? 'font-bold' : ''}`}>
             ABOUT US
           </Link>
@@ -69,6 +66,7 @@ export default function Header() {
               {/* <Link href="/support/about" className={isActive('/support/about') ? 'font-bold' : ''}>ABOUT</Link> */}
               <Link href="/support/faq" className={isActive('/support/faq') ? 'font-bold' : ''}>FAQ</Link>
               <Link href="/support/pricing" className={isActive('/support/pricing') ? 'font-bold' : ''}>PRICING</Link>
+              <Link href="/support/reviews" className={isActive('/support/reviews') ? 'font-bold' : ''}>REVIEWS</Link>
               <Link href="/blog" className={isActive('/blog') ? 'font-bold' : ''}>BLOG</Link>
             </div>
           </div>
