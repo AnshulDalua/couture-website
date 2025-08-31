@@ -742,7 +742,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
             {/* Mobile layout - header with aligned link */}
             <div className="md:hidden">
               <div className="flex items-center justify-between mb-1">
-                <h3 className="text-xs uppercase">SIZES AVAILABLE: S-2XL</h3>
+                <h3 className="text-xs uppercase">SIZES AVAILABLE: S-XXL</h3>
                 <button 
                   onClick={() => setShowSizingAgent(true)}
                   className="text-xs font-bold underline hover:no-underline"
@@ -779,7 +779,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
           {/* Gallery link section */}
           <div className="mt-4 mb-4 text-xs flex items-center gap-2">
             <span>See how others customized these blanks.</span>
-            <Link href="/gallery" className="text-black font-semibold hover:underline">
+            <Link href="/our-designs" className="text-black font-semibold hover:underline">
               View Gallery →
             </Link>
           </div>
