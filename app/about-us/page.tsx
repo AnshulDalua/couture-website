@@ -1,8 +1,26 @@
+"use client"
+
 import Image from "next/image"
+import { useEffect } from "react"
 
 export default function AboutUsPage() {
+  // Disable scrolling when component mounts
+  useEffect(() => {
+    // Save original styles
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    
+    // Disable scrolling
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    
+    // Re-enable scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = originalStyle;
+      document.documentElement.style.overflow = "";
+    };
+  }, []);
   return (
-    <div className="relative overflow-hidden h-screen">
+    <div className="relative overflow-hidden h-screen max-h-screen">
       <h1 className="text-sm uppercase px-6 py-8 md:py-8">ABOUT US</h1>
 
       {/* Desktop Layout */}
