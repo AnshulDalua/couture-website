@@ -2,18 +2,34 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
+import { useState, useEffect } from "react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
   const pathname = usePathname()
   const isAboutUsPage = pathname === "/about-us"
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
+  // Listen for mobile menu open/close events
+  useEffect(() => {
+    const handleMenuChange = (e: CustomEvent) => {
+      setMobileMenuOpen(e.detail.isOpen)
+    }
+    
+    // Add event listener for custom event
+    window.addEventListener('mobileMenuStateChange', handleMenuChange as EventListener)
+    
+    return () => {
+      window.removeEventListener('mobileMenuStateChange', handleMenuChange as EventListener)
+    }
+  }, [])
 
   return (
     <>
-      {isAboutUsPage && (
+      {isAboutUsPage && !mobileMenuOpen && (
         <>
           {/* Yellow Arlo positioned at the top center of the screen - responsive sizing */}
-          <div className="fixed z-50">
+          <div className="fixed z-40">
             {/* Desktop version */}
             <div className="hidden md:block" style={{ position: 'fixed', top: '100px', left: '50%', transform: 'translateX(-50%)' }}>
               <Image 

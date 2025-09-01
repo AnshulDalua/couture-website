@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
@@ -17,6 +17,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     more: false
   })
   const pathname = usePathname()
+  
+  // Dispatch custom event when isOpen changes
+  useEffect(() => {
+    // Create and dispatch custom event
+    const event = new CustomEvent('mobileMenuStateChange', {
+      detail: { isOpen }
+    })
+    window.dispatchEvent(event)
+  }, [isOpen])
 
   // Helper function to check if the current path matches a nav item
   const isActive = (path: string) => {
