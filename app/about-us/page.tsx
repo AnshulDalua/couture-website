@@ -2,11 +2,11 @@ import Image from "next/image"
 
 export default function AboutUsPage() {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden h-screen">
       <h1 className="text-sm uppercase px-6 py-8 md:py-8">ABOUT US</h1>
 
       {/* Desktop Layout */}
-      <div className="hidden md:block relative min-h-[80vh] px-6">
+      <div className="hidden md:block relative h-[calc(100vh-80px)] px-6">
 
         {/* Main text content - centered */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -32,8 +32,8 @@ export default function AboutUsPage() {
         </div>
       </div>
 
-      {/* Mobile Layout - optimized to fit on one screen */}
-      <div className="md:hidden h-[calc(100vh-130px)] flex items-center justify-center" style={{ paddingTop: '0', marginTop: '-40px' }}>
+      {/* Mobile Layout - non-scrollable */}
+      <div className="md:hidden h-[calc(100vh-130px)] flex items-center justify-center overflow-hidden" style={{ paddingTop: '0', marginTop: '-40px' }}>
         {/* Mobile container with all content visible and vertically centered */}
         <div className="relative">
           {/* Main content with optimized spacing */}
