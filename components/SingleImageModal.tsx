@@ -61,8 +61,8 @@ export default function SingleImageModal({
         {/* Content Container */}
         <div className="flex flex-col">
           {/* Image Container */}
-          <div className="relative bg-gray-50">
-            <div className="aspect-[4/5] relative max-h-[80vh] w-[28rem]">
+          <div className="relative bg-gray-50 flex justify-center">
+            <div className="aspect-[4/5] relative max-h-[80vh] w-[28rem] max-w-[90vw]">
               <Image
                 src={image}
                 alt={caption}
