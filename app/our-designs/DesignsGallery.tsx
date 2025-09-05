@@ -2,38 +2,43 @@
 
 import { useState } from "react"
 import OptimizedImage from "@/app/components/OptimizedImage"
-import ImageZoomOverlay from "@/components/ImageZoomOverlay"
+import SingleImageModal from "@/components/SingleImageModal"
+
+interface DesignItem {
+  image: string
+  caption: string
+  description: string
+}
 
 interface DesignsGalleryProps {
-  images: string[]
-  captions: string[]
+  designs: DesignItem[]
   title: string
 }
 
-export default function DesignsGallery({ images, captions, title }: DesignsGalleryProps) {
-  const [showZoomOverlay, setShowZoomOverlay] = useState(false)
-  const [zoomImageIndex, setZoomImageIndex] = useState(0)
+export default function DesignsGallery({ designs, title }: DesignsGalleryProps) {
+  const [showModal, setShowModal] = useState(false)
+  const [selectedDesign, setSelectedDesign] = useState<DesignItem | null>(null)
 
   return (
     <div className="min-h-screen">
       <h1 className="text-sm uppercase px-6 py-8">{title}</h1>
       <div className="px-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {images.map((image, index) => {
-            if (image.startsWith('//')) return null;
+          {designs.map((design, index) => {
+            if (design.image.startsWith('//')) return null;
 
             return (
               <div key={index}>
                 <div 
                   className="relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer"
                   onClick={() => {
-                    setShowZoomOverlay(true)
-                    setZoomImageIndex(index)
+                    setSelectedDesign(design)
+                    setShowModal(true)
                   }}
                 >
                   <OptimizedImage
-                    src={image}
-                    alt={captions[index] || 'Design image'}
+                    src={design.image}
+                    alt={design.caption}
                     priority={index < 8}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     containerClassName="w-full h-full"
@@ -41,19 +46,21 @@ export default function DesignsGallery({ images, captions, title }: DesignsGalle
                     loadingStrategy={index < 8 ? "eager" : "progressive"}
                   />
                 </div>
-                <p className="text-xs uppercase mt-2 text-center">{captions[index]}</p>
               </div>
             );
           })}
         </div>
       </div>
 
-      {/* Image Zoom Overlay */}
-      {showZoomOverlay && (
-        <ImageZoomOverlay
-          images={images}
-          initialIndex={zoomImageIndex}
-          onClose={() => setShowZoomOverlay(false)}
+      {/* Single Image Modal */}
+      {showModal && selectedDesign && (
+        <SingleImageModal
+          image={selectedDesign.image}
+          caption={selectedDesign.caption}
+          onClose={() => {
+            setShowModal(false)
+            setSelectedDesign(null)
+          }}
         />
       )}
     </div>
