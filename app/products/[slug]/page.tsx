@@ -303,7 +303,7 @@ const products = {
       "/shop/10.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "BUTTER YELLOW", "ROYAL BLUE", "GRAPHITE"],
     fitFactor: 5, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
     modelInfo: [
       { height: "5'2", size: "S" }, // Image 1: /shop/346048sinh002946-R1-035-16.webp
@@ -334,7 +334,7 @@ const products = {
       "/shop/10.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED"],
+    colors: ["BLACK", "STONE GREY", "NAVY", "GREEN", "WHITE", "BROWN", "RED", "GRAPHITE", "ARMY GRAY"],
     fitFactor: 3, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
     modelInfo: [
       { height: "5'10", size: "M" }, // Image 1: /shop/arycrew.webp (no model data yet)
@@ -390,7 +390,7 @@ const products = {
       "/shop/4.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "MUSTARD", "ORANGE"],
+    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN", "CLASSIC GREY", "STONE GREY", "RED", "BROWN", "PINK", "PURPLE", "GRAPHITE"],
     fitFactor: 4, // Relaxed fit (1-5 scale, 1=tight, 5=baggy)
     modelInfo: [
       { height: "5'2", size: "S" }, // Image 1: /shop/sweats.webp (no model data yet)
