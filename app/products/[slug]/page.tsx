@@ -284,7 +284,7 @@ const products = {
   "heavyweight-hoodie": {
     id: 1,
     name: "Heavyweight Hoodie",
-    price: "$50-55",
+    price: "$55",
     description: "Relaxed hooded sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
@@ -317,7 +317,7 @@ const products = {
   "heavyweight-crewneck": {
     id: 2,
     name: "Heavyweight Crewneck",
-    price: "$45-50",
+    price: "$50",
     description: "Relaxed crewneck sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
@@ -345,7 +345,7 @@ const products = {
   "classic-quarterzip": {
     id: 3,
     name: "Classic Quarterzip",
-    price: "$45-50",
+    price: "$50",
     description: "Standard fit quarterzip in our heavyweight 11.8oz cotton blend.",
     details: [
       "400 GSM",
@@ -374,7 +374,7 @@ const products = {
   "straightcut-sweatpants": {
     id: 4,
     name: "Straightcut Sweatpants",
-    price: "$50-55",
+    price: "$55",
     description: "Straight-legged sweatpants in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
@@ -401,7 +401,7 @@ const products = {
   "classic-tshirt": {
     id: 5,
     name: "Classic Tshirt",
-    price: "$25-30",
+    price: "$25",
     description: "Standard fit tee in midweight 5.6oz cotton blend.",
     details: [
       "200 GSM",
@@ -864,7 +864,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
             )}
 
             {/* Pricing Chart section */}
-            <button 
+            {/* <button 
               onClick={() => toggleSection('pricing')}
               className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
             >
@@ -872,7 +872,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
               <ChevronRight 
                 className={`h-4 w-4 transition-transform ${openSection === 'pricing' ? 'rotate-90' : ''}`} 
               />
-            </button>
+            </button> */}
             {openSection === 'pricing' && (
               <div className="py-6 text-xs">
                 <table className="w-full border-collapse">
