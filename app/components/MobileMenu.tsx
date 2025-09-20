@@ -151,7 +151,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         FAQ
                       </Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link 
                         href="/support/pricing" 
                         onClick={onClose} 
@@ -159,7 +159,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       >
                         Pricing
                       </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <Link 
                         href="/support/reviews" 
