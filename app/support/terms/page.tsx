@@ -1,11 +1,11 @@
 export default function TermsPage() {
   return (
     <div className="px-6 py-8 max-w-3xl mx-auto">
-      <h1 className="text-sm uppercase mb-8">TERMS & CONDITIONS</h1>
+      <h1 className="text-sm uppercase mb-8">TERMS OF SERVICE</h1>
 
       <div className="space-y-6 text-xs">
         <p>
-          These Terms & Conditions ("Terms") govern your use of the CoutureByIkigai website and services. By accessing
+          These Terms & Conditions ("Terms") govern your use of the Couture By Ikigai website and services. By accessing
           or using our website, you agree to be bound by these Terms. If you do not agree with any part of these Terms,
           you may not use our website.
         </p>
@@ -23,12 +23,12 @@ export default function TermsPage() {
               mail," "chain letter," "spam," or any other similar solicitation
             </li>
             <li>
-              To impersonate or attempt to impersonate CoutureByIkigai, a CoutureByIkigai employee, another user, or any
+              To impersonate or attempt to impersonate Couture By Ikigai, a Couture By Ikigai employee, another user, or any
               other person or entity
             </li>
             <li>
               To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the website, or
-              which may harm CoutureByIkigai or users of the website
+              which may harm Couture By Ikigai or users of the website
             </li>
           </ul>
         </section>
@@ -90,7 +90,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xs uppercase font-medium mb-2">6. INDEMNIFICATION</h2>
           <p>
-            You agree to defend, indemnify, and hold harmless CoutureByIkigai, its affiliates, licensors, and service
+            You agree to defend, indemnify, and hold harmless Couture By Ikigai, its affiliates, licensors, and service
             providers, and its and their respective officers, directors, employees, contractors, agents, licensors,
             suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards,
             losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your
@@ -121,7 +121,7 @@ export default function TermsPage() {
           <p>Questions about the Terms should be sent to us at support@couturebyikigai.com.</p>
         </section>
 
-        <p className="mt-4">Last updated: March 13, 2024</p>
+        <p className="mt-4">Last Updated: September 19, 2025</p>
       </div>
     </div>
   )

@@ -178,6 +178,24 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         Blog
                       </Link>
                     </li>
+                    <li>
+                      <Link 
+                        href="/support/privacy" 
+                        onClick={onClose} 
+                        className={`block py-2 text-gray-600 ${isActive('/support/privacy') ? 'font-bold' : ''}`}
+                      >
+                        Privacy Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="/support/terms" 
+                        onClick={onClose} 
+                        className={`block py-2 text-gray-600 ${isActive('/support/terms') ? 'font-bold' : ''}`}
+                      >
+                        Terms of Service
+                      </Link>
+                    </li>
                   </ul>
                 </motion.div>
               )}
