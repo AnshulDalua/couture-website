@@ -531,7 +531,7 @@ export default function ReviewsPage() {
 
   return (
     <div className="px-6 py-8 max-w-5xl mx-auto">
-      <h1 className="text-sm uppercase mb-10">CUSTOMER REVIEWS</h1>
+      <h1 className="text-sm uppercase mb-8">CUSTOMER REVIEWS</h1>
 
       {/* Google Reviews Integration */}
       <div className="mb-16 border border-[#ececec] p-6 hover:border-black transition-colors duration-200">
