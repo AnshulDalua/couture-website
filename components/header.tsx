@@ -68,6 +68,8 @@ export default function Header() {
               {/* <Link href="/support/pricing" className={isActive('/support/pricing') ? 'font-bold' : ''}>PRICING</Link> */}
               <Link href="/support/reviews" className={isActive('/support/reviews') ? 'font-bold' : ''}>REVIEWS</Link>
               <Link href="/blog" className={isActive('/blog') ? 'font-bold' : ''}>BLOG</Link>
+              <Link href="/support/privacy" className={isActive('/support/privacy') ? 'font-bold' : ''}>PRIVACY POLICY</Link>
+              <Link href="/support/terms" className={isActive('/support/terms') ? 'font-bold' : ''}>TERMS OF SERVICE</Link>
             </div>
           </div>
         </nav>
