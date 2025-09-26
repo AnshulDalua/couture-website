@@ -358,6 +358,7 @@ const products = {
       "Screenprint, embroidery, DTG, hot press available",
     ],
     images: [
+      "/lookbook/black_2.webp",
       "/shop/aniket.webp",
       "/shop/3.webp",
       "/shop/9.webp",
@@ -597,7 +598,10 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   priority
                   fetchPriority="high"
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  style={{ objectFit: "cover" }}
+                  style={{ 
+                    objectFit: "cover",
+                    objectPosition: product.images[activeImageIndex] === "/lookbook/black_2.webp" ? "center top" : "center"
+                  }}
                   className="w-full"
                 />
               </div>
@@ -668,7 +672,10 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                       priority={index === 0}
                       fetchPriority={index === 0 ? "high" : "auto"}
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      style={{ objectFit: "cover" }}
+                      style={{ 
+                        objectFit: "cover",
+                        objectPosition: image === "/lookbook/black_2.webp" ? "center top" : "center"
+                      }}
                       className="w-full"
                     />
                   </div>
