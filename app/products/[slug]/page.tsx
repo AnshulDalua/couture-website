@@ -10,28 +10,37 @@ import { X, ChevronRight } from "lucide-react"
 import ImageZoomOverlay from "@/components/ImageZoomOverlay"
 import SizingAgentModal from "@/components/SizingAgentModal"
 
-// Color swatch definitions with appropriate CSS colors
+// Color swatch definitions with appropriate CSS colors and file mappings
 const colorOptions = {
-  "BLACK": { color: "#333333", label: "Black" },
-  "NAVY": { color: "#3A4256", label: "Navy" },
-  "BABY BLUE": { color: "#6D92C5", label: "Baby Blue" },
-  "WHITE": { color: "#F2F2F2", label: "White" },
-  "GREEN": { color: "#3B5D50", label: "Green" },
-  "CLASSIC GREY": { color: "#E0E0E0", label: "Classic Grey" },
-  "STONE GREY": { color: "#7D8491", label: "Stone Grey" },
-  "OFF-WHITE": { color: "#EAE6D7", label: "Off-White" },
-  "BROWN": { color: "#6D4C41", label: "Brown" },
-  "RED": { color: "#C23B50", label: "Red" },
-  "PINK": { color: "#D882B0", label: "Pink" },
-  "PURPLE": { color: "#7E57C2", label: "Purple" },
-  "MUSTARD": { color: "#F9DC5C", label: "Mustard" },
-  "ORANGE": { color: "#F15A29", label: "Orange" },
-  "MAROON": { color: "#7D3C41", label: "Maroon" },
-  "BUTTER YELLOW": { color: "#F3E09D", label: "Butter Yellow" },
-  "YELLOW": { color: "#F9DC5C", label: "Yellow" },
-  "ROYAL BLUE": { color: "#4E5BA4", label: "Royal Blue" },
-  "GRAPHITE": { color: "#383A41", label: "Graphite" },
-  "ARMY GRAY": { color: "#978E81", label: "Army Gray" },
+  "BLACK": { color: "#333333", label: "Black", fileName: "black" },
+  "NAVY": { color: "#3A4256", label: "Navy", fileName: "navy" },
+  "BABY BLUE": { color: "#6D92C5", label: "Baby Blue", fileName: "babyblue" },
+  "WHITE": { color: "#F2F2F2", label: "White", fileName: "white" },
+  "GREEN": { color: "#3B5D50", label: "Green", fileName: "green" },
+  "CLASSIC GREY": { color: "#E0E0E0", label: "Classic Grey", fileName: "grey" },
+  "STONE GREY": { color: "#7D8491", label: "Stone Grey", fileName: "stonegrey" },
+  "OFF-WHITE": { color: "#EAE6D7", label: "Off-White", fileName: "offwhite" },
+  "BROWN": { color: "#6D4C41", label: "Brown", fileName: "brown" },
+  "RED": { color: "#C23B50", label: "Red", fileName: "red" },
+  "PINK": { color: "#D882B0", label: "Pink", fileName: "pink" },
+  "PURPLE": { color: "#7E57C2", label: "Purple", fileName: "purple" },
+  "MUSTARD": { color: "#F9DC5C", label: "Mustard", fileName: "yellow" },
+  "ORANGE": { color: "#F15A29", label: "Orange", fileName: "orange" },
+  "MAROON": { color: "#7D3C41", label: "Maroon", fileName: "maroon" },
+  "BUTTER YELLOW": { color: "#F3E09D", label: "Butter Yellow", fileName: "yellow" },
+  "YELLOW": { color: "#F9DC5C", label: "Yellow", fileName: "yellow" },
+  "ROYAL BLUE": { color: "#4E5BA4", label: "Royal Blue", fileName: "royalblue" },
+  "GRAPHITE": { color: "#383A41", label: "Graphite", fileName: "black" },
+  "ARMY GRAY": { color: "#978E81", label: "Army Gray", fileName: "tan" },
+}
+
+// Product folder mapping for color images
+const productFolders = {
+  "heavyweight-hoodie": "hoodie",
+  "heavyweight-crewneck": "crewneck", 
+  "classic-quarterzip": "quarterzip",
+  "straightcut-sweatpants": "sweatpants",
+  "classic-tshirt": "tshirt"
 }
 
 // Sizing chart URLs for each product type
@@ -418,7 +427,7 @@ const products = {
       "/shop/1.webp",
     ],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["BLACK", "WHITE", "OFF-WHITE", "NAVY", "BABY BLUE", "GREEN","RED", "MAROON", "PINK", "BROWN", "YELLOW", "ORANGE"],
+    colors: ["BLACK", "WHITE", "NAVY", "BABY BLUE", "GREEN","RED", "MAROON", "PINK", "BROWN", "YELLOW", "ORANGE"],
     fitFactor: 2, // Standard fit (1-5 scale, 1=tight, 5=baggy)
     modelInfo: [
       { height: "5'10", size: "S" }, // Image 1: /shop/la_tee2.webp (no model data yet)
@@ -427,6 +436,63 @@ const products = {
       null, // Image 4: /shop/1.webp (no model data yet)
     ], // Array corresponding to each image - null for product shots without models
   },
+}
+
+// Helper function to get color-specific image
+const getColorImage = (productSlug: string, colorCode: string) => {
+  const folder = productFolders[productSlug as keyof typeof productFolders]
+  const colorInfo = colorOptions[colorCode as keyof typeof colorOptions]
+  
+  if (!folder || !colorInfo) return null
+  
+  return `/shop/${folder}/${colorInfo.fileName}.webp`
+}
+
+// Helper function to get current images array (original + color-specific)
+const getCurrentImages = (product: Product, selectedColor: string, productSlug: string) => {
+  if (!selectedColor) return product.images
+  
+  const colorImage = getColorImage(productSlug, selectedColor)
+  if (!colorImage) return product.images
+  
+  // Put color image first, then original images
+  return [colorImage, ...product.images]
+}
+
+// Helper function to get object-fit style based on product type and image
+const getImageObjectFit = (productSlug: string, imageSrc: string) => {
+  // Check if it's a color-specific image
+  const isColorImage = imageSrc.includes(`/shop/${productFolders[productSlug as keyof typeof productFolders]}/`)
+  
+  if (!isColorImage) {
+    // Original product images - use existing logic
+    return {
+      objectFit: "cover" as const,
+      objectPosition: imageSrc === "/lookbook/black_2.webp" ? "center top" : "center"
+    }
+  }
+  
+  // Color-specific images - adjust based on product type
+  switch (productSlug) {
+    case "heavyweight-hoodie":
+    case "classic-quarterzip":
+      return {
+        objectFit: "contain" as const,
+        objectPosition: "center"
+      }
+    case "straightcut-sweatpants":
+      return {
+        objectFit: "contain" as const,
+        objectPosition: "center"
+      }
+    case "heavyweight-crewneck":
+    case "classic-tshirt":
+    default:
+      return {
+        objectFit: "cover" as const,
+        objectPosition: "center"
+      }
+  }
 }
 
 type Product = typeof products[keyof typeof products]
@@ -455,6 +521,9 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   // New state for collapsible sections
   const [openSection, setOpenSection] = useState<string | null>(null)
 
+  // Get current images based on selected color
+  const currentImages = getCurrentImages(product, selectedColor, slug)
+
   // Check if mobile on mount
   useEffect(() => {
     setIsMobile(window.innerWidth < 768)
@@ -466,6 +535,11 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  // Reset active image index when color changes
+  useEffect(() => {
+    setActiveImageIndex(0)
+  }, [selectedColor])
 
   // Handle scroll on images container
   useEffect(() => {
@@ -479,7 +553,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
       const scrollPosition = container.scrollTop
       const imageHeight = containerHeight
 
-      const newIndex = Math.min(Math.floor(scrollPosition / imageHeight), product.images.length - 1)
+      const newIndex = Math.min(Math.floor(scrollPosition / imageHeight), currentImages.length - 1)
 
       if (newIndex !== activeImageIndex) {
         setActiveImageIndex(newIndex)
@@ -488,7 +562,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
     container.addEventListener("scroll", handleScroll)
     return () => container.removeEventListener("scroll", handleScroll)
-  }, [activeImageIndex, isScrolling, product.images.length, isMobile])
+  }, [activeImageIndex, isScrolling, currentImages.length, isMobile])
 
   // Scroll to image when thumbnail is clicked
   const scrollToImage = (index: number) => {
@@ -582,31 +656,28 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                    onTouchEnd={() => {
                      if (touchStart - touchEnd > 50) {
                        // Swipe left - go to next image
-                       const nextIndex = (activeImageIndex + 1) % product.images.length;
+                       const nextIndex = (activeImageIndex + 1) % currentImages.length;
                        scrollToImage(nextIndex);
                      }
                      if (touchStart - touchEnd < -50) {
                        // Swipe right - go to previous image
-                       const prevIndex = activeImageIndex === 0 ? product.images.length - 1 : activeImageIndex - 1;
+                       const prevIndex = activeImageIndex === 0 ? currentImages.length - 1 : activeImageIndex - 1;
                        scrollToImage(prevIndex);
                      }
                    }}>
                 <Image
-                  src={product.images[activeImageIndex] ?? "/placeholder.svg"}
+                  src={currentImages[activeImageIndex] ?? "/placeholder.svg"}
                   alt={`${product.name} - High quality custom ${product.name.toLowerCase()}`}
                   fill
                   priority
                   fetchPriority="high"
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  style={{ 
-                    objectFit: "cover",
-                    objectPosition: product.images[activeImageIndex] === "/lookbook/black_2.webp" ? "center top" : "center"
-                  }}
+                  style={getImageObjectFit(slug, currentImages[activeImageIndex] ?? "")}
                   className="w-full"
                 />
               </div>
               <div className="flex space-x-2 overflow-x-auto scrollbar-hide">
-                {product.images.map((image, index) => (
+                {currentImages.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToImage(index)}
@@ -618,7 +689,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                       alt={`${product.name} view ${index + 1}`}
                       fill
                       sizes="64px"
-                      style={{ objectFit: "cover" }}
+                      style={getImageObjectFit(slug, image ?? "")}
                       className="w-full h-full"
                     />
                   </button>
@@ -630,7 +701,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
             <div className="relative flex gap-4">
               {/* Vertical thumbnails on the left */}
               <div className="hidden md:flex flex-col gap-2 h-[calc(100vh-200px)] overflow-y-auto scrollbar-hide">
-                {product.images.map((image, index) => (
+                {currentImages.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToImage(index)}
@@ -642,7 +713,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                       alt={`${product.name} view ${index + 1}`}
                       fill
                       sizes="64px"
-                      style={{ objectFit: "cover" }}
+                      style={getImageObjectFit(slug, image ?? "")}
                       className="w-full h-full"
                     />
                   </button>
@@ -655,7 +726,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                 className="h-[calc(100vh-200px)] overflow-y-auto scrollbar-hide flex-grow"
                 style={{ scrollSnapType: "y mandatory" }}
               >
-                {product.images.map((image, index) => (
+                {currentImages.map((image, index) => (
                   <div
                     key={index}
                     className="relative h-[calc(100vh-200px)] w-full mb-2 zoom-cursor product-image-container"
@@ -672,10 +743,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                       priority={index === 0}
                       fetchPriority={index === 0 ? "high" : "auto"}
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      style={{ 
-                        objectFit: "cover",
-                        objectPosition: image === "/lookbook/black_2.webp" ? "center top" : "center"
-                      }}
+                      style={getImageObjectFit(slug, image ?? "")}
                       className="w-full"
                     />
                   </div>
@@ -940,10 +1008,10 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
       {/* Image Zoom Overlay */}
       {showZoomOverlay && (
-        <ImageZoomOverlay 
-          images={product.images} 
-          initialIndex={zoomImageIndex} 
-          onClose={() => setShowZoomOverlay(false)} 
+        <ImageZoomOverlay
+          images={currentImages}
+          initialIndex={zoomImageIndex}
+          onClose={() => setShowZoomOverlay(false)}
         />
       )}
 
