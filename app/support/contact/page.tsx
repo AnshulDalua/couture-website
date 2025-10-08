@@ -9,6 +9,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -30,6 +31,7 @@ export default function ContactPage() {
         setFormData({
           name: "",
           email: "",
+          phone: "",
           message: "",
         })
       } else {
@@ -98,6 +100,22 @@ export default function ContactPage() {
                   disabled={isSubmitting}
                 />
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="phone" className="block text-xs uppercase mb-1">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="(555) 123-4567"
+                className="w-full border border-black p-2 text-xs"
+                disabled={isSubmitting}
+              />
             </div>
             <div>
               <label htmlFor="message" className="block text-xs uppercase mb-1">

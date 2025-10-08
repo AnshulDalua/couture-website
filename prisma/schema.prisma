@@ -19,6 +19,7 @@ model ContactFormSubmission {
   id          String   @id @default(uuid())
   name        String
   email       String
+  phone       String?
   message     String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
