@@ -155,6 +155,7 @@ export default function RootLayout({
         <main className="pt-[65px] pb-[60px]">{children}</main>
         <Footer />
 
+        {/* Google Analytics */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-9WVFLS4CL0" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -163,6 +164,18 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'G-9WVFLS4CL0');
+          `}
+        </Script>
+
+        {/* Google Ads Conversion Tracking */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-17639334861" strategy="afterInteractive" />
+        <Script id="google-ads" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-17639334861');
           `}
         </Script>
 
