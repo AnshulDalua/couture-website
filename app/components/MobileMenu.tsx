@@ -88,14 +88,14 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <span className={`text-medium ${isActive('/lookbook') ? 'font-bold' : ''}`}>LOOKBOOK</span>
             </Link>
             
-            {/* Our Designs - entire div clickable */}
+            {/* Our Designs - entire div clickable
             <Link 
               href="/our-designs" 
               onClick={onClose} 
               className="block py-5 px-6"
             >
               <span className={`text-medium ${isActive('/our-designs') ? 'font-bold' : ''}`}>OUR DESIGNS</span>
-            </Link>
+            </Link> */}
             
             {/* Our Process - entire div clickable */}
             <Link 

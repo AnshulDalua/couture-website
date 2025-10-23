@@ -46,9 +46,9 @@ export default function Header() {
             LOOKBOOK
           </Link>
 
-          <Link href="/our-designs" className={`stussy-nav-item ${isActive('/our-designs') ? 'font-bold' : ''}`}>
+          {/* <Link href="/our-designs" className={`stussy-nav-item ${isActive('/our-designs') ? 'font-bold' : ''}`}>
             OUR DESIGNS
-          </Link>
+          </Link> */}
 
           <Link href="/about-us" className={`stussy-nav-item ${isActive('/about-us') ? 'font-bold' : ''}`}>
             ABOUT US
