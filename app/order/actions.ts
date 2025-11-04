@@ -2,6 +2,7 @@
 
 import { submitOrderForm, type OrderFormData, type DesignFileData } from '@/lib/order'
 import { uploadDesignFile } from '@/lib/supabase'
+import { sendOrderFormNotification } from '@/lib/twilio'
 
 export async function submitOrderFormAction(formData: FormData) {
   try {
@@ -52,6 +53,25 @@ export async function submitOrderFormAction(formData: FormData) {
       projectDetails,
       designFiles: designFiles.length > 0 ? designFiles : undefined
     })
+    
+    // Send SMS notification if form was saved successfully
+    if (result.success) {
+      try {
+        await sendOrderFormNotification({
+          name,
+          email,
+          phoneNumber,
+          organization,
+          university,
+          projectDetails,
+          filesCount: designFiles.length
+        })
+        console.log('Order form SMS notification sent successfully')
+      } catch (smsError) {
+        // Log error but don't fail the form submission
+        console.error('Failed to send SMS notification:', smsError)
+      }
+    }
     
     return result
   } catch (error) {
