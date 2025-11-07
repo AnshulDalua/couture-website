@@ -28,6 +28,7 @@ export default function OrderPage() {
   const [isDragging, setIsDragging] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState<{ type: "success" | "error", text: string } | null>(null)
+  const [expandedStep, setExpandedStep] = useState<number | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -156,6 +157,10 @@ export default function OrderPage() {
     }
   }
 
+  const toggleStep = (step: number) => {
+    setExpandedStep(expandedStep === step ? null : step)
+  }
+
   return (
     <div className="px-6 py-8 max-w-3xl mx-auto">
       <h1 className="text-sm uppercase tracking-wide text-black mb-2">REQUEST ORDER</h1>
@@ -164,7 +169,7 @@ export default function OrderPage() {
         Tell us about your project so we can start creating your custom merch.
       </p>
       <div className="space-y-8">
-        {submitMessage ? (
+        {submitMessage && (
           <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
             <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
               {submitMessage.text}
@@ -176,7 +181,9 @@ export default function OrderPage() {
               Submit another order
             </button>
           </div>
-        ) : (
+        )}
+        
+        {!submitMessage && (
           <form onSubmit={handleSubmit} className="space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
               <div className="group">
@@ -371,6 +378,70 @@ export default function OrderPage() {
             </div>
           </form>
         )}
+
+        {/* What's Next Section */}
+        <div className="mt-16 border-t border-black pt-12">
+          <h2 className="text-sm uppercase tracking-wide text-black mb-8">SO, WHAT NOW?</h2>
+          
+          <div className="space-y-0 border-b border-black">
+            {/* Step 1 */}
+            <div className="border-t border-black">
+              <button
+                onClick={() => toggleStep(1)}
+                className="w-full py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-200"
+              >
+                <span className="text-sm uppercase tracking-wide">STEP #1</span>
+                <span className="text-2xl font-light">{expandedStep === 1 ? '−' : '+'}</span>
+              </button>
+              {expandedStep === 1 && (
+                <div className="pb-6 px-2 text-xs leading-relaxed text-gray-600">
+                  <p className="uppercase tracking-wide mb-2">Design Consultation</p>
+                  <p>
+                    Expect a text or email from our team shortly. We'll collaborate on every detail—from concept to final mockup—ensuring your custom merch perfectly represents your organization's style and identity.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Step 2 */}
+            <div className="border-t border-black">
+              <button
+                onClick={() => toggleStep(2)}
+                className="w-full py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-200"
+              >
+                <span className="text-sm uppercase tracking-wide">STEP #2</span>
+                <span className="text-2xl font-light">{expandedStep === 2 ? '−' : '+'}</span>
+              </button>
+              {expandedStep === 2 && (
+                <div className="pb-6 px-2 text-xs leading-relaxed text-gray-600">
+                  <p className="uppercase tracking-wide mb-2">Production & Quality Control</p>
+                  <p>
+                    Once your design is approved, we source premium materials and begin production. Our team handles everything—from cutting and printing to embroidery and finishing touches. Every piece is inspected to ensure it meets our high-quality standards.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Step 3 */}
+            <div className="border-t border-black">
+              <button
+                onClick={() => toggleStep(3)}
+                className="w-full py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-200"
+              >
+                <span className="text-sm uppercase tracking-wide">STEP #3</span>
+                <span className="text-2xl font-light">{expandedStep === 3 ? '−' : '+'}</span>
+              </button>
+              {expandedStep === 3 && (
+                <div className="pb-6 px-2 text-xs leading-relaxed text-gray-600">
+                  <p className="uppercase tracking-wide mb-2">Delivery</p>
+                  <p>
+                    Your order is carefully packaged and shipped directly to you. We'll keep you updated throughout the process, and our team is always available to answer any questions. Typical delivery takes 3-4 weeks from design approval.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
