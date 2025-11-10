@@ -33,7 +33,7 @@ export default function UniversityMerchPage() {
               src="/reviews/4.webp"
               alt="Custom university organization hoodie"
               fill
-              className="object-contain"
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
           </div>
@@ -42,7 +42,7 @@ export default function UniversityMerchPage() {
               src="/reviews/revv1.webp"
               alt="Custom student organization apparel"
               fill
-              className="object-contain"
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
           </div>
@@ -51,7 +51,7 @@ export default function UniversityMerchPage() {
               src="/reviews/revv2.webp"
               alt="Custom campus club merch"
               fill
-              className="object-contain"
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
           </div>
