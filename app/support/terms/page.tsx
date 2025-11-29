@@ -12,7 +12,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-xs uppercase font-medium mb-2">1. USE OF WEBSITE</h2>
-          <p>
+          <p> 
             You may use our website for lawful purposes only and in accordance with these Terms. You agree not to use
             our website:
           </p>
@@ -57,6 +57,14 @@ export default function TermsPage() {
             By placing an order, you represent that the products ordered will be used only in a lawful manner. We
             reserve the right to refuse or cancel your order if we suspect you are under the age of 18 or that you may
             be using our products for illegal purposes.
+          </p>
+          <p className="mt-2">
+            Shipping and delivery timelines are estimates and may be affected by factors beyond our control, including
+            carrier delays, customs inspections, weather, or other logistical disruptions. We are not responsible for
+            such delays. If a delay occurs, we will make reasonable efforts to assist and, where available, request or
+            facilitate shipping-cost refunds or credits from the carrier. Any refund related to delays, if approved,
+            will be limited to shipping charges and will not include the cost of products or any other consequential
+            losses.
           </p>
         </section>
 
