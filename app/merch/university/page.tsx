@@ -3,35 +3,36 @@ import Link from "next/link"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Custom University Organization Merch | Student Club Apparel",
-  description: "Premium custom merch for university clubs, student organizations, and campus groups. High-quality hoodies, sweatpants, and apparel that represents your organization.",
+  title: "Premium Greek Life Merch | Custom Sorority & Fraternity Apparel",
+  description: "Elevate your chapter's style with custom Greek life merch. High-quality hoodies, sweatpants, and apparel designed exclusively for sororities and fraternities.",
   openGraph: {
-    title: "Custom University Organization Merch | Student Club Apparel",
-    description: "Premium custom merch for university clubs, student organizations, and campus groups. High-quality hoodies, sweatpants, and apparel that represents your organization.",
+    title: "Premium Greek Life Merch | Custom Sorority & Fraternity Apparel",
+    description: "Elevate your chapter's style with custom Greek life merch. High-quality hoodies, sweatpants, and apparel designed exclusively for sororities and fraternities.",
   },
 }
 
-export default function UniversityMerchPage() {
+export default function GreekMerchPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="px-6 py-16 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl uppercase tracking-wide mb-4">
-            NOT NORMAL CAMPUS MERCH
+            NOT NORMAL CLUB MERCH
           </h1>
           <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            We design, manufacture, and deliver premium custom apparel for student organizations, clubs, and campus groups. 
-            Every piece is made in-house on our premium blanks—from concept to delivery, we handle it all.
+            We design, manufacture, and deliver premium custom apparel exclusively for all organizations, including university clubs, greek life, buisnesses and more. 
+            Every piece is made in-house on our in-house premium blanks.
           </p>
         </div>
+
 
         {/* Image Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           <div className="relative aspect-[3/4]">
             <Image
-              src="/reviews/4.webp"
-              alt="Custom university organization hoodie"
+              src="/lookbook/Couture-AXO-26.webp"
+              alt="Custom Kappa Kappa Gamma hoodie design"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 33vw"
@@ -39,8 +40,8 @@ export default function UniversityMerchPage() {
           </div>
           <div className="relative aspect-[3/4]">
             <Image
-              src="/reviews/revv1.webp"
-              alt="Custom student organization apparel"
+              src="/lookbook/axo-yellow.webp"
+              alt="Custom Alpha Phi hoodie design"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 33vw"
@@ -48,14 +49,16 @@ export default function UniversityMerchPage() {
           </div>
           <div className="relative aspect-[3/4]">
             <Image
-              src="/reviews/revv2.webp"
-              alt="Custom campus club merch"
+              src="/lookbook/Couture-AXO-22.webp"
+              alt="Custom Kappa Alpha Theta tank design"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
           </div>
         </div>
+
+        
 
         {/* CTA Button */}
         <div className="text-center mb-16">
@@ -72,15 +75,15 @@ export default function UniversityMerchPage() {
       <section className="px-6 py-12 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-sm uppercase tracking-wide mb-10 text-center">
-            WHY STUDENT ORGANIZATIONS CHOOSE US
+            WHY ORGS CHOOSE US
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
               <h3 className="text-xs uppercase tracking-wide mb-3">FULL DESIGN COLLABORATION</h3>
               <p className="text-xs text-gray-600 leading-relaxed">
-                Work directly with our in-house design team to create custom designs that reflect your 
-                organization's mission and values. No templates—just unique merch for your group.
+                Work directly with our in-house design team from concept to final mockup. 
+                We bring your vision to life—no templates, no limitations, just your chapter's unique style.
               </p>
             </div>
             
@@ -95,8 +98,8 @@ export default function UniversityMerchPage() {
             <div>
               <h3 className="text-xs uppercase tracking-wide mb-3">PREMIUM CUSTOM BLANKS</h3>
               <p className="text-xs text-gray-600 leading-relaxed">
-                We use heavyweight, luxury-grade fabrics—the same materials as premium streetwear brands. 
-                Student-friendly pricing without compromising on quality.
+                We use only the highest quality heavyweight fabrics—the same materials as luxury streetwear brands. 
+                Built to last through countless wears, washes, and chapter events.
               </p>
             </div>
           </div>
@@ -106,10 +109,19 @@ export default function UniversityMerchPage() {
       {/* Featured Designs */}
       <section className="px-6 py-12 max-w-6xl mx-auto">
         <h2 className="text-sm uppercase tracking-wide mb-10 text-center">
-          DESIGNS WE MADE FOR SCHOOL CLUBS
+          RECENT  DESIGNS
         </h2>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="relative aspect-square">
+            <Image
+              src="/designs/KKGHoodie.webp"
+              alt="Sigma Chi custom hoodie"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 50vw, 25vw"
+            />
+          </div>
           <div className="relative aspect-square">
             <Image
               src="/designs/EvansScholarsHoodie.webp"
@@ -130,17 +142,8 @@ export default function UniversityMerchPage() {
           </div>
           <div className="relative aspect-square">
             <Image
-              src="/designs/SigChiHoodie.webp"
-              alt="Custom student organization apparel"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 50vw, 25vw"
-            />
-          </div>
-          <div className="relative aspect-square">
-            <Image
-              src="/designs/UMichSigChiHoodie.webp"
-              alt="Custom campus club hoodie"
+              src="/designs/ThetaTank.webp"
+              alt="Kappa Kappa Gamma custom hoodie design"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
@@ -155,14 +158,14 @@ export default function UniversityMerchPage() {
           <h2 className="text-sm uppercase tracking-wide mb-8">PERFECT FOR</h2>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs mb-10">
-            <div className="uppercase tracking-wide">Consulting Clubs</div>
-            <div className="uppercase tracking-wide">Business Orgs</div>
-            <div className="uppercase tracking-wide">Cultural Groups</div>
-            <div className="uppercase tracking-wide">Academic Societies</div>
-            <div className="uppercase tracking-wide">Sports Clubs</div>
-            <div className="uppercase tracking-wide">Service Orgs</div>
-            <div className="uppercase tracking-wide">Honor Societies</div>
-            <div className="uppercase tracking-wide">Student Government</div>
+            <div className="uppercase tracking-wide">Rush Week</div>
+            <div className="uppercase tracking-wide">Bid Day</div>
+            <div className="uppercase tracking-wide">Officer Merch</div>
+            <div className="uppercase tracking-wide">Club Wide Merch</div>
+            <div className="uppercase tracking-wide">Game Days</div>
+            <div className="uppercase tracking-wide">Chapter Retreats</div>
+            <div className="uppercase tracking-wide">Big/Little Reveal</div>
+            <div className="uppercase tracking-wide">Everyday Wear</div>
           </div>
 
           <Link
@@ -173,8 +176,6 @@ export default function UniversityMerchPage() {
           </Link>
         </div>
       </section>
-
-      
 
     </div>
   )
