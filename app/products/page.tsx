@@ -14,21 +14,21 @@ const collections = {
       {
         id: 1,
         name: "Heavyweight Hoodie",
-        price: "$55",
+        price: "$58",
         slug: "heavyweight-hoodie",
         image: "/shop/7.webp",
       },
       {
         id: 2,
         name: "Heavyweight Crewneck",
-        price: "$50",
+        price: "$53",
         slug: "heavyweight-crewneck",
         image: "/shop/6.webp",
       },
       {
         id: 3,
         name: "Classic Quarterzip",
-        price: "$50",
+        price: "$53",
         slug: "classic-quarterzip",
         image: "/shop/3.webp",
       },
@@ -42,7 +42,7 @@ const collections = {
       {
         id: 5,
         name: "Classic Tshirt",
-        price: "$25",
+        price: "$26",
         slug: "classic-tshirt",
         image: "/shop/2.webp",
       },
@@ -74,7 +74,7 @@ export default function ProductsPage() {
               fetchPriority={index < 2 ? "high" : "auto"}
             />
             <h3 className="stussy-product-title">{product.name}</h3>
-            <p className="stussy-product-price">{product.price}</p>
+            <p className="stussy-product-price">Starting at {product.price}</p>
           </Link>
         ))}
       </div>

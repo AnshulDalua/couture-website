@@ -9,6 +9,7 @@ import { notFound, useRouter } from "next/navigation"
 import { X, ChevronRight } from "lucide-react"
 import ImageZoomOverlay from "@/components/ImageZoomOverlay"
 import SizingAgentModal from "@/components/SizingAgentModal"
+import WinterRushCountdown from "@/app/components/WinterRushCountdown"
 
 // Color swatch definitions with appropriate CSS colors and file mappings
 const colorOptions = {
@@ -220,34 +221,6 @@ const productReviews = {
   ]
 }
 
-// Volume discount data with dollar amounts
-const volumeDiscounts = {
-  "heavyweight-hoodie": [
-    { quantity: "10-39 items", price: "$55 per hoodie" },
-    { quantity: "40-100 items", price: "$50 per hoodie" },
-    { quantity: "100+", price: "Custom Pricing" }
-  ],
-  "heavyweight-crewneck": [
-    { quantity: "0-39 items", price: "$50 per crewneck" },
-    { quantity: "40-100 items", price: "$45 per crewneck" },
-    { quantity: "100+", price: "Custom Pricing" }
-  ],
-  "straightcut-sweatpants": [
-    { quantity: "0-39 items", price: "$55 per sweatpant" },
-    { quantity: "40-100 items", price: "$50 per sweatpant" },
-    { quantity: "100+", price: "Custom Pricing" }
-  ],
-  "classic-quarterzip": [
-    { quantity: "0-39 items", price: "$50 per quarter zip" },
-    { quantity: "40-100 items", price: "$45 per quarter zip" },
-    { quantity: "100+", price: "Custom Pricing" }
-  ],
-  "classic-tshirt": [
-    { quantity: "0-39 items", price: "$30 per t-shirt" },
-    { quantity: "40-100 items", price: "$25 per t-shirt" },
-    { quantity: "100+", price: "Custom Pricing" }
-  ]
-};
 
 // Product dimensions for sizing agent
 const productDimensions = {
@@ -293,7 +266,7 @@ const products = {
   "heavyweight-hoodie": {
     id: 1,
     name: "Heavyweight Hoodie",
-    price: "$55",
+    price: "$58",
     description: "Relaxed hooded sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
@@ -326,7 +299,7 @@ const products = {
   "heavyweight-crewneck": {
     id: 2,
     name: "Heavyweight Crewneck",
-    price: "$50",
+    price: "$53",
     description: "Relaxed crewneck sweatshirt in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
@@ -354,7 +327,7 @@ const products = {
   "classic-quarterzip": {
     id: 3,
     name: "Classic Quarterzip",
-    price: "$50",
+    price: "$53",
     description: "Standard fit quarterzip in our heavyweight 11.8oz cotton blend.",
     details: [
       "400 GSM",
@@ -411,7 +384,7 @@ const products = {
   "classic-tshirt": {
     id: 5,
     name: "Classic Tshirt",
-    price: "$25",
+    price: "$26",
     description: "Standard fit tee in midweight 5.6oz cotton blend.",
     details: [
       "200 GSM",
@@ -617,10 +590,6 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
     return productReviews[slug as keyof typeof productReviews] || []
   }
 
-  // Get pricing for the current product
-  const getProductPricing = () => {
-    return volumeDiscounts[slug as keyof typeof volumeDiscounts] || []
-  }
 
   // Handle sizing agent recommendation
   const handleSizeRecommendation = (recommendedSize: string) => {
@@ -632,7 +601,9 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
   }
 
   return (
-    <div className="px-6 py-8 md:px-12 lg:px-16 xl:px-24">
+    <div className="min-h-screen">
+      <WinterRushCountdown />
+      <div className="px-6 py-8 md:px-12 lg:px-16 xl:px-24">
       {/* Back to Shop Link */}
       <div className="mb-8 md:mb-12">
         <Link href="/products" className="text-xs uppercase">
@@ -756,7 +727,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
         {/* Product Info - Fixed on scroll */}
         <div className="md:sticky md:top-[100px] md:self-start md:max-w-md">
           <h1 className="text-sm uppercase">{product.name}</h1>
-          <p className="text-sm mt-1 mb-8">{product.price}</p>
+          <p className="text-sm mt-1 mb-8">Starting at {product.price}</p>
 
           <div className="mt-6 mb-8">
             <h3 className="text-xs uppercase mb-3">COLORS AVAILABLE</h3>
@@ -937,17 +908,6 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                 </div>
               </div>
             )}
-
-            {/* Pricing Chart section */}
-            {/* <button 
-              onClick={() => toggleSection('pricing')}
-              className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
-            >
-              <span className="uppercase">PRICING</span>
-              <ChevronRight 
-                className={`h-4 w-4 transition-transform ${openSection === 'pricing' ? 'rotate-90' : ''}`} 
-              />
-            </button> */}
             {openSection === 'pricing' && (
               <div className="py-6 text-xs">
                 <table className="w-full border-collapse">
@@ -957,14 +917,6 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                       <th className="py-3 px-4 text-left w-1/2">Price</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {getProductPricing().map((discount, index) => (
-                      <tr key={index} className="border-b border-gray-100">
-                        <td className="py-3 px-4">{discount.quantity}</td>
-                        <td className="py-3 px-4">{discount.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
                 </table>
                 <p className="mt-4">
                   Prices may vary based on design complexity. For custom orders, please <Link href="/order" className="underline">contact us</Link>.
@@ -1027,5 +979,6 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
         />
       )}
     </div>
+  </div>
   )
 }
