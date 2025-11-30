@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import OptimizedImage from "@/app/components/OptimizedImage"
+import WinterRushCountdown from "@/app/components/WinterRushCountdown"
 
 // Mock data for collections
 const collections = {
@@ -54,8 +55,10 @@ export default function ProductsPage() {
   const collection = collections.all;
 
   return (
-    <div className="px-6 py-8">
-      <h1 className="text-sm uppercase mb-6">{collection.title}</h1>
+    <div className="min-h-screen">
+      <WinterRushCountdown />
+      <div className="px-6 py-8">
+        <h1 className="text-sm uppercase mb-6">{collection.title}</h1>
 
       <div className="stussy-product-grid">
         {collection.products.map((product, index) => (
@@ -74,6 +77,7 @@ export default function ProductsPage() {
             <p className="stussy-product-price">{product.price}</p>
           </Link>
         ))}
+      </div>
       </div>
     </div>
   )

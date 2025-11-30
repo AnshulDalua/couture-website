@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import DesignsGallery from "./DesignsGallery"
+import WinterRushCountdown from "@/app/components/WinterRushCountdown"
 
 // Our Designs data with descriptions
 interface DesignItem {
@@ -119,9 +120,12 @@ export const metadata: Metadata = {
 
 export default function OurDesignsPage() {
   return (
-    <DesignsGallery 
-      designs={designsData.designs}
-      title={designsData.title}
-    />
+    <>
+      <WinterRushCountdown />
+      <DesignsGallery 
+        designs={designsData.designs}
+        title={designsData.title}
+      />
+    </>
   )
 }

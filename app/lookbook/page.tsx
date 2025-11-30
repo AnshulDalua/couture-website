@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Metadata } from "next"
 import OptimizedImage from "@/app/components/OptimizedImage"
+import WinterRushCountdown from "@/app/components/WinterRushCountdown"
 
 // Combined lookbook data
 const lookbookData = {
@@ -70,6 +71,7 @@ export const metadata: Metadata = {
 export default function LookbookPage() {
   return (
     <div className="min-h-screen">
+      <WinterRushCountdown />
       <h1 className="text-sm uppercase px-6 py-8">{lookbookData.title}</h1>
       <div className="px-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">

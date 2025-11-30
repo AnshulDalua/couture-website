@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import { submitOrderFormAction } from "./actions"
 import Cookies from "js-cookie"
+import WinterRushCountdown from "../components/WinterRushCountdown"
 
 type OrderProduct = {
   id: number
@@ -162,12 +163,17 @@ export default function OrderPage() {
   }
 
   return (
+    <>
+    <WinterRushCountdown />
+    
     <div className="px-6 py-8 max-w-3xl mx-auto">
+      
       <h1 className="text-sm uppercase tracking-wide text-black mb-2">REQUEST ORDER</h1>
 
       <p className="text-xs text-gray-600 leading-relaxed mb-6">
         Tell us about your project so we can start creating your custom merch.
       </p>
+      
       <div className="space-y-8">
         {submitMessage && (
           <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
@@ -444,5 +450,6 @@ export default function OrderPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }
