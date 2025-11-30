@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Metadata } from "next"
+import WinterRushCountdown from "@/app/components/WinterRushCountdown"
 
 export const metadata: Metadata = {
   title: "Premium Greek Life Merch | Custom Sorority & Fraternity Apparel",
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 export default function GreekMerchPage() {
   return (
     <div className="min-h-screen">
+      {/* Winter Rush Countdown */}
+      <WinterRushCountdown />
       {/* Hero Section */}
       <section className="px-6 py-16 max-w-6xl mx-auto">
         <div className="text-center mb-12">

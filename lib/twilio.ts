@@ -150,3 +150,30 @@ Submitted at: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York
     return false;
   }
 }
+
+/**
+ * Send order confirmation SMS to customer
+ */
+export async function sendOrderConfirmationToCustomer(formData: {
+  name: string;
+  phoneNumber: string;
+}): Promise<boolean> {
+  try {
+    const messageBody = `Hi ${formData.name}! 
+
+Thank you for submitting your order request with Couture by Ikigai. 
+
+We've received your information and our team will reach out from 908-798-1235 within the next few hours to discuss your custom merch project.
+
+Talk soon!
+- Couture Team`;
+
+    // Send confirmation to the customer's phone number
+    const result = await sendTwilioSMS(formData.phoneNumber, messageBody);
+    
+    return result;
+  } catch (error) {
+    console.error('Error in sendOrderConfirmationToCustomer:', error);
+    return false;
+  }
+}
