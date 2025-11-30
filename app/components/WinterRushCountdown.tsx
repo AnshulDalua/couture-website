@@ -44,9 +44,9 @@ export default function WinterRushCountdown() {
   }
 
   return (
-    <div className="bg-black text-white py-3 px-6">
+    <div className="bg-white text-black border-y border-gray-300/70 py-3 px-6">
       <div className="max-w-6xl mx-auto text-center">
-        <p className="text-sm uppercase tracking-widest mb-2">
+        <p className="text-sm uppercase tracking-widest mb-2 mt-2">
           10% OFF WINTER RUSH ORDERS — ENDS DEC 31
         </p>
         <div className="flex items-center justify-center gap-4">
