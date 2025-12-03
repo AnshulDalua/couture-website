@@ -171,7 +171,9 @@ export default function OrderPage() {
       <h1 className="text-sm uppercase tracking-wide text-black mb-2">REQUEST ORDER</h1>
 
       <p className="text-xs text-gray-600 leading-relaxed mb-6">
-        Tell us about your project so we can start creating your custom merch.
+        Don't worry if you don't have all the details ready! Our team will help you through the process :)<br />
+        Minimum order quantity is 20 <br />
+        Text us anytime at 732-997-8157 if you have any questions!
       </p>
       
       <div className="space-y-8">
