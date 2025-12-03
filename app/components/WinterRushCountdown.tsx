@@ -75,9 +75,6 @@ export default function WinterRushCountdown() {
           </div>
         </div>
       </div>
-      <p className="absolute right-3 bottom-3 text-[10px] leading-tight text-gray-600 italic text-right">
-        *Offer valid for orders over 50 units
-      </p>
     </div>
   )
 }
