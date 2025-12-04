@@ -77,7 +77,10 @@ export default function Header() {
         {/* Right Side Navigation */}
         <div className="flex items-center stussy-nav">
           <Link href="/order" className={`mx-3 ${isActive('/order') ? 'font-bold' : ''}`}>
-            REQUEST ORDER
+            <span className="uppercase font-normal relative">
+              <span className="instagram-gradient-text">REQUEST ORDER</span>
+              <span className="absolute inset-0 uppercase font-normal opacity-0 group-hover:opacity-100 transition-opacity">REQUEST ORDER</span>
+            </span>
           </Link>
 
           {/* Mobile Menu Button */}

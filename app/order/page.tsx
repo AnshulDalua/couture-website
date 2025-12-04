@@ -172,7 +172,7 @@ export default function OrderPage() {
 
       <p className="text-xs text-gray-600 leading-relaxed mb-6">
         Don't worry if you don't have all the details ready! Our team will help you through the process :)<br />
-        Minimum order quantity is 20 <br />
+        Minimum order quantity is 20.
         Text us anytime at 732-997-8157 if you have any questions!
       </p>
       
