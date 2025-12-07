@@ -1,18 +1,132 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
-import { Metadata } from "next"
+import { useState, useRef } from "react"
 import WinterRushCountdown from "@/app/components/WinterRushCountdown"
-
-export const metadata: Metadata = {
-  title: "Premium Greek Life Merch | Custom Sorority & Fraternity Apparel",
-  description: "Elevate your chapter's style with custom Greek life merch. High-quality hoodies, sweatpants, and apparel designed exclusively for sororities and fraternities.",
-  openGraph: {
-    title: "Premium Greek Life Merch | Custom Sorority & Fraternity Apparel",
-    description: "Elevate your chapter's style with custom Greek life merch. High-quality hoodies, sweatpants, and apparel designed exclusively for sororities and fraternities.",
-  },
-}
+import { submitOrderFormAction } from "@/app/order/actions"
 
 export default function GreekMerchPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    organization: "",
+    university: "",
+    projectDetails: "",
+  })
+  const [files, setFiles] = useState<File[]>([])
+  const [isDragging, setIsDragging] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState<{ type: "success" | "error", text: string } | null>(null)
+  const [expandedStep, setExpandedStep] = useState<number | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const newFiles = Array.from(e.target.files)
+      setFiles(prev => [...prev, ...newFiles])
+    }
+  }
+
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(true)
+  }
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(false)
+  }
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(false)
+
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const newFiles = Array.from(e.dataTransfer.files)
+      setFiles(prev => [...prev, ...newFiles])
+      e.dataTransfer.clearData()
+    }
+  }
+
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const submissionData = new FormData();
+      submissionData.append('name', formData.name);
+      submissionData.append('email', formData.email);
+      submissionData.append('phoneNumber', formData.phoneNumber);
+      submissionData.append('organization', formData.organization);
+      submissionData.append('university', formData.university);
+      submissionData.append('projectDetails', formData.projectDetails);
+
+      files.forEach(file => {
+        submissionData.append('files', file);
+      });
+
+      const result = await submitOrderFormAction(submissionData)
+
+      if (result.success) {
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead', {
+            content_name: 'InterestFormSubmission',
+            content_category: 'OrderInterest',
+          })
+        }
+        setSubmitMessage({
+          type: "success",
+          text: "Your order has been submitted successfully! We'll contact you shortly."
+        })
+
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          organization: "",
+          university: "",
+          projectDetails: "",
+        })
+        setFiles([])
+      } else {
+        setSubmitMessage({
+          type: "error",
+          text: result.error || "There was an error submitting your order. Please try again."
+        })
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setSubmitMessage({
+        type: "error",
+        text: "There was an error submitting your order. Please try again."
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const toggleStep = (step: number) => {
+    setExpandedStep(expandedStep === step ? null : step)
+  }
   return (
     <div className="min-h-screen">
       {/* Winter Rush Countdown */}
@@ -31,14 +145,14 @@ export default function GreekMerchPage() {
 
 
         {/* Image Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-3 gap-4 mb-10">
           <div className="relative aspect-[3/4]">
             <Image
               src="/lookbook/Couture-AXO-26.webp"
               alt="Custom Kappa Kappa Gamma hoodie design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 33vw"
+              sizes="(max-width: 768px) 33vw, 33vw"
             />
           </div>
           <div className="relative aspect-[3/4]">
@@ -47,7 +161,7 @@ export default function GreekMerchPage() {
               alt="Custom Alpha Phi hoodie design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 33vw"
+              sizes="(max-width: 768px) 33vw, 33vw"
             />
           </div>
           <div className="relative aspect-[3/4]">
@@ -56,62 +170,207 @@ export default function GreekMerchPage() {
               alt="Custom Kappa Alpha Theta tank design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 33vw"
+              sizes="(max-width: 768px) 33vw, 33vw"
             />
           </div>
         </div>
-
-        
-
-        {/* CTA Button */}
-        <div className="text-center mb-16">
-          <Link
-            href="/order"
-            className="inline-block bg-black text-white px-12 py-4 uppercase text-sm tracking-widest hover:bg-gray-900 transition-colors duration-300"
-          >
-            START YOUR ORDER
-          </Link>
-        </div>
       </section>
 
-      {/* What Makes Us Different */}
-      <section className="px-6 py-12 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-sm uppercase tracking-wide mb-10 text-center">
-            WHY ORGS CHOOSE US
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div>
-              <h3 className="text-xs uppercase tracking-wide mb-3">FULL DESIGN COLLABORATION</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Work directly with our in-house design team from concept to final mockup. 
-                We bring your vision to life—no templates, no limitations, just your chapter's unique style.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-xs uppercase tracking-wide mb-3">IN-HOUSE MANUFACTURING</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Everything is made in our facility on premium custom blanks. We control quality at every 
-                step—from cutting and printing to embroidery and finishing. No outsourcing, ever.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-xs uppercase tracking-wide mb-3">PREMIUM CUSTOM BLANKS</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                We use only the highest quality heavyweight fabrics—the same materials as luxury streetwear brands. 
-                Built to last through countless wears, washes, and chapter events.
-              </p>
-            </div>
-          </div>
+      {/* Order Form Section */}
+      <section className="px-6 pt-0 pb-6 max-w-3xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-base md:text-lg uppercase tracking-wide text-black mb-3">REQUEST ORDER</h2>
+          <p className="text-sm text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Tell us about your project so we can start creating your custom merch.
+          </p>
         </div>
+
+        {submitMessage && (
+          <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
+            <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
+              {submitMessage.text}
+            </p>
+            <button
+              className="mt-6 underline"
+              onClick={() => setSubmitMessage(null)}
+            >
+              Submit another order
+            </button>
+          </div>
+        )}
+
+        {!submitMessage && (
+          <form onSubmit={handleSubmit} className="space-y-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+              <div className="group">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
+                  disabled={isSubmitting}
+                  placeholder="NAME *"
+                />
+              </div>
+
+              <div className="group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
+                  disabled={isSubmitting}
+                  placeholder="EMAIL *"
+                />
+              </div>
+
+              <div className="group">
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  required
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
+                  disabled={isSubmitting}
+                  placeholder="PHONE NUMBER *"
+                />
+              </div>
+
+              <div className="group">
+                <input
+                  type="text"
+                  id="organization"
+                  name="organization"
+                  required
+                  value={formData.organization}
+                  onChange={handleChange}
+                  className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
+                  disabled={isSubmitting}
+                  placeholder="ORGANIZATION *"
+                />
+              </div>
+            </div>
+
+            <div className="group">
+              <input
+                type="text"
+                id="university"
+                name="university"
+                value={formData.university}
+                onChange={handleChange}
+                className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
+                disabled={isSubmitting}
+                placeholder="UNIVERSITY"
+              />
+            </div>
+
+            <div className="relative group">
+              <textarea
+                id="projectDetails"
+                name="projectDetails"
+                value={formData.projectDetails}
+                onChange={handleChange}
+                required
+                rows={3}
+                className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
+                disabled={isSubmitting}
+                placeholder="Tell us what you need (e.g. 50 hoodies for a consulting club, rush merch for a sorority, startup launch gear)."
+                style={{ resize: 'vertical' }}
+              ></textarea>
+            </div>
+
+            <div className="pt-2 group">
+              <p className="uppercase text-xs mb-3 tracking-wider">UPLOAD DESIGN FILES OR LOGOS (OPTIONAL)</p>
+              <input
+                type="file"
+                id="designFile"
+                name="designFile"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                className="hidden"
+                accept=".jpg,.jpeg,.png,.pdf,.ai,.psd"
+                disabled={isSubmitting}
+                multiple
+              />
+              <div
+                className={`border border-black p-6 text-center cursor-pointer transition-all duration-300 ${isDragging ? 'bg-gray-50 border-2' : ''} ${files.length > 0 ? 'bg-gray-50' : ''} group-hover:border-2`}
+                onDragEnter={handleDragEnter}
+                onDragLeave={handleDragLeave}
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
+              >
+                {files.length > 0 ? (
+                  <div className="py-2">
+                    <p className="text-sm">{files.length} file{files.length !== 1 ? 's' : ''} selected</p>
+                    <button
+                      type="button"
+                      className="text-xs underline mt-3"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setFiles([])
+                      }}
+                    >
+                      Clear all
+                    </button>
+                  </div>
+                ) : (
+                  <div className="py-4">
+                    <p className="text-sm">Drag and drop your files here or click to browse</p>
+                    <p className="text-xs text-gray-500 mt-2">
+                      Accepted formats: JPG, PNG, PDF, AI, PSD
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {files.length > 0 && (
+                <div className="mt-4 space-y-2">
+                  <ul className="space-y-2">
+                    {files.map((file, index) => (
+                      <li key={index} className="flex items-center justify-between text-sm border-b border-gray-200 py-2">
+                        <span className="truncate max-w-xs">{file.name}</span>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            removeFile(index);
+                          }}
+                          className="text-xs underline ml-2"
+                        >
+                          Remove
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <div className="pt-6">
+              <button
+                type="submit"
+                className="w-full bg-black text-white py-4 uppercase text-sm tracking-widest hover:bg-gray-900 transition-colors duration-300"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+              </button>
+            </div>
+          </form>
+        )}
       </section>
 
       {/* Featured Designs */}
       <section className="px-6 py-12 max-w-6xl mx-auto">
-        <h2 className="text-sm uppercase tracking-wide mb-10 text-center">
+        <h2 className="text-base md:text-lg tracking-wide mb-10 text-center">
           RECENT  DESIGNS
         </h2>
         
@@ -160,7 +419,7 @@ export default function GreekMerchPage() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-sm uppercase tracking-wide mb-8">PERFECT FOR</h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs">
             <div className="uppercase tracking-wide">Rush Week</div>
             <div className="uppercase tracking-wide">Bid Day</div>
             <div className="uppercase tracking-wide">Officer Merch</div>
@@ -170,13 +429,6 @@ export default function GreekMerchPage() {
             <div className="uppercase tracking-wide">Big/Little Reveal</div>
             <div className="uppercase tracking-wide">Everyday Wear</div>
           </div>
-
-          <Link
-            href="/order"
-            className="inline-block bg-black text-white px-12 py-4 uppercase text-sm tracking-widest hover:bg-gray-900 transition-colors duration-300"
-          >
-            START YOUR ORDER
-          </Link>
         </div>
       </section>
 
