@@ -4,6 +4,7 @@ import Script from "next/script"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { PostHogProvider } from "./providers"
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://couturebyikigai.com'),
@@ -151,9 +152,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://static.klaviyo.com" crossOrigin="anonymous" />
       </head>
       <body className="font-stussy">
+        <PostHogProvider>
         <Header />
         <main className="pt-[65px] pb-[60px]">{children}</main>
         <Footer />
+        </PostHogProvider>
 
         {/* Google Analytics */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-9WVFLS4CL0" strategy="afterInteractive" />
