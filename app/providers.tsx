@@ -13,7 +13,13 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
       person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
-      defaults: '2025-11-30'
+      defaults: '2025-11-30',
+      session_recording: {
+        maskAllInputs: false,
+        maskInputOptions: {
+            password: true, // Keep passwords masked!
+        }
+    }
     })
   }, [])
 
