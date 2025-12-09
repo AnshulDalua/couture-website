@@ -26,7 +26,7 @@ const designsData: {
       description: "Custom tank top design created for Theta sorority with breathable fabric and contemporary styling. Perfect for casual wear and chapter events with a focus on comfort and durability."
     },
     {
-      image: "/designs/AphiHoodie (1).webp",
+      image: "/designs/AphiHoodie (1)(2).webp",
       caption: "ALPHA PHI HOODIE DESIGN",
       description: "Premium hoodie design for Alpha Phi incorporating their brand colors and custom graphics. Made with our signature heavyweight fleece for ultimate comfort and longevity."
     },
