@@ -163,7 +163,7 @@ export async function sendOrderConfirmationToCustomer(formData: {
 
 Thank you for submitting your order request with Couture by Ikigai. 
 
-We've received your information and our team will reach out from 908-798-1235 within the next few hours to discuss your custom merch project.
+We've received your information and our team will reach out from 732-997-8157 within the next few hours to discuss your custom merch project.
 
 Talk soon!
 - Couture Team`;
