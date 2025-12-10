@@ -88,7 +88,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <span className={`text-medium ${isActive('/lookbook') ? 'font-bold' : ''}`}>LOOKBOOK</span>
             </Link>
             
-            Our Designs - entire div clickable
             <Link 
               href="/our-designs" 
               onClick={onClose} 
