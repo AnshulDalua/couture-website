@@ -666,6 +666,13 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                   </button>
                 ))}
               </div>
+              
+              {/* Mobile REQUEST ORDER button - appears below thumbnails */}
+              <div className="mt-6 mb-6">
+                <button className="stussy-button w-full py-3" onClick={handleOrderNow}>
+                  REQUEST ORDER
+                </button>
+              </div>
             </>
           ) : (
             /* Desktop view - scrollable images with vertical thumbnails */
@@ -923,13 +930,6 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
                 </p>
               </div>
             )}
-          </div>
-
-          {/* Order Now button - moved below the collapsible sections */}
-          <div className="mt-8">
-            <button className="stussy-button w-full py-3" onClick={handleOrderNow}>
-              REQUEST ORDER
-            </button>
           </div>
         </div>
       </div>

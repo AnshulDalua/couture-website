@@ -206,10 +206,11 @@ export default function RootLayout({
           />
         </noscript>
         
-        <Script
+        {/* Klaviyo popup disabled */}
+        {/* <Script
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VicFLw"
           strategy="afterInteractive"
-        />
+        /> */}
 
         {/* <Script id="klaviyo-callback" strategy="afterInteractive">
           {`

@@ -48,27 +48,27 @@ export default function WinterRushCountdown() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center">
           <p className="text-sm uppercase tracking-widest mb-2 mt-2">
-            10% OFF WINTER RUSH ORDERS — ENDS DEC 31
+            10% OFF WINTER RUSH ORDERS
           </p>
         </div>
         <div className="mt-1 h-6">
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center gap-4">
-            <div className="flex items-center gap-2">
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center gap-2">
+            <div className="flex items-center gap-1">
               <span className="text-lg font-bold tabular-nums">{String(timeLeft.days).padStart(2, '0')}</span>
               <span className="text-[9px] uppercase tracking-wide">DAYS</span>
             </div>
             <span className="text-base opacity-50">:</span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <span className="text-lg font-bold tabular-nums">{String(timeLeft.hours).padStart(2, '0')}</span>
               <span className="text-[9px] uppercase tracking-wide">HOURS</span>
             </div>
             <span className="text-base opacity-50">:</span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <span className="text-lg font-bold tabular-nums">{String(timeLeft.minutes).padStart(2, '0')}</span>
               <span className="text-[9px] uppercase tracking-wide">MINS</span>
             </div>
             <span className="text-base opacity-50">:</span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <span className="text-lg font-bold tabular-nums">{String(timeLeft.seconds).padStart(2, '0')}</span>
               <span className="text-[9px] uppercase tracking-wide">SECS</span>
             </div>

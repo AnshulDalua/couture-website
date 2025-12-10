@@ -76,10 +76,9 @@ export default function Header() {
 
         {/* Right Side Navigation */}
         <div className="flex items-center stussy-nav">
-          <Link href="/order" className={`mx-3 ${isActive('/order') ? 'font-bold' : ''}`}>
-            <span className="uppercase font-normal relative">
-              <span className="instagram-gradient-text">REQUEST ORDER</span>
-              <span className="absolute inset-0 uppercase font-normal opacity-0 group-hover:opacity-100 transition-opacity">REQUEST ORDER</span>
+          <Link href="/order" className="mx-3">
+            <span className="border border-black px-4 py-2 uppercase text-xs tracking-wider hover:bg-black hover:text-white transition-colors duration-300">
+              REQUEST ORDER
             </span>
           </Link>
 
