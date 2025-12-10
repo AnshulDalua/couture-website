@@ -287,7 +287,8 @@ export default function GreekMerchPage() {
               ></textarea>
             </div>
 
-            <div className="pt-2 group">
+            {/* File upload section - commented out */}
+            {/* <div className="pt-2 group">
               <p className="uppercase text-xs mb-3 tracking-wider">UPLOAD DESIGN FILES OR LOGOS (OPTIONAL)</p>
               <input
                 type="file"
@@ -353,7 +354,7 @@ export default function GreekMerchPage() {
                   </ul>
                 </div>
               )}
-            </div>
+            </div> */}
 
             <div className="pt-6">
               <button

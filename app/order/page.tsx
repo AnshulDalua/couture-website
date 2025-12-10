@@ -305,7 +305,8 @@ export default function OrderPage() {
               </div>
             </div>
 
-            <div className="pt-2 group">
+            {/* File upload section - commented out */}
+            {/* <div className="pt-2 group">
               <p className="uppercase text-xs mb-3 tracking-wider">UPLOAD DESIGN FILES OR LOGOS (OPTIONAL) </p>
               <input
                 type="file"
@@ -351,7 +352,6 @@ export default function OrderPage() {
                 )}
               </div>
 
-              {/* Display selected files */}
               {files.length > 0 && (
                 <div className="mt-4 space-y-2">
                   <ul className="space-y-2">
@@ -373,7 +373,7 @@ export default function OrderPage() {
                   </ul>
                 </div>
               )}
-            </div>
+            </div> */}
 
             <div className="pt-6">
               <button
@@ -387,12 +387,11 @@ export default function OrderPage() {
           </form>
         )}
 
-        {/* What's Next Section */}
-        <div className="mt-16 border-t border-black pt-12">
+        {/* What's Next Section - commented out */}
+        {/* <div className="mt-16 border-t border-black pt-12">
           <h2 className="text-sm uppercase tracking-wide text-black mb-8">SO, WHAT NOW?</h2>
           
           <div className="space-y-0 border-b border-black">
-            {/* Step 1 */}
             <div className="border-t border-black">
               <button
                 onClick={() => toggleStep(1)}
@@ -411,7 +410,6 @@ export default function OrderPage() {
               )}
             </div>
 
-            {/* Step 2 */}
             <div className="border-t border-black">
               <button
                 onClick={() => toggleStep(2)}
@@ -430,7 +428,6 @@ export default function OrderPage() {
               )}
             </div>
 
-            {/* Step 3 */}
             <div className="border-t border-black">
               <button
                 onClick={() => toggleStep(3)}
@@ -449,7 +446,7 @@ export default function OrderPage() {
               )}
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
     </>
