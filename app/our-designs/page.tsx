@@ -47,7 +47,7 @@ const designsData: {
     // },
     {
       image: "/designs/AphiPants (1).webp",
-      caption: "ALPHA PHI PANTS ALT",
+      caption: "APHI `STAR` SWEAT CONCEPT",
       description: "Alternative sweatpants design for Alpha Phi offering different styling options while maintaining the high-quality standards our clients expect."
     },
     
