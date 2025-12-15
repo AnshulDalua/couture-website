@@ -1,11 +1,20 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function OurProcessPage() {
   return (
     <div className="min-h-screen">
-      <h1 className="text-sm uppercase px-6 py-8">OUR PROCESS</h1>
+      <h1 className="text-sm uppercase px-6 pt-8 pb-2">OUR PROCESS</h1>
 
       <div className="px-6">
+        <p className="text-[10px] sm:text-xs text-gray-600 mb-6">
+          From concept to delivery in 2-3 weeks.{' '}
+          <Link href="/order" className="underline">
+            Request your order
+          </Link>{' '}
+          to get started.
+        </p>
+
         {/* All steps in horizontal layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Step 1 */}

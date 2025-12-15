@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import OptimizedImage from "@/app/components/OptimizedImage"
 import SingleImageModal from "@/components/SingleImageModal"
 
@@ -21,8 +22,14 @@ export default function DesignsGallery({ designs, title }: DesignsGalleryProps) 
 
   return (
     <div className="min-h-screen">
-      <h1 className="text-sm uppercase px-6 py-8">{title}</h1>
+      <h1 className="text-sm uppercase px-6 pt-8 pb-2">{title}</h1>
       <div className="px-6">
+        <p className="text-[10px] sm:text-xs text-gray-600 mb-6">
+          Our design team brings your vision to life -- get inspired, then{' '}
+          <Link href="/order" className="underline">
+            request your order
+          </Link>
+        </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {designs.map((design, index) => {
             if (design.image.startsWith('//')) return null;

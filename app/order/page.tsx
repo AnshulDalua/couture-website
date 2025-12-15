@@ -171,9 +171,9 @@ export default function OrderPage() {
       <h1 className="text-sm uppercase tracking-wide text-black mb-2">REQUEST ORDER</h1>
 
       <p className="text-xs text-gray-600 leading-relaxed mb-6">
-        Don't worry if you don't have all the details ready! Our team will help you through the process :)<br />
-        Minimum order quantity is 20.
-        Text us anytime at 732-997-8157 if you have any questions!
+       Share your vision below and our team will handle the rest. 
+       <br></br>
+       Questions? Text us anytime at 732-997-8157!
       </p>
       
       <div className="space-y-8">
@@ -274,7 +274,7 @@ export default function OrderPage() {
                 rows={3}
                 className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                 disabled={isSubmitting}
-                placeholder="Tell us what you need (e.g. 50 hoodies for a consulting club, rush merch for a sorority, startup launch gear)."
+                placeholder="Tell us what you need (e.g. 50 sweat sets for rush merch, tees for your club or startup). 20 unit minimum."
                 style={{ resize: 'vertical' }}
               ></textarea>
               <div
