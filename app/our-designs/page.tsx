@@ -17,17 +17,27 @@ const designsData: {
   designs: [
     {
       image: "/designs/A Chi O Tank.webp",
-      caption: "ALPHA CHI OMEGA TANK",
+      caption: "AXO `RABBIT` TANK CONCEPT",
       description: "Custom tank top design for Alpha Chi Omega featuring their signature branding and colors. Perfect for warm weather events and casual chapter gatherings."
     },
     {
-      image: "/designs/Accapella.webp",
-      caption: "ACAPELLA GROUP DESIGN",
-      description: "Custom apparel design for an acapella group showcasing musical elements and group identity. Demonstrates our versatility in designing for diverse organizations beyond Greek life."
+      image: "/designs/KKGHoodie (1).webp",
+      caption: "KKG `KEY` HOODIE CONCEPT",
+      description: "Alternative hoodie design for Kappa Kappa Gamma featuring different color schemes and graphic treatments to provide multiple options for the organization."
+    },
+    {
+      image: "/designs/ThetaTank.webp",
+      caption: "THETA `STAR` TANK CONCEPT",
+      description: "Custom tank top design created for Theta sorority with breathable fabric and contemporary styling. Perfect for casual wear and chapter events with a focus on comfort and durability."
+    },
+    {
+      image: "/designs/AphiHoodie.webp",
+      caption: "APHI `FLOWER` HOODIE CONCEPT",
+      description: "Classic Alpha Phi hoodie design featuring timeless styling with modern updates. Balances tradition with contemporary fashion sensibilities."
     },
     {
       image: "/designs/AphiHoodie. (1).webp",
-      caption: "ALPHA PHI HOODIE DESIGN ALT",
+      caption: "APHI EMBROIRDERED TEXT DESIGN CONCEPT",
       description: "Alternative design for Alpha Phi featuring custom embroidered details and premium heavyweight cotton blend. This design showcases our signature aesthetic with modern typography and clean lines."
     },
     // {
@@ -40,11 +50,7 @@ const designsData: {
       caption: "ALPHA PHI PANTS ALT",
       description: "Alternative sweatpants design for Alpha Phi offering different styling options while maintaining the high-quality standards our clients expect."
     },
-    {
-      image: "/designs/AphiHoodie.webp",
-      caption: "ALPHA PHI HOODIE CLASSIC",
-      description: "Classic Alpha Phi hoodie design featuring timeless styling with modern updates. Balances tradition with contemporary fashion sensibilities."
-    },
+    
     {
       image: "/designs/AphiHoodie (1)(2).webp",
       caption: "ALPHA PHI HOODIE DESIGN",
@@ -86,15 +92,16 @@ const designsData: {
       description: "Lightweight tank top design for Kappa Kappa Gamma featuring their iconic branding. Perfect for workouts, warm weather, and casual chapter events."
     },
     {
+      image: "/designs/Accapella.webp",
+      caption: "ACAPELLA GROUP DESIGN CONCEPT",
+      description: "Custom apparel design for an acapella group showcasing musical elements and group identity. Demonstrates our versatility in designing for diverse organizations beyond Greek life."
+    },
+    {
       image: "/designs/KKGHoodie.webp",
       caption: "KAPPA KAPPA GAMMA HOODIE",
       description: "Original Kappa Kappa Gamma hoodie design featuring classic styling with modern updates. Balances tradition with contemporary fashion sensibilities."
     },
-    {
-      image: "/designs/KKGHoodie (1).webp",
-      caption: "KAPPA KAPPA GAMMA HOODIE ALT",
-      description: "Alternative hoodie design for Kappa Kappa Gamma featuring different color schemes and graphic treatments to provide multiple options for the organization."
-    },
+    
     {
       image: "/designs/KKGHoodie (2).webp",
       caption: "KAPPA KAPPA GAMMA HOODIE V2",
@@ -170,11 +177,7 @@ const designsData: {
       caption: "SIGMA CHI HOODIE V5",
       description: "Fifth iteration of Sigma Chi hoodie design, representing our thorough design process and commitment to achieving the perfect final product."
     },
-    {
-      image: "/designs/ThetaTank.webp",
-      caption: "THETA TANK DESIGN",
-      description: "Custom tank top design created for Theta sorority with breathable fabric and contemporary styling. Perfect for casual wear and chapter events with a focus on comfort and durability."
-    },
+    
     {
       image: "/designs/ThetaTankpng.webp",
       caption: "THETA TANK ALT",

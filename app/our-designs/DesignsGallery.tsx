@@ -24,11 +24,12 @@ export default function DesignsGallery({ designs, title }: DesignsGalleryProps) 
     <div className="min-h-screen">
       <h1 className="text-sm uppercase px-6 pt-8 pb-2">{title}</h1>
       <div className="px-6">
-        <p className="text-[10px] sm:text-xs text-gray-600 mb-6">
+        <p className="text-xs text-gray-600 mb-6">
           Our design team brings your vision to life -- get inspired, then{' '}
-          <Link href="/order" className="underline">
+          <Link href="/order" className="underline font-semibold">
             request your order
           </Link>
+          .
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {designs.map((design, index) => {

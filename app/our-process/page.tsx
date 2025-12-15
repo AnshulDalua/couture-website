@@ -7,9 +7,9 @@ export default function OurProcessPage() {
       <h1 className="text-sm uppercase px-6 pt-8 pb-2">OUR PROCESS</h1>
 
       <div className="px-6">
-        <p className="text-[10px] sm:text-xs text-gray-600 mb-6">
+        <p className="text-xs text-gray-600 mb-6">
           From concept to delivery in 2-3 weeks.{' '}
-          <Link href="/order" className="underline">
+          <Link href="/order" className="underline font-semibold">
             Request your order
           </Link>{' '}
           to get started.
