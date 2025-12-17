@@ -53,12 +53,12 @@ const designsData: {
     
     {
       image: "/designs/AphiHoodie (1)(2).webp",
-      caption: "ALPHA PHI HOODIE DESIGN",
+      caption: "APHI `FLORAL` HOODIE CONCEPT",
       description: "Premium hoodie design for Alpha Phi incorporating their brand colors and custom graphics. Made with our signature heavyweight fleece for ultimate comfort and longevity."
     },
     {
       image: "/designs/AphiPants.webp",
-      caption: "ALPHA PHI PANTS DESIGN",
+      caption: "APHI `FLORAL` SWEAT CONCEPT",
       description: "Coordinating sweatpants design to complement the Alpha Phi hoodie collection. Features custom embroidery and relaxed fit for everyday comfort."
     },
     {
@@ -68,22 +68,22 @@ const designsData: {
     },
     {
       image: "/designs/EvansScholarsHoodie.webp",
-      caption: "EVANS SCHOLARS HOODIE",
+      caption: "MICHIGAN EVANS SCHOLARS EMBROIDERED HOODIE",
       description: "Custom hoodie design for Evans Scholars featuring their unique branding and organizational pride. Crafted with attention to detail and organizational values."
     },
     {
       image: "/designs/EvansScholarsPants.webp",
-      caption: "EVANS SCHOLARS PANTS",
+      caption: "MICHIGAN EVANS SCHOLARS EMBROIDERED SWEAT",
       description: "Matching sweatpants design for Evans Scholars collection, maintaining consistency with the hoodie design while offering versatile styling options."
     },
     {
       image: "/designs/FishPants.webp",
-      caption: "FISH PANTS DESIGN",
+      caption: "FISH SWEAT CONCEPT",
       description: "Unique sweatpants design featuring custom fish graphics and playful typography. Demonstrates our ability to create fun, memorable designs that stand out."
     },
     {
       image: "/designs/Girls Varsity tennis.webp",
-      caption: "GIRLS VARSITY TENNIS",
+      caption: "GIRLS VARSITY TENNIS SWEATSET",
       description: "Custom athletic apparel design for a girls varsity tennis team. Combines performance functionality with stylish team branding for competitive athletes."
     },
     {
@@ -93,43 +93,43 @@ const designsData: {
     },
     {
       image: "/designs/Accapella.webp",
-      caption: "ACAPELLA GROUP DESIGN CONCEPT",
+      caption: "ACAPELLA GROUP PRINTED  CONCEPT",
       description: "Custom apparel design for an acapella group showcasing musical elements and group identity. Demonstrates our versatility in designing for diverse organizations beyond Greek life."
     },
     {
       image: "/designs/KKGHoodie.webp",
-      caption: "KAPPA KAPPA GAMMA HOODIE",
+      caption: "KKG `KEY` HOODIE CONCEPT",
       description: "Original Kappa Kappa Gamma hoodie design featuring classic styling with modern updates. Balances tradition with contemporary fashion sensibilities."
     },
     
     {
       image: "/designs/KKGHoodie (2).webp",
-      caption: "KAPPA KAPPA GAMMA HOODIE V2",
+      caption: "KKG `TUNA BOX` HOODIE CONCEPT",
       description: "Second iteration of Kappa Kappa Gamma hoodie design, refined based on feedback and incorporating enhanced design elements for maximum impact."
     },
     {
       image: "/designs/KKGHoodie (3).webp",
-      caption: "KAPPA KAPPA GAMMA HOODIE V3",
+      caption: "KKG `TUNA BOX` HOODIE CONCEPT",
       description: "Third design concept for Kappa Kappa Gamma, showcasing our iterative design process and commitment to finding the perfect aesthetic for each client."
     },
     {
       image: "/designs/KKGOLF back-35.webp",
-      caption: "KKG GOLF BACK DESIGN",
+      caption: "KKG `GOLF` LONGSLEEVE CONCEPT",
       description: "Back design detail for Kappa Kappa Gamma golf apparel, featuring custom graphics and branding elements specifically tailored for athletic wear."
     },
     {
       image: "/designs/KKGolf Front.webp",
-      caption: "KKG GOLF FRONT DESIGN",
+      caption: "KKG `GOLF` LONGSLEEVE CONCEPT",
       description: "Front design for Kappa Kappa Gamma golf apparel, combining performance functionality with elegant sorority branding for athletic events."
     },
     {
       image: "/designs/KKGPants.webp",
-      caption: "KAPPA KAPPA GAMMA PANTS",
+      caption: "KKG 'BOXY' SWEAT",
       description: "Coordinating sweatpants for the KKG collection, designed to work seamlessly with the hoodie while standing strong as a standalone piece."
     },
     {
       image: "/designs/KKGPants (1).webp",
-      caption: "KAPPA KAPPA GAMMA PANTS ALT",
+      caption: "KKG 'KEY'  SWEAT CONCEPT",
       description: "Alternative sweatpants design variation offering different styling options while maintaining the high-quality standards our clients expect."
     },
     {
@@ -144,12 +144,12 @@ const designsData: {
     },
     {
       image: "/designs/PiPhi.webp",
-      caption: "PI BETA PHI DESIGN",
+      caption: "PI BETA PI 'STAR' CONCEPT SWEATSET",
       description: "Premium apparel design for Pi Beta Phi incorporating their brand identity and sorority values through thoughtful design elements and color selection."
     },
     {
       image: "/designs/Reach Consulting Group.webp",
-      caption: "REACH CONSULTING GROUP",
+      caption: "REACH CONSULTING SWEATSET",
       description: "Professional apparel design for Reach Consulting Group. Demonstrates our expertise in creating sophisticated designs for business and professional organizations."
     },
     {
@@ -159,24 +159,24 @@ const designsData: {
     },
     {
       image: "/designs/SeniorSetDG (1).webp",
-      caption: "DELTA GAMMA SENIOR SET",
+      caption: "DG 'SCRIPTURE' SWEATSET",
       description: "Special senior collection design for Delta Gamma sorority, commemorating the graduating class with custom graphics and meaningful design elements."
     },
     {
       image: "/designs/SigChiHoodie.webp",
-      caption: "SIGMA CHI HOODIE ALT",
+      caption: "SIGMA CHI PRINTED HOODIE",
       description: "Alternative Sigma Chi hoodie design showcasing different graphic approaches while maintaining the fraternity's core brand elements and values."
     },
     {
       image: "/designs/SigChiHoodie (1).webp",
-      caption: "SIGMA CHI HOODIE DESIGN",
+      caption: "SIGMA CHI 'BASEBALL' CONCEPT HOODIE",
       description: "Classic Sigma Chi hoodie design embodying the fraternity's heritage and values through thoughtful typography and color selection."
     },
-    {
-      image: "/designs/SigChiHoodie5.webp",
-      caption: "SIGMA CHI HOODIE V5",
-      description: "Fifth iteration of Sigma Chi hoodie design, representing our thorough design process and commitment to achieving the perfect final product."
-    },
+    // {
+    //   image: "/designs/SigChiHoodie5.webp",
+    //   caption: "SIGMA CHI 'BASEBALL' CONCEPT HOODIE",
+    //   description: "Fifth iteration of Sigma Chi hoodie design, representing our thorough design process and commitment to achieving the perfect final product."
+    // },
     
     {
       image: "/designs/ThetaTankpng.webp",
@@ -190,7 +190,7 @@ const designsData: {
     // },
     {
       image: "/designs/UMichSigChiHoodie.webp",
-      caption: "U-MICH SIGMA CHI HOODIE",
+      caption: "SIGMA CHI EMBROIDERED HOODIE",
       description: "University of Michigan Sigma Chi chapter hoodie design, incorporating both university and fraternity branding in a cohesive, stylish design."
     }
   ]
