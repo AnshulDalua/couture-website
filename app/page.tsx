@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 import IntroAnimation from "@/app/components/IntroAnimation"
 import ImagePreloader from "@/app/components/ImagePreloader"
 import OptimizedImage from "@/app/components/OptimizedImage"
@@ -12,10 +13,98 @@ import Head from 'next/head'
 
 // Array of images to rotate through
 const images = [
-  "/homepage/v1.webp",
+  "/lookbook/l20.webp",
+  // "/homepage/v1.webp",
   // "/homepage/aryani.webp",
   // "/lookbook/Couture-AXO-26.webp",
   // "/homepage/clubhouse.webp"
+]
+
+// Products data
+const products = [
+  {
+    id: 1,
+    name: "Heavyweight Hoodie",
+    price: "$58",
+    slug: "heavyweight-hoodie",
+    image: "/shop/7.webp",
+  },
+  {
+    id: 2,
+    name: "Heavyweight Crewneck",
+    price: "$53",
+    slug: "heavyweight-crewneck",
+    image: "/shop/6.webp",
+  },
+  {
+    id: 3,
+    name: "Classic Quarterzip",
+    price: "$53",
+    slug: "classic-quarterzip",
+    image: "/shop/3.webp",
+  },
+  {
+    id: 4,
+    name: "Straightcut Sweatpants",
+    price: "$55",
+    slug: "straightcut-sweatpants",
+    image: "/shop/5.webp",
+  },
+  {
+    id: 5,
+    name: "Classic Tshirt",
+    price: "$26",
+    slug: "classic-tshirt",
+    image: "/shop/2.webp",
+  },
+]
+
+// Gallery designs data (subset)
+const galleryDesigns = [
+  {
+    image: "/designs/A Chi O Tank.webp",
+    caption: "AXO `RABBIT` TANK CONCEPT",
+  },
+  {
+    image: "/designs/KKGHoodie (1).webp",
+    caption: "KKG `KEY` HOODIE CONCEPT",
+  },
+  {
+    image: "/designs/ThetaTank.webp",
+    caption: "THETA `STAR` TANK CONCEPT",
+  },
+  {
+    image: "/designs/AphiHoodie.webp",
+    caption: "APHI `FLOWER` HOODIE CONCEPT",
+  },
+  {
+    image: "/designs/AphiHoodie. (1).webp",
+    caption: "APHI EMBROIDERED TEXT DESIGN CONCEPT",
+  },
+  {
+    image: "/designs/AphiPants (1).webp",
+    caption: "APHI `STAR` SWEAT CONCEPT",
+  },
+]
+
+// Lookbook items
+const lookbookItems = [
+  {
+    image: "/lookbook/Couture-AXO-26.webp",
+    caption: "AXO LOOKBOOK",
+  },
+  {
+    image: "/lookbook/beach3.webp",
+    caption: "BEACH LOOKBOOK",
+  },
+  {
+    image: "/lookbook/axo-yellow.webp",
+    caption: "AXO YELLOW",
+  },
+  {
+    image: "/lookbook/axo-babytee3.webp",
+    caption: "AXO BABY TEE",
+  },
 ]
 
 export default function HomePage() {
@@ -121,7 +210,7 @@ export default function HomePage() {
       <AnimatePresence>
         {contentReady && (
           <motion.div 
-            className="h-[calc(100vh-120px)] flex items-center md:items-start justify-center px-2 md:px-2 md:pt-4"
+            className="md:h-[calc(100vh-120px)] flex items-start md:items-center justify-center md:px-2 md:pt-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -170,39 +259,187 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Mobile Version - Single image */}
-            <div className="md:hidden relative w-full h-full cursor-pointer" onClick={handleImageClick}>
-              {currentImage && (
-                <Image
-                  src={currentImage}
-                  alt="IKIGAI Featured Collection"
-                  priority
-                  fetchPriority="high"
-                  sizes="100vw"
-                  width={466}
-                  height={703}
-                  style={{ 
-                    objectFit: "cover",
-                    width: "100%",
-                    height: "100%"
-                  }}
-                />
-              )}
-              
-              {/* Overlay text for mobile - kept on multiple lines but larger */}
-              <div className="absolute bottom-12 right-6 text-right z-10">
-                <h1 
-                  className="text-5xl font-bold text-white" 
-                  style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
-                >
-                  NOT<br />NORMAL<br />MERCH
-                </h1>
-                <p 
-                  className="text-md text-white text-right mt-2" 
-                  style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
-                >
-                  CUSTOM APPAREL YOU'LL ACTUALLY WEAR.
+            {/* Mobile Version - Scrollable sections */}
+            <div className="md:hidden w-full">
+              {/* Hero Section */}
+              <div className="relative w-full h-[calc(100vh-120px)] cursor-pointer" onClick={handleImageClick}>
+                {currentImage && (
+                  <Image
+                    src={currentImage}
+                    alt="IKIGAI Featured Collection"
+                    priority
+                    fetchPriority="high"
+                    sizes="100vw"
+                    fill
+                    style={{ 
+                      objectFit: "cover",
+                      objectPosition: "center"
+                    }}
+                  />
+                )}
+                
+                {/* Overlay text for mobile */}
+                <div className="absolute bottom-12 right-6 text-right z-10">
+                  <h1 
+                    className="text-5xl font-bold text-white" 
+                    style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
+                  >
+                    NOT<br />NORMAL<br />MERCH
+                  </h1>
+                  <p 
+                    className="text-md text-white text-right mt-2" 
+                    style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
+                  >
+                    CUSTOM APPAREL YOU'LL ACTUALLY WEAR.
+                  </p>
+                </div>
+              </div>
+
+              {/* Brief Explainer Section */}
+              <div className="relative px-6 py-28 bg-white overflow-hidden mb-18 mt-8">
+                <div className="relative z-10 text-center max-w-sm mx-auto">
+                  <div className="relative inline-block">
+                    {/* Yellow Arlo skateboarder coming off the Y in COMPANY */}
+                    <div className="absolute top-[-80px] right-[-60px] w-20 h-20 z-20" style={{ transform: "rotate(25deg)" }}>
+                      <Image
+                        src="/arlo/yellow.webp"
+                        alt="Arlo mascot"
+                        width={80}
+                        height={80}
+                        style={{ width: "100%", height: "auto" }}
+                      />
+                    </div>
+                    <h2 className="text-sm uppercase tracking-widest mb-4 font-bold">
+                      NOT YOUR AVERAGE MERCH COMPANY
+                    </h2>
+                  </div>
+                  <p className="text-xs leading-relaxed text-gray-700">
+                    We design, manufacture, and deliver premium custom apparel in-house. 
+                    No middlemen. No compromises. Just merch you'll actually want to wear.
+                  </p>
+                </div>
+              </div>
+
+              {/* Products Section */}
+              <div className="relative px-6 py-2 bg-white">
+                <h2 className="text-sm uppercase mb-6">OUR BLANKS</h2>
+                <div className="grid grid-cols-2 gap-4">
+                  {products.map((product) => (
+                    <Link href={`/products/${product.slug}`} key={product.id} className="block">
+                      <div className="relative aspect-square mb-2 bg-gray-100">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          sizes="50vw"
+                          style={{ objectFit: "cover" }}
+                        />
+                      </div>
+                      <h3 className="text-xs uppercase">{product.name}</h3>
+                      <p className="text-xs text-gray-600">Starting at {product.price}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Gallery Section */}
+              <div className="relative px-6 py-12 bg-white">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-sm uppercase">OUR DESIGNS</h2>
+                  <Link href="/our-designs" className="text-xs underline">
+                    View All
+                  </Link>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {galleryDesigns.map((design, index) => (
+                    <Link href="/our-designs" key={index} className="block">
+                      <div className="relative aspect-[3/4] bg-white">
+                        <Image
+                          src={design.image}
+                          alt={design.caption}
+                          fill
+                          sizes="50vw"
+                          style={{ objectFit: "contain" }}
+                        />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Lookbook Section */}
+              <div className="relative px-6 py-12 bg-white">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-sm uppercase">LOOKBOOK</h2>
+                  <Link href="/gallery" className="text-xs underline">
+                    View All
+                  </Link>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {lookbookItems.map((item, index) => (
+                    <Link href="/gallery" key={index} className="block">
+                      <div className="relative aspect-[3/4] bg-white">
+                        <Image
+                          src={item.image}
+                          alt={item.caption}
+                          fill
+                          sizes="50vw"
+                          style={{ objectFit: "cover" }}
+                        />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Order Form Section */}
+              <div className="px-6 py-12 bg-white">
+                <h2 className="text-sm uppercase tracking-wide mb-2 text-center">REQUEST ORDER</h2>
+                <p className="text-xs text-gray-600 text-center mb-8">
+                  Share your vision below and our team will handle the rest.
                 </p>
+                
+                <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); router.push('/order'); }}>
+                  <div className="grid grid-cols-1 gap-6">
+                    <input
+                      type="text"
+                      placeholder="NAME *"
+                      required
+                      className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
+                    />
+                    <input
+                      type="email"
+                      placeholder="EMAIL *"
+                      required
+                      className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
+                    />
+                    <input
+                      type="tel"
+                      placeholder="PHONE NUMBER *"
+                      required
+                      className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
+                    />
+                    <input
+                      type="text"
+                      placeholder="ORGANIZATION *"
+                      required
+                      className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
+                    />
+                    <textarea
+                      placeholder="Tell us what you need (e.g. 50 sweat sets for rush merch). 20 unit minimum."
+                      required
+                      rows={3}
+                      className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent text-xs"
+                    />
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    className="w-full bg-black text-white py-3 uppercase text-xs tracking-widest hover:bg-gray-900 transition-colors"
+                  >
+                    SUBMIT
+                  </button>
+                </form>
               </div>
             </div>
           </motion.div>
