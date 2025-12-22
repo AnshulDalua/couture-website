@@ -58,7 +58,7 @@ export default function ContactPage() {
             <p className="font-medium">CUSTOMER SERVICE HOURS:</p>
             <p>Monday - Friday: 9AM - 9PM EST</p>
             <p>Email: orders@couturebyikigai.com</p>
-            <p>Phone: 1-908-798-1235</p>
+            <p>Phone: 732-997-8157</p>
           </div>
         </section>
 

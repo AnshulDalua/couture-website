@@ -50,11 +50,12 @@ export default function Header() {
             OUR DESIGNS
           </Link>
 
-          <Link href="/about-us" className={`stussy-nav-item ${isActive('/about-us') ? 'font-bold' : ''}`}>
-            ABOUT US
-          </Link>
           <Link href="/our-process" className={`stussy-nav-item ${isActive('/our-process') ? 'font-bold' : ''}`}>
             PROCESS
+          </Link>
+
+          <Link href="/support/reviews" className={`stussy-nav-item ${isActive('/support/reviews') ? 'font-bold' : ''}`}>
+            REVIEWS
           </Link>
 
           <div className="stussy-nav-item">
@@ -62,11 +63,9 @@ export default function Header() {
               MORE <ChevronDown className="ml-1 h-3 w-3" />
             </button>
             <div className="stussy-dropdown">
+              <Link href="/about-us" className={isActive('/about-us') ? 'font-bold' : ''}>ABOUT US</Link>
               <Link href="/support/contact" className={isActive('/support/contact') ? 'font-bold' : ''}>CONTACT</Link>
-              {/* <Link href="/support/about" className={isActive('/support/about') ? 'font-bold' : ''}>ABOUT</Link> */}
               <Link href="/support/faq" className={isActive('/support/faq') ? 'font-bold' : ''}>FAQ</Link>
-              {/* <Link href="/support/pricing" className={isActive('/support/pricing') ? 'font-bold' : ''}>PRICING</Link> */}
-              <Link href="/support/reviews" className={isActive('/support/reviews') ? 'font-bold' : ''}>REVIEWS</Link>
               <Link href="/blog" className={isActive('/blog') ? 'font-bold' : ''}>BLOG</Link>
               <Link href="/support/privacy" className={isActive('/support/privacy') ? 'font-bold' : ''}>PRIVACY POLICY</Link>
               <Link href="/support/terms" className={isActive('/support/terms') ? 'font-bold' : ''}>TERMS OF SERVICE</Link>

@@ -96,7 +96,6 @@ export default function BlogPage() {
               </div>
               <div className="mt-4">
                 <h3 className="text-xs uppercase font-medium tracking-wide">{post.title}</h3>
-                <p className="text-xs text-gray-500 uppercase mt-1">{post.date}</p>
               </div>
             </Link>
           ))}
