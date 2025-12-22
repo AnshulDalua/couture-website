@@ -105,13 +105,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <span className={`text-medium ${isActive('/our-process') ? 'font-bold' : ''}`}>PROCESS</span>
             </Link>
             
-            {/* About Us - entire div clickable */}
+            {/* Reviews - entire div clickable */}
             <Link 
-              href="/about-us" 
+              href="/support/reviews" 
               onClick={onClose} 
               className="block py-5 px-6"
             >
-              <span className={`text-medium ${isActive('/about-us') ? 'font-bold' : ''}`}>ABOUT US</span>
+              <span className={`text-medium ${isActive('/support/reviews') ? 'font-bold' : ''}`}>REVIEWS</span>
             </Link>
             {/* More Section - kept expandable */}
             <div className="py-5 px-6">
@@ -133,6 +133,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   <ul className="space-y-3">
                     <li>
                       <Link 
+                        href="/about-us" 
+                        onClick={onClose} 
+                        className={`block py-2 text-gray-600 ${isActive('/about-us') ? 'font-bold' : ''}`}
+                      >
+                        About Us
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
                         href="/support/contact" 
                         onClick={onClose} 
                         className={`block py-2 text-gray-600 ${isActive('/support/contact') ? 'font-bold' : ''}`}
@@ -140,7 +149,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         Contact
                       </Link>
                     </li>
-
                     <li>
                       <Link 
                         href="/support/faq" 
@@ -148,24 +156,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         className={`block py-2 text-gray-600 ${isActive('/support/faq') ? 'font-bold' : ''}`}
                       >
                         FAQ
-                      </Link>
-                    </li>
-                    {/* <li>
-                      <Link 
-                        href="/support/pricing" 
-                        onClick={onClose} 
-                        className={`block py-2 text-gray-600 ${isActive('/support/pricing') ? 'font-bold' : ''}`}
-                      >
-                        Pricing
-                      </Link>
-                    </li> */}
-                    <li>
-                      <Link 
-                        href="/support/reviews" 
-                        onClick={onClose} 
-                        className={`block py-2 text-gray-600 ${isActive('/support/reviews') ? 'font-bold' : ''}`}
-                      >
-                        Reviews
                       </Link>
                     </li>
                     <li>

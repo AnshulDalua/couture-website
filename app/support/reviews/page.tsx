@@ -565,23 +565,23 @@ export default function ReviewsPage() {
 
       <div className="space-y-12">
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-12">
           {currentReviews.map((review) => (
             <div key={review.id} className="group border border-[#ececec] hover:border-black transition-colors duration-200">
               {/* Review Header */}
-              <div className="p-8 pb-4 border-b border-[#ececec]">
-                <h3 className="text-base font-medium mb-3">{review.title}</h3>
-                <p className="text-sm text-gray-600">{review.product}</p>
+              <div className="p-3 md:p-8 pb-2 md:pb-4 border-b border-[#ececec]">
+                <h3 className="text-[10px] md:text-base font-medium mb-1 md:mb-3 line-clamp-2">{review.title}</h3>
+                <p className="text-[8px] md:text-sm text-gray-600 line-clamp-1">{review.product}</p>
               </div>
               
               {/* Review Image */}
               {review.image && (
-                <div className="relative h-[300px] w-full overflow-hidden">
+                <div className="relative h-[120px] md:h-[300px] w-full overflow-hidden">
                   <Image 
                     src={review.image} 
                     alt={`Review by ${review.name}`}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 50vw, 100vw"
                     style={{ objectFit: "cover" }}
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
@@ -589,14 +589,14 @@ export default function ReviewsPage() {
               )}
               
               {/* Review Content */}
-              <div className="p-8">
-                <p className="text-sm leading-relaxed mb-8">{review.content}</p>
+              <div className="p-3 md:p-8">
+                <p className="text-[9px] md:text-sm leading-relaxed mb-3 md:mb-8 line-clamp-3 md:line-clamp-none">{review.content}</p>
                 
-                <div className="flex justify-between items-center text-sm text-gray-600 pt-4 border-t border-[#ececec]">
+                <div className="flex justify-between items-center text-[8px] md:text-sm text-gray-600 pt-2 md:pt-4 border-t border-[#ececec]">
                   <div className="flex items-center">
-                    <span>{review.name}</span>
+                    <span className="truncate">{review.name}</span>
                     {review.school && (
-                      <span className="ml-2 text-[10px] bg-[#f9f9f9] px-1 py-0.5">{review.school}</span>
+                      <span className="ml-1 md:ml-2 text-[7px] md:text-[10px] bg-[#f9f9f9] px-1 py-0.5 hidden sm:inline">{review.school}</span>
                     )}
                   </div>
                 </div>

@@ -50,25 +50,25 @@ const products = [
     slug: "straightcut-sweatpants",
     image: "/shop/5.webp",
   },
-  {
-    id: 5,
-    name: "Classic Tshirt",
-    price: "$26",
-    slug: "classic-tshirt",
-    image: "/shop/2.webp",
-  },
+  // {
+  //   id: 5,
+  //   name: "Classic Tshirt",
+  //   price: "$26",
+  //   slug: "classic-tshirt",
+  //   image: "/shop/2.webp",
+  // },
 ]
 
 // Gallery designs data (subset)
 const galleryDesigns = [
-  {
-    image: "/designs/A Chi O Tank.webp",
-    caption: "AXO `RABBIT` TANK CONCEPT",
-  },
-  {
-    image: "/designs/KKGHoodie (1).webp",
-    caption: "KKG `KEY` HOODIE CONCEPT",
-  },
+  // {
+  //   image: "/designs/A Chi O Tank.webp",
+  //   caption: "AXO `RABBIT` TANK CONCEPT",
+  // },
+  // {
+  //   image: "/designs/KKGHoodie (1).webp",
+  //   caption: "KKG `KEY` HOODIE CONCEPT",
+  // },
   {
     image: "/designs/ThetaTank.webp",
     caption: "THETA `STAR` TANK CONCEPT",

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
+import Link from "next/link"
 
 // FAQ data
 const faqCategories = [
@@ -25,12 +26,13 @@ const faqCategories = [
       {
         question: "Is there a minimum order quantity?",
         answer:
-          "Yes, there is a minimum order quantity of 10 units per order.",
+          "Yes, there is a minimum order quantity of 20 units per order.",
       },
       {
         question: "How do I place a bulk order?",
         answer:
-          "To place a bulk order, please contact us at orders@couturebyikigai.com with your order details and quantity. We will provide a custom quote and payment instructions.",
+          "To place a bulk order, please visit our order page.",
+        link: "/order",
       },
       {
         question: "How does pricing work?",
@@ -132,9 +134,15 @@ export default function FAQPage() {
                     </button>
 
                     {openQuestions[`${categoryIndex}-${questionIndex}`] && (
-                      <p className="text-sm mt-2 text-gray-600 pl-4 pr-8">
-                        {faq?.answer}
-                      </p>
+                      <div className="text-sm mt-2 text-gray-600 pl-4 pr-8">
+                        {(faq as any)?.link ? (
+                          <Link href={(faq as any).link} className="underline hover:text-black">
+                            {faq?.answer}
+                          </Link>
+                        ) : (
+                          <p>{faq?.answer}</p>
+                        )}
+                      </div>
                     )}
                   </div>
                 ))}
