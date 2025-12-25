@@ -837,6 +837,13 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
             </Link>
           </div>
 
+          {/* Desktop REQUEST ORDER button */}
+          <div className="hidden md:block mt-6 mb-6">
+            <button className="stussy-button w-full py-3" onClick={handleOrderNow}>
+              REQUEST ORDER
+            </button>
+          </div>
+
           {/* Model info section - only show if current image has model info */}
           {product.modelInfo[activeImageIndex] && (
             <div className="mb-4 text-xs text-gray-600">
