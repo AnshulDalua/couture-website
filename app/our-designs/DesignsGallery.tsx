@@ -3,12 +3,13 @@
 import { useState } from "react"
 import Link from "next/link"
 import OptimizedImage from "@/app/components/OptimizedImage"
-import SingleImageModal from "@/components/SingleImageModal"
+import DesignDetailModal from "@/components/DesignDetailModal"
 
 interface DesignItem {
   image: string
   caption: string
-  description: string
+  printStyle: string
+  organization: string
 }
 
 interface DesignsGalleryProps {
@@ -60,11 +61,13 @@ export default function DesignsGallery({ designs, title }: DesignsGalleryProps) 
         </div>
       </div>
 
-      {/* Single Image Modal */}
+      {/* Design Detail Modal */}
       {showModal && selectedDesign && (
-        <SingleImageModal
+        <DesignDetailModal
           image={selectedDesign.image}
           caption={selectedDesign.caption}
+          printStyle={selectedDesign.printStyle}
+          organization={selectedDesign.organization}
           onClose={() => {
             setShowModal(false)
             setSelectedDesign(null)
