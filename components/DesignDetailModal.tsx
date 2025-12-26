@@ -65,7 +65,7 @@ export default function DesignDetailModal({
 
         {/* Image Section - Left Side */}
         <div className="relative bg-gray-50 flex-shrink-0 md:w-[60%] flex items-center justify-center">
-          <div className="relative w-full aspect-[3/4] md:aspect-auto md:h-[80vh]">
+          <div className="relative w-full h-[50vh] md:h-[80vh]">
             <Image
               src={image}
               alt={caption}
@@ -114,12 +114,12 @@ export default function DesignDetailModal({
 
           {/* Action Buttons */}
           <div className="mt-8 space-y-3">
-            <Link 
-              href="/our-designs"
+            <button 
+              onClick={onClose}
               className="flex items-center justify-center gap-2 w-full py-3 px-4 border border-black text-black hover:bg-gray-50 transition-colors uppercase text-sm tracking-wide"
             >
               Explore More <ArrowRight size={16} />
-            </Link>
+            </button>
             <Link 
               href="/order"
               className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-black text-white hover:bg-gray-800 transition-colors uppercase text-sm tracking-wide"
