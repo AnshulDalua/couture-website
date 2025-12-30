@@ -195,6 +195,9 @@ export default function OrderPage() {
           <form onSubmit={handleSubmit} className="space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
               <div className="group">
+                <label htmlFor="name" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                  Name:
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -204,11 +207,13 @@ export default function OrderPage() {
                   onChange={handleChange}
                   className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                   disabled={isSubmitting}
-                  placeholder="NAME *"
                 />
               </div>
 
               <div className="group">
+                <label htmlFor="email" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                  Email:
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -218,11 +223,13 @@ export default function OrderPage() {
                   onChange={handleChange}
                   className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                   disabled={isSubmitting}
-                  placeholder="EMAIL *"
                 />
               </div>
 
               <div className="group">
+                <label htmlFor="phoneNumber" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                  Phone Number:
+                </label>
                 <input
                   type="tel"
                   id="phoneNumber"
@@ -232,11 +239,13 @@ export default function OrderPage() {
                   onChange={handleChange}
                   className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                   disabled={isSubmitting}
-                  placeholder="PHONE NUMBER *"
                 />
               </div>
 
               <div className="group">
+                <label htmlFor="organization" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                  Organization:
+                </label>
                 <input
                   type="text"
                   id="organization"
@@ -246,12 +255,14 @@ export default function OrderPage() {
                   onChange={handleChange}
                   className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                   disabled={isSubmitting}
-                  placeholder="ORGANIZATION *"
                 />
               </div>
             </div>
 
             <div className="group">
+              <label htmlFor="university" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                University:
+              </label>
               <input
                 type="text"
                 id="university"
@@ -260,11 +271,13 @@ export default function OrderPage() {
                 onChange={handleChange}
                 className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                 disabled={isSubmitting}
-                placeholder="UNIVERSITY"
               />
             </div>
 
             <div className="relative group">
+              <label htmlFor="projectDetails" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                Project Details:
+              </label>
               <textarea
                 id="projectDetails"
                 name="projectDetails"

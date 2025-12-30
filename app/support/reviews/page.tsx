@@ -533,35 +533,7 @@ export default function ReviewsPage() {
     <div className="px-6 py-8 max-w-5xl mx-auto">
       <h1 className="text-sm uppercase mb-8">CUSTOMER REVIEWS</h1>
 
-      {/* Google Reviews Integration */}
-      <div className="mb-16 border border-[#ececec] p-6 hover:border-black transition-colors duration-200">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div>
-            <h2 className="text-sm uppercase font-medium mb-2">GOOGLE REVIEWS</h2>
-            <p className="text-xs text-gray-600 mb-4 md:mb-0 max-w-lg">
-              See what customers are saying about our high quality custom merchandise on Google. Your feedback helps us improve our products and services.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a 
-              href={GOOGLE_REVIEWS_URL} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-xs uppercase px-4 py-2 border border-black bg-black text-white hover:bg-white hover:text-black transition-colors duration-200 text-center"
-            >
-              Leave a  Review
-            </a>
-            {/* <a 
-              href={GOOGLE_WRITE_REVIEW_URL} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-xs uppercase px-4 py-2 border border-black hover:bg-black hover:text-white transition-colors duration-200 text-center"
-            >
-              Leave a Review
-            </a> */}
-          </div>
-        </div>
-      </div>
+
 
       <div className="space-y-12">
         {/* Reviews Grid */}
