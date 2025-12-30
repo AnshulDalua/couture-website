@@ -77,12 +77,13 @@ export default function ReferralPage() {
       
       <div className="bg-gray-50 border border-black p-6 mb-8">
         <p className="text-xs leading-relaxed mb-3">
-          <span className="font-semibold">Here's how it works:</span>
+          <span className="font-semibold">3 Simple Steps:</span>
         </p>
         <ul className="text-xs space-y-2 list-none">
-          <li>→ We'll text you from 732-997-8157 to set up a group chat with your friend</li>
-          <li>→ You get a discount on your next order for every successful referral</li>
-          <li>→ Your friend gets the same quality merch you experienced</li>
+          <li>→ Fill out the form below with your contact info</li>
+          <li>→ Create a groupchat with us, yourself and the person you are referring</li>
+          <li>→ We take it form there! You get paid directly for every successful referral</li>
+          {/* <li>→ Your friend gets the same quality merch you experienced</li> */}
         </ul>
       </div>
       
