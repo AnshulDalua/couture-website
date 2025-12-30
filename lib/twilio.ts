@@ -177,3 +177,64 @@ Talk soon!
     return false;
   }
 }
+
+/**
+ * Send referral form notification SMS
+ */
+export async function sendReferralFormNotification(formData: {
+  name: string;
+  phoneNumber: string;
+  organization: string;
+}): Promise<boolean> {
+  try {
+    const messageBody = `🎯 REFERRAL
+
+Form Type: REFERRAL SUBMISSION
+
+Name: ${formData.name}
+Phone: ${formData.phoneNumber}
+Organization: ${formData.organization}
+
+---
+Submitted at: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST`;
+
+    // Send to all notification phone numbers
+    const phoneNumbers = NOTIFICATION_PHONE_NUMBERS.split(',').map(num => num.trim());
+    const results = await Promise.all(
+      phoneNumbers.map(phoneNumber => sendTwilioSMS(phoneNumber, messageBody))
+    );
+    
+    // Return true if at least one SMS was sent successfully
+    return results.some(result => result === true);
+  } catch (error) {
+    console.error('Error in sendReferralFormNotification:', error);
+    return false;
+  }
+}
+
+/**
+ * Send referral confirmation SMS to customer
+ */
+export async function sendReferralConfirmationToCustomer(formData: {
+  name: string;
+  phoneNumber: string;
+}): Promise<boolean> {
+  try {
+    const messageBody = `Hi ${formData.name}! 
+
+Thanks for wanting to share Couture with a friend! 
+
+We'll text you from 732-997-8157 shortly to set up a group chat and connect you both.
+
+Talk soon!
+- Couture Team`;
+
+    // Send confirmation to the customer's phone number
+    const result = await sendTwilioSMS(formData.phoneNumber, messageBody);
+    
+    return result;
+  } catch (error) {
+    console.error('Error in sendReferralConfirmationToCustomer:', error);
+    return false;
+  }
+}

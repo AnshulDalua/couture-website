@@ -69,7 +69,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="name" className="block text-xs uppercase mb-1">
-                  Name *
+                  Name:
                 </label>
                 <input
                   type="text"
@@ -85,7 +85,7 @@ export default function ContactPage() {
 
               <div>
                 <label htmlFor="email" className="block text-xs uppercase mb-1">
-                  Email *
+                  Email:
                 </label>
                 <input
                   type="email"
@@ -101,7 +101,7 @@ export default function ContactPage() {
             </div>
             <div>
               <label htmlFor="message" className="block text-xs uppercase mb-1">
-                Message *
+                Message:
               </label>
               <textarea
                 id="message"

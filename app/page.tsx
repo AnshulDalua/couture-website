@@ -401,36 +401,62 @@ export default function HomePage() {
                 
                 <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); router.push('/order'); }}>
                   <div className="grid grid-cols-1 gap-6">
-                    <input
-                      type="text"
-                      placeholder="NAME *"
-                      required
-                      className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
-                    />
-                    <input
-                      type="email"
-                      placeholder="EMAIL *"
-                      required
-                      className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
-                    />
-                    <input
-                      type="tel"
-                      placeholder="PHONE NUMBER *"
-                      required
-                      className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
-                    />
-                    <input
-                      type="text"
-                      placeholder="ORGANIZATION *"
-                      required
-                      className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
-                    />
-                    <textarea
-                      placeholder="Tell us what you need (e.g. 50 sweat sets for rush merch). 20 unit minimum."
-                      required
-                      rows={3}
-                      className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent text-xs"
-                    />
+                    <div>
+                      <label htmlFor="homepage-name" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                        Name:
+                      </label>
+                      <input
+                        type="text"
+                        id="homepage-name"
+                        required
+                        className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="homepage-email" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                        Email:
+                      </label>
+                      <input
+                        type="email"
+                        id="homepage-email"
+                        required
+                        className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="homepage-phone" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                        Phone Number:
+                      </label>
+                      <input
+                        type="tel"
+                        id="homepage-phone"
+                        required
+                        className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="homepage-organization" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                        Organization:
+                      </label>
+                      <input
+                        type="text"
+                        id="homepage-organization"
+                        required
+                        className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="homepage-details" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                        Project Details:
+                      </label>
+                      <textarea
+                        id="homepage-details"
+                        placeholder="Tell us what you need (e.g. 50 sweat sets for rush merch). 20 unit minimum."
+                        required
+                        rows={3}
+                        className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent text-xs"
+                      />
+                    </div>
                   </div>
                   
                   <button
