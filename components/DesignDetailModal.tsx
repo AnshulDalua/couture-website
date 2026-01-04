@@ -97,12 +97,12 @@ export default function DesignDetailModal({
           <div className="flex-1 space-y-6">
             <div>
               <p className="text-sm text-gray-500 uppercase tracking-wide mb-1">Print Style:</p>
-              <p className="text-base font-medium underline">{printStyle}</p>
+              <p className="text-base font-medium">{printStyle}</p>
             </div>
 
             <div>
               <p className="text-sm text-gray-500 uppercase tracking-wide mb-1">Organization:</p>
-              <p className="text-base font-medium underline">{organization}</p>
+              <p className="text-base font-medium">{organization}</p>
             </div>
 
             <div className="pt-4">

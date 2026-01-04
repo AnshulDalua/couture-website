@@ -32,17 +32,9 @@ export default function DesignsGallery({ designs, title }: DesignsGalleryProps) 
           </Link>
           .
         </p>
-        <div className="mb-6">
-          <p className="text-xs text-gray-600 mb-2">Customization options:</p>
-          <div className="flex flex-wrap gap-2">
-            <span className="text-xs px-3 py-1 bg-gray-100 rounded-full">Screen Print</span>
-            <span className="text-xs px-3 py-1 bg-gray-100 rounded-full">Embroidery</span>
-            <span className="text-xs px-3 py-1 bg-gray-100 rounded-full">Puff Print</span>
-            <span className="text-xs px-3 py-1 bg-gray-100 rounded-full">Rhinestones</span>
-            <span className="text-xs px-3 py-1 bg-gray-100 rounded-full">Hood Stitch</span>
-            <span className="text-xs px-3 py-1 bg-gray-100 rounded-full">Side Stripes</span>
-          </div>
-        </div>
+        <p className="text-xs text-gray-600 mb-6">
+          <span className="font-medium">Customization options:</span> Screen Print · Embroidery · Puff Print · Rhinestones · Hood Stitch · Side Stripes
+        </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {designs.map((design, index) => {
             if (design.image.startsWith('//')) return null;
