@@ -132,12 +132,12 @@ export default function GreekMerchPage() {
       {/* Winter Rush Countdown */}
       <WinterRushCountdown />
       {/* Hero Section */}
-      <section className="px-6 py-16 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+      <section className="px-6 py-12 max-w-6xl mx-auto">
+        <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl uppercase tracking-wide mb-4">
             LUXURY MERCH
           </h1>
-          <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
             Premium custom apparel exclusivly for all organizations. Every piece is made in-house on our premium blanks. 
           </p>
           
@@ -162,14 +162,14 @@ export default function GreekMerchPage() {
 
 
         {/* Image Grid */}
-        <div className="flex justify-center mb-10">
-          <div className="relative aspect-[3/4] w-full max-w-md">
+        <div className="flex justify-center mb-6">
+          <div className="relative aspect-[3/4] w-full max-w-sm">
             <Image
               src="/lookbook/axo-yellow.webp"
               alt="Custom Alpha Phi hoodie design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 448px"
+              sizes="(max-width: 768px) 100vw, 384px"
             />
           </div>
         </div>
