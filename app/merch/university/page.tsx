@@ -134,7 +134,7 @@ export default function GreekMerchPage() {
       {/* Hero Section */}
       <section className="px-6 py-12 max-w-6xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl uppercase tracking-wide mb-4">
+          <h1 className="text-2xl md:text-3xl uppercase tracking-wide mb-4">
             LUXURY MERCH
           </h1>
           <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
