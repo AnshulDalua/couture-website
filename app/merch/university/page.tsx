@@ -162,14 +162,14 @@ export default function GreekMerchPage() {
 
 
         {/* Image Grid */}
-        <div className="flex justify-center mb-6">
-          <div className="relative aspect-[3/4] w-full max-w-sm">
+        <div className="flex justify-center mb-2">
+          <div className="relative aspect-[3/4] w-full max-w-xs">
             <Image
               src="/lookbook/axo-yellow.webp"
               alt="Custom Alpha Phi hoodie design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 384px"
+              sizes="(max-width: 768px) 100vw, 320px"
             />
           </div>
         </div>
