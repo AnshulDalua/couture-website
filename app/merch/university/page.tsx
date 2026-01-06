@@ -135,33 +135,23 @@ export default function GreekMerchPage() {
       <section className="px-6 py-16 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl uppercase tracking-wide mb-4">
-            NOT NORMAL CLUB MERCH
+            LUXURY CLUB MERCH
           </h1>
           <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            We design, manufacture, and deliver premium custom apparel exclusively for all organizations, including university clubs, greek life, buisnesses and more. 
-            Every piece is made in-house on our in-house premium blanks.
+            Premium custom apparel exclusivly for all organizations. Every piece is made in-house on our premium blanks. 
           </p>
         </div>
 
 
         {/* Image Grid */}
-        <div className="grid grid-cols-3 gap-4 mb-10">
-          <div className="relative aspect-[3/4]">
-            <Image
-              src="/lookbook/Couture-AXO-26.webp"
-              alt="Custom Kappa Kappa Gamma hoodie design"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 33vw, 33vw"
-            />
-          </div>
+        <div className="grid grid-cols-2 gap-4 mb-10">
           <div className="relative aspect-[3/4]">
             <Image
               src="/lookbook/axo-yellow.webp"
               alt="Custom Alpha Phi hoodie design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 33vw, 33vw"
+              sizes="(max-width: 768px) 50vw, 50vw"
             />
           </div>
           <div className="relative aspect-[3/4]">
@@ -170,7 +160,7 @@ export default function GreekMerchPage() {
               alt="Custom Kappa Alpha Theta tank design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 33vw, 33vw"
+              sizes="(max-width: 768px) 50vw, 50vw"
             />
           </div>
         </div>
