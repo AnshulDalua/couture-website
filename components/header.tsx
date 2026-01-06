@@ -27,7 +27,7 @@ export default function Header() {
         <div className="w-[80px] h-[35px] flex items-center overflow-hidden">
           <Link href="/">
             <Image
-              src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai//Artboard%201.png"
+              src="/logo/Artboard 1.png"
               alt="CoutureByIkgai"
               width={120}
               height={60}
