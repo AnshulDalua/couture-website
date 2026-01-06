@@ -379,10 +379,10 @@ export default function GreekMerchPage() {
         </h2>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="relative aspect-square">
+        <div className="relative aspect-square">
             <Image
-              src="/designs/KKGHoodie.webp"
-              alt="Sigma Chi custom hoodie"
+              src="/designs/KKGOLF back-35.webp"
+              alt="KKG x SigChi custom long sleeve"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
@@ -390,8 +390,8 @@ export default function GreekMerchPage() {
           </div>
           <div className="relative aspect-square">
             <Image
-              src="/designs/EvansScholarsHoodie.webp"
-              alt="Evans Scholars custom hoodie"
+              src="/designs/AphiHoodie.webp"
+              alt="Alpha Phi custom hoodie"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
@@ -399,8 +399,8 @@ export default function GreekMerchPage() {
           </div>
           <div className="relative aspect-square">
             <Image
-              src="/designs/EvansScholarsPants.webp"
-              alt="Evans Scholars custom sweatpants"
+              src="/designs/KKGHoodie (3).webp"
+              alt="KKG custom hoodie"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
@@ -408,8 +408,8 @@ export default function GreekMerchPage() {
           </div>
           <div className="relative aspect-square">
             <Image
-              src="/designs/ThetaTank.webp"
-              alt="Kappa Kappa Gamma custom hoodie design"
+              src="/designs/Pi Phi Tank.webp"
+              alt="Pi Phi custom Tank design"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
