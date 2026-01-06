@@ -135,32 +135,41 @@ export default function GreekMerchPage() {
       <section className="px-6 py-16 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl uppercase tracking-wide mb-4">
-            LUXURY CLUB MERCH
+            LUXURY MERCH
           </h1>
-          <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
             Premium custom apparel exclusivly for all organizations. Every piece is made in-house on our premium blanks. 
           </p>
+          
+          {/* Process Highlights */}
+          {/* <div className="max-w-3xl mx-auto mb-12">
+            <ul className="text-xs text-gray-700 space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="text-black font-semibold">→</span>
+                <span><span className="font-semibold">Design Consultation:</span> Work directly with our team to bring your vision to life</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-black font-semibold">→</span>
+                <span><span className="font-semibold">In-House Production:</span> Every piece is manufactured on our premium blanks with meticulous attention to detail</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-black font-semibold">→</span>
+                <span><span className="font-semibold">Fast Delivery:</span> Receive your custom merch in 2-3 weeks, ready to wear and share</span>
+              </li>
+            </ul>
+          </div> */}
         </div>
 
 
         {/* Image Grid */}
-        <div className="grid grid-cols-2 gap-4 mb-10">
-          <div className="relative aspect-[3/4]">
+        <div className="flex justify-center mb-10">
+          <div className="relative aspect-[3/4] w-full max-w-md">
             <Image
               src="/lookbook/axo-yellow.webp"
               alt="Custom Alpha Phi hoodie design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 50vw, 50vw"
-            />
-          </div>
-          <div className="relative aspect-[3/4]">
-            <Image
-              src="/lookbook/Couture-AXO-22.webp"
-              alt="Custom Kappa Alpha Theta tank design"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 50vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 448px"
             />
           </div>
         </div>
