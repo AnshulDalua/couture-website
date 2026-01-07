@@ -149,6 +149,30 @@ const productPages = [
     changeFrequency: 'weekly' as ChangeFrequency,
     priority: 0.8,
   },
+  {
+    url: '/products/baby-tee',
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.8,
+  },
+  {
+    url: '/products/racer-tee',
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.8,
+  },
+  {
+    url: '/products/tank-top',
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.8,
+  },
+  {
+    url: '/products/boy-shorts',
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.8,
+  },
 ]
 
 // Define lookbook pages - UPDATED with sub-pages

@@ -33,6 +33,11 @@ const colorOptions = {
   "ROYAL BLUE": { color: "#4E5BA4", label: "Royal Blue", fileName: "royalblue" },
   "GRAPHITE": { color: "#383A41", label: "Graphite", fileName: "black" },
   "ARMY GRAY": { color: "#978E81", label: "Army Gray", fileName: "tan" },
+  "HEATHER GREY": { color: "#d1d3d4", label: "Heather Grey", fileName: "heathergrey" },
+  "LIGHT BROWN": { color: "#8f7d76", label: "Light Brown", fileName: "lightbrown" },
+  "DARK GREY": { color: "#8e908a", label: "Dark Grey", fileName: "darkgrey" },
+  "LIGHT GREY": { color: "#dbdbd6", label: "Light Grey", fileName: "lightgrey" },
+  "TAN": { color: "#c2baad", label: "Tan", fileName: "tan" },
 }
 
 // Product folder mapping for color images
@@ -41,7 +46,11 @@ const productFolders = {
   "heavyweight-crewneck": "crewneck", 
   "classic-quarterzip": "quarterzip",
   "straightcut-sweatpants": "sweatpants",
-  "classic-tshirt": "tshirt"
+  "classic-tshirt": "tshirt",
+  "baby-tee": "babytee",
+  "racer-tee": "racertee",
+  "tank-top": "tank",
+  "boy-shorts": "boyshorts"
 }
 
 // Sizing chart URLs for each product type
@@ -51,6 +60,10 @@ const sizingCharts = {
   "classic-quarterzip": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/QZ_Size_Guide.jpg", // Using crew sizing for now
   "straightcut-sweatpants": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Sweats%20Size%20Guide.jpg",
   "classic-tshirt": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
+  "baby-tee": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
+  "racer-tee": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
+  "tank-top": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
+  "boy-shorts": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Sweats%20Size%20Guide.jpg",
 }
 
 // Product reviews organized by product type
@@ -218,6 +231,42 @@ const productReviews = {
       university: "U of Michigan",
       season: "SS25"
     }
+  ],
+  "baby-tee": [
+    {
+      id: 30,
+      content: "Love the baby tees! Perfect fit and great quality.",
+      name: "AXO",
+      university: "U of Michigan",
+      season: "SS25"
+    }
+  ],
+  "racer-tee": [
+    {
+      id: 31,
+      content: "The racer tees are amazing! Love the striped detailing.",
+      name: "AXO",
+      university: "U of Michigan",
+      season: "SS25"
+    }
+  ],
+  "tank-top": [
+    {
+      id: 32,
+      content: "Perfect tanks for summer! Super soft and comfortable.",
+      name: "AXO",
+      university: "U of Michigan",
+      season: "SS25"
+    }
+  ],
+  "boy-shorts": [
+    {
+      id: 33,
+      content: "Love the boy shorts! So comfortable and flattering.",
+      name: "AXO",
+      university: "U of Michigan",
+      season: "SS25"
+    }
   ]
 }
 
@@ -258,6 +307,30 @@ const productDimensions = {
     { size: "L", chest: 21.3, length: 28.7, sleeve: 9.1, shoulder: 18.5 },
     { size: "XL", chest: 22.0, length: 29.5, sleeve: 9.1, shoulder: 19.1 },
     { size: "XXL", chest: 22.8, length: 30.3, sleeve: 9.4, shoulder: 19.7 }
+  ],
+  "baby-tee": [
+    { size: "S", chest: 16.5, length: 22.0, sleeve: 6.0, shoulder: 14.0 },
+    { size: "M", chest: 17.5, length: 23.0, sleeve: 6.5, shoulder: 15.0 },
+    { size: "L", chest: 18.5, length: 24.0, sleeve: 7.0, shoulder: 16.0 },
+    { size: "XL", chest: 19.5, length: 25.0, sleeve: 7.5, shoulder: 17.0 }
+  ],
+  "racer-tee": [
+    { size: "S", chest: 16.5, length: 22.0, sleeve: 6.0, shoulder: 14.0 },
+    { size: "M", chest: 17.5, length: 23.0, sleeve: 6.5, shoulder: 15.0 },
+    { size: "L", chest: 18.5, length: 24.0, sleeve: 7.0, shoulder: 16.0 },
+    { size: "XL", chest: 19.5, length: 25.0, sleeve: 7.5, shoulder: 17.0 }
+  ],
+  "tank-top": [
+    { size: "S", chest: 16.0, length: 24.0, shoulder: 10.0 },
+    { size: "M", chest: 17.0, length: 25.0, shoulder: 11.0 },
+    { size: "L", chest: 18.0, length: 26.0, shoulder: 12.0 },
+    { size: "XL", chest: 19.0, length: 27.0, shoulder: 13.0 }
+  ],
+  "boy-shorts": [
+    { size: "S", waist: 24.0, length: 10.0, inseam: 2.5 },
+    { size: "M", waist: 26.0, length: 10.5, inseam: 2.5 },
+    { size: "L", waist: 28.0, length: 11.0, inseam: 3.0 },
+    { size: "XL", waist: 30.0, length: 11.5, inseam: 3.0 }
   ]
 }
 
@@ -407,6 +480,96 @@ const products = {
       { height: "5'10", size: "S" }, // Image 2: /shop/tee_2.webp (no model data yet)
       null, // Image 3: /shop/2.webp (no model data yet)
       null, // Image 4: /shop/1.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
+  },
+  "baby-tee": {
+    id: 6,
+    name: "Baby Tee",
+    price: "$24",
+    description: "Slim-fitting baby tee with crew neckline in our premium cotton blend.",
+    details: [
+      "250 GSM",
+      "Brushed jersey fabric",
+      "Fitted silhouette",
+      "95% Cotton 5% Elastane",
+      "Screenprint, embroidery, DTG, hot press available",
+    ],
+    images: [
+      "/shop/babytee/1.webp",
+    ],
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["BLACK", "WHITE", "HEATHER GREY", "BROWN", "PINK", "YELLOW", "BUTTER YELLOW", "RED", "BABY BLUE", "GREEN", "LIGHT BROWN", "NAVY"],
+    fitFactor: 1, // Fitted (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      null, // Image 1: /shop/babytee/1.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
+  },
+  "racer-tee": {
+    id: 7,
+    name: "Racer Tee",
+    price: "$24",
+    description: "Slim-fitting racer tee with crew neckline and striped detailing in our premium cotton blend.",
+    details: [
+      "250 GSM",
+      "Brushed jersey fabric",
+      "Fitted silhouette",
+      "95% Cotton 5% Elastane",
+      "Screenprint, embroidery, DTG, hot press available",
+    ],
+    images: [
+      "/shop/racertee/3.webp",
+    ],
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["BLACK", "WHITE", "HEATHER GREY", "BROWN", "PINK", "YELLOW", "BUTTER YELLOW", "RED", "BABY BLUE", "GREEN", "LIGHT BROWN", "NAVY"],
+    fitFactor: 1, // Fitted (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      null, // Image 1: /shop/racertee/3.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
+  },
+  "tank-top": {
+    id: 8,
+    name: "Tank Top",
+    price: "$22",
+    description: "Soft, fitted tank with a scoop neck in our premium cotton blend.",
+    details: [
+      "250 GSM",
+      "Ribbed Body",
+      "Fitted silhouette",
+      "95% Cotton, 5% Elastane",
+      "Screenprint, embroidery, DTG, hot press available",
+    ],
+    images: [
+      "/shop/tank/4.webp",
+      "/shop/tank/5.webp",
+    ],
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["BLACK", "WHITE", "DARK GREY", "LIGHT GREY", "BROWN", "PINK", "BUTTER YELLOW", "RED", "BABY BLUE", "GREEN", "TAN", "NAVY"],
+    fitFactor: 1, // Fitted (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      null, // Image 1: /shop/tank/4.webp (no model data yet)
+      null, // Image 2: /shop/tank/5.webp (no model data yet)
+    ], // Array corresponding to each image - null for product shots without models
+  },
+  "boy-shorts": {
+    id: 9,
+    name: "Boy Shorts",
+    price: "$20",
+    description: "Full coverage boy short with a flattering, comfortable fit in our premium cotton blend.",
+    details: [
+      "250 GSM",
+      "Soft cotton construction",
+      "Fitted silhouette",
+      "95% Cotton, 5% Elastane",
+      "Screenprint, embroidery, DTG, hot press available",
+    ],
+    images: [
+      "/shop/boyshorts/6.webp",
+    ],
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["BLACK", "WHITE", "DARK GREY", "LIGHT GREY", "BROWN", "PINK", "BUTTER YELLOW", "RED", "BABY BLUE", "GREEN", "TAN", "NAVY"],
+    fitFactor: 1, // Fitted (1-5 scale, 1=tight, 5=baggy)
+    modelInfo: [
+      null, // Image 1: /shop/boyshorts/6.webp (no model data yet)
     ], // Array corresponding to each image - null for product shots without models
   },
 }
