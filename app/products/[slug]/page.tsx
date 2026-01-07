@@ -543,6 +543,7 @@ const products = {
     images: [
       "/shop/tank/4.webp",
       "/shop/tank/5.webp",
+      "/shop/tank/6.webp",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "WHITE", "DARK GREY", "LIGHT GREY", "BROWN", "PINK", "BUTTER YELLOW", "RED", "BABY BLUE", "GREEN", "TAN", "NAVY"],
@@ -550,6 +551,7 @@ const products = {
     modelInfo: [
       null, // Image 1: /shop/tank/4.webp (no model data yet)
       null, // Image 2: /shop/tank/5.webp (no model data yet)
+      null, // Image 3: /shop/tank/6.webp (no model data yet)
     ], // Array corresponding to each image - null for product shots without models
   },
   "boy-shorts": {
