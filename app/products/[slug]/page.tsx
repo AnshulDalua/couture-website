@@ -592,6 +592,11 @@ const getColorImage = (productSlug: string, colorCode: string) => {
 const getCurrentImages = (product: Product, selectedColor: string, productSlug: string) => {
   if (!selectedColor) return product.images
   
+  // Skip color images for these products
+  if (['baby-tee', 'racer-tee', 'tank-top', 'boy-shorts'].includes(productSlug)) {
+    return product.images
+  }
+  
   const colorImage = getColorImage(productSlug, selectedColor)
   if (!colorImage) return product.images
   
