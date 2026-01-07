@@ -313,15 +313,37 @@ export default function HomePage() {
                       NOT YOUR AVERAGE MERCH COMPANY
                     </h2>
                   </div>
-                  <p className="text-xs leading-relaxed text-gray-700">
+                  <p className="text-xs leading-relaxed text-gray-700 mb-8">
                     We design, manufacture, and deliver premium custom apparel in-house. 
                     No middlemen. No compromises. Just merch you'll actually want to wear.
                   </p>
+                  
+                  {/* CTA Button Divider */}
+                  <div className="flex justify-center mb-12">
+                    <Link href="/order" className="bg-black text-white px-8 py-3 uppercase text-xs tracking-widest hover:bg-gray-900 transition-colors duration-300">
+                      START AN ORDER →
+                    </Link>
+                  </div>
+                  
+                  {/* Process Steps */}
+                  <div className="mt-0 mb-0">
+                    <ul className="text-xs text-gray-700 space-y-6 text-left">
+                      <li className="flex items-start gap-3">
+                        <span><span className="font-semibold">1. Fill Out Form:</span> Share your vision and project details with us</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span><span className="font-semibold">2. Create Design:</span> Work with our team to perfect your design</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span><span className="font-semibold">3. Receive Clothes:</span> Get your premium merch in 2-3 weeks</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               {/* Products Section */}
-              <div className="relative px-6 py-2 bg-white">
+              <div className="relative px-6 py-0 bg-white -mt-4">
                 <h2 className="text-sm uppercase mb-6">OUR BLANKS</h2>
                 <div className="grid grid-cols-2 gap-4">
                   {products.map((product) => (
