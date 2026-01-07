@@ -994,7 +994,7 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
           {/* Gallery link section */}
           <div className="mt-4 mb-4 text-xs flex items-center gap-2">
-            <span>Get inspired by our desingn ideas.</span>
+            <span>Get inspired by our design ideas.</span>
             <Link href="/our-designs" className="text-black font-semibold hover:underline">
               View Our Designs →
             </Link>

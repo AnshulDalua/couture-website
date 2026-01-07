@@ -132,45 +132,44 @@ export default function GreekMerchPage() {
       {/* Winter Rush Countdown */}
       <WinterRushCountdown />
       {/* Hero Section */}
-      <section className="px-6 py-16 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl uppercase tracking-wide mb-4">
-            NOT NORMAL CLUB MERCH
+      <section className="px-6 py-12 max-w-6xl mx-auto">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl md:text-3xl uppercase tracking-wide mb-4">
+            LUXURY MERCH
           </h1>
-          <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            We design, manufacture, and deliver premium custom apparel exclusively for all organizations, including university clubs, greek life, buisnesses and more. 
-            Every piece is made in-house on our in-house premium blanks.
+          <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
+            Premium custom apparel exclusivly for all organizations. Every piece is made in-house on our premium blanks. 
           </p>
+          
+          {/* Process Highlights */}
+          {/* <div className="max-w-3xl mx-auto mb-12">
+            <ul className="text-xs text-gray-700 space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="text-black font-semibold">→</span>
+                <span><span className="font-semibold">Design Consultation:</span> Work directly with our team to bring your vision to life</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-black font-semibold">→</span>
+                <span><span className="font-semibold">In-House Production:</span> Every piece is manufactured on our premium blanks with meticulous attention to detail</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-black font-semibold">→</span>
+                <span><span className="font-semibold">Fast Delivery:</span> Receive your custom merch in 2-3 weeks, ready to wear and share</span>
+              </li>
+            </ul>
+          </div> */}
         </div>
 
 
         {/* Image Grid */}
-        <div className="grid grid-cols-3 gap-4 mb-10">
-          <div className="relative aspect-[3/4]">
-            <Image
-              src="/lookbook/Couture-AXO-26.webp"
-              alt="Custom Kappa Kappa Gamma hoodie design"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 33vw, 33vw"
-            />
-          </div>
-          <div className="relative aspect-[3/4]">
+        <div className="flex justify-center mb-2">
+          <div className="relative aspect-[3/4] w-full max-w-xs">
             <Image
               src="/lookbook/axo-yellow.webp"
               alt="Custom Alpha Phi hoodie design"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 33vw, 33vw"
-            />
-          </div>
-          <div className="relative aspect-[3/4]">
-            <Image
-              src="/lookbook/Couture-AXO-22.webp"
-              alt="Custom Kappa Alpha Theta tank design"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 33vw, 33vw"
+              sizes="(max-width: 768px) 100vw, 320px"
             />
           </div>
         </div>
@@ -389,10 +388,10 @@ export default function GreekMerchPage() {
         </h2>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="relative aspect-square">
+        <div className="relative aspect-square">
             <Image
-              src="/designs/KKGHoodie.webp"
-              alt="Sigma Chi custom hoodie"
+              src="/designs/KKGOLF back-35.webp"
+              alt="KKG x SigChi custom long sleeve"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
@@ -400,8 +399,8 @@ export default function GreekMerchPage() {
           </div>
           <div className="relative aspect-square">
             <Image
-              src="/designs/EvansScholarsHoodie.webp"
-              alt="Evans Scholars custom hoodie"
+              src="/designs/AphiHoodie.webp"
+              alt="Alpha Phi custom hoodie"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
@@ -409,8 +408,8 @@ export default function GreekMerchPage() {
           </div>
           <div className="relative aspect-square">
             <Image
-              src="/designs/EvansScholarsPants.webp"
-              alt="Evans Scholars custom sweatpants"
+              src="/designs/KKGHoodie (3).webp"
+              alt="KKG custom hoodie"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
@@ -418,8 +417,8 @@ export default function GreekMerchPage() {
           </div>
           <div className="relative aspect-square">
             <Image
-              src="/designs/ThetaTank.webp"
-              alt="Kappa Kappa Gamma custom hoodie design"
+              src="/designs/Pi Phi Tank.webp"
+              alt="Pi Phi custom Tank design"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 25vw"
