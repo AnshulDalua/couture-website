@@ -518,12 +518,14 @@ const products = {
     ],
     images: [
       "/shop/racertee/3.webp",
+      "/shop/racertee/4.webp",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "WHITE", "HEATHER GREY", "BROWN", "PINK", "YELLOW", "BUTTER YELLOW", "RED", "BABY BLUE", "GREEN", "LIGHT BROWN", "NAVY"],
     fitFactor: 1, // Fitted (1-5 scale, 1=tight, 5=baggy)
     modelInfo: [
       null, // Image 1: /shop/racertee/3.webp (no model data yet)
+      null, // Image 2: /shop/racertee/4.webp (no model data yet)
     ], // Array corresponding to each image - null for product shots without models
   },
   "tank-top": {
@@ -602,6 +604,13 @@ const getImageObjectFit = (productSlug: string, imageSrc: string) => {
   
   if (!isColorImage) {
     // Original product images - use existing logic
+    // Special handling for racer-tee to zoom out
+    if (productSlug === "racer-tee") {
+      return {
+        objectFit: "cover" as const,
+        objectPosition: "center 1%"
+      }
+    }
     return {
       objectFit: "cover" as const,
       objectPosition: imageSrc === "/lookbook/black_2.webp" ? "center top" : "center"
@@ -612,14 +621,15 @@ const getImageObjectFit = (productSlug: string, imageSrc: string) => {
   switch (productSlug) {
     case "heavyweight-hoodie":
     case "classic-quarterzip":
-      return {
-        objectFit: "contain" as const,
-        objectPosition: "center"
-      }
     case "straightcut-sweatpants":
       return {
         objectFit: "contain" as const,
         objectPosition: "center"
+      }
+    case "racer-tee":
+      return {
+        objectFit: "cover" as const,
+        objectPosition: "center 80%"
       }
     case "heavyweight-crewneck":
     case "classic-tshirt":
@@ -1016,74 +1026,82 @@ export default function ProductPage({ params }: { params: Promise<PageParams> })
 
           {/* Collapsible sections - Stussy style */}
           <div className="mt-8 border-t border-gray-200">
-            {/* Size Guide section */}
-            <button 
-              onClick={() => toggleSection('sizeGuide')}
-              className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
-            >
-              <span className="uppercase">SIZE GUIDE</span>
-              <ChevronRight 
-                className={`h-4 w-4 transition-transform ${openSection === 'sizeGuide' ? 'rotate-90' : ''}`} 
-              />
-            </button>
-            {openSection === 'sizeGuide' && (
-              <div className="py-6">
-                {sizingCharts[slug as keyof typeof sizingCharts] && (
-                  <div className="w-full">
-                    <Image
-                      src={sizingCharts[slug as keyof typeof sizingCharts]}
-                      alt={`${product.name} sizing chart`}
-                      width={800}
-                      height={600}
-                      className="w-full h-auto"
-                    />
+            {/* Size Guide section - hidden for baby-tee, racer-tee, tank-top, boy-shorts */}
+            {!['baby-tee', 'racer-tee', 'tank-top', 'boy-shorts'].includes(slug) && (
+              <>
+                <button 
+                  onClick={() => toggleSection('sizeGuide')}
+                  className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
+                >
+                  <span className="uppercase">SIZE GUIDE</span>
+                  <ChevronRight 
+                    className={`h-4 w-4 transition-transform ${openSection === 'sizeGuide' ? 'rotate-90' : ''}`} 
+                  />
+                </button>
+                {openSection === 'sizeGuide' && (
+                  <div className="py-6">
+                    {sizingCharts[slug as keyof typeof sizingCharts] && (
+                      <div className="w-full">
+                        <Image
+                          src={sizingCharts[slug as keyof typeof sizingCharts]}
+                          alt={`${product.name} sizing chart`}
+                          width={800}
+                          height={600}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
-              </div>
+              </>
             )}
 
-            {/* Reviews section */}
-            <button 
-              onClick={() => toggleSection('reviews')}
-              className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
-            >
-              <span className="uppercase">REVIEWS</span>
-              <ChevronRight 
-                className={`h-4 w-4 transition-transform ${openSection === 'reviews' ? 'rotate-90' : ''}`} 
-              />
-            </button>
-            {openSection === 'reviews' && (
-              <div className="py-6 text-xs">
-                <div className="mt-4">
-                  <h3 className="text-xs uppercase mb-3">REVIEWS</h3>
-                  {getProductReviews().length > 0 ? (
-                    <div className="overflow-x-auto pb-4 scrollbar-hide">
-                      <div className="flex space-x-6" style={{ minWidth: 'max-content' }}>
-                        {getProductReviews().map((review) => (
-                          <div 
-                            key={review.id}
-                            className="flex flex-col p-4 rounded-lg bg-white shadow-sm"
-                            style={{ minWidth: '260px', maxWidth: '300px' }}
-                          >
-                            <div className="flex items-center gap-2 mb-2">
-                              <h4 className="font-medium">{review.name}</h4>
-                              <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
-                                {review.university}
-                              </span>
-                              <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
-                                {review.season}
-                              </span>
-                            </div>
-                            <p className="mb-3">{review.content}</p>
+            {/* Reviews section - hidden for baby-tee, racer-tee, tank-top, boy-shorts */}
+            {!['baby-tee', 'racer-tee', 'tank-top', 'boy-shorts'].includes(slug) && (
+              <>
+                <button 
+                  onClick={() => toggleSection('reviews')}
+                  className="w-full py-4 border-b border-gray-200 flex justify-between items-center text-xs"
+                >
+                  <span className="uppercase">REVIEWS</span>
+                  <ChevronRight 
+                    className={`h-4 w-4 transition-transform ${openSection === 'reviews' ? 'rotate-90' : ''}`} 
+                  />
+                </button>
+                {openSection === 'reviews' && (
+                  <div className="py-6 text-xs">
+                    <div className="mt-4">
+                      <h3 className="text-xs uppercase mb-3">REVIEWS</h3>
+                      {getProductReviews().length > 0 ? (
+                        <div className="overflow-x-auto pb-4 scrollbar-hide">
+                          <div className="flex space-x-6" style={{ minWidth: 'max-content' }}>
+                            {getProductReviews().map((review) => (
+                              <div 
+                                key={review.id}
+                                className="flex flex-col p-4 rounded-lg bg-white shadow-sm"
+                                style={{ minWidth: '260px', maxWidth: '300px' }}
+                              >
+                                <div className="flex items-center gap-2 mb-2">
+                                  <h4 className="font-medium">{review.name}</h4>
+                                  <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
+                                    {review.university}
+                                  </span>
+                                  <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
+                                    {review.season}
+                                  </span>
+                                </div>
+                                <p className="mb-3">{review.content}</p>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      ) : (
+                        <p>No reviews yet. Be the first to leave a review.</p>
+                      )}
                     </div>
-                  ) : (
-                    <p>No reviews yet. Be the first to leave a review.</p>
-                  )}
-                </div>
-              </div>
+                  </div>
+                )}
+              </>
             )}
             {openSection === 'pricing' && (
               <div className="py-6 text-xs">
