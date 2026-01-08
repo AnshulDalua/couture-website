@@ -42,7 +42,7 @@ export default function DesignsGallery({ designs, title }: DesignsGalleryProps) 
             return (
               <div key={index}>
                 <div 
-                  className="relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer"
+                  className="relative aspect-square overflow-hidden bg-white cursor-pointer flex items-center justify-center"
                   onClick={() => {
                     setSelectedDesign(design)
                     setShowModal(true)
@@ -56,6 +56,7 @@ export default function DesignsGallery({ designs, title }: DesignsGalleryProps) 
                     containerClassName="w-full h-full"
                     className="object-contain w-full h-full transition-transform duration-700 hover:scale-105"
                     loadingStrategy={index < 8 ? "eager" : "progressive"}
+                    fitMode="contain"
                   />
                 </div>
               </div>

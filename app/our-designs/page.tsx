@@ -17,10 +17,22 @@ const designsData: {
   title: "Our Designs",
   designs: [
     {
+      image: "/designs/DGLightBlue.webp",
+      caption: "DELTA GAMMA LIGHT BLUE DESIGN",
+      printStyle: "SCREEN PRINT",
+      organization: "DELTA GAMMA"
+    },
+    {
       image: "/designs/A Chi O Tank.webp",
       caption: "AXO `RABBIT` TANK CONCEPT",
       printStyle: "EMBRODIERY",
       organization: "ALPHA CHI OMEGA"
+    },
+    {
+      image: "/designs/MSU.webp",
+      caption: "MICHIGAN STATE UNIVERSITY DESIGN",
+      printStyle: "SCREEN PRINT",
+      organization: "MSU"
     },
     {
       image: "/designs/KKGHoodie (1).webp",
@@ -29,10 +41,22 @@ const designsData: {
       organization: "KAPPA KAPPA GAMMA"
     },
     {
+      image: "/designs/TriDelta.webp",
+      caption: "TRI DELTA DESIGN",
+      printStyle: "SCREEN PRINT",
+      organization: "DELTA DELTA DELTA"
+    },
+    {
       image: "/designs/ThetaTank.webp",
       caption: "THETA `STAR` TANK CONCEPT",
       printStyle: "SCREEN PRINT",
       organization: "KAPPA ALPHA THETA"
+    },
+    {
+      image: "/designs/KKGWF.webp",
+      caption: "KAPPA KAPPA GAMMA WF DESIGN",
+      printStyle: "SCREEN PRINT",
+      organization: "KAPPA KAPPA GAMMA"
     },
     {
       image: "/designs/AphiHoodie.webp",
@@ -41,10 +65,22 @@ const designsData: {
       organization: "ALPHA PHI"
     },
     {
+      image: "/designs/DGRoyalBlue.webp",
+      caption: "DELTA GAMMA ROYAL BLUE DESIGN",
+      printStyle: "SCREEN PRINT",
+      organization: "DELTA GAMMA"
+    },
+    {
       image: "/designs/AphiHoodie. (1).webp",
       caption: "APHI EMBROIRDERED TEXT DESIGN CONCEPT",
       printStyle: "EMBROIDERY",
       organization: "ALPHA PHI"
+    },
+    {
+      image: "/designs/KDShirt.webp",
+      caption: "KAPPA DELTA SHIRT DESIGN",
+      printStyle: "SCREEN PRINT",
+      organization: "KAPPA DELTA"
     },
     {
       image: "/designs/AphiPants (1).webp",
@@ -53,10 +89,22 @@ const designsData: {
       organization: "ALPHA PHI"
     },
     {
+      image: "/designs/PCTUmichSweater.webp",
+      caption: "PCT U-MICH SWEATER DESIGN",
+      printStyle: "EMBROIDERY",
+      organization: "PCT"
+    },
+    {
       image: "/designs/AphiHoodie (1)(2).webp",
       caption: "ALPHA PHI HOODIE DESIGN",
       printStyle: "SCREEN PRINT",
       organization: "ALPHA PHI"
+    },
+    {
+      image: "/designs/LBSAStar.webp",
+      caption: "LBSA STAR DESIGN",
+      printStyle: "SCREEN PRINT",
+      organization: "LBSA"
     },
     {
       image: "/designs/AphiPants.webp",
@@ -69,6 +117,12 @@ const designsData: {
       caption: "DELTA ZETA TANK",
       printStyle: "SCREEN PRINT",
       organization: "DELTA ZETA"
+    },
+    {
+      image: "/designs/TSAHoodieUpdated.webp",
+      caption: "TSA HOODIE UPDATED DESIGN",
+      printStyle: "SCREEN PRINT",
+      organization: "TSA"
     },
     {
       image: "/designs/EvansScholarsHoodie.webp",
