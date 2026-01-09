@@ -344,7 +344,12 @@ export default function HomePage() {
 
               {/* Products Section */}
               <div className="relative px-6 py-0 bg-white -mt-4">
-                <h2 className="text-sm uppercase mb-6">OUR BLANKS</h2>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-sm uppercase">OUR BLANKS</h2>
+                  <Link href="/products" className="text-xs underline">
+                    View More
+                  </Link>
+                </div>
                 <div className="grid grid-cols-2 gap-4">
                   {products.map((product) => (
                     <Link href={`/products/${product.slug}`} key={product.id} className="block">
@@ -473,9 +478,7 @@ export default function HomePage() {
                       </label>
                       <textarea
                         id="homepage-details"
-                        placeholder="Tell us what you need (e.g. 50 sweat sets for rush merch). 20 unit minimum."
-                        required
-                        rows={3}
+                        placeholder=""
                         className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent text-xs"
                       />
                     </div>

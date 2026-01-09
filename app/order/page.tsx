@@ -283,11 +283,9 @@ export default function OrderPage() {
                 name="projectDetails"
                 value={formData.projectDetails}
                 onChange={handleChange}
-                required
-                rows={3}
                 className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                 disabled={isSubmitting}
-                placeholder="Tell us what you need (e.g. 50 sweat sets for rush merch, tees for your club or startup). 20 unit minimum."
+                placeholder=""
                 style={{ resize: 'vertical' }}
               ></textarea>
               <div
