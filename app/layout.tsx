@@ -156,7 +156,7 @@ export default function RootLayout({
         <PostHogProvider>
         <Banner />
         <Header />
-        <main className="pt-[105px] pb-[60px]">{children}</main>
+        <main className="pt-[135px] pb-[60px]">{children}</main>
         <Footer />
         </PostHogProvider>
 
