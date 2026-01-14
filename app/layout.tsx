@@ -4,6 +4,7 @@ import Script from "next/script"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import Banner from "@/components/banner"
 import { PostHogProvider } from "./providers"
 
 export const metadata: Metadata = {
@@ -153,8 +154,9 @@ export default function RootLayout({
       </head>
       <body className="font-stussy">
         <PostHogProvider>
+        <Banner />
         <Header />
-        <main className="pt-[65px] pb-[60px]">{children}</main>
+        <main className="pt-[105px] pb-[60px]">{children}</main>
         <Footer />
         </PostHogProvider>
 
