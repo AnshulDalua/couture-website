@@ -21,7 +21,7 @@ export default function OurProcessPage() {
           <div className="flex flex-col">
             <div className="relative h-[50vh] md:h-[60vh] mb-4">
               <Image
-                src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/Screenshot%202025-03-24%20at%207.56.35%20PM.png"
+                src="/lookbook/Screenshot 202025-03-24 20at 207 (1).webp"
                 alt="Design process"
                 fill
                 className="object-cover"
@@ -32,7 +32,7 @@ export default function OurProcessPage() {
             <div className="py-4">
               <h2 className="text-sm uppercase font-medium mb-4">1. Share Your Vision</h2>
               <p className="text-xs">
-              Receive your digital render - Once you approve, we’ll start production.
+              Receive your digital render - Once you approve, we'll start production.
               </p>
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function OurProcessPage() {
           <div className="flex flex-col">
             <div className="relative h-[50vh] md:h-[60vh] mb-4">
               <Image
-                src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/process/PHOTO-2025-02-20-06-13-41-removebg-preview.png"
+                src="/lookbook/PHOTO-2025-02-20-06-13-41-removebg-preview (1).webp"
                 alt="Material selection"
                 fill
                 className="object-contain"
@@ -60,7 +60,7 @@ export default function OurProcessPage() {
           <div className="flex flex-col">
             <div className="relative h-[50vh] md:h-[60vh] mb-4">
               <Image
-                src="https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/homepage/Couture-AXO-24.jpg"
+                src="/lookbook/Couture-AXO-24 (1).webp"
                 alt="Production process"
                 fill
                 className="object-cover"
