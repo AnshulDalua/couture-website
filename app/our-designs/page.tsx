@@ -28,12 +28,12 @@ const designsData: {
       printStyle: "EMBRODIERY",
       organization: "ALPHA CHI OMEGA"
     },
-    {
-      image: "/designs/MSU.webp",
-      caption: "MICHIGAN STATE UNIVERSITY DESIGN",
-      printStyle: "SCREEN PRINT",
-      organization: "MSU"
-    },
+    // {
+    //   image: "/designs/MSU.webp",
+    //   caption: "MICHIGAN STATE UNIVERSITY DESIGN",
+    //   printStyle: "SCREEN PRINT",
+    //   organization: "MSU"
+    // },
     {
       image: "/designs/KKGHoodie (1).webp",
       caption: "KKG `KEY` HOODIE CONCEPT",
@@ -76,24 +76,24 @@ const designsData: {
       printStyle: "EMBROIDERY",
       organization: "ALPHA PHI"
     },
-    {
-      image: "/designs/KDShirt.webp",
-      caption: "KAPPA DELTA SHIRT DESIGN",
-      printStyle: "SCREEN PRINT",
-      organization: "KAPPA DELTA"
-    },
+    // {
+    //   image: "/designs/KDShirt.webp",
+    //   caption: "KAPPA DELTA SHIRT DESIGN",
+    //   printStyle: "SCREEN PRINT",
+    //   organization: "KAPPA DELTA"
+    // },
     {
       image: "/designs/AphiPants (1).webp",
       caption: "APHI `STAR` SWEAT CONCEPT",
       printStyle: "EMBROIDERY",
       organization: "ALPHA PHI"
     },
-    {
-      image: "/designs/PCTUmichSweater.webp",
-      caption: "PCT U-MICH SWEATER DESIGN",
-      printStyle: "EMBROIDERY",
-      organization: "PCT"
-    },
+    // {
+    //   image: "/designs/PCTUmichSweater.webp",
+    //   caption: "PCT U-MICH SWEATER DESIGN",
+    //   printStyle: "EMBROIDERY",
+    //   organization: "PCT"
+    // },
     {
       image: "/designs/AphiHoodie (1)(2).webp",
       caption: "ALPHA PHI HOODIE DESIGN",
@@ -124,18 +124,18 @@ const designsData: {
       printStyle: "SCREEN PRINT",
       organization: "TSA"
     },
-    {
-      image: "/designs/EvansScholarsHoodie.webp",
-      caption: "EVANS SCHOLARS HOODIE",
-      printStyle: "SCREEN PRINT",
-      organization: "EVANS SCHOLARS"
-    },
-    {
-      image: "/designs/EvansScholarsPants.webp",
-      caption: "EVANS SCHOLARS PANTS",
-      printStyle: "SCREEN PRINT",
-      organization: "EVANS SCHOLARS"
-    },
+    // {
+    //   image: "/designs/EvansScholarsHoodie.webp",
+    //   caption: "EVANS SCHOLARS HOODIE",
+    //   printStyle: "SCREEN PRINT",
+    //   organization: "EVANS SCHOLARS"
+    // },
+    // {
+    //   image: "/designs/EvansScholarsPants.webp",
+    //   caption: "EVANS SCHOLARS PANTS",
+    //   printStyle: "SCREEN PRINT",
+    //   organization: "EVANS SCHOLARS"
+    // },
     {
       image: "/designs/FishPants.webp",
       caption: "FISH PANTS DESIGN",
@@ -220,12 +220,12 @@ const designsData: {
       printStyle: "SCREEN PRINT",
       organization: "PI BETA PHI"
     },
-    {
-      image: "/designs/Reach Consulting Group.webp",
-      caption: "REACH CONSULTING GROUP `STREETWEAR` DESIGN",
-      printStyle: "SCREEN PRINT",
-      organization: "REACH CONSULTING GROUP"
-    },
+    // {
+    //   image: "/designs/Reach Consulting Group.webp",
+    //   caption: "REACH CONSULTING GROUP `STREETWEAR` DESIGN",
+    //   printStyle: "SCREEN PRINT",
+    //   organization: "REACH CONSULTING GROUP"
+    // },
     {
       image: "/designs/ReachConsultingGroupT-shirts.webp",
       caption: "REACH CONSULTING TEE DESIGN",
