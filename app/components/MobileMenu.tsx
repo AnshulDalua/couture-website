@@ -106,13 +106,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </Link>
             
             {/* Reviews - entire div clickable */}
-            <Link 
+            {/* <Link 
               href="/support/reviews" 
               onClick={onClose} 
               className="block py-5 px-6"
             >
               <span className={`text-medium ${isActive('/support/reviews') ? 'font-bold' : ''}`}>REVIEWS</span>
-            </Link>
+            </Link> */}
             {/* More Section - kept expandable */}
             <div className="py-5 px-6">
               <button 

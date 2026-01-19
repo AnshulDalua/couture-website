@@ -30,13 +30,13 @@ export default function SupportPage() {
           </div>
         </Link>
 
-        {/* Reviews */}
-        <Link href="/support/reviews" className="block group">
+        {/* Reviews - temporarily disabled */}
+        {/* <Link href="/support/reviews" className="block group">
           <div className="border border-gray-200 p-6 h-full hover:border-black transition-colors">
             <h2 className="text-sm uppercase font-medium mb-2">REVIEWS</h2>
             <p className="text-xs">See what our customers are saying about our products.</p>
           </div>
-        </Link>
+        </Link> */}
       </div>
     </div>
   )

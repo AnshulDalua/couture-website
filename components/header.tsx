@@ -54,9 +54,9 @@ export default function Header() {
             PROCESS
           </Link>
 
-          <Link href="/support/reviews" className={`stussy-nav-item ${isActive('/support/reviews') ? 'font-bold' : ''}`}>
+          {/* <Link href="/support/reviews" className={`stussy-nav-item ${isActive('/support/reviews') ? 'font-bold' : ''}`}>
             REVIEWS
-          </Link>
+          </Link> */}
 
           <div className="stussy-nav-item">
             <button className="flex items-center">

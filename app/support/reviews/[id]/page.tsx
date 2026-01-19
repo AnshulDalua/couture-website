@@ -1,3 +1,10 @@
+// Temporarily disabled - needs refactoring
+// Original code preserved in git history
+export default function ReviewDetailPage() {
+  return null
+}
+
+/*
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -179,3 +186,4 @@ export default function ReviewDetailPage({ params }: { params: { id: string } })
   )
 }
 
+*/
