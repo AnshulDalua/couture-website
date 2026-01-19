@@ -173,7 +173,7 @@ export default function OrderPage() {
       <p className="text-xs text-gray-600 leading-relaxed mb-6">
        Share your vision below and our team will handle the rest. 
        <br></br>
-       Questions? Text us anytime at 732-997-8157!
+       Questions? Text us anytime at 732-997-8157 or <a href="https://calendly.com/couturebyikigai/30min" target="_blank" rel="noopener noreferrer" className="underline hover:text-black transition-colors">book a call</a>!
       </p>
       
       <div className="space-y-8">
