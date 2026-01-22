@@ -25,15 +25,8 @@ export default function DesignsGallery({ designs, title }: DesignsGalleryProps) 
     <div className="min-h-screen">
       <h1 className="text-sm uppercase px-6 pt-8 pb-2">{title}</h1>
       <div className="px-6">
-        <p className="text-xs text-gray-600 mb-4">
-          Our design team brings your vision to life -- get inspired, then{' '}
-          <Link href="/order" className="underline font-semibold">
-            request your order
-          </Link>
-          .
-        </p>
         <p className="text-xs text-gray-600 mb-6">
-          <span className="font-medium">Customization options:</span> Screen Print · Embroidery · Puff Print · Rhinestones · Hood Stitch · Side Stripes
+          Get inspired by sample club mockups — then make it your own. All merch is custom-designed for your organization.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {designs.map((design, index) => {

@@ -272,8 +272,14 @@ const designsData: {
 }
 
 export const metadata: Metadata = {
-  title: 'Our Designs | Couture by Ikigai',
-  description: 'Explore our custom design portfolio featuring unique merchandise and apparel designs for organizations and universities.',
+  title: 'Custom Merch Designs - Free Design Service | Couture by Ikigai',
+  description: 'Browse our portfolio of custom hoodies, apparel, and merch designs for university organizations. We create high quality custom designs for free. Get inspired and request your order today.',
+  keywords: ['custom merch designs', 'custom hoodies', 'free design service', 'university merch', 'custom apparel', 'sorority merch', 'fraternity merch', 'organization merchandise'],
+  openGraph: {
+    title: 'Custom Merch Designs - Free Design Service | Couture by Ikigai',
+    description: 'Browse our portfolio of custom hoodies, apparel, and merch designs. We create high quality custom designs for free.',
+    type: 'website',
+  },
 }
 
 export default function OurDesignsPage() {
