@@ -474,7 +474,7 @@ export default function HomePage() {
                       </label>
                       <textarea
                         id="homepage-details"
-                        placeholder=""
+                        placeholder="ex. Merch for my sorority"
                         className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent text-xs"
                       />
                     </div>

@@ -292,7 +292,7 @@ export default function GreekMerchPage() {
                 onChange={handleChange}
                 className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                 disabled={isSubmitting}
-                placeholder="Tell us what you need (e.g. 50 hoodies for a consulting club, rush merch for a sorority, startup launch gear)."
+                placeholder="ex. Merch for my sorority"
                 style={{ resize: 'vertical' }}
               ></textarea>
             </div>
