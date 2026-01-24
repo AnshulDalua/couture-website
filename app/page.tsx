@@ -309,24 +309,13 @@ export default function HomePage() {
                         style={{ width: "100%", height: "auto" }}
                       />
                     </div>
-                    <h2 className="text-sm uppercase tracking-widest mb-4 font-bold">
+                    <h2 className="text-sm uppercase tracking-widest mb-8 font-bold">
                       NOT YOUR AVERAGE MERCH COMPANY
                     </h2>
                   </div>
-                  <p className="text-xs leading-relaxed text-gray-700 mb-8">
-                    We design, manufacture, and deliver premium custom apparel in-house. 
-                    No middlemen. No compromises. Just merch you'll actually want to wear.
-                  </p>
-                  
-                  {/* CTA Button Divider */}
-                  <div className="flex justify-center mb-12">
-                    <Link href="/order" className="bg-black text-white px-8 py-3 uppercase text-xs tracking-widest hover:bg-gray-900 transition-colors duration-300">
-                      START AN ORDER →
-                    </Link>
-                  </div>
                   
                   {/* Process Steps */}
-                  <div className="mt-0 mb-0">
+                  <div className="mb-8">
                     <ul className="text-xs text-gray-700 space-y-6 text-left">
                       <li className="flex items-start gap-3">
                         <span><span className="font-semibold">1. Fill Out Form:</span> Share your vision and project details with us</span>
@@ -339,11 +328,18 @@ export default function HomePage() {
                       </li>
                     </ul>
                   </div>
+                  
+                  {/* CTA Button */}
+                  <div className="flex justify-center">
+                    <Link href="/order" className="bg-black text-white px-8 py-3 uppercase text-xs tracking-widest hover:bg-gray-900 transition-colors duration-300">
+                      START AN ORDER →
+                    </Link>
+                  </div>
                 </div>
               </div>
 
               {/* Products Section */}
-              <div className="relative px-6 py-0 bg-white -mt-4">
+              <div className="relative px-6 py-12 bg-white">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-sm uppercase">OUR BLANKS</h2>
                   <Link href="/products" className="text-xs underline">
@@ -478,7 +474,7 @@ export default function HomePage() {
                       </label>
                       <textarea
                         id="homepage-details"
-                        placeholder=""
+                        placeholder="ex. Merch for my sorority"
                         className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent text-xs"
                       />
                     </div>

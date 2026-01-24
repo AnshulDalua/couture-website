@@ -288,7 +288,7 @@ export default function OrderPage() {
                 onChange={handleChange}
                 className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                 disabled={isSubmitting}
-                placeholder=""
+                placeholder="ex. Merch for my sorority"
                 style={{ resize: 'vertical' }}
               ></textarea>
               <div
