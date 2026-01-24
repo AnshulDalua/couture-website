@@ -161,9 +161,9 @@ export async function sendOrderConfirmationToCustomer(formData: {
   try {
     const messageBody = `Hi ${formData.name}! 
 
-Thank you for submitting your order request with Couture by Ikigai. 
+Thank you for submitting your order request with Couture.
 
-We've received your information and our team will reach out from 732-997-8157 within the next few hours to discuss your custom merch project.
+We've received your information and someone from our team within the next few hours to discuss your custom merch project.
 
 Talk soon!
 - Couture Team`;

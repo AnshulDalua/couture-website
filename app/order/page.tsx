@@ -24,6 +24,7 @@ export default function OrderPage() {
     organization: "",
     university: "",
     projectDetails: "",
+    referralSource: "",
   })
   const [files, setFiles] = useState<File[]>([])
   const [isDragging, setIsDragging] = useState(false)
@@ -44,7 +45,7 @@ export default function OrderPage() {
     }
   }, [])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
@@ -104,6 +105,7 @@ export default function OrderPage() {
       submissionData.append('organization', formData.organization);
       submissionData.append('university', formData.university);
       submissionData.append('projectDetails', formData.projectDetails);
+      submissionData.append('referralSource', formData.referralSource);
 
       // Append all files with the same field name
       files.forEach(file => {
@@ -134,6 +136,7 @@ export default function OrderPage() {
           organization: "",
           university: "",
           projectDetails: "",
+          referralSource: "",
         })
         setFiles([])
 
@@ -314,6 +317,27 @@ export default function OrderPage() {
                   <path d="M9 1v8H1" stroke="#000" strokeWidth="1" fill="none" />
                 </svg>
               </div>
+            </div>
+
+            <div className="group">
+              <label htmlFor="referralSource" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                How did you hear about us?
+              </label>
+              <select
+                id="referralSource"
+                name="referralSource"
+                value={formData.referralSource}
+                onChange={handleChange}
+                className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2 cursor-pointer"
+                disabled={isSubmitting}
+              >
+                <option value="">Select an option</option>
+                <option value="google">Google</option>
+                <option value="referral">Referral</option>
+                <option value="tiktok">TikTok</option>
+                <option value="instagram">Instagram (ad or post)</option>
+                <option value="other">Other</option>
+              </select>
             </div>
 
             {/* File upload section - commented out */}

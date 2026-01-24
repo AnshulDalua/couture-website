@@ -1,7 +1,6 @@
 'use server'
 
-import { submitOrderForm, type OrderFormData, type DesignFileData } from '@/lib/order'
-import { uploadDesignFile } from '@/lib/supabase'
+import { submitOrderToAirtable } from '@/lib/airtable'
 import { sendOrderFormNotification, sendOrderConfirmationToCustomer } from '@/lib/twilio'
 
 export async function submitOrderFormAction(formData: FormData) {
@@ -13,45 +12,17 @@ export async function submitOrderFormAction(formData: FormData) {
     const organization = formData.get('organization') as string
     const university = formData.get('university') as string || undefined
     const projectDetails = formData.get('projectDetails') as string
+    const referralSource = formData.get('referralSource') as string || undefined
     
-    // Get all files from the form data (multiple files)
-    const files = formData.getAll('files') as File[]
-    const designFiles: DesignFileData[] = []
-    
-    // Upload each file to Supabase Storage
-    if (files && files.length > 0) {
-      for (const file of files) {
-        if (file.size > 0) { // Check if it's a valid file
-          // Pass the organization name to organize files by organization
-          const uploadResult = await uploadDesignFile(file, organization)
-          
-          // Check if there was an error during upload
-          if ('error' in uploadResult) {
-            console.error('Error uploading file:', uploadResult.error)
-            // Continue with other files, but log the error
-          } else {
-            // Add the file info to our array
-            designFiles.push({
-              fileName: uploadResult.fileName,
-              fileUrl: uploadResult.url || undefined,
-              filePath: uploadResult.filePath || undefined,
-              fileSize: file.size,
-              fileType: file.type
-            })
-          }
-        }
-      }
-    }
-    
-    // Submit the form data with all the file information
-    const result = await submitOrderForm({
+    // Submit the form data to Airtable
+    const result = await submitOrderToAirtable({
       name,
       email,
       phoneNumber,
       organization,
       university,
       projectDetails,
-      designFiles: designFiles.length > 0 ? designFiles : undefined
+      referralSource,
     })
     
     // Send SMS notifications if form was saved successfully
@@ -65,7 +36,7 @@ export async function submitOrderFormAction(formData: FormData) {
           organization,
           university,
           projectDetails,
-          filesCount: designFiles.length
+          filesCount: 0
         })
         console.log('Order form SMS notification sent successfully')
       } catch (smsError) {
