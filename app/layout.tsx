@@ -227,6 +227,10 @@ export default function RootLayout({
            });
          `}
        </Script> */}
+       <Script
+          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VicFLw"
+          strategy="afterInteractive"
+        />
             
       </body>
     </html>
