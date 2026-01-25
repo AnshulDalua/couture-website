@@ -153,6 +153,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://static.klaviyo.com" crossOrigin="anonymous" />
       </head>
       <body className="font-stussy">
+        <Script
+          id="klaviyo-script"
+          src="https://static.klaviyo.com/onsite/js/VicFLw/klaviyo.js?company_id=VicFLw"
+          strategy="beforeInteractive"
+        />
+        <Script id="klaviyo-init" strategy="beforeInteractive">
+          {`!function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();`}
+        </Script>
         <PostHogProvider>
         <Banner />
         <Header />
@@ -227,11 +235,11 @@ export default function RootLayout({
            });
          `}
        </Script> */}
-       <Script
+       {/* <Script
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VicFLw"
           strategy="afterInteractive"
-        />
-            
+        /> */}
+
       </body>
     </html>
   )
