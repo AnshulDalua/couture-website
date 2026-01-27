@@ -54,16 +54,12 @@ const productFolders = {
 }
 
 // Sizing chart URLs for each product type
-const sizingCharts = {
-  "heavyweight-hoodie": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Hoodie%20Size%20Guide.jpg",
-  "heavyweight-crewneck": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Crew%20Size%20Guide.jpg",
-  "classic-quarterzip": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/QZ_Size_Guide.jpg", // Using crew sizing for now
-  "straightcut-sweatpants": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Sweats%20Size%20Guide.jpg",
-  "classic-tshirt": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
-  "baby-tee": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
-  "racer-tee": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
-  "tank-top": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Tee%20Size%20Guide.jpg",
-  "boy-shorts": "https://dcnyckkspvcivlaetfie.supabase.co/storage/v1/object/public/ikigai/sizing/Sweats%20Size%20Guide.jpg",
+const sizingCharts: Record<string, string> = {
+  "heavyweight-hoodie": "/sizing/Hoodie Size Guide.webp",
+  "heavyweight-crewneck": "/sizing/Crew Size Guide.webp",
+  "classic-quarterzip": "/sizing/QZ_Size_Guide.webp",
+  "straightcut-sweatpants": "/sizing/Sweats Size Guide.webp",
+  "classic-tshirt": "/sizing/Tee Size Guide.webp",
 }
 
 // Product reviews organized by product type
