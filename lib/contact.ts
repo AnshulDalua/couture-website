@@ -16,8 +16,13 @@ export type ContactFormData = {
  */
 export async function saveContactFormSubmission(formData: ContactFormData) {
   try {
+    // Save to database without phoneNumber (we only use it for SMS)
     const submission = await prisma.contactFormSubmission.create({
-      data: formData,
+      data: {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      },
     })
     return { success: true, data: submission }
   } catch (error) {
