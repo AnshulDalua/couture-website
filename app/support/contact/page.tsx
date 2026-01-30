@@ -3,7 +3,6 @@
 import type React from "react"
 import { useState } from "react"
 import { submitContactForm } from "./actions"
-import { toast } from "sonner"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +12,7 @@ export default function ContactPage() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState<{ type: "success" | "error", text: string } | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -27,7 +27,10 @@ export default function ContactPage() {
       const result = await submitContactForm(formData)
       
       if (result.success) {
-        toast.success("Thank you for your message. We will respond within 1-2 business days.")
+        setSubmitMessage({
+          type: "success",
+          text: "Your message has been submitted successfully! We'll contact you shortly."
+        })
         setFormData({
           name: "",
           email: "",
@@ -35,11 +38,17 @@ export default function ContactPage() {
           message: "",
         })
       } else {
-        toast.error(result.error || "Something went wrong. Please try again.")
+        setSubmitMessage({
+          type: "error",
+          text: result.error || "There was an error submitting your message. Please try again."
+        })
       }
     } catch (error) {
       console.error("Error submitting form:", error)
-      toast.error("Failed to submit form. Please try again later.")
+      setSubmitMessage({
+        type: "error",
+        text: "Failed to submit form. Please try again later."
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -50,6 +59,20 @@ export default function ContactPage() {
       <h1 className="text-sm uppercase mb-8">CONTACT US</h1>
 
       <div className="space-y-8">
+        {submitMessage && (
+          <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
+            <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
+              {submitMessage.text}
+            </p>
+            <button
+              onClick={() => setSubmitMessage(null)}
+              className="mt-4 text-xs uppercase underline"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
+
         <section className="space-y-4 text-xs">
           <p>
             We're here to help with any questions or concerns you may have. Please fill out the form below and we'll get
