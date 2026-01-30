@@ -9,6 +9,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phoneNumber: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -30,6 +31,7 @@ export default function ContactPage() {
         setFormData({
           name: "",
           email: "",
+          phoneNumber: "",
           message: "",
         })
       } else {
@@ -92,6 +94,22 @@ export default function ContactPage() {
                   id="email"
                   name="email"
                   value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-black p-2 text-xs"
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phoneNumber" className="block text-xs uppercase mb-1">
+                  Phone Number:
+                </label>
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
                   onChange={handleChange}
                   required
                   className="w-full border border-black p-2 text-xs"

@@ -35,6 +35,11 @@ export async function sendTwilioSMS(toPhoneNumber: string, messageBody: string):
     return false;
   }
 
+  if (!TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_PHONE_NUMBER) {
+    console.error("Twilio credentials not configured");
+    return false;
+  }
+
   const authHeader = base64Encode(`${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`);
   
   const formData = createFormData({
@@ -72,11 +77,40 @@ export async function sendTwilioSMS(toPhoneNumber: string, messageBody: string):
 }
 
 /**
+ * Send contact confirmation SMS to customer
+ */
+export async function sendContactConfirmationToCustomer(formData: {
+  name: string;
+  phoneNumber: string;
+}): Promise<boolean> {
+  try {
+    const messageBody = `Hi ${formData.name}! 
+
+Thanks for reaching out to Couture.
+
+We've received your message and will get back to you within 1-2 business days.
+
+If you need immediate assistance, feel free to text us at 732-997-8157.
+
+- Couture Team`;
+
+    // Send confirmation to the customer's phone number
+    const result = await sendTwilioSMS(formData.phoneNumber, messageBody);
+    
+    return result;
+  } catch (error) {
+    console.error('Error in sendContactConfirmationToCustomer:', error);
+    return false;
+  }
+}
+
+/**
  * Send contact form notification SMS
  */
 export async function sendContactFormNotification(formData: {
   name: string;
   email: string;
+  phoneNumber: string;
   message: string;
 }): Promise<boolean> {
   try {
@@ -86,12 +120,18 @@ Form Type: CONTACT FORM
 
 Name: ${formData.name}
 Email: ${formData.email}
+Phone: ${formData.phoneNumber}
 
 Message:
 ${formData.message}
 
 ---
 Submitted at: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST`;
+
+    if (!NOTIFICATION_PHONE_NUMBERS) {
+      console.error("Notification phone numbers not configured");
+      return false;
+    }
 
     // Send to all notification phone numbers
     const phoneNumbers = NOTIFICATION_PHONE_NUMBERS.split(',').map(num => num.trim());
@@ -137,6 +177,11 @@ ${formData.filesCount ? `📎 Files Attached: ${formData.filesCount}` : '📎 No
 ---
 Submitted at: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST`;
 
+    if (!NOTIFICATION_PHONE_NUMBERS) {
+      console.error("Notification phone numbers not configured");
+      return false;
+    }
+
     // Send to all notification phone numbers
     const phoneNumbers = NOTIFICATION_PHONE_NUMBERS.split(',').map(num => num.trim());
     const results = await Promise.all(
@@ -163,7 +208,11 @@ export async function sendOrderConfirmationToCustomer(formData: {
 
 Thank you for submitting your order request with Couture.
 
-We've received your information and someone from our team within the next few hours to discuss your custom merch project.
+Here is our process:
+
+1. We'll work with you on your designs and send you mockups
+2. Once you're satisfied we start production
+3. Receive your clothes :)
 
 Talk soon!
 - Couture Team`;
@@ -197,6 +246,11 @@ Organization: ${formData.organization}
 
 ---
 Submitted at: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST`;
+
+    if (!NOTIFICATION_PHONE_NUMBERS) {
+      console.error("Notification phone numbers not configured");
+      return false;
+    }
 
     // Send to all notification phone numbers
     const phoneNumbers = NOTIFICATION_PHONE_NUMBERS.split(',').map(num => num.trim());

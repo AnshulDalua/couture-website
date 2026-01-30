@@ -3,6 +3,7 @@ import { prisma } from './prisma'
 export type ContactFormData = {
   name: string
   email: string
+  phoneNumber: string
   orderNumber?: string
   subject?: string
   message: string
