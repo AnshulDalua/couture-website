@@ -514,7 +514,7 @@ const products = {
     ],
     images: [
       "/shop/racertee/3.webp",
-      "/shop/racertee/4.webp",
+      // "/shop/racertee/4.webp",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "WHITE", "HEATHER GREY", "BROWN", "PINK", "YELLOW", "BUTTER YELLOW", "RED", "BABY BLUE", "GREEN", "LIGHT BROWN", "NAVY"],
@@ -539,7 +539,7 @@ const products = {
     images: [
       "/shop/tank/4.webp",
       "/shop/tank/5.webp",
-      "/shop/tank/6.webp",
+      // "/shop/tank/6.webp",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["BLACK", "WHITE", "DARK GREY", "LIGHT GREY", "BROWN", "PINK", "BUTTER YELLOW", "RED", "BABY BLUE", "GREEN", "TAN", "NAVY"],

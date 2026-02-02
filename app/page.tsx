@@ -69,41 +69,69 @@ const galleryDesigns = [
   //   image: "/designs/KKGHoodie (1).webp",
   //   caption: "KKG `KEY` HOODIE CONCEPT",
   // },
+  // {
+  //   image: "/designs/ThetaTank.webp",
+  //   caption: "THETA `STAR` TANK CONCEPT",
+  // },
+  // {
+  //   image: "/designs/AphiHoodie.webp",
+  //   caption: "APHI `FLOWER` HOODIE CONCEPT",
+  // },
+  // {
+  //   image: "/designs/AphiHoodie. (1).webp",
+  //   caption: "APHI EMBROIDERED TEXT DESIGN CONCEPT",
+  // },
+  // {
+  //   image: "/designs/AphiPants (1).webp",
+  //   caption: "APHI `STAR` SWEAT CONCEPT",
+  // },
   {
-    image: "/designs/ThetaTank.webp",
-    caption: "THETA `STAR` TANK CONCEPT",
+    image: "/designs/LBSAStar.webp",
+    caption: "LBSA STAR DESIGN",
   },
   {
-    image: "/designs/AphiHoodie.webp",
-    caption: "APHI `FLOWER` HOODIE CONCEPT",
+    image: "/designs/TSAHoodieUpdated.webp",
+    caption: "TSA HOODIE UPDATED DESIGN",
   },
   {
-    image: "/designs/AphiHoodie. (1).webp",
-    caption: "APHI EMBROIDERED TEXT DESIGN CONCEPT",
+    image: "/designs/Girls Varsity tennis.webp",
+    caption: "GIRLS VARSITY TENNIS",
   },
   {
-    image: "/designs/AphiPants (1).webp",
-    caption: "APHI `STAR` SWEAT CONCEPT",
+    image: "/designs/Accapella.webp",
+    caption: "GIMBLE ACAPELLA GROUP DESIGN CONCEPT",
   },
 ]
 
 // Lookbook items
 const lookbookItems = [
+  // {
+  //   image: "/lookbook/Couture-AXO-26.webp",
+  //   caption: "AXO LOOKBOOK",
+  // },
   {
-    image: "/lookbook/Couture-AXO-26.webp",
-    caption: "AXO LOOKBOOK",
+    image: "/lookbook/black_2.webp",
+    caption: "BLACK LOOKBOOK",
+  },
+  // {
+  //   image: "/lookbook/axo-yellow.webp",
+  //   caption: "AXO YELLOW",
+  // },
+  // {
+  //   image: "/lookbook/axo-babytee3.webp",
+  //   caption: "AXO BABY TEE",
+  // },
+  {
+    image: "/lookbook/l20.webp",
+    caption: "LOOKBOOK",
   },
   {
-    image: "/lookbook/beach3.webp",
-    caption: "BEACH LOOKBOOK",
+    image: "/lookbook/l40.webp",
+    caption: "LOOKBOOK",
   },
   {
-    image: "/lookbook/axo-yellow.webp",
-    caption: "AXO YELLOW",
-  },
-  {
-    image: "/lookbook/axo-babytee3.webp",
-    caption: "AXO BABY TEE",
+    image: "/lookbook/mfms3.webp",
+    caption: "LOOKBOOK",
   },
 ]
 
