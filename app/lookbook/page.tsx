@@ -7,6 +7,10 @@ import WinterRushCountdown from "@/app/components/WinterRushCountdown"
 const lookbookData = {
   title: "Lookbook",
   images: [
+    // "/lookbook/mfms.webp",
+    // "/lookbook/mfms2.webp",
+    // "/lookbook/mfms3.webp",
+    // "/lookbook/mfms4.webp",
     "/lookbook/black_2.webp",
     "/lookbook/Couture-AXO-26.webp",
     "/lookbook/l20.webp",
@@ -14,13 +18,14 @@ const lookbookData = {
     
 
     "/lookbook/l40.webp",
+    "/lookbook/mfms3.webp",
     "/homepage/aryani.webp",
     "/lookbook/beach4.webp",
     
     "/lookbook/brown_2.webp",
     
     "/lookbook/white_1.webp",
-      
+    "/lookbook/axo-babytee2.webp",
     "/lookbook/19000034.webp",
    
     "/lookbook/l29.webp",
@@ -28,7 +33,8 @@ const lookbookData = {
     "/homepage/clubhouse.webp",
     "/lookbook/clubhous.webp",
     "/lookbook/red_1.webp", 
-    "/lookbook/axo-babytee2.webp",
+    "/lookbook/mfms.webp",
+    
     "/lookbook/beach1.webp",
     "/lookbook/sinh001485-R1-025-11.webp",
     "/lookbook/l2.webp",
