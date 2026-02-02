@@ -97,13 +97,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </Link>
             
             {/* Our Process - entire div clickable */}
-            <Link 
+            {/* <Link 
               href="/our-process" 
               onClick={onClose} 
               className="block py-5 px-6"
             >
               <span className={`text-medium ${isActive('/our-process') ? 'font-bold' : ''}`}>PROCESS</span>
-            </Link>
+            </Link> */}
             
             {/* Reviews - entire div clickable */}
             {/* <Link 
