@@ -95,7 +95,7 @@ export default function GreekMerchPage() {
         }
         setSubmitMessage({
           type: "success",
-          text: "Your order has been submitted successfully! We'll contact you shortly."
+          text: "Your order has been submitted successfully! We'll contact you shortly. Schedule a call with us: https://calendly.com/couturebyikigai/30min"
         })
 
         setFormData({

@@ -41,7 +41,7 @@ export default function ReferralPage() {
         }
         setSubmitMessage({
           type: "success",
-          text: "Perfect! We'll text you shortly to set up a group chat with your friend."
+          text: "Perfect! We'll text you shortly to set up a group chat with your friend. Schedule a call with us: https://calendly.com/couturebyikigai/30min"
         })
 
         // Reset form

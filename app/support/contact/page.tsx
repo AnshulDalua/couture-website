@@ -29,7 +29,7 @@ export default function ContactPage() {
       if (result.success) {
         setSubmitMessage({
           type: "success",
-          text: "Your message has been submitted successfully! We'll contact you shortly."
+          text: "Your message has been submitted successfully! We'll contact you shortly. Schedule a call with us: https://calendly.com/couturebyikigai/30min"
         })
         setFormData({
           name: "",

@@ -92,6 +92,8 @@ We've received your message and will get back to you within 1-2 business days.
 
 If you need immediate assistance, feel free to text us at 732-997-8157.
 
+Schedule a call with us: https://calendly.com/couturebyikigai/30min
+
 - Couture Team`;
 
     // Send confirmation to the customer's phone number
@@ -208,11 +210,13 @@ export async function sendOrderConfirmationToCustomer(formData: {
 
 Thank you for submitting your order request with Couture.
 
-Here is our process:
+Here is a quick overview of our process!
 
 1. We'll work with you on your designs and send you mockups
 2. Once you're satisfied we start production
 3. Receive your clothes :)
+
+Schedule a call with us: https://calendly.com/couturebyikigai/30min
 
 Talk soon!
 - Couture Team`;
@@ -279,6 +283,8 @@ export async function sendReferralConfirmationToCustomer(formData: {
 Thanks for wanting to share Couture with a friend! 
 
 We'll text you from 732-997-8157 shortly to set up a group chat and connect you both.
+
+Schedule a call with us: https://calendly.com/couturebyikigai/30min
 
 Talk soon!
 - Couture Team`;
