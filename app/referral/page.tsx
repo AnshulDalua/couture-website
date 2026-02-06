@@ -99,8 +99,8 @@ function ReferralPage() {
     <div className="px-6 py-12 max-w-2xl mx-auto">
       {/* Hero Section */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-light uppercase tracking-wide text-black mb-4">
-          Make a Group Chat. Get Paid.
+        <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wide text-black mb-4">
+          Make a GC. Get Paid.
         </h1>
         <p className="text-base md:text-lg text-gray-700 mb-8">
           Introduce us to a merch chair. Earn $30–$60.
@@ -113,9 +113,9 @@ function ReferralPage() {
           How It Works
         </p>
         <ul className="text-sm space-y-3 list-none">
-          <li>→ Submit the intro — tell us which club or Greek org you can connect us to</li>
-          <li>→ Make a quick group chat — we'll reach out, just loop us in with the merch chair</li>
-          <li>→ If they order, you get paid — $30 non-Greek orgs · $60 Greek</li>
+          <li>→ <span className="font-bold">Submit the intro</span> — tell us which club or Greek org you can connect us to</li>
+          <li>→ <span className="font-bold">Make a quick group chat</span> — we'll reach out, just loop us in with the merch chair</li>
+          <li>→ <span className="font-bold">If they order, you get paid</span> — $30 non-Greek orgs · $60 Greek</li>
         </ul>
       </div>
       
