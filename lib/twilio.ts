@@ -238,15 +238,19 @@ export async function sendReferralFormNotification(formData: {
   name: string;
   phoneNumber: string;
   organization: string;
+  isGreekOrg: string;
+  payoutAmount: string;
 }): Promise<boolean> {
   try {
-    const messageBody = `🎯 REFERRAL
+    const messageBody = `🎯 PAID REFERRAL
 
-Form Type: REFERRAL SUBMISSION
+Form Type: PAID REFERRAL SUBMISSION
 
 Name: ${formData.name}
 Phone: ${formData.phoneNumber}
 Organization: ${formData.organization}
+Greek Org: ${formData.isGreekOrg === 'yes' ? 'Yes' : 'No'}
+Payout: ${formData.payoutAmount}
 
 ---
 Submitted at: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST`;

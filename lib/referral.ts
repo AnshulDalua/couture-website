@@ -2,6 +2,10 @@ export type ReferralFormData = {
   name: string;
   phoneNumber: string;
   organization: string;
+  isGreekOrg: string;
+  utmSource: string;
+  utmCampaign: string;
+  utmContent: string;
 };
 
 export async function submitReferralForm(data: ReferralFormData) {
