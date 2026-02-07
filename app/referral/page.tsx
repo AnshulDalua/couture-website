@@ -100,7 +100,7 @@ function ReferralPage() {
       {/* Hero Section */}
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wide text-black mb-4">
-          Make a GC. Get Paid.
+          Make a Groupchat. Get Paid.
         </h1>
         <p className="text-base md:text-lg text-gray-700 mb-8">
           Introduce us to a merch chair. Earn $30–$60.
@@ -193,7 +193,7 @@ function ReferralPage() {
             </div>
 
             {/* Is this a Greek org? */}
-            <div className="group">
+            {/* <div className="group">
               <label htmlFor="isGreekOrg" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
                 Is this a Greek org?
               </label>
@@ -210,7 +210,7 @@ function ReferralPage() {
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
               </select>
-            </div>
+            </div> */}
           </div>
 
           {/* Submit Button */}
