@@ -9,7 +9,6 @@ export async function submitReferralFormAction(formData: FormData) {
     const name = formData.get('name') as string
     const phoneNumber = formData.get('phoneNumber') as string
     const organization = formData.get('organization') as string
-    const isGreekOrg = formData.get('isGreekOrg') as string
     const utmSource = formData.get('utmSource') as string
     const utmCampaign = formData.get('utmCampaign') as string
     const utmContent = formData.get('utmContent') as string
@@ -19,7 +18,6 @@ export async function submitReferralFormAction(formData: FormData) {
       name,
       phoneNumber,
       organization,
-      isGreekOrg,
       utmSource,
       utmCampaign,
       utmContent,
@@ -28,14 +26,11 @@ export async function submitReferralFormAction(formData: FormData) {
     // Send SMS notifications
     if (result.success) {
       try {
-        // Send notification to admin numbers with payout info
-        const payoutAmount = isGreekOrg === 'yes' ? '$60' : '$30'
+        // Send notification to admin numbers
         await sendReferralFormNotification({
           name,
           phoneNumber,
           organization,
-          isGreekOrg,
-          payoutAmount,
         })
         console.log('Referral form SMS notification sent successfully')
       } catch (smsError) {

@@ -125,7 +125,7 @@ export default function OrderPage() {
         }
         setSubmitMessage({
           type: "success",
-          text: "Your order has been submitted successfully! We'll contact you shortly. Schedule a call with us: https://calendly.com/couturebyikigai/30min"
+          text: "We're Reviewing Your Request Right Now!\n\nYou'll receive a text from us within 30-60 minutes during business hours. In the meantime, if you'd also like to book a call to chat directly, you can do that here:"
         })
 
         // Reset form
@@ -171,26 +171,24 @@ export default function OrderPage() {
     
     <div className="px-6 py-8 max-w-3xl mx-auto">
       
-      <h1 className="text-sm uppercase tracking-wide text-black mb-2">REQUEST ORDER</h1>
-
-      <p className="text-xs text-gray-600 leading-relaxed mb-6">
-       Share your vision below and our team will handle the rest. 
-       <br></br>
-       Questions? Text us anytime at 732-997-8157 or <a href="https://calendly.com/couturebyikigai/30min" target="_blank" rel="noopener noreferrer" className="underline hover:text-black transition-colors">book a call</a>!
-      </p>
+      <h1 className="text-sm uppercase tracking-wide text-black mb-6">REQUEST ORDER</h1>
       
       <div className="space-y-8">
         {submitMessage && (
           <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
-            <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
+            <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'} whitespace-pre-line`}>
               {submitMessage.text}
             </p>
-            <button
-              className="mt-6 underline"
-              onClick={() => setSubmitMessage(null)}
-            >
-              Submit another order
-            </button>
+            {submitMessage.type === 'success' && (
+              <a
+                href="https://calendly.com/couturebyikigai/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-block bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-gray-900 transition-colors duration-300"
+              >
+                BOOK A CALL
+              </a>
+            )}
           </div>
         )}
         

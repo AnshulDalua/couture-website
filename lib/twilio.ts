@@ -206,20 +206,20 @@ export async function sendOrderConfirmationToCustomer(formData: {
   phoneNumber: string;
 }): Promise<boolean> {
   try {
-    const messageBody = `Hi ${formData.name}! 
+    const messageBody = `Hey there!
 
-Thank you for submitting your order request with Couture.
+It's Couture. We've got your request and we're already reviewing it.
 
-Here is a quick overview of our process!
+Here's a quick look at what happens next:
 
-1. We'll work with you on your designs and send you mockups
-2. Once you're satisfied we start production
-3. Receive your clothes :)
+1. We'll team up with you on your designs and send some mockups.
+2. Once you're happy, we'll start production.
+3. Sit back and wait for your merch to arrive!
 
-Schedule a call with us: https://calendly.com/couturebyikigai/30min
+You'll hear from one of our team members shortly, but if you'd like to chat with us directly, you can always schedule a call here: https://calendly.com/couturebyikigai/30min
 
 Talk soon!
-- Couture Team`;
+— The Couture Team`;
 
     // Send confirmation to the customer's phone number
     const result = await sendTwilioSMS(formData.phoneNumber, messageBody);
@@ -238,8 +238,6 @@ export async function sendReferralFormNotification(formData: {
   name: string;
   phoneNumber: string;
   organization: string;
-  isGreekOrg: string;
-  payoutAmount: string;
 }): Promise<boolean> {
   try {
     const messageBody = `🎯 PAID REFERRAL
@@ -249,8 +247,6 @@ Form Type: PAID REFERRAL SUBMISSION
 Name: ${formData.name}
 Phone: ${formData.phoneNumber}
 Organization: ${formData.organization}
-Greek Org: ${formData.isGreekOrg === 'yes' ? 'Yes' : 'No'}
-Payout: ${formData.payoutAmount}
 
 ---
 Submitted at: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST`;
@@ -282,16 +278,20 @@ export async function sendReferralConfirmationToCustomer(formData: {
   phoneNumber: string;
 }): Promise<boolean> {
   try {
-    const messageBody = `Hi ${formData.name}! 
+    const messageBody = `Hey there!
 
-Thanks for wanting to share Couture with a friend! 
+It's Couture. We've got your request and we're already reviewing it.
 
-We'll text you from 732-997-8157 shortly to set up a group chat and connect you both.
+Here's a quick look at what happens next:
 
-Schedule a call with us: https://calendly.com/couturebyikigai/30min
+1. We'll team up with you on your designs and send some mockups.
+2. Once you're happy, we'll start production.
+3. Sit back and wait for your merch to arrive!
+
+You'll hear from one of our team members shortly, but if you'd like to chat with us directly, you can always schedule a call here: https://calendly.com/couturebyikigai/30min
 
 Talk soon!
-- Couture Team`;
+— The Couture Team`;
 
     // Send confirmation to the customer's phone number
     const result = await sendTwilioSMS(formData.phoneNumber, messageBody);

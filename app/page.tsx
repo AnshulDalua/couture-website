@@ -415,78 +415,18 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Order Form Section */}
+              {/* Order CTA Section */}
               <div className="px-6 py-12 bg-white">
                 <h2 className="text-sm uppercase tracking-wide mb-2 text-center">REQUEST ORDER</h2>
                 <p className="text-xs text-gray-600 text-center mb-8">
-                  Share your vision below and our team will handle the rest.
+                  Share your vision and our team will handle the rest.
                 </p>
                 
-                <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); router.push('/order'); }}>
-                  <div className="grid grid-cols-1 gap-6">
-                    <div>
-                      <label htmlFor="homepage-name" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
-                        Name:
-                      </label>
-                      <input
-                        type="text"
-                        id="homepage-name"
-                        required
-                        className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="homepage-email" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
-                        Email:
-                      </label>
-                      <input
-                        type="email"
-                        id="homepage-email"
-                        required
-                        className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="homepage-phone" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
-                        Phone Number:
-                      </label>
-                      <input
-                        type="tel"
-                        id="homepage-phone"
-                        required
-                        className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="homepage-organization" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
-                        Organization:
-                      </label>
-                      <input
-                        type="text"
-                        id="homepage-organization"
-                        required
-                        className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent text-xs"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="homepage-details" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
-                        Project Details:
-                      </label>
-                      <textarea
-                        id="homepage-details"
-                        placeholder="ex. Merch for my sorority"
-                        className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent text-xs"
-                      />
-                    </div>
-                  </div>
-                  
-                  <button
-                    type="submit"
-                    className="w-full bg-black text-white py-3 uppercase text-xs tracking-widest hover:bg-gray-900 transition-colors"
-                  >
-                    SUBMIT
-                  </button>
-                </form>
+                <div className="flex justify-center">
+                  <Link href="/order" className="bg-black text-white px-8 py-3 uppercase text-xs tracking-widest hover:bg-gray-900 transition-colors duration-300">
+                    START AN ORDER →
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>

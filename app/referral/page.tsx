@@ -125,12 +125,6 @@ function ReferralPage() {
           <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
             {submitMessage.text}
           </p>
-          <button
-            className="mt-6 underline text-sm"
-            onClick={() => setSubmitMessage(null)}
-          >
-            Submit another referral
-          </button>
         </div>
       )}
       

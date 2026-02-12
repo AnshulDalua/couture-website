@@ -29,7 +29,7 @@ export default function ContactPage() {
       if (result.success) {
         setSubmitMessage({
           type: "success",
-          text: "Your message has been submitted successfully! We'll contact you shortly. Schedule a call with us: https://calendly.com/couturebyikigai/30min"
+          text: "We're Reviewing Your Request Right Now!\n\nYou'll receive a text from us within 30-60 minutes during business hours."
         })
         setFormData({
           name: "",
@@ -61,15 +61,9 @@ export default function ContactPage() {
       <div className="space-y-8">
         {submitMessage && (
           <div className={`mb-6 p-8 border ${submitMessage.type === 'success' ? 'border-green-500' : 'border-red-500'}`}>
-            <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
+            <p className={`text-lg ${submitMessage.type === 'success' ? 'text-green-700' : 'text-red-700'} whitespace-pre-line`}>
               {submitMessage.text}
             </p>
-            <button
-              onClick={() => setSubmitMessage(null)}
-              className="mt-4 text-xs uppercase underline"
-            >
-              Dismiss
-            </button>
           </div>
         )}
 
