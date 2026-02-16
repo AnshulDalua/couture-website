@@ -293,7 +293,7 @@ export default function GreekMerchPage() {
                 onChange={handleChange}
                 className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
                 disabled={isSubmitting}
-                placeholder="ex. Merch for my sorority"
+                placeholder="ex. 100 units for our bid day, club rush, startup event"
                 style={{ resize: 'vertical' }}
               ></textarea>
             </div>
