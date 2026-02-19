@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-greek-life-sweatsets-guide',
+    title: 'THE ULTIMATE GUIDE TO CUSTOM GREEK LIFE SWEATSETS IN 2026',
+    date: 'FEBRUARY 19, 2026',
+    excerpt: 'Everything you need to know about ordering custom sorority and fraternity sweatsets—matching hoodies and sweatpants that your chapter will actually want to wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '6 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'startup-team-hoodies-ultimate-guide',
     title: 'STARTUP TEAM HOODIES: THE ULTIMATE GUIDE TO CUSTOM COMPANY MERCH IN 2026',
     date: 'FEBRUARY 19, 2026',
