@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'startup-team-hoodies-ultimate-guide',
+    title: 'STARTUP TEAM HOODIES: THE ULTIMATE GUIDE TO CUSTOM COMPANY MERCH IN 2026',
+    date: 'FEBRUARY 19, 2026',
+    excerpt: 'Learn how to create premium startup team hoodies and custom company merch that builds company culture, impresses investors, and creates lasting brand impressions.',
+    image: '/lookbook/19000034.webp',
+    readTime: '6 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'why-high-quality-custom-merch-matters',
     title: 'WHY HIGH QUALITY CUSTOM MERCH MATTERS FOR YOUR ORGANIZATION',
     date: 'APRIL 15, 2025',
