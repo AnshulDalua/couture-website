@@ -5,6 +5,25 @@ import { sendContactFormNotification, sendContactConfirmationToCustomer } from '
 
 export async function submitContactForm(formData: ContactFormData) {
   try {
+    // Honeypot spam check — if the hidden 'website' field is filled, it's a bot
+    if (formData.website) {
+      console.log('Spam detected via honeypot field')
+
+      try {
+        // Send spam alert SMS to admin — no DB save, no customer SMS
+        await sendContactFormNotification({
+          name: `🚨 SPAM DETECTED 🚨\n\n${formData.name}`,
+          email: formData.email,
+          phoneNumber: formData.phoneNumber,
+          message: formData.message
+        })
+      } catch (smsError) {
+        console.error('Failed to send spam notification SMS:', smsError)
+      }
+
+      return { success: true, error: undefined, spam: false }
+    }
+
     const result = await saveContactFormSubmission(formData)
     
     // Send SMS notifications if form was saved successfully
@@ -35,9 +54,9 @@ export async function submitContactForm(formData: ContactFormData) {
       }
     }
     
-    return result
+    return { ...result, spam: false }
   } catch (error) {
     console.error('Error in submitContactForm action:', error)
-    return { success: false, error: 'Failed to submit contact form' }
+    return { success: false, error: 'Failed to submit contact form', spam: false }
   }
 }

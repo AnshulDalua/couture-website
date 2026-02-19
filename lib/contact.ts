@@ -7,6 +7,7 @@ export type ContactFormData = {
   orderNumber?: string
   subject?: string
   message: string
+  website?: string
 }
 
 /**

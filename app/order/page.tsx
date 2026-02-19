@@ -107,6 +107,12 @@ export default function OrderPage() {
       submissionData.append('projectDetails', formData.projectDetails);
       submissionData.append('referralSource', formData.referralSource);
 
+      // Include honeypot field
+      const honeypotField = document.getElementById('website') as HTMLInputElement;
+      if (honeypotField) {
+        submissionData.append('website', honeypotField.value);
+      }
+
       // Append all files with the same field name
       files.forEach(file => {
         submissionData.append('files', file);
@@ -407,6 +413,18 @@ export default function OrderPage() {
                 </div>
               )}
             </div> */}
+
+            {/* Honeypot field - hidden from real users, bots will fill it */}
+            <div className="absolute opacity-0 top-0 left-0 h-0 w-0 -z-10" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
 
             <div className="pt-6">
               <button

@@ -24,7 +24,11 @@ export default function ContactPage() {
     setIsSubmitting(true)
     
     try {
-      const result = await submitContactForm(formData)
+      // Check honeypot field
+      const honeypotField = document.getElementById('website') as HTMLInputElement;
+      const honeypotValue = honeypotField ? honeypotField.value : '';
+
+      const result = await submitContactForm({ ...formData, website: honeypotValue })
       
       if (result.success) {
         setSubmitMessage({
@@ -148,6 +152,18 @@ export default function ContactPage() {
                 className="w-full border border-black p-2 text-xs"
                 disabled={isSubmitting}
               ></textarea>
+            </div>
+
+            {/* Honeypot field - hidden from real users, bots will fill it */}
+            <div className="absolute opacity-0 top-0 left-0 h-0 w-0 -z-10" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+              />
             </div>
 
             <div>
