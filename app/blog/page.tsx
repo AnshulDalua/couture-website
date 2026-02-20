@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-caps-hats-ultimate-guide',
+    title: 'THE COMPLETE GUIDE TO CUSTOM CAPS & HATS IN 2026',
+    date: 'FEBRUARY 20, 2026',
+    excerpt: 'Everything you need to know about ordering custom caps and hats—embroidery, printing options, fabric choices, and how to design merch your group will actually wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '7 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-greek-life-sweatsets-guide',
     title: 'THE ULTIMATE GUIDE TO CUSTOM GREEK LIFE SWEATSETS IN 2026',
     date: 'FEBRUARY 19, 2026',
