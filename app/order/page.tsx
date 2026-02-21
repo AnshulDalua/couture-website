@@ -22,6 +22,7 @@ export default function OrderPage() {
     email: "",
     phoneNumber: "",
     organization: "",
+    execPosition: "",
     university: "",
     projectDetails: "",
     referralSource: "",
@@ -103,6 +104,7 @@ export default function OrderPage() {
       submissionData.append('email', formData.email);
       submissionData.append('phoneNumber', formData.phoneNumber);
       submissionData.append('organization', formData.organization);
+      submissionData.append('execPosition', formData.execPosition);
       submissionData.append('university', formData.university);
       submissionData.append('projectDetails', formData.projectDetails);
       submissionData.append('referralSource', formData.referralSource);
@@ -140,6 +142,7 @@ export default function OrderPage() {
           email: "",
           phoneNumber: "",
           organization: "",
+          execPosition: "",
           university: "",
           projectDetails: "",
           referralSource: "",
@@ -267,6 +270,23 @@ export default function OrderPage() {
             </div>
 
             <div className="group">
+              <label htmlFor="execPosition" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                What position do you hold in your sorority?
+              </label>
+              <input
+                type="text"
+                id="execPosition"
+                name="execPosition"
+                required
+                value={formData.execPosition}
+                onChange={handleChange}
+                placeholder="ex. Merch Chair, E-Board, General Member, etc"
+                className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div className="group">
               <label htmlFor="university" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
                 University:
               </label>
@@ -274,6 +294,7 @@ export default function OrderPage() {
                 type="text"
                 id="university"
                 name="university"
+                required
                 value={formData.university}
                 onChange={handleChange}
                 className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
@@ -288,6 +309,7 @@ export default function OrderPage() {
               <textarea
                 id="projectDetails"
                 name="projectDetails"
+                required
                 value={formData.projectDetails}
                 onChange={handleChange}
                 className="w-full border-b border-black pb-2 focus:outline-none resize-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
@@ -330,6 +352,7 @@ export default function OrderPage() {
               <select
                 id="referralSource"
                 name="referralSource"
+                required
                 value={formData.referralSource}
                 onChange={handleChange}
                 className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2 cursor-pointer"

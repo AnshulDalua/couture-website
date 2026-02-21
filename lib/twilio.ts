@@ -157,6 +157,7 @@ export async function sendOrderFormNotification(formData: {
   email: string;
   phoneNumber: string;
   organization: string;
+  execPosition?: string;
   university?: string;
   projectDetails: string;
   filesCount?: number;
@@ -169,7 +170,7 @@ Form Type: ORDER REQUEST
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phoneNumber}
-Organization: ${formData.organization}${formData.university ? `\nUniversity: ${formData.university}` : ''}
+Organization: ${formData.organization}${formData.execPosition ? `\nPosition: ${formData.execPosition}` : ''}${formData.university ? `\nUniversity: ${formData.university}` : ''}
 
 Project Details:
 ${formData.projectDetails}

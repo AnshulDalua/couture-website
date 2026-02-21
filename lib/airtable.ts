@@ -7,7 +7,8 @@ export type OrderFormDataForAirtable = {
   email: string;
   phoneNumber: string;
   organization: string;
-  university?: string;
+  execPosition: string;
+  university: string;
   projectDetails: string;
   referralSource?: string;
 };
@@ -46,7 +47,8 @@ export async function submitOrderToAirtable(data: OrderFormDataForAirtable) {
       email: data.email,
       phone: data.phoneNumber,
       organization: data.organization,
-      otherSchool: data.university || '',
+      exec_position: data.execPosition,
+      otherSchool: data.university,
       notes: data.projectDetails,
       status: 'form fill out',
       ...(sourceValue && { source: sourceValue }),

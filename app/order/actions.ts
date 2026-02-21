@@ -15,6 +15,7 @@ export async function submitOrderFormAction(formData: FormData) {
       const email = formData.get('email') as string
       const phoneNumber = formData.get('phoneNumber') as string
       const organization = formData.get('organization') as string
+      const execPosition = formData.get('execPosition') as string
       const university = formData.get('university') as string || undefined
       const projectDetails = formData.get('projectDetails') as string
 
@@ -41,7 +42,8 @@ export async function submitOrderFormAction(formData: FormData) {
     const email = formData.get('email') as string
     const phoneNumber = formData.get('phoneNumber') as string
     const organization = formData.get('organization') as string
-    const university = formData.get('university') as string || undefined
+    const execPosition = formData.get('execPosition') as string
+    const university = formData.get('university') as string
     const projectDetails = formData.get('projectDetails') as string
     const referralSource = formData.get('referralSource') as string || undefined
     
@@ -51,6 +53,7 @@ export async function submitOrderFormAction(formData: FormData) {
       email,
       phoneNumber,
       organization,
+      execPosition,
       university,
       projectDetails,
       referralSource,
@@ -65,6 +68,7 @@ export async function submitOrderFormAction(formData: FormData) {
           email,
           phoneNumber,
           organization,
+          execPosition,
           university,
           projectDetails,
           filesCount: 0
