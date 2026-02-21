@@ -29,6 +29,15 @@ const blogPosts = [
     featured: true,
   },
   {
+    slug: 'custom-tank-tops-bulk-guide',
+    title: 'CUSTOM TANK TOPS: THE COMPLETE GUIDE TO BULK TANK TOPS IN 2026',
+    date: 'FEBRUARY 21, 2026',
+    excerpt: 'Learn how to order custom tank tops for your organization. Explore fabric options, fits, printing techniques, and design tips for tank tops your group will actually wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '7 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-crewnecks-ultimate-guide',
     title: 'THE COMPLETE GUIDE TO CUSTOM CREWNECKS IN 2026',
     date: 'FEBRUARY 21, 2026',
