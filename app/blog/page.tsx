@@ -20,6 +20,15 @@ const blogPosts = [
     featured: true,
   },
   {
+    slug: 'custom-joggers-sweatpants-guide',
+    title: 'CUSTOM JOGGERS: THE COMPLETE GUIDE TO PREMIUM CUSTOM SWEATPANTS IN 2026',
+    date: 'FEBRUARY 21, 2026',
+    excerpt: 'Learn how to order custom joggers and premium sweatpants for your organization. Explore fabrics, fits, printing options, and design tips for joggers your group will actually wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '7 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-crewnecks-ultimate-guide',
     title: 'THE COMPLETE GUIDE TO CUSTOM CREWNECKS IN 2026',
     date: 'FEBRUARY 21, 2026',
