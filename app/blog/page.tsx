@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-crewnecks-ultimate-guide',
+    title: 'THE COMPLETE GUIDE TO CUSTOM CREWNECKS IN 2026',
+    date: 'FEBRUARY 21, 2026',
+    excerpt: 'Everything you need to know about ordering custom crewnecks and sweatshirts—embroidery, printing options, fabric weights, and how to design crewneck merch your group will love.',
+    image: '/lookbook/19000034.webp',
+    readTime: '8 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-caps-hats-ultimate-guide',
     title: 'THE COMPLETE GUIDE TO CUSTOM CAPS & HATS IN 2026',
     date: 'FEBRUARY 20, 2026',
