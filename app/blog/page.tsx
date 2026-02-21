@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-letterman-jackets-college-guide',
+    title: 'CUSTOM LETTERMAN JACKETS: THE COMPLETE GUIDE FOR COLLEGE ORGANIZATIONS IN 2026',
+    date: 'FEBRUARY 21, 2026',
+    excerpt: 'Everything you need to know about ordering custom letterman jackets for your fraternity, sorority, or college club. Learn about varsity jacket styles, embroidery options, and how to design letter jackets your members will treasure.',
+    image: '/lookbook/19000034.webp',
+    readTime: '9 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-crewnecks-ultimate-guide',
     title: 'THE COMPLETE GUIDE TO CUSTOM CREWNECKS IN 2026',
     date: 'FEBRUARY 21, 2026',
