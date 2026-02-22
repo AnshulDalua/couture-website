@@ -271,7 +271,7 @@ export default function OrderPage() {
 
             <div className="group">
               <label htmlFor="execPosition" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
-                What position do you hold in your sorority?
+                What position do you hold in your organization?
               </label>
               <input
                 type="text"
