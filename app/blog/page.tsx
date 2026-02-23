@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-t-shirts-college-organizations-guide',
+    title: 'CUSTOM T-SHIRTS: THE COMPLETE GUIDE FOR COLLEGE ORGANIZATIONS IN 2026',
+    date: 'FEBRUARY 23, 2026',
+    excerpt: 'Learn how to order premium custom t-shirts for your fraternity, sorority, or college organization. Explore fabric options, printing techniques, and design tips for t-shirts your group will actually wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '8 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-letterman-jackets-college-guide',
     title: 'CUSTOM LETTERMAN JACKETS: THE COMPLETE GUIDE FOR COLLEGE ORGANIZATIONS IN 2026',
     date: 'FEBRUARY 21, 2026',
