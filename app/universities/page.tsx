@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'penn-state-sororities',
+    title: 'Penn State Sororities',
+    description: 'Custom merch for Penn State sorority chapters—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'ucla-cultural-orgs',
     title: 'UCLA Cultural Organizations',
     description: 'Custom merch for Asian American, Hispanic, Black, and multicultural orgs at UCLA',
