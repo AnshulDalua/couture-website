@@ -39,6 +39,44 @@ export const metadata: Metadata = {
   },
 }
 
+// JSON-LD Schema for AI crawlers
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Couture by Ikigai',
+  url: 'https://couturebyikigai.com',
+  description: 'Premium custom merchandise company specializing in heavyweight apparel for Greek life, university clubs, companies, and small businesses.',
+  logo: 'https://couturebyikigai.com/logo.png',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Ann Arbor',
+    addressRegion: 'MI',
+    addressCountry: 'US'
+  },
+  areaServed: 'United States',
+  serviceType: 'Custom Apparel',
+  priceRange: '$$',
+  sameAs: [
+    'https://www.instagram.com/couturebyikigai',
+    'https://www.tiktok.com/@couturebyikigai'
+  ]
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Couture by Ikigai',
+  url: 'https://couturebyikigai.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://couturebyikigai.com/search?q={search_term_string}'
+    },
+    'query-input': 'required name=search_term_string'
+  }
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -47,6 +85,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* JSON-LD Schema for AI */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        
         {/* Inline critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
