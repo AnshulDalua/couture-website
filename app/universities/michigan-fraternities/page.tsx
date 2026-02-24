@@ -2,7 +2,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Metadata } from "next"
 
-export const metadata  title: 'Custom Michigan Fraternity Merch | Couture by Ikigai',
+export const metadata: Metadata = {
+  title: 'Custom Michigan Fraternity Merch | Couture by Ikigai',
   description: 'Premium custom fraternity merchandise for Michigan fraternities. Matching hoodies, sweatsets, and apparel that your brothers will actually want to wear.',
   keywords: ['custom fraternity merch Michigan', 'Michigan fraternity custom hoodies', 'UMich Greek life merch', 'University of Michigan fraternity merchandise', 'custom fraternity apparel Ann Arbor'],
   openGraph: {
