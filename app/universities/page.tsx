@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'michigan-fraternities',
+    title: 'Michigan Fraternities',
+    description: 'Custom merch for Michigan fraternity chapters—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'penn-state-sororities',
     title: 'Penn State Sororities',
     description: 'Custom merch for Penn State sorority chapters—matching sweatsets, hoodies, and premium apparel',
