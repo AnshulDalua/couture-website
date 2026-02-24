@@ -11,6 +11,33 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'underground-printing-alternative',
+    title: 'UNDERGROUND PRINTING ALTERNATIVE: WHY COUTURE IS THE BETTER CHOICE',
+    date: 'FEBRUARY 24, 2026',
+    excerpt: 'Looking beyond Underground Printing? Discover why Couture offers better quality, design support, and pricing for Michigan Greek life merch.',
+    image: '/lookbook/19000034.webp',
+    readTime: '5 MIN READ',
+    featured: false,
+  },
+  {
+    slug: 'printful-alternative',
+    title: 'PRINTFUL ALTERNATIVE: WHY COUTURE BEATS PRINT-ON-DEMAND',
+    date: 'FEBRUARY 24, 2026',
+    excerpt: 'Tired of POD quality? Discover why Couture is the better Printful alternative for premium Greek life apparel that actually lasts.',
+    image: '/lookbook/19000034.webp',
+    readTime: '5 MIN READ',
+    featured: false,
+  },
+  {
+    slug: 'custom-ink-alternative',
+    title: 'CUSTOM INK ALTERNATIVE: WHY COUTURE IS THE BETTER CHOICE',
+    date: 'FEBRUARY 24, 2026',
+    excerpt: 'Looking for a Custom Ink alternative? Discover why Couture by Ikigai offers better quality, faster turnaround, and actual design support.',
+    image: '/lookbook/19000034.webp',
+    readTime: '6 MIN READ',
+    featured: false,
+  },
+  {
     slug: 'custom-t-shirts-college-organizations-guide',
     title: 'CUSTOM T-SHIRTS: THE COMPLETE GUIDE FOR COLLEGE ORGANIZATIONS IN 2026',
     date: 'FEBRUARY 23, 2026',
