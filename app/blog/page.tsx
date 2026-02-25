@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-hoodies-greek-life-college-guide',
+    title: 'CUSTOM HOODIES FOR COLLEGE ORGANIZATIONS: THE COMPLETE GUIDE FOR FRATERNITIES & SORORITIES IN 2026',
+    date: 'FEBRUARY 25, 2026',
+    excerpt: 'Learn how to order premium custom hoodies for your fraternity, sorority, or college organization. Explore fabric weights, printing techniques, and design tips for hoodies your chapter will actually wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '9 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'underground-printing-alternative',
     title: 'UNDERGROUND PRINTING ALTERNATIVE: WHY COUTURE IS THE BETTER CHOICE',
     date: 'FEBRUARY 24, 2026',
