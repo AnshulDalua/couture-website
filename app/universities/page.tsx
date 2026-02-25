@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'usc-dance-teams',
+    title: 'USC Dance Teams',
+    description: 'Custom merch for USC Trojan dance teams—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'michigan-fraternities',
     title: 'Michigan Fraternities',
     description: 'Custom merch for Michigan fraternity chapters—matching sweatsets, hoodies, and premium apparel',
