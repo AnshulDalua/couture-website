@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'nyu-acapella',
+    title: 'NYU A Cappella Groups',
+    description: 'Custom merch for NYU a cappella groups—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'usc-dance-teams',
     title: 'USC Dance Teams',
     description: 'Custom merch for USC Trojan dance teams—matching sweatsets, hoodies, and premium apparel',
