@@ -28,7 +28,7 @@ export default function Header() {
           <Link href="/">
             <Image
               src="/logo/Artboard 1.png"
-              alt="CoutureByIkgai"
+              alt="Couture by Ikigai - Custom Greek Life Merch"
               width={120}
               height={60}
               className="w-full"

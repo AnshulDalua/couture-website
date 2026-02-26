@@ -57,7 +57,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <Link href="/" onClick={onClose}>
                 <Image
                   src="/logo/Artboard 1.png"
-                  alt="CoutureByIkgai"
+                  alt="Couture by Ikigai - Custom Greek Life Merch"
                   width={120}
                   height={60}
                   className="w-full"

@@ -183,6 +183,7 @@ export default function HomePage() {
   
   return (
     <div className="bg-white">
+      <h1 className="sr-only">High Quality Custom Merch & Apparel for Any Organization - Greek Life, Companies, Teams & Clubs</h1>
       {/* Animation temporarily disabled. To re-enable, uncomment below blocks. */}
       {/*
       {showIntro && <ImagePreloader />}
@@ -222,7 +223,7 @@ export default function HomePage() {
                   <div key={index} className="relative w-1/3 h-[80vh] cursor-pointer" onClick={handleImageClick}>
                     <Image
                       src={currentImage}
-                      alt="IKIGAI Featured Collection - High quality custom merchandise"
+                      alt="Custom Greek Life Merch - Premium Hoodies and Apparel by Couture"
                       priority={index === 1}
                       fetchPriority={index === 1 ? "high" : "low"}
                       sizes="(min-width: 768px) 33vw, 100vw"
@@ -266,7 +267,7 @@ export default function HomePage() {
                 {currentImage && (
                   <Image
                     src={currentImage}
-                    alt="IKIGAI Featured Collection"
+                    alt="Custom Greek Life Merch - Premium Hoodies and Apparel by Couture"
                     priority
                     fetchPriority="high"
                     sizes="100vw"
@@ -303,7 +304,7 @@ export default function HomePage() {
                     <div className="absolute top-[-80px] right-[-60px] w-20 h-20 z-20" style={{ transform: "rotate(25deg)" }}>
                       <Image
                         src="/arlo/yellow.webp"
-                        alt="Arlo mascot"
+                        alt="Couture by Ikigai mascot - custom merch for university organizations"
                         width={80}
                         height={80}
                         style={{ width: "100%", height: "auto" }}

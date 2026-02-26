@@ -10,11 +10,11 @@ import { PostHogProvider } from "./providers"
 export const metadata: Metadata = {
   metadataBase: new URL('https://couturebyikigai.com'),
   title: {
-    default: 'COUTURE BY IKIGAI - High Quality Custom Merch',
-    template: '%s | COUTURE BY IKIGAI',
+    default: 'Custom Greek Life Merch & Apparel | Couture by Ikigai',
+    template: '%s | Custom Merch by Ikigai',
   },
-  description: "Couture by Ikigai - Premium, custom-designed merchandise including hoodies, t-shirts, and more. Not normal merch.",
-  keywords: ['high quality merch', 'best merch', 'custom hoodies', 'custom merch', 'university merch', 'premium custom apparel'],
+  description: "Premium custom hoodies, crewnecks, and apparel for any organization. Greek life, university clubs, companies, and teams. 150+ organizations trust Couture by Ikigai for high-quality bulk custom merch delivered in 2-3 weeks.",
+  keywords: ['high quality custom merch', 'bulk custom hoodies', 'custom organization apparel', 'premium custom hoodies', 'custom greek life merch', 'sorority hoodies', 'fraternity sweatshirts', 'custom company merch', 'university club apparel', 'custom team apparel'],
   generator: 'v0.dev',
   icons: {
     icon: '/favicon.png',
@@ -23,59 +23,22 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'COUTURE BY IKIGAI - High Quality Custom Merch',
-    description: "Premium, custom-designed merchandise. Not normal merch.",
+    title: 'Custom Greek Life Merch & Apparel | Couture by Ikigai',
+    description: "Premium custom hoodies, crewnecks, and apparel for any organization. Greek life, university clubs, companies, and teams.",
     images: '/website_preview.png',
     url: 'https://couturebyikigai.com',
-    siteName: 'COUTURE BY IKIGAI',
+    siteName: 'Couture by Ikigai',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'COUTURE BY IKIGAI - High Quality Custom Merch',
-    description: 'Premium, custom-designed merchandise. Not normal merch.',
+    title: 'Custom Greek Life Merch & Apparel | Couture by Ikigai',
+    description: 'Premium custom hoodies, crewnecks, and apparel for any organization. Greek life, university clubs, companies, and teams.',
     images: ['/website_preview.png'],
   },
 }
 
-// JSON-LD Schema for AI crawlers
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Couture by Ikigai',
-  url: 'https://couturebyikigai.com',
-  description: 'Premium custom merchandise company specializing in heavyweight apparel for Greek life, university clubs, companies, and small businesses.',
-  logo: 'https://couturebyikigai.com/logo.png',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Ann Arbor',
-    addressRegion: 'MI',
-    addressCountry: 'US'
-  },
-  areaServed: 'United States',
-  serviceType: 'Custom Apparel',
-  priceRange: '$$',
-  sameAs: [
-    'https://www.instagram.com/couturebyikigai',
-    'https://www.tiktok.com/@couturebyikigai'
-  ]
-}
-
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Couture by Ikigai',
-  url: 'https://couturebyikigai.com',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: 'https://couturebyikigai.com/search?q={search_term_string}'
-    },
-    'query-input': 'required name=search_term_string'
-  }
-}
 
 export default function RootLayout({
   children,
@@ -85,15 +48,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* JSON-LD Schema for AI */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
         
         {/* Inline critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
@@ -199,6 +153,32 @@ export default function RootLayout({
         {/* Preconnect to critical third-party origins */}
         <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://static.klaviyo.com" crossOrigin="anonymous" />
+        
+        {/* Organization Schema Markup */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Couture by Ikigai",
+              "url": "https://couturebyikigai.com",
+              "description": "Premium high-quality custom merch for any organization - Greek life, university clubs, companies, and teams.",
+              "sameAs": [],
+              "offers": {
+                "@type": "AggregateOffer",
+                "itemOffered": [
+                  {"@type": "Product", "name": "High Quality Custom Hoodies"},
+                  {"@type": "Product", "name": "Premium Custom Crewnecks"},
+                  {"@type": "Product", "name": "Custom Organization Apparel"},
+                  {"@type": "Product", "name": "Bulk Custom Merch"}
+                ]
+              }
+            })
+          }}
+        />
       </head>
       <body className="font-stussy">
         <Script
