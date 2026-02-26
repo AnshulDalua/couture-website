@@ -237,6 +237,46 @@ const blogPosts = [
   },
 ]
 
+// Define university landing pages
+const universityPages = [
+  {
+    url: '/universities',
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.8,
+  },
+  {
+    url: '/universities/michigan-fraternities',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/universities/penn-state-sororities',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/universities/ucla-cultural-orgs',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/universities/usc-dance-teams',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+  {
+    url: '/universities/nyu-acapella',
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  },
+]
+
 // Export the sitemap function
 export default function sitemap(): MetadataRoute.Sitemap {
   // Combine all pages
@@ -246,6 +286,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...productPages,
     ...lookbookPages,
     ...blogPosts,
+    ...universityPages,
   ]
 
   // Add the base URL to each page

@@ -10,13 +10,13 @@ Disallow: /admin/
 Disallow: /_next/
 Disallow: /og/
 
-# Disallow crawling of image files
-Disallow: /*.jpg$
-Disallow: /*.jpeg$
-Disallow: /*.png$
-Disallow: /*.gif$
-Disallow: /*.webp$
-Disallow: /*.svg$
+# Allow all images for Google Image Search and LLM visual understanding
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
 
 # Sitemap location
 Sitemap: https://couturebyikigai.com/sitemap.xml
