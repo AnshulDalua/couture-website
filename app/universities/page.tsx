@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'uchicago-sports-clubs',
+    title: 'UChicago Sports Clubs',
+    description: 'Custom merch for UChicago club sports teams—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'nyu-acapella',
     title: 'NYU A Cappella Groups',
     description: 'Custom merch for NYU a cappella groups—matching sweatsets, hoodies, and premium apparel',
