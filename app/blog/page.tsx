@@ -3,13 +3,22 @@ import Image from "next/image"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: 'Blog | Couture by Ikigai',
-  description: 'Insights on high quality custom merchandise, premium apparel design, and the latest trends in custom hoodies and organization merch.',
-  keywords: ['high quality merch', 'best merch', 'custom hoodie', 'custom merchandise', 'premium apparel'],
+  title: 'GREEK RECRUITMENT MERCHANDISE: THE COMPLETE GUIDE TO RUSH SHIRTS & BID DAY APPAREL IN 2026',
+  description: 'Learn how to order premium custom recruitment merchandise for your fraternity or sorority. From rush shirts to Bid Day apparel, discover how to create merch your new members will actually want to wear.',
+  keywords: ['Greek recruitment merchandise', 'rush shirts', 'sorority recruitment', 'fraternity rush', 'Bid Day apparel', 'Greek life merch', 'custom rush tees', 'recruitment week shirts'],
 }
 
 // Blog post data
 const blogPosts = [
+  {
+    slug: 'greek-recruitment-merchandise-rush-shirts-guide',
+    title: 'GREEK RECRUITMENT MERCHANDISE: THE COMPLETE GUIDE TO RUSH SHIRTS & BID DAY APPAREL IN 2026',
+    date: 'FEBRUARY 27, 2026',
+    excerpt: 'Learn how to order premium custom recruitment merchandise for your fraternity or sorority. From rush shirts to Bid Day apparel, discover how to create merch your new members will actually want to wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '8 MIN READ',
+    featured: true,
+  },
   {
     slug: 'custom-hoodies-greek-life-college-guide',
     title: 'CUSTOM HOODIES FOR COLLEGE ORGANIZATIONS: THE COMPLETE GUIDE FOR FRATERNITIES & SORORITIES IN 2026',
@@ -150,7 +159,7 @@ const blogPosts = [
     title: 'How Merch Became Fashion: From Concert Tees to Streetwear Drops',
     date: 'JULY 4, 2025',
     excerpt: 'Explore the cultural shift that turned fan merch into fashion statements—from vintage concert tees to creator-led streetwear drops.',
-    image: '/homepage/aryani.webp',
+    image: '/lookbook/aryani.webp',
     readTime: '5 MIN READ',
     featured: false,
   },
@@ -199,7 +208,7 @@ export default function BlogPage() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  priority={index < 4} // Prioritize loading for the first few images
+                  priority={index < 4}
                 />
               </div>
               <div className="mt-4">
