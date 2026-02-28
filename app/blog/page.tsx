@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-sorority-hoodies',
+    title: 'CUSTOM SORORITY HOODIES: THE ULTIMATE GUIDE FOR SISTERS IN 2026',
+    date: 'FEBRUARY 28, 2026',
+    excerpt: 'Discover premium custom sorority hoodies your chapter will love. Learn about fabric quality, design options, and how to order hoodies that represent your sisterhood with pride.',
+    image: '/lookbook/19000034.webp',
+    readTime: '8 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'greek-recruitment-merchandise-rush-shirts-guide',
     title: 'GREEK RECRUITMENT MERCHANDISE: THE COMPLETE GUIDE TO RUSH SHIRTS & BID DAY APPAREL IN 2026',
     date: 'FEBRUARY 27, 2026',
