@@ -21,6 +21,7 @@ export default function OrderPage() {
     name: "",
     email: "",
     phoneNumber: "",
+    instagramHandle: "",
     organization: "",
     execPosition: "",
     university: "",
@@ -103,6 +104,7 @@ export default function OrderPage() {
       submissionData.append('name', formData.name);
       submissionData.append('email', formData.email);
       submissionData.append('phoneNumber', formData.phoneNumber);
+      submissionData.append('instagramHandle', formData.instagramHandle);
       submissionData.append('organization', formData.organization);
       submissionData.append('execPosition', formData.execPosition);
       submissionData.append('university', formData.university);
@@ -141,6 +143,7 @@ export default function OrderPage() {
           name: "",
           email: "",
           phoneNumber: "",
+          instagramHandle: "",
           organization: "",
           execPosition: "",
           university: "",
@@ -253,6 +256,22 @@ export default function OrderPage() {
               </div>
 
               <div className="group">
+                <label htmlFor="instagramHandle" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
+                  Instagram Handle:
+                </label>
+                <input
+                  type="text"
+                  id="instagramHandle"
+                  name="instagramHandle"
+                  value={formData.instagramHandle}
+                  onChange={handleChange}
+                  placeholder="@handle"
+                  className="w-full border-b border-black pb-2 focus:outline-none text-black bg-transparent transition-all duration-300 focus:border-b-2 group-hover:border-b-2"
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div className="group md:col-span-2">
                 <label htmlFor="organization" className="text-xs uppercase tracking-wide text-gray-600 mb-2 block">
                   Organization:
                 </label>

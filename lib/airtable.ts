@@ -6,6 +6,7 @@ export type OrderFormDataForAirtable = {
   name: string;
   email: string;
   phoneNumber: string;
+  instagramHandle?: string;
   organization: string;
   execPosition: string;
   university: string;
@@ -46,6 +47,7 @@ export async function submitOrderToAirtable(data: OrderFormDataForAirtable) {
       contactName: data.name,
       email: data.email,
       phone: data.phoneNumber,
+      ...(data.instagramHandle && { 'ig-handle': data.instagramHandle }),
       organization: data.organization,
       exec_position: data.execPosition,
       otherSchool: data.university,

@@ -46,12 +46,14 @@ export async function submitOrderFormAction(formData: FormData) {
     const university = formData.get('university') as string
     const projectDetails = formData.get('projectDetails') as string
     const referralSource = formData.get('referralSource') as string || undefined
-    
+    const instagramHandle = formData.get('instagramHandle') as string || undefined
+
     // Submit the form data to Airtable
     const result = await submitOrderToAirtable({
       name,
       email,
       phoneNumber,
+      instagramHandle,
       organization,
       execPosition,
       university,
