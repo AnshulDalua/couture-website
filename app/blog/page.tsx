@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'dance-team-custom-hoodies',
+    title: 'DANCE TEAM CUSTOM HOODIES: THE COMPLETE GUIDE FOR COMPETITION AND SHOWTEAM APPAREL IN 2026',
+    date: 'MARCH 1, 2026',
+    excerpt: 'Learn how to order premium custom hoodies for your dance team or competition squad. Discover 420 GSM heavyweight quality and how to create merch your team will actually wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '8 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-sorority-hoodies',
     title: 'CUSTOM SORORITY HOODIES: THE ULTIMATE GUIDE FOR SISTERS IN 2026',
     date: 'FEBRUARY 28, 2026',
