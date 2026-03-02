@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'boston-university-cultural-orgs',
+    title: 'Boston University Cultural Organizations',
+    description: 'Custom merch for BU cultural orgs—Asian American, Hispanic, Black, and multicultural organizations at Boston University',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'uchicago-sports-clubs',
     title: 'UChicago Sports Clubs',
     description: 'Custom merch for UChicago club sports teams—matching sweatsets, hoodies, and premium apparel',
