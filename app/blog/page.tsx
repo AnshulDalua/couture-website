@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-merch-university-clubs-guide',
+    title: 'CUSTOM MERCH FOR UNIVERSITY CLUBS: THE COMPLETE GUIDE IN 2026',
+    date: 'MARCH 2, 2026',
+    excerpt: 'Learn how to order premium custom merch for university clubs and student organizations. From design tips to order quantities, discover how to create club apparel your members will love.',
+    image: '/lookbook/19000034.webp',
+    readTime: '8 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-acapella-group-merch-guide',
     title: 'CUSTOM A CAPPELLA GROUP MERCHANDISE: THE COMPLETE GUIDE TO COLLEGE SINGING GROUP APPAREL IN 2026',
     date: 'MARCH 2, 2026',
