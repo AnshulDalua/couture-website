@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'greek-life-custom-merch-guide',
+    title: 'GREEK LIFE CUSTOM MERCH: THE COMPLETE GUIDE TO SORORITY AND FRATERNITY APPAREL IN 2026',
+    date: 'MARCH 2, 2026',
+    excerpt: 'Learn how to order premium custom merch for your fraternity or sorority. From rush shirts to matching sweatsets, discover how to create Greek life apparel your chapter will actually want to wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '10 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-merch-university-clubs-guide',
     title: 'CUSTOM MERCH FOR UNIVERSITY CLUBS: THE COMPLETE GUIDE IN 2026',
     date: 'MARCH 2, 2026',
