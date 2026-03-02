@@ -16,6 +16,12 @@ const universityPages = [
     image: '/lookbook/19000034.webp',
   },
   {
+    slug: 'northwestern',
+    title: 'Northwestern',
+    description: 'Custom merch for NU organizations—Greek life, cultural orgs, clubs, and student groups at Northwestern',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'boston-university-cultural-orgs',
     title: 'Boston University Cultural Organizations',
     description: 'Custom merch for BU cultural orgs—Asian American, Hispanic, Black, and multicultural organizations at Boston University',
