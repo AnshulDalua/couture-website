@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-acapella-group-merch-guide',
+    title: 'CUSTOM A CAPPELLA GROUP MERCHANDISE: THE COMPLETE GUIDE TO COLLEGE SINGING GROUP APPAREL IN 2026',
+    date: 'MARCH 2, 2026',
+    excerpt: 'Learn how to order premium custom merchandise for your a cappella group or college singing organization. From matching t-shirts to concert hoodies, discover how to create merch your group will actually wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '9 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'dance-team-custom-hoodies',
     title: 'DANCE TEAM CUSTOM HOODIES: THE COMPLETE GUIDE FOR COMPETITION AND SHOWTEAM APPAREL IN 2026',
     date: 'MARCH 1, 2026',
