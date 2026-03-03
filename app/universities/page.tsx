@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'northwestern-fraternities',
+    title: 'Northwestern Fraternities',
+    description: 'Custom merch for NU fraternity chapters—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'uc-berkeley',
     title: 'UC Berkeley',
     description: 'Custom merch for Cal organizations—Greek life, cultural orgs, clubs, and student groups at UC Berkeley',
