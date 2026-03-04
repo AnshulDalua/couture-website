@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-company-merch-startup-guide',
+    title: 'CUSTOM COMPANY MERCH: THE COMPLETE GUIDE TO STARTUP AND BUSINESS APPAREL IN 2026',
+    date: 'MARCH 4, 2026',
+    excerpt: 'Learn how to order premium custom company merch for startups and businesses. From team hoodies to branded apparel, discover how to create corporate merch your team will actually want to wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '9 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-intramural-sports-team-merch-guide',
     title: 'CUSTOM INTRAMURAL SPORTS TEAM MERCH: THE COMPLETE GUIDE FOR COLLEGE TEAMS IN 2026',
     date: 'MARCH 4, 2026',
