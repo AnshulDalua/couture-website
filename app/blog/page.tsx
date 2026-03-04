@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-intramural-sports-team-merch-guide',
+    title: 'CUSTOM INTRAMURAL SPORTS TEAM MERCH: THE COMPLETE GUIDE FOR COLLEGE TEAMS IN 2026',
+    date: 'MARCH 4, 2026',
+    excerpt: 'Learn how to order premium custom merch for your intramural sports team. From matching t-shirts to hoodies and joggers, discover how to create team apparel your squad will actually want to wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '8 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'greek-life-custom-merch-guide',
     title: 'GREEK LIFE CUSTOM MERCH: THE COMPLETE GUIDE TO SORORITY AND FRATERNITY APPAREL IN 2026',
     date: 'MARCH 2, 2026',
