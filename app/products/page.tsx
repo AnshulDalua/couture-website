@@ -35,7 +35,7 @@ const collections = {
       {
         id: 4,
         name: "Straightcut Sweatpants",
-        price: "$55",
+        price: "$58",
         slug: "straightcut-sweatpants",
         image: "/shop/5.webp",
       },

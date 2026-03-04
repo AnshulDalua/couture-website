@@ -21,8 +21,8 @@ const volumeDiscounts = [
   {
     product: "Straightcut Sweatpants",
     discounts: [
-      { quantity: "10-39 items", price: "$55 per sweatpant" },
-      { quantity: "40-100 items", price: "$50 per sweatpant" },
+      { quantity: "10-39 items", price: "$58 per sweatpant" },
+      { quantity: "40-100 items", price: "$53 per sweatpant" },
       { quantity: "100+", price: "Custom Pricing" }
     ]
   },

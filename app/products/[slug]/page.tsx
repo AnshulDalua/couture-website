@@ -426,7 +426,7 @@ const products = {
   "straightcut-sweatpants": {
     id: 4,
     name: "Straightcut Sweatpants",
-    price: "$55",
+    price: "$58",
     description: "Straight-legged sweatpants in our heavyweight 12.4oz cotton blend.",
     details: [
       "420 GSM",
