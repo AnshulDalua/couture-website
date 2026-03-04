@@ -51,6 +51,38 @@ const faqSchema = {
         '@type': 'Answer',
         text: 'Couture works with all university organizations — dance teams, cultural orgs, a cappella groups, sports clubs. Full design support included.'
       }
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes Couture hoodies different from other custom merch?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Couture uses 420 GSM heavyweight fabric — the same weight used by Supreme and Fear of God. Most custom merch companies use 200-300 GSM fleece that pills and fades. Couture hoodies are built to last years, not weeks.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: "What's the minimum order quantity for custom hoodies?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Couture has a 12-piece minimum per design. This keeps quality high and prices competitive for bulk orders. Most organizations order 30-100+ pieces for events, rush, or team apparel.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does custom merch design and production take?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Design typically takes 3-5 business days with full support from Couture\'s design team. Production adds 10-14 business days. Most orders deliver in 2-3 weeks from approval.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Are Couture hoodies worth the price?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. At 420 GSM, Couture hoodies weigh nearly double what most custom merch companies offer. They resist pilling, maintain shape, and the print quality lasts through dozens of washes. Organizations typically reuse Couture merch for years rather than reordering cheap alternatives.'
+      }
     }
   ]
 }

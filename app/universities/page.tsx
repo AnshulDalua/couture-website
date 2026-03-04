@@ -10,6 +10,30 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'northwestern-fraternities',
+    title: 'Northwestern Fraternities',
+    description: 'Custom merch for NU fraternity chapters—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
+    slug: 'uc-berkeley',
+    title: 'UC Berkeley',
+    description: 'Custom merch for Cal organizations—Greek life, cultural orgs, clubs, and student groups at UC Berkeley',
+    image: '/lookbook/19000034.webp',
+  },
+  {
+    slug: 'northwestern',
+    title: 'Northwestern',
+    description: 'Custom merch for NU organizations—Greek life, cultural orgs, clubs, and student groups at Northwestern',
+    image: '/lookbook/19000034.webp',
+  },
+  {
+    slug: 'boston-university-cultural-orgs',
+    title: 'Boston University Cultural Organizations',
+    description: 'Custom merch for BU cultural orgs—Asian American, Hispanic, Black, and multicultural organizations at Boston University',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'uchicago-sports-clubs',
     title: 'UChicago Sports Clubs',
     description: 'Custom merch for UChicago club sports teams—matching sweatsets, hoodies, and premium apparel',
