@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 // Blog post data
 const blogPosts = [
   {
+    slug: 'custom-crewneck-sweatshirts-guide',
+    title: 'CUSTOM CREWNECK SWEATSHIRTS: THE COMPLETE GUIDE IN 2026',
+    date: 'MARCH 5, 2026',
+    excerpt: 'Learn how to order premium custom crewneck sweatshirts for your organization. From fabric quality to design tips, discover how to create crewneck merch your group will actually want to wear.',
+    image: '/lookbook/19000034.webp',
+    readTime: '8 MIN READ',
+    featured: true,
+  },
+  {
     slug: 'custom-company-merch-startup-guide',
     title: 'CUSTOM COMPANY MERCH: THE COMPLETE GUIDE TO STARTUP AND BUSINESS APPAREL IN 2026',
     date: 'MARCH 4, 2026',
