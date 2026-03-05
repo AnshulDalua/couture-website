@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'michigan-sororities',
+    title: 'Michigan Sororities',
+    description: 'Custom merch for U-M sorority chapters—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'uc-berkeley-fraternities',
     title: 'UC Berkeley Fraternities',
     description: 'Custom merch for Cal fraternity chapters—matching sweatsets, hoodies, and premium apparel at UC Berkeley',
