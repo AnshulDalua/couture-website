@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 
 const universityPages = [
   {
+    slug: 'usc-sororities',
+    title: 'USC Sororities',
+    description: 'Custom merch for USC Trojan sorority chapters—matching sweatsets, hoodies, and premium apparel',
+    image: '/lookbook/19000034.webp',
+  },
+  {
     slug: 'michigan-sororities',
     title: 'Michigan Sororities',
     description: 'Custom merch for U-M sorority chapters—matching sweatsets, hoodies, and premium apparel',
