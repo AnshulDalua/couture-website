@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function USC SororitiesPage() {
+export default function USCSororitiesPage() {
 
   return (
     <div className="min-h-screen px-6 py-8">
