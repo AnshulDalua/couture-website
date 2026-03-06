@@ -3,13 +3,22 @@ import Image from "next/image"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: 'GREEK RECRUITMENT MERCHANDISE: THE COMPLETE GUIDE TO RUSH SHIRTS & BID DAY APPAREL IN 2026',
-  description: 'Learn how to order premium custom recruitment merchandise for your fraternity or sorority. From rush shirts to Bid Day apparel, discover how to create merch your new members will actually want to wear.',
-  keywords: ['Greek recruitment merchandise', 'rush shirts', 'sorority recruitment', 'fraternity rush', 'Bid Day apparel', 'Greek life merch', 'custom rush tees', 'recruitment week shirts'],
+  title: 'CUSTOM FUNDRAISING MERCHANDISE: THE COMPLETE GUIDE FOR COLLEGE ORGANIZATIONS IN 2026',
+  description: 'Learn how to order premium custom fundraising merchandise for your student organization. From design strategies to pricing tips, discover how to create merch that actually raises money for your cause.',
+  keywords: ['fundraising merchandise', 'custom merch fundraiser', 'college fundraiser', 'student organization fundraising', 'bulk fundraising apparel', 'custom t-shirts fundraiser', 'group merch fundraising'],
 }
 
 // Blog post data
 const blogPosts = [
+  {
+    slug: 'custom-fundraising-merchandise-guide',
+    title: 'CUSTOM FUNDRAISING MERCHANDISE: THE COMPLETE GUIDE FOR COLLEGE ORGANIZATIONS IN 2026',
+    date: 'MARCH 6, 2026',
+    excerpt: 'Learn how to order premium custom fundraising merchandise for your student organization. From design strategies to pricing tips, discover how to create merch that actually raises money for your cause.',
+    image: '/lookbook/19000034.webp',
+    readTime: '9 MIN READ',
+    featured: true,
+  },
   {
     slug: 'custom-crewneck-sweatshirts-guide',
     title: 'CUSTOM CREWNECK SWEATSHIRTS: THE COMPLETE GUIDE IN 2026',
